@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'one_report/application', media: 'all' %>
+<%= javascript_include_tag 'one_report/application' %>
+
+<div class="ui segment"></div>
+
+<div class="ui segment">
+  <ul class="ui breadcrumb">
+    <li class="section"><%= link_to 'back', :back %></li>
+    <li class="section"><%= link_to 'Report List', report_list_path(@report_list) %></li>
+  </ul>
+</div>
+
+
+<div class="ui segment">
+
+  <h1 class="ui header">Preview</h1>
+  <div class="ui divider"></div>
+
+  <% @table_lists.each do |table_list| %>
+    <%= render partial: 'table', locals: { table_list: table_list } %>
+  <% end %>
+
+</div>
+
+<div class="ui divider"></div>

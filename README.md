@@ -1,5 +1,5 @@
 # TheData
-TheData is a MiddleMan for import data and export data, It can be used for generating complex report. 
+TheData is a MiddleMan for import data and export data, It can be used for generating complex report.
 And It can transfer data to many format, Like: csv, pdf, html, xml and more.
 
 ## Features
@@ -17,19 +17,20 @@ And It can transfer data to many format, Like: csv, pdf, html, xml and more.
 #### step-1: Add one_report to you Gemfile:
 
 ```ruby
-gem 'one_report'
+gem 'the_data'
 ```
 
 #### step-2: Run migrations
 
-```ruby
+```bash
+rake the_auth_engine:install:migrations
 rake db:migrate
 ```
 
-## Work with Report
+## How to use
 
 #### step-1: Define table
-this step is important, it format the report's data format
+The table defined the report's data format
 
 [Define Report Table](doc/define-report-table.md)
 
@@ -50,5 +51,3 @@ Since the definition, there are several meaning：
 
   * add method: `sports_report_id`, this method will get report list's id
   * add method: `sports_report_report_list`, this method will get report list model, for addition, It will generate a queue job;
-
-

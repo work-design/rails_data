@@ -9,6 +9,7 @@ module TheData
 
   configure do |config|
     config.inflector = :titleize
+    config.method_name = :report
   end
 
 end

@@ -1,5 +1,5 @@
 class TheData::ReportListsController < TheData::BaseController
-  before_filter :set_report_list, only: [:show, :update_publish, :destroy]
+  before_action :set_report_list, only: [:show, :update_publish, :destroy]
   #after_filter :set_reportable, only: [:new, :create, :show]
 
   def reportable

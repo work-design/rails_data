@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    one_report (0.0.1)
+    the_data (1.0.1)
       prawn-table
       rails (>= 3.2)
       refile
@@ -159,13 +159,13 @@ DEPENDENCIES
   combine_pdf
   factory_girl_rails
   minitest
-  one_report!
   prawn
   prawn-table
   pry-rails
   rails (= 4.2.3)
   refile!
   sqlite3
+  the_data!
 
 BUNDLED WITH
    1.10.6

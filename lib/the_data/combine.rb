@@ -5,8 +5,7 @@ module TheData
     extend ActiveSupport::Concern
 
     included do
-      has_one :combine, as: :reportable, dependent: :destroy
-      has_many :combines, as: :reportable, dependent: :destroy
+      belongs_to :combine, dependent: :destroy
     end
 
   end

@@ -1,7 +1,7 @@
 module TheData::Export
 
   def to_table
-    @table_list = TableList.new(report_list_id: report_list_id)
+    @table_list = TableList.new(data_list_id: data_list_id)
     @table_list.headers = header_values.to_csv
     @table_list.note_header = @note_header
     @table_list.note_footer = @note_footer

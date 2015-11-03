@@ -1,13 +1,11 @@
 module TheData::Import
 
-  def collect(scope)
+  def collection=(scope)
     if scope.respond_to?(:call)
       @collection = scope
     else
       raise 'The scope must be callable'
     end
-
-    self
   end
 
   def column(name, field: nil, header: nil, argument: nil, footer: nil)
@@ -54,6 +52,50 @@ module TheData::Import
     self
   end
 
+  def columns=(*names)
+    @columns = names.uniq.map { |i|i.to_sym }
+  end
+
+  def headers=(headers = {})
+    columns.each do |column|
+      if headers[column].is_a?(String)
+        next
+      elsif headers[column].nil?
+        h = {name => name.to_s.send(inflector)}
+        headers.merge!(h)
+      else
+        raise 'wrong header type'
+      end
+    end
+  end
+
+  def fields=(fields= {}, argument: nil)
+    if field.nil?
+      fields.merge!(name => name)
+    elsif field.equal?(false)
+      fields.merge!(name => nil)
+    elsif field.is_a?(Symbol)
+      fields.merge!(name => field)
+    elsif field.respond_to?(:call)
+      fields.merge!(name => scope(name, field))
+    else
+      raise 'wrong field type'
+    end
+  end
+
+
+  def footers=(footers = {})
+    if footer.present?
+      footers.merge!(name => footer)
+    end
+
+    if argument && argument.is_a?(Array)
+      arguments.merge!(name => argument)
+    else
+      raise 'wrong argument type'
+    end
+  end
+
   def note(header: nil, footer: nil)
     @note_header = header
     @note_footer = footer
@@ -62,9 +104,12 @@ module TheData::Import
   end
 
   private
-  def header_default(name)
-    h = {name => name.to_s.send(inflector)}
-    headers.merge! h
+
+  def check_input(options)
+    extra = options.keys.map(&:to_sym) - columns
+    if extra.present?
+      raise 'Seems some column have been defined'
+    end
   end
 
   def scope(name, body)

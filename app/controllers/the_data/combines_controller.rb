@@ -1,5 +1,5 @@
 class TheData::CombinesController < TheData::BaseController
-  before_filter :set_combine, only: [:show, :table_lists, :destroy]
+  before_action :set_combine, only: [:show, :table_lists, :destroy]
 
   def show
 

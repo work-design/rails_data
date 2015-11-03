@@ -15,7 +15,7 @@ So, just config them.
 
 ```ruby
 # we usually place the file in app/reports/example_table
-class ExampleTable < TheData::Base
+class ExampleTable < TheData::Table
 end
 ```
 
@@ -34,7 +34,7 @@ end
 - call `collect` method for define collection, the params should be a lambda, and the collection should response to method `each`
 
 ```ruby
-class ExampleTable < TheData::Base
+class ExampleTable < TheData::Table
 
   def config(size)
 
@@ -51,23 +51,23 @@ use for each collection element's method, to pass a method name or a lambda
 the order is important, all columns order by It's defined order
 
 ```ruby
-class ExampleTable < TheData::Base
+class ExampleTable < TheData::Table
 
-  def config(size)
+  def initialize(size)
 
     # the collection should respond to method `each`
-    collect -> { User.one_report_scope(size) }
-    
+    collectection = -> { User.one_report_scope(size) }
+
     # with default header and default field method
     # default header use 'titleize' method to format
     # default field method equal column's name
-    column :name
+    columns = [:name, :email]
 
     # with assigned header and default field method
-    column :name, header: 'My name'
+    headers = { name: 'My name', email: 'Email' }
 
     # with assigned header and assigned field method
-    column :name, header: 'My name', field: -> { name }
+    fields = { name: -> { name } }
   end
 
 end

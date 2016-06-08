@@ -1,6 +1,4 @@
 class Combine < ActiveRecord::Base
-  include ReportPdf
-
   attachment :file
   has_many :combine_data_lists, dependent: :delete_all
   has_many :data_lists, through: :combine_data_lists

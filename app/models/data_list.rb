@@ -1,5 +1,4 @@
 class DataList < ActiveRecord::Base
-  include ReportPdf
 
   attachment :file
   has_many :table_lists, dependent: :destroy

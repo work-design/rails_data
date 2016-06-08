@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  scope module: 'one_report' do
 
+  scope module: 'the_data' do
     resources :report_lists do
       get :reportable, on: :collection
       put :update_publish, on: :member
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :combines do
       get :table_lists, on: :member
     end
-
   end
+
 end

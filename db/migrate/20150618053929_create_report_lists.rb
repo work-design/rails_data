@@ -4,9 +4,9 @@ class CreateReportLists < ActiveRecord::Migration
 
     create_table :data_lists do |t|
       t.string :file_id
-      t.string  :file_filename
+      t.string :file_filename
       t.integer :file_size
-      t.string  :file_content_type
+      t.string :file_content_type
       t.boolean :done
       t.boolean :published
       t.integer :table_lists_count, default: 0
@@ -28,26 +28,6 @@ class CreateReportLists < ActiveRecord::Migration
       t.string :fields, limit: 4096
       t.timestamps
     end
-
-    # create_table "combines" do |t|
-    #   t.integer  "reportable_id"
-    #   t.string   "reportable_type"
-    #   t.string   "reportable_name"
-    #   t.string   "file_id"
-    #   t.string   "file_filename"
-    #   t.integer  "file_size"
-    #   t.string   "file_content_type"
-    #   t.datetime "created_at",        :null => false
-    #   t.datetime "updated_at",        :null => false
-    # end
-    #
-    #
-    # create_table "combine_report_lists", :force => true do |t|
-    #   t.integer  "combine_id"
-    #   t.integer  "report_list_id"
-    #   t.datetime "created_at",     :null => false
-    #   t.datetime "updated_at",     :null => false
-    # end
 
   end
 

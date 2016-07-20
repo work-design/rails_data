@@ -39,7 +39,7 @@ class ExampleTable < TheData::Table
   def config(size)
 
     # the collection should respond to method `each`
-    collect -> { User.one_report_scope(size) }
+    collecttion -> { User.one_report_scope(size) }
 
   end
 
@@ -56,21 +56,35 @@ class ExampleTable < TheData::Table
   def initialize(size)
 
     # the collection should respond to method `each`
-    collectection = -> { User.one_report_scope(size) }
+    collection -> { User.one_report_scope(size) }
 
     # with default header and default field method
     # default header use 'titleize' method to format
     # default field method equal column's name
-    columns = [:name, :email]
+    column :name
 
     # with assigned header and default field method
-    headers = { name: 'My name', email: 'Email' }
+    column :name, header: 'My name'
 
     # with assigned header and assigned field method
-    fields = { name: -> { name } }
+    column :name, header: 'My name', field: -> { name }
   end
 
 end
+```
+
+
+```ruby
+{
+  name: {
+    header: 'My name',
+    field: -> {}
+  },
+  email: {
+    header: 'Email',
+    field: -> {}
+  }
+}
 ```
 
 #### Optional, config headers for the table

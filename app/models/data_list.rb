@@ -1,12 +1,12 @@
 class DataList < ActiveRecord::Base
-
   attachment :file
+
   has_many :table_lists, dependent: :destroy
   has_many :table_items, through: :table_lists
 
   scope :published, -> { where(published: true) }
 
-  after_commit :add_to_worker, on: :create
+  after_create_commit :add_to_worker
 
   def run(save = true, rerun: true)
     clear_old

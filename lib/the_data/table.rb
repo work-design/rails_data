@@ -9,25 +9,24 @@ class TheData::Table
 
   attr_reader :data_list_id,
               :collection,
-              :columns,
-              :headers,
-              :footers,
-              :fields,
-              :arguments
+              :columns
 
   # collection = -> { User.limit(10) }
-  # columns = [:name, :email, :mobile]
-  # headers = { name: 'My name'}
-  # fields = { name: ->{name} },
-  # footers = { }
+  #  columns = {
+  #  name: {
+  #    header: 'My name',
+  #    field: -> {}
+  #  },
+  #  email: {
+  #    header: 'Email',
+  #    field: -> {}
+  #  }
+  #}
+
   def initialize(data_list_id)
     @data_list_id = data_list_id
     @collection = nil
-    @columns = []
-    @headers = {}
-    @footers = {}
-    @fields = {}
-    @arguments = {}
+    @columns = {}
   end
 
   def collection_result

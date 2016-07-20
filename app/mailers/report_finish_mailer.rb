@@ -1,5 +1,5 @@
 class ReportFinishMailer < ActionMailer::Base
-  default from: "StudyTurf Notifications <notifications@studyturf.com.au>"
+  default from: ""
 
   def finish_notify(id)
     @report_list = ReportList.find(id)

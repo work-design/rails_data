@@ -13,26 +13,28 @@ module TheData::Import
       raise 'The column is repeated'
     end
 
+    columns[name.to_sym] = {}
+
     if field.nil?
-      columns[:field] = name
+      columns[name.to_sym][:field] = name
     elsif field.is_a?(Symbol)
-      columns[:field] = field
+      columns[name.to_sym][:field] = field
     elsif field.respond_to?(:call)
-      columns[:field] = scope(name, field)
+      columns[name.to_sym][:field] = scope(name, field)
     else
       raise 'wrong field type'
     end
 
     if header.nil?
-      default_header(name)
+      columns[name.to_sym][:header] = default_header(name)
     elsif header.is_a?(String)
-      headers.merge!(name => header)
+      columns[name.to_sym][:header] = header
     else
       raise 'wrong header type'
     end
 
     if footer.present?
-      footers.merge!(name => footer)
+      columns[name.to_sym][:footer] = header
     end
 
     self

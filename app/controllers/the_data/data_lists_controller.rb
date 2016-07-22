@@ -6,14 +6,12 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def new
-    @data_list = DataList.new(data_list_params)
+    @data_list = DataList.new
   end
 
   def create
     @data_list = DataList.new(data_list_params)
     @data_list.save
-
-    TableWorker.perform_async(@data_list.id)
 
     redirect_to data_lists_url
   end
@@ -32,6 +30,10 @@ class TheData::DataListsController < TheData::BaseController
     end
   end
 
+  def run
+    TableWorker.perform_async(@data_list.id)
+  end
+
   def destroy
     @data_list.destroy
     redirect_to data_lists_url, notice: 'Export file was successfully destroyed.'
@@ -44,7 +46,7 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def data_list_params
-    params[:data_list]
+    params[:data_list].permit(:title, :comment)
   end
 
 end

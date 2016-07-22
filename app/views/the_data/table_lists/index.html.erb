@@ -1,12 +1,9 @@
-<%= stylesheet_link_tag 'one_report/application', media: 'all' %>
-<%= javascript_include_tag 'one_report/application' %>
-
 <div class="ui segment"></div>
 
 <div class="ui segment">
   <ul class="ui breadcrumb">
     <li class="section"><%= link_to 'back', :back %></li>
-    <li class="section"><%= link_to 'Report List', report_list_path(@report_list) %></li>
+    <li class="section"><%= link_to 'Report List', data_list_path(@data_list) %></li>
   </ul>
 </div>
 

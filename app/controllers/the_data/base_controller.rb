@@ -1,3 +1,3 @@
-class TheData::BaseController < ActionController::Base
-  layout 'application'
+class TheData::BaseController < ApplicationController
+  layout 'admin'
 end

@@ -28,7 +28,7 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def set_data_list
-    @data_list = ReportList.find params[:data_list_id]
+    @data_list = DataList.find params[:data_list_id]
   end
 
 

@@ -1,15 +1,5 @@
-<%= form_for @report_list, html: { class: 'form-horizontal' } do |f| %>
-
-  <div class="form-group">
-    <%= f.label :notice_email, 'notify email', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-5">
-      <%= f.text_field :notice_email, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-5">
-      <%= f.submit class: 'btn btn-success btn-lg' %>
-    </div>
-  </div>
+<%= default_form_for @data_list do |f| %>
+  <%= f.text_field :title, label: 'Title' %>
+  <%= f.text_area :comment, label: 'Comment' %>
+  <%= f.submit %>
 <% end %>

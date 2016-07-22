@@ -8,8 +8,8 @@ module TheData::Export
     @table_list.footers = footer_result
     @table_list.save
 
-    collection_result.each do |object|
-      field_result(object)
+    collection_result.each_with_index do |object, index|
+      field_result(object, index)
     end
   end
 
@@ -39,10 +39,14 @@ module TheData::Export
     results.to_csv
   end
 
-  def field_result(object)
+  def field_result(object, index)
     results = []
     columns.each do |column|
-      results << column[:field].call(object)
+      if column[:field].arity == 2
+        results << column[:field].call(object, index)
+      elsif column[:field].arity == 1
+        results << column[:field].call(object)
+      end
     end
 
     row = CSV::Row.new(header_values, results)

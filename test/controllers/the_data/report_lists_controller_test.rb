@@ -8,7 +8,7 @@ class TheData::ReportListsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:report_lists)
+    assert_not_nil assigns(:data_lists)
   end
 
   test "should get new" do

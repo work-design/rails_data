@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope module: 'the_data' do
-    resources :report_lists do
+    resources :data_lists do
       get :reportable, on: :collection
       put :update_publish, on: :member
       resources :table_lists do

@@ -1,9 +1,5 @@
 <%= form_for @report_list, html: { class: 'form-horizontal' } do |f| %>
 
-  <%= f.hidden_field :reportable_type %>
-  <%= f.hidden_field :reportable_id %>
-  <%= f.hidden_field :reportable_name %>
-
   <div class="form-group">
     <%= f.label :notice_email, 'notify email', class: 'col-sm-2 control-label' %>
     <div class="col-sm-5">

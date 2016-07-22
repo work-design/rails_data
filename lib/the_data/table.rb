@@ -12,7 +12,7 @@ class TheData::Table
               :columns
 
   # collection = -> { User.limit(10) }
-  #  columns = {
+  # columns = {
   #  name: {
   #    header: 'My name',
   #    field: -> {}
@@ -39,18 +39,6 @@ class TheData::Table
 
   def inflector
     @inflector = TheData.config.inflector
-  end
-
-  def header_values
-    @header_values = headers.values_at(*columns)
-  end
-
-  def footer_values
-    @footer_values = footers.values_at(*columns)
-  end
-
-  def field_values
-    @field_values = fields.values_at(*columns)
   end
 
   def self.config(*args)

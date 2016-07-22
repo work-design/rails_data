@@ -40,10 +40,6 @@ module TheData::Import
     self
   end
 
-  def default_headers(name)
-    name.to_s.titleize
-  end
-
   def note(header: nil, footer: nil)
     @note_header = header
     @note_footer = footer
@@ -52,7 +48,6 @@ module TheData::Import
   end
 
   private
-
   def check_input(options)
     extra = options.keys.map(&:to_sym) - columns
     if extra.present?

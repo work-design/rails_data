@@ -1,40 +1,37 @@
 module TheData::Import
 
-  def collection(scope)
-    if scope.respond_to?(:call)
-      @collection = scope
+  def collect(collection)
+    if collection.respond_to?(:call)
+      @collection = collection
     else
       raise 'The collection must be callable'
     end
   end
 
-  def column(name, field: nil, header: nil, footer: nil)
+  def column(name, header: nil, field:, footer: nil)
     if columns.keys.include?(name)
       raise 'The column is repeated'
     end
 
-    columns[name.to_sym] = {}
-
-    if field.nil?
-      columns[name.to_sym][:field] = name
-    elsif field.is_a?(Symbol)
-      columns[name.to_sym][:field] = field
-    elsif field.respond_to?(:call)
-      columns[name.to_sym][:field] = scope(name, field)
-    else
-      raise 'wrong field type'
-    end
+    name = name.to_sym
+    columns[name] = {}
 
     if header.nil?
-      columns[name.to_sym][:header] = default_header(name)
+      columns[name][:header] = name.titleize
     elsif header.is_a?(String)
-      columns[name.to_sym][:header] = header
+      columns[name][:header] = header
     else
       raise 'wrong header type'
     end
 
+    if field.respond_to?(:call)
+      columns[name][:field] = field
+    else
+      raise 'wrong field type'
+    end
+
     if footer.present?
-      columns[name.to_sym][:footer] = header
+      columns[name][:footer] = footer
     end
 
     self

@@ -1,7 +1,7 @@
 require 'csv'
-require 'the_data/table/config'
-require 'the_data/table/import'
-require 'the_data/table/export'
+require 'the_data/config'
+require 'the_data/import'
+require 'the_data/export'
 
 class TheData::Table
   include TheData::Import
@@ -31,10 +31,6 @@ class TheData::Table
 
   def collection_result
     collection.call
-  end
-
-  def config
-    raise 'should call in subclass'
   end
 
   def inflector

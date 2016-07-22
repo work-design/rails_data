@@ -16,7 +16,7 @@ module TheData::Export
   def header_result
     results = []
 
-    columns.each do |column|
+    columns.each do |name, column|
       if column[:header].respond_to?(:call)
         results << column[:header].call
       else
@@ -29,7 +29,7 @@ module TheData::Export
   def footer_result
     results = []
 
-    columns.each do |column|
+    columns.each do |name, column|
      if column[:footer].respond_to?(:call)
        results << column[:footer].call
      else
@@ -41,7 +41,7 @@ module TheData::Export
 
   def field_result(object, index)
     results = []
-    columns.each do |column|
+    columns.each do |name, column|
       if column[:field].arity == 2
         results << column[:field].call(object, index)
       elsif column[:field].arity == 1
@@ -49,7 +49,7 @@ module TheData::Export
       end
     end
 
-    row = CSV::Row.new(header_values, results)
+    row = CSV::Row.new(header_result, results)
     @table_list.table_items.create(fields: row.to_csv)
   end
 

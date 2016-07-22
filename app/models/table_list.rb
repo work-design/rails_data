@@ -1,11 +1,11 @@
 class TableList < ActiveRecord::Base
-  belongs_to :report_list, counter_cache: true
+  belongs_to :data_list, counter_cache: true, optional: true
   has_many :table_items, dependent: :destroy
 
   validates :headers, format: { with: /\n\z/, message: "must end with return" }
 
   def brothers
-    self.class.where(report_list_id: self.report_list_id)
+    self.class.where(data_list_id: self.data_list_id)
   end
 
   def csv_array

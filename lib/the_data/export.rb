@@ -14,7 +14,7 @@ module TheData::Export
   def to_table_items
     collection_result.each_with_index do |object, index|
       row = field_result(object, index)
-      #@table_list.table_items.create(fields: row.to_csv)
+      @table_list.table_items.create(fields: row.to_csv)
     end
   end
 

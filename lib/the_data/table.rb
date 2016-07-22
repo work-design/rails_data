@@ -23,7 +23,7 @@ class TheData::Table
   #  }
   #}
 
-  def initialize(data_list_id)
+  def initialize(data_list_id = nil)
     @data_list_id = data_list_id
     @collection = nil
     @columns = {}
@@ -35,6 +35,10 @@ class TheData::Table
 
   def inflector
     @inflector = TheData.config.inflector
+  end
+
+  def config
+    raise 'should call in subclass'
   end
 
   def self.config(*args)

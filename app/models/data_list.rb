@@ -1,4 +1,5 @@
 class DataList < ActiveRecord::Base
+  serialize :parameters, Hash
   has_many :table_lists, dependent: :destroy
   has_many :table_items, through: :table_lists
   scope :published, -> { where(published: true) }

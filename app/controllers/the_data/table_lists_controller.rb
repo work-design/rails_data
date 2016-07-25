@@ -54,7 +54,7 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def table_list_params
-    params[:table_list].permit(parameters: [])
+    params[:table_list].permit(parameters: @data_list.parameters.keys)
   end
 
 

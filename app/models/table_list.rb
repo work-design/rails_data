@@ -1,8 +1,10 @@
 class TableList < ActiveRecord::Base
+  serialize :parameters, Hash
+
   belongs_to :data_list, counter_cache: true, optional: true
   has_many :table_items, dependent: :destroy
 
-  validates :headers, format: { with: /\n\z/, message: "must end with return" }
+  validates :headers, format: { with: /\n\z/, message: "must end with return" }, allow_blank: true
 
   def brothers
     self.class.where(data_list_id: self.data_list_id)
@@ -20,7 +22,7 @@ class TableList < ActiveRecord::Base
 
   def csv_headers
     begin
-      CSV.parse_line(headers)
+      CSV.parse_line(headers || ',')
     rescue
       CSV.parse_line(headers, quote_char: '\'')
     end

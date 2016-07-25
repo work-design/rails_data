@@ -8,7 +8,7 @@ module TheData::Import
     end
   end
 
-  def column(name, header: nil, field:, footer: nil)
+  def column(name, header: nil, field: nil, footer: nil)
     if columns.keys.include?(name)
       raise 'The column is repeated'
     end

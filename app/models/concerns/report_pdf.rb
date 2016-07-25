@@ -26,13 +26,6 @@ module ReportPdf
     pdf_result.render
   end
 
-  def pdf_to_file
-    self.file = StringIO.new(pdf_string)
-    self.file_filename = filename
-    self.file_content_type = 'application/pdf'
-    self.save
-  end
-
   def pdf_result
     pdf.table_data = table_lists.includes(:table_items).map { |i| i.csv_array }
     pdf.header_data = header_data

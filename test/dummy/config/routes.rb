@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount TheData::Engine => "/one_report"
+  mount TheData::Engine => "/the_data"
 end

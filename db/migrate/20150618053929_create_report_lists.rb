@@ -3,10 +3,8 @@ class CreateReportLists < ActiveRecord::Migration
   def change
 
     create_table :data_lists do |t|
-      t.string :file_id
-      t.string :file_filename
-      t.integer :file_size
-      t.string :file_content_type
+      t.string :title
+      t.string :comment, limit: 4096
       t.boolean :done
       t.boolean :published
       t.integer :table_lists_count, default: 0

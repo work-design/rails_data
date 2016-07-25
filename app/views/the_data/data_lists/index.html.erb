@@ -27,7 +27,7 @@
         <td><%= data_list.id %></td>
         <td><%= data_list.title %></td>
         <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
-        <td><%= link_to 'download', data_list_path(data_list) %></td>
+        <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
         <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

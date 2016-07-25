@@ -1,5 +1,5 @@
 class TheData::DataListsController < TheData::BaseController
-  before_action :set_data_list, only: [:show, :update_publish, :destroy]
+  before_action :set_data_list, only: [:show, :edit, :update, :run, :update_publish, :destroy]
 
   def index
     @data_lists = DataList.all
@@ -16,13 +16,6 @@ class TheData::DataListsController < TheData::BaseController
     redirect_to data_lists_url
   end
 
-  def update_publish
-    @data_list.published = !@data_list.published
-    @data_list.save
-
-    redirect_to :back
-  end
-
   def show
     respond_to do |format|
       format.html
@@ -30,8 +23,23 @@ class TheData::DataListsController < TheData::BaseController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @data_list.update(data_list_params)
+    redirect_to data_lists_url
+  end
+
   def run
     TableWorker.perform_async(@data_list.id)
+  end
+
+  def update_publish
+    @data_list.published = !@data_list.published
+    @data_list.save
+
+    redirect_to :back
   end
 
   def destroy

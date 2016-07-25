@@ -31,10 +31,6 @@ class TheData::DataListsController < TheData::BaseController
     redirect_to data_lists_url
   end
 
-  def run
-    TableWorker.perform_async(@data_list.id)
-  end
-
   def update_publish
     @data_list.published = !@data_list.published
     @data_list.save

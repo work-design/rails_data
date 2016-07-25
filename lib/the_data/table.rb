@@ -7,7 +7,7 @@ class TheData::Table
   include TheData::Import
   include TheData::Export
 
-  attr_reader :data_list_id,
+  attr_reader :table_list_id,
               :collection,
               :columns
 
@@ -23,8 +23,8 @@ class TheData::Table
   #  }
   #}
 
-  def initialize(data_list_id = nil)
-    @data_list_id = data_list_id
+  def initialize(table_list_id = nil)
+    @table_list_id = table_list_id
     @collection = nil
     @columns = {}
   end

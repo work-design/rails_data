@@ -1,7 +1,7 @@
 module TheData::Export
 
   def to_table
-    @table_list = TableList.new(data_list_id: data_list_id)
+    @table_list = TableList.find(table_list_id)
     @table_list.headers = header_result.to_csv
     @table_list.note_header = @note_header
     @table_list.note_footer = @note_footer
@@ -21,7 +21,7 @@ module TheData::Export
   def header_result
     results = []
 
-    columns.each do |name, column|
+    columns.each do |_, column|
       if column[:header].respond_to?(:call)
         results << column[:header].call
       else
@@ -34,7 +34,7 @@ module TheData::Export
   def footer_result
     results = []
 
-    columns.each do |name, column|
+    columns.each do |_, column|
      if column[:footer].respond_to?(:call)
        results << column[:footer].call
      else
@@ -46,7 +46,7 @@ module TheData::Export
 
   def field_result(object, index)
     results = []
-    columns.each do |name, column|
+    columns.each do |_, column|
       if column[:field].arity == 2
         results << column[:field].call(object, index)
       elsif column[:field].arity == 1

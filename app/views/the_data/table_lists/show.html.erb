@@ -10,15 +10,20 @@
     <li class="section"><%= link_to 'Report List', data_list_path(@data_list) %></li>
   </ul>
 
+
   <div class="ui top attached menu borderless">
     <div class="item"><strong>Table List</strong></div>
   </div>
 
-  <div class="ui segment bottom attached">
-    <%= link_to '新建', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
+  <div class="ui segment top attached">
+    <%= link_to '新建', new_data_list_path, class: 'ui teal button' %>
   </div>
 
   <div class="ui segment">
+
+    <h1 class="ui header">Preview</h1>
+    <div class="ui divider"></div>
+
     <% @table_lists.each do |table_list| %>
       <%= render partial: 'table', locals: { table_list: table_list } %>
     <% end %>

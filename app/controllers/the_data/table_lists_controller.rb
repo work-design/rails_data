@@ -41,6 +41,7 @@ class TheData::TableListsController < TheData::BaseController
 
   def run
     TableJob.perform_later(@table_list.id)
+    redirect_to data_list_table_lists_url(@data_list)
   end
 
   def destroy

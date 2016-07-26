@@ -19,7 +19,7 @@ class TheData::TableListsController < TheData::BaseController
 
   def show
     respond_to do |format|
-      format.js
+      format.html
       format.csv { send_data @table_list.csv_string, filename: @table_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @table_list.to_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf' }
     end

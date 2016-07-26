@@ -14,46 +14,39 @@
     <div class="item"><strong>Preview</strong></div>
   </div>
 
-  <div class="ui segment">
-    <h1 class="ui header"></h1>
-
-    <div class="ui top attached menu borderless">
-      <div class="item"><strong>TableID:<%= @table_list.id %></strong></div>
-      <div class="right menu">
-        <%= link_to 'download', data_list_table_list_path(@data_list, @table_list, format: 'csv'), class: 'item ui button' %>
-      </div>
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>TableID:<%= @table_list.id %></strong></div>
+    <div class="right menu">
+      <%= link_to 'download', data_list_table_list_path(@data_list, @table_list, format: 'csv'), class: 'item ui button' %>
     </div>
-
-    <table class="ui celled red bottom attached table">
-      <thead>
-      <tr>
-        <% @table_list.csv_headers.each do |header| %>
-          <th><%= header %></th>
-        <% end %>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @table_list.table_items.limit(100).each do |item| %>
-        <tr>
-          <% item.csv_fields.each do |field| %>
-            <td><%= field %></td>
-          <% end %>
-        </tr>
-      <% end %>
-      </tbody>
-
-      <tfoot>
-      <tr>
-        <% @table_list.csv_footers.each do |footer| %>
-          <th><%= footer %></th>
-        <% end %>
-      </tr>
-      </tfoot>
-    </table>
-
   </div>
 
-  <div class="ui divider"></div>
+  <table class="ui celled red bottom attached table">
+    <thead>
+    <tr>
+      <% @table_list.csv_headers.each do |header| %>
+        <th><%= header %></th>
+      <% end %>
+    </tr>
+    </thead>
 
+    <tbody>
+    <% @table_list.table_items.limit(100).each do |item| %>
+      <tr>
+        <% item.csv_fields.each do |field| %>
+          <td><%= field %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+
+    <tfoot>
+    <tr>
+      <% @table_list.csv_footers.each do |footer| %>
+        <th><%= footer %></th>
+      <% end %>
+    </tr>
+    </tfoot>
+  </table>
+  
 </div>

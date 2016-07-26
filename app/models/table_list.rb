@@ -10,9 +10,8 @@ class TableList < ActiveRecord::Base
     clear_old
 
     if !self.done || rerun
-      reportable.public_send(reportable_name)
-      self.update_attributes(done: true, published: true)
-      ReportFinishMailer.finish_notify(self.id).deliver if self.notice_email.present?
+      data_list.config_table.to_table(self.id)
+      self.update(done: true)
     end
   end
 

@@ -42,8 +42,8 @@ class TheData::Table
   end
 
   def self.config(*args)
-    data_list_id = args.shift
-    report = self.new(data_list_id)
+    table_list_id = args.shift
+    report = self.new(table_list_id)
     report.config(*args)
   end
 

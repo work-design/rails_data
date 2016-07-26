@@ -29,9 +29,8 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def update
-    table_list_params = params[:table_list].permit(parameters: @table_list.parameters.keys)
     @table_list.update(table_list_params)
-    redirect_to table_lists_url
+    redirect_to data_list_table_lists_url(@data_list)
   end
 
   def row

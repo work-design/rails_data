@@ -11,14 +11,17 @@ class DataList < ActiveRecord::Base
   end
 
   def config_params
-    klass = data_table.to_s.constantize
     params = {}
-    if klass
-      klass.instance_method(:config).parameters.each do |param|
+    if config_table
+      config_table.instance_method(:config).parameters.each do |param|
         params.merge! param[1] => param[0]
       end
     end
     params
+  end
+
+  def config_table
+    @config_table ||= data_table.to_s.safe_constantize
   end
 
 end

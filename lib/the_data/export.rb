@@ -3,8 +3,6 @@ module TheData::Export
   def to_table
     @table_list = TableList.find(table_list_id)
     @table_list.headers = header_result.to_csv
-    @table_list.note_header = @note_header
-    @table_list.note_footer = @note_footer
     @table_list.footers = footer_result.to_csv
     @table_list.save
 

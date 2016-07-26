@@ -37,13 +37,6 @@ module TheData::Import
     self
   end
 
-  def note(header: nil, footer: nil)
-    @note_header = header
-    @note_footer = footer
-
-    self
-  end
-
   private
   def check_input(options)
     extra = options.keys.map(&:to_sym) - columns

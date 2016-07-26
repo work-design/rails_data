@@ -6,27 +6,6 @@ class DataList < ActiveRecord::Base
 
   before_save :update_parameters
 
-  def clear_old
-    self.done = false
-    self.remove_file = true
-    self.save
-    table_lists.delete_all
-
-    self.remove_file = nil
-  end
-
-  def add_to_worker
-    TableWorker.perform_async(self.id)
-  end
-
-  def table_items_count
-    table_lists.sum(:table_items_count)
-  end
-
-  def published_value
-    published ? 'published' : 'unpublished'
-  end
-
   def update_parameters
     self.parameters = config_params
   end

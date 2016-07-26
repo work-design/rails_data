@@ -6,6 +6,23 @@ class TableList < ActiveRecord::Base
 
   validates :headers, format: { with: /\n\z/, message: "must end with return" }, allow_blank: true
 
+
+  def run(save = true, rerun: true)
+    clear_old
+
+    if !self.done || rerun
+      reportable.public_send(reportable_name)
+      self.update_attributes(done: true, published: true)
+      ReportFinishMailer.finish_notify(self.id).deliver if self.notice_email.present?
+    end
+
+    if save
+      self.pdf_to_file
+    end
+  end
+
+
+
   def brothers
     self.class.where(data_list_id: self.data_list_id)
   end

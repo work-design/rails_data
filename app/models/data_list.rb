@@ -6,20 +6,6 @@ class DataList < ActiveRecord::Base
 
   before_save :update_parameters
 
-  def run(save = true, rerun: true)
-    clear_old
-
-    if !self.done || rerun
-      reportable.public_send(reportable_name)
-      self.update_attributes(done: true, published: true)
-      ReportFinishMailer.finish_notify(self.id).deliver if self.notice_email.present?
-    end
-
-    if save
-      self.pdf_to_file
-    end
-  end
-
   def clear_old
     self.done = false
     self.remove_file = true

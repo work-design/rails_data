@@ -1,6 +1,6 @@
 class TheData::TableListsController < TheData::BaseController
   before_action :set_data_list
-  before_action :set_table_list, only: [:show, :edit, :update, :row]
+  before_action :set_table_list, only: [:show, :edit, :update, :row, :run]
 
   def index
     @table_lists = @data_list.table_lists
@@ -41,7 +41,7 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def run
-    TableWorker.perform_async(@data_list.id)
+    TableJob.perform_later(@table_list.id)
   end
 
   def destroy

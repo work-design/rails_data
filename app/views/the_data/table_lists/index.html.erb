@@ -14,17 +14,32 @@
     <div class="item"><strong>Table List</strong></div>
   </div>
 
-  <div class="ui segment bottom attached">
+  <div class="ui segment top attached">
     <%= link_to '新建', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
   </div>
 
-  <div class="ui segment">
+  <table class="ui bottom attached table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Parameters</th>
+      <th>Headers</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
     <% @table_lists.each do |table_list| %>
-      <%= render partial: 'table', locals: { table_list: table_list } %>
+      <tr>
+        <td><%= table_list.id %></td>
+        <td><%= table_list.parameters %></td>
+        <td><%= table_list.headers %></td>
+        <td><%= link_to '预览', data_list_table_list_path(@data_list, table_list) %></td>
+        <td><%= link_to 'edit', edit_data_list_table_list_path(@data_list, table_list) %></td>
+        <td><%= link_to 'destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
-
-  </div>
-
-  <div class="ui divider"></div>
+    </tbody>
+  </table>
 
 </div>

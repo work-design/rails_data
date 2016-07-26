@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       put :update_publish, on: :member
       resources :table_lists do
         get :row, on: :member
+        patch :run, on: :member
       end
     end
   end

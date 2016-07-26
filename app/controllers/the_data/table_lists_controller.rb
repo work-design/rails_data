@@ -1,6 +1,6 @@
 class TheData::TableListsController < TheData::BaseController
-  before_filter :set_data_list
-  before_filter :set_table_list, only: [:show, :edit, :update, :row]
+  before_action :set_data_list
+  before_action :set_table_list, only: [:show, :edit, :update, :row]
 
   def index
     @table_lists = @data_list.table_lists
@@ -29,8 +29,9 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def update
+    table_list_params = params[:table_list].permit(parameters: @table_list.parameters.keys)
     @table_list.update(table_list_params)
-    redirect_to data_lists_url
+    redirect_to table_lists_url
   end
 
   def row
@@ -43,6 +44,10 @@ class TheData::TableListsController < TheData::BaseController
     TableWorker.perform_async(@data_list.id)
   end
 
+  def destroy
+    @table_list.destroy
+    redirect_to data_list_table_lists_url(@data_list), notice: 'Export file was successfully destroyed.'
+  end
 
   private
   def set_table_list

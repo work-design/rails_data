@@ -7,13 +7,8 @@ module TheData::Export
     @table_list.save
 
     to_table_items
-  end
 
-  def to_table_items
-    collection_result.each_with_index do |object, index|
-      row = field_result(object, index)
-      @table_list.table_items.create(fields: row.to_csv)
-    end
+    @config_table = data_list.config_table
   end
 
   def header_result
@@ -29,22 +24,16 @@ module TheData::Export
     results
   end
 
-  def footer_result
-    results = []
-
-    columns.each do |_, column|
-     if column[:footer].respond_to?(:call)
-       results << column[:footer].call
-     else
-       results << column[:footer]
-     end
+  def to_table_items
+    @config_table.collection.call.each_with_index do |object, index|
+      row = field_result(object, index)
+      table_items.create(fields: row.to_csv)
     end
-    results
   end
 
   def field_result(object, index)
     results = []
-    columns.each do |_, column|
+    @config_table.columns.each do |_, column|
       if column[:field].arity == 2
         results << column[:field].call(object, index)
       elsif column[:field].arity == 1
@@ -53,6 +42,19 @@ module TheData::Export
     end
 
     CSV::Row.new(header_result, results)
+  end
+
+  def footer_result
+    results = []
+
+    @config_table.columns.each do |_, column|
+      if column[:footer].respond_to?(:call)
+        results << column[:footer].call
+      else
+        results << column[:footer]
+      end
+    end
+    results
   end
 
 end

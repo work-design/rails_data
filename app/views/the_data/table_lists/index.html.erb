@@ -7,7 +7,7 @@
   <ul class="ui breadcrumb">
     <li class="section"><%= link_to 'back', data_lists_path %></li>
     <li class="divider">/</li>
-    <li class="section"><%= link_to 'Report List', data_list_path(@data_list) %></li>
+    <li class="section">Table lists</li>
   </ul>
 
   <div class="ui top attached menu borderless">
@@ -35,7 +35,7 @@
         <td><%= table_list.id %></td>
         <td><%= table_list.parameters %></td>
         <td><%= table_list.headers %></td>
-        <th><%= table_list.done %></th>
+        <td><%= table_list.done %></td>
         <td>
           <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
           <%= link_to '预览', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>

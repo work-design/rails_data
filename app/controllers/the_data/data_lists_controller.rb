@@ -38,7 +38,7 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def data_list_params
-    params[:data_list].permit(:title, :comment, :data_table)
+    params[:data_list].permit(:title, :comment, :data_table, parameters: @data_list.parameters.keys)
   end
 
 end

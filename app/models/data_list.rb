@@ -4,7 +4,7 @@ class DataList < ActiveRecord::Base
   has_many :table_items, through: :table_lists
   scope :published, -> { where(published: true) }
 
-  before_save :update_parameters
+  before_create :update_parameters
 
   def update_parameters
     self.parameters = config_params

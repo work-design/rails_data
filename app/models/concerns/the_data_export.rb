@@ -11,7 +11,7 @@ module TheDataExport
 
   def initialize_table
     @config_table = data_list.config_table
-    @config_table.config(parameters)
+    @config_table.config(converted_parameters)
   end
 
   def header_result

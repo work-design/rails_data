@@ -2,7 +2,7 @@
   <% @data_list.parameters.each do |k, v| %>
     <div class="inline field">
       <label class="six wide field"><%= k.to_s.titleize %>:</label>
-      <%= text_field_tag :"table_list[parameters][#{k}]", nil, class: 'nine wide field', type: Conversion::TYPE[v.to_sym][:input] %>
+      <%= text_field_tag :"table_list[parameters][#{k}]", nil, class: 'nine wide field', type: TableList::TYPE[v.to_sym][:input] %>
     </div>
   <% end %>
   <%= f.submit %>

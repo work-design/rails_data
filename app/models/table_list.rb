@@ -1,4 +1,8 @@
 class TableList < ActiveRecord::Base
+  TYPE = {
+    date: { input: 'date', output: 'to_date' },
+    integer: { input: 'number', output: 'to_i' }
+  }
   include TheDataExport
   serialize :parameters, Hash
 
@@ -14,6 +18,14 @@ class TableList < ActiveRecord::Base
       to_table
       self.update(done: true)
     end
+  end
+
+  def converted_parameters
+    param = {}
+    parameters.each do |k, v|
+      param.merge! k.to_sym => v.send(TYPE[data_list.parameters[k].to_sym][:output])
+    end
+    param
   end
 
   def clear_old

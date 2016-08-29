@@ -1,24 +1,23 @@
-module TheData::Export
+module TheDataExport
 
   def to_table
-    @table_list = TableList.find(table_list_id)
-    @table_list.headers = header_result.to_csv
-    @table_list.footers = footer_result.to_csv
-    @table_list.save
+    @config_table = data_list.config_table
+
+    self.headers = header_result.to_csv
+    self.footers = footer_result.to_csv
+    self.save
 
     to_table_items
-
-    @config_table = data_list.config_table
   end
 
   def header_result
     results = []
 
-    columns.each do |_, column|
+    @config_table.columns.each do |_, column|
       if column[:header].respond_to?(:call)
         results << column[:header].call
       else
-        results << column[:header].titleize
+        results << column[:header]
       end
     end
     results

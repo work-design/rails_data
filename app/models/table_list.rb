@@ -1,4 +1,5 @@
 class TableList < ActiveRecord::Base
+  include TheDataExport
   serialize :parameters, Hash
 
   belongs_to :data_list, counter_cache: true, optional: true
@@ -10,7 +11,7 @@ class TableList < ActiveRecord::Base
     clear_old
 
     if !self.done || rerun
-      data_list.config_table.to_table(self.id)
+      to_table
       self.update(done: true)
     end
   end

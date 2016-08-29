@@ -1,16 +1,12 @@
 require 'csv'
 require 'the_data/config'
-
 class TheData::Table
-  mttr_reader :table_list_id,
-              :collection,
-              :columns
-
   # collect -> { User.limit(10) }
   # column :name, header: 'My name', field: -> {}
   # column :email, header: 'Email', field: -> {}
 
   class << self
+    attr_reader :collection, :columns
 
     def inflector
       @inflector = TheData.config.inflector

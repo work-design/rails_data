@@ -1,13 +1,17 @@
 module TheDataExport
 
   def to_table
-    @config_table = data_list.config_table
-
+    initialize_table
     self.headers = header_result.to_csv
     self.footers = footer_result.to_csv
     self.save
 
     to_table_items
+  end
+
+  def initialize_table
+    @config_table = data_list.config_table
+    @config_table.config(parameters)
   end
 
   def header_result

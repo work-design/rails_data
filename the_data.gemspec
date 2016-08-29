@@ -2,7 +2,7 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'the_data/version'
 
 Gem::Specification.new do |s|
-  s.name        = "the_data"
+  s.name = 'the_data'
   s.version     = TheData::VERSION
   s.authors     = ["qinmingyuan"]
   s.email       = ["mingyuan0715@foxmail.com"]

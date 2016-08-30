@@ -13,7 +13,7 @@ class DataList < ActiveRecord::Base
   def config_params
     params = {}
     if config_table
-      config_table.instance_method(:config).parameters.each do |param|
+      config_table.method(:config).parameters.each do |param|
         params.merge! param[1] => param[0]
       end
     end

@@ -28,7 +28,7 @@ class TheData::Table
       @columns ||= {}
       name = name.to_sym
 
-      raise 'The column is repeated' if @columns.keys.include?(name)
+      #raise 'The column is repeated' if @columns.keys.include?(name)
 
       @columns[name] = {}
 

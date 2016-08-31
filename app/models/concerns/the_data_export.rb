@@ -2,11 +2,13 @@ module TheDataExport
 
   def to_table
     initialize_table
-    self.headers = header_result.to_csv
-    self.footers = footer_result.to_csv
-    self.save
 
+    self.headers = header_result.to_csv
     to_table_items
+
+    self.footers = footer_result.to_csv
+    self.done = true
+    self.save
   end
 
   def initialize_table

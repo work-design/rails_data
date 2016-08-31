@@ -8,17 +8,13 @@ class TableList < ActiveRecord::Base
   serialize :parameters, Hash
 
   belongs_to :data_list, counter_cache: true, optional: true
-  has_many :table_items, dependent: :destroy
+  has_many :table_items, dependent: :delete_all
 
   validates :headers, format: { with: /\n\z/, message: "must end with return" }, allow_blank: true
 
-  def run(rerun: true)
+  def run
     clear_old
-
-    if !self.done || rerun
-      to_table
-      self.update(done: true)
-    end
+    to_table
   end
 
   def converted_parameters

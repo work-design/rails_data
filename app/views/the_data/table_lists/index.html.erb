@@ -35,7 +35,9 @@
         <td><%= table_list.id %></td>
         <td><%= table_list.parameters %></td>
         <td><%= table_list.headers %></td>
-        <td><%= table_list.done %></td>
+        <td id="done_<%= table_list.id %>">
+          <%= table_list.done %>
+        </td>
         <td>
           <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
           <%= link_to '预览', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>

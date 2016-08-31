@@ -1,6 +1,6 @@
 class TheData::TableListsController < TheData::BaseController
   before_action :set_data_list
-  before_action :set_table_list, only: [:show, :edit, :update, :row, :run]
+  before_action :set_table_list, only: [:show, :edit, :row, :run, :update, :destroy]
 
   def index
     @table_lists = @data_list.table_lists
@@ -40,7 +40,7 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def run
-    TableJob.perform_later(@table_list.id)
+    TableJob.perform_later(@table_list.id, current_user.id)
     redirect_to data_list_table_lists_url(@data_list)
   end
 

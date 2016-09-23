@@ -3,7 +3,7 @@ class TheData::TableListsController < TheData::BaseController
   before_action :set_table_list, only: [:show, :edit, :row, :run, :update, :destroy]
 
   def index
-    @table_lists = @data_list.table_lists
+    @table_lists = @data_list.table_lists.page(params[:page]).per(50)
   end
 
   def new

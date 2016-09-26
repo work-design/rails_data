@@ -39,7 +39,7 @@
           <%= table_list.done %>
         </td>
         <td>
-          <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+          <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
           <%= link_to '预览', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
           <%= link_to 'edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>
           <%= link_to 'destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>

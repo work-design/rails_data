@@ -31,7 +31,7 @@
     </thead>
 
     <tbody>
-    <% @table_list.table_items.limit(100).each do |item| %>
+    <% @table_items.limit(100).each do |item| %>
       <tr>
         <% item.csv_fields.each do |field| %>
           <td><%= field %></td>
@@ -48,5 +48,7 @@
     </tr>
     </tfoot>
   </table>
+
+  <%= paginate @table_items %>
 
 </div>

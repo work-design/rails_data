@@ -18,6 +18,8 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def show
+    @table_items = @table_list.table_items.page(params[:page]).per(100)
+
     respond_to do |format|
       format.html
       format.csv { send_data @table_list.csv_string, filename: @table_list.csv_file_name, type: 'application/csv' }

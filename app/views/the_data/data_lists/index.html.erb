@@ -1,5 +1,5 @@
 <div class="three wide column">
-  <%= render 'admin/base/nav_users' %>
+  <%= render 'the_data/base/nav' %>
 </div>
 
 <div class="thirteen wide column">
@@ -26,6 +26,7 @@
 
     <tbody>
     <% @data_lists.each do |data_list| %>
+      <% if the_role_user.has_role?('the_data/table_lists', 'read', data_list.id) %>
       <tr>
         <td><%= data_list.id %></td>
         <td><%= data_list.title %></td>
@@ -36,6 +37,7 @@
         <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
         <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>

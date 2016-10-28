@@ -1,6 +1,10 @@
 class TheData::TableListsController < TheData::BaseController
   before_action :set_data_list
   before_action :set_table_list, only: [:show, :edit, :row, :run, :update, :destroy]
+  skip_before_action :require_role
+  before_action do |controller|
+    controller.require_role(params[:data_list_id])
+  end
 
   def index
     @table_lists = @data_list.table_lists.page(params[:page]).per(50)

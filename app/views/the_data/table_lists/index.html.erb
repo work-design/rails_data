@@ -36,7 +36,11 @@
         <td><%= simple_format_hash(table_list.parameters) %></td>
         <td><%= table_list.headers %></td>
         <td id="done_<%= table_list.id %>">
-          <%= table_list.done %>
+          <% if table_list.done %>
+            <i class="green checkmark icon"></i>
+          <% else %>
+            <i class="grey remove icon"></i>
+          <% end %>
         </td>
         <td>
           <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>

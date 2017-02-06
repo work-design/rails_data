@@ -1,7 +1,7 @@
 class TheData::BaseController < ApplicationController
   include TheRole::Controller
 
-  layout 'admin'
+  layout 'the_data'
   before_action :require_role
 
   helper_method :the_role_user

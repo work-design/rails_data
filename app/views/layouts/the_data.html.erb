@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Data</title>
+  <%= stylesheet_link_tag 'admin/application' %>
+  <%= javascript_include_tag 'admin/application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'admin/base/nav_bar' %>
+<%= render 'shared/alert' %>
+
+<div class="ui padded grid">
+  <%= yield %>
+</div>
+
+<%= js_load(root: TheData::Engine.root) %>
+
+</body>
+</html>
+

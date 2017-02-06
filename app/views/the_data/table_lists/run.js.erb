@@ -1,4 +1,10 @@
 var tl_id = '#done_' + '<%= @table_list.id %>';
 var tl_obj = $(tl_id);
-tl_obj.css('color', '#ff7f24');
-tl_obj.html('正在运行中');
+tl_obj.html('<%= j(render 'process') %>');
+
+$('.ui.progress').progress({
+  label: 'percent',
+  text : {
+    percent : 'working'
+  }
+});

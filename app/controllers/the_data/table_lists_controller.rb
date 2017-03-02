@@ -28,6 +28,7 @@ class TheData::TableListsController < TheData::BaseController
       format.html
       format.csv { send_data @table_list.csv_string, filename: @table_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @table_list.to_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf' }
+      format.xlsx { send_data @table_list.to_xlsx, filename: @table_list.xlsx_file_name, type: 'application/xlsx' }
     end
   end
 

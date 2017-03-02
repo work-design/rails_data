@@ -83,12 +83,21 @@ class TableList < ActiveRecord::Base
     csv
   end
 
+  def to_xlsx
+    io = ReportXlsx.write_csv csv_array
+    io.string
+  end
+
   def csv_file_name
     "#{self.id}.csv"
   end
 
   def pdf_file_name
     "#{self.id}.pdf"
+  end
+
+  def xlsx_file_name
+    "#{self.id}.xlsx"
   end
 
 end

@@ -24,4 +24,10 @@ class DataList < ActiveRecord::Base
     @config_table ||= data_table.to_s.safe_constantize
   end
 
+  def importer(file)
+    @importer ||= TheDataImport.new(config_table.config, file)
+  end
+
+
+
 end

@@ -21,6 +21,17 @@ class TheData::TableListsController < TheData::BaseController
     redirect_to data_list_table_lists_url(@data_list)
   end
 
+  def new_import
+    @table_list = @data_list.table_lists.build
+  end
+
+  def create_import
+    @table_list = @data_list.table_lists.build
+    @table_list.import_to_table_list(file_params.tempfile)
+
+    redirect_to data_list_table_lists_url(@data_list)
+  end
+
   def show
     @table_items = @table_list.table_items.page(params[:page]).per(100)
 
@@ -66,6 +77,10 @@ class TheData::TableListsController < TheData::BaseController
 
   def table_list_params
     params.fetch(:table_list, {}).permit(parameters: @data_list.parameters.keys)
+  end
+
+  def file_params
+    params.fetch(:table_list, {}).fetch(:file)
   end
 
 

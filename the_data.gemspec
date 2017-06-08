@@ -16,4 +16,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 5.0'
   s.add_dependency 'write_xlsx', '~> 0.83.0'
+  s.add_dependency 'roo'
 end

@@ -1,0 +1,17 @@
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="ui header blue">
+    Import
+  </div>
+
+  <div class="content">
+    <%= default_form_with model: @table_list, url: import_data_list_table_lists_path(@data_list), id: 'import_table' do |f| %>
+      <%= f.file_field :file, label: 'File' %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+
+
+

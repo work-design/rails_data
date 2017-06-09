@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         post 'import' => :create_import, on: :collection
         get :row, on: :member
         patch :run, on: :member
+        patch :migrate, on: :member
       end
     end
   end

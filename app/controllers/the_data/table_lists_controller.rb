@@ -1,6 +1,6 @@
 class TheData::TableListsController < TheData::BaseController
   before_action :set_data_list
-  before_action :set_table_list, only: [:show, :edit, :row, :run, :update, :destroy]
+  before_action :set_table_list, only: [:show, :edit, :row, :run, :migrate, :update, :destroy]
   skip_before_action :require_role
   before_action do |controller|
     controller.require_role(params[:data_list_id])
@@ -29,7 +29,12 @@ class TheData::TableListsController < TheData::BaseController
     @table_list = @data_list.table_lists.build
     @table_list.import_to_table_list(file_params.tempfile)
 
-    redirect_to data_list_table_lists_url(@data_list)
+    @table_items = @table_list.table_items.page(params[:page]).per(100)
+  end
+
+  def migrate
+
+    redirect_back fallback_location: data_list_table_lists_url(@data_list)
   end
 
   def show
@@ -72,7 +77,11 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def set_data_list
-    @data_list = DataList.find params[:data_list_id]
+    if /\d/.match? params[:data_list_id]
+      @data_list = DataList.find params[:data_list_id]
+    else
+      @data_list = DataList.find_by data_table: params[:data_list_id]
+    end
   end
 
   def table_list_params

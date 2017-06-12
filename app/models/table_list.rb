@@ -119,6 +119,7 @@ class TableList < ActiveRecord::Base
       end
        config.record.create attr
     end
+    self.destroy
   end
 
   def csv_file_name

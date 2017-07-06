@@ -4,8 +4,12 @@ class TheDataImport
   attr_reader :sheet, :column_index
 
   def initialize(config, sheet_file)
-    xlsx = Roo::Excelx.new(sheet_file)
-    @sheet = xlsx.sheet_for(xlsx.sheets[0])
+    if File.extname(sheet_file.path) == '.xls'
+      xlsx = Roo::Excel.new(sheet_file)
+    else
+      xlsx = Roo::Excelx.new(sheet_file)
+    end
+    @sheet = xlsx.sheet(xlsx.sheets[0])
     @config = config
 
     @column_index = init_header.compact
@@ -22,8 +26,8 @@ class TheDataImport
 
   def results
     results = []
-    @sheet.each_row do |row|
-      results << column_index.map { |index| row[index].value }
+    @sheet.each do |row|
+      results << column_index.map { |index| row[index] }
     end
     results
   end

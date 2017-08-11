@@ -10,6 +10,7 @@ module TheData
   configure do |config|
     config.inflector = :titleize
     config.method_name = :report
+    config.admin_class = 'Admin::BaseController'
   end
 
 end

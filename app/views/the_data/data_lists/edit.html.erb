@@ -1,10 +1,6 @@
-<div class="three wide column">
-  <%= render 'the_data/base/nav' %>
-</div>
+<div>
 
-<div class="thirteen wide column">
-
-  <div class="ui breadcrumb">
+  <div class="ui segment breadcrumb">
     <%= link_to 'Back', data_lists_path, class: 'section' %>
     <div class="divider"> / </div>
     <div class="active section">Edit</div>
@@ -16,9 +12,9 @@
       <%= f.text_area :comment, label: 'Comment' %>
       <%= f.text_field :data_table, label: 'DataTable' %>
       <% @data_list.parameters.each do |k, v| %>
-        <div class="inline field">
+        <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
-          <%= select_tag :"data_list[parameters][#{k}]", options_for_select(TableList::TYPE.keys, v), class: 'nine wide field ui dropdown selection' %>
+          <%= select_tag :"data_list[parameters][#{k}]", options_for_select(TableList::TYPE.keys, v), class: 'six wide field ui dropdown selection' %>
         </div>
       <% end %>
       <%= f.submit %>

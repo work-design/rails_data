@@ -1,10 +1,6 @@
-<div class="three wide column">
-  <%= render 'the_data/base/nav' %>
-</div>
+<div>
 
-<div class="thirteen wide column">
-
-  <ul class="ui breadcrumb">
+  <ul class="ui segment breadcrumb">
     <li class="section"><%= link_to 'back', data_lists_path %></li>
     <li class="divider">/</li>
     <li class="section">Table lists</li>
@@ -55,3 +51,5 @@
   </table>
 
 </div>
+
+<%= js_load(root: TheData::Engine.root) %>

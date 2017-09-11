@@ -4,7 +4,7 @@ module ReportXlsx
   extend self
 
   def write_csv(csv_array)
-    sheet.write_col('A1', csv_array)
+    sheet.write_row(1, csv_array)
     @workbook.close
     @io
   end

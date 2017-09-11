@@ -1,4 +1,4 @@
-class TableList < ActiveRecord::Base
+class TableList < ApplicationRecord
   TYPE = {
     date: { input: 'date', output: 'to_date' },
     integer: { input: 'number', output: 'to_i' },
@@ -6,11 +6,11 @@ class TableList < ActiveRecord::Base
   }
   include TheDataExport
   serialize :parameters, Hash
+  serialize :headers, Array
+  serialize :footers, Array
 
   belongs_to :data_list, counter_cache: true, optional: true
   has_many :table_items, dependent: :delete_all
-
-  validates :headers, format: { with: /\n\z/, message: "must end with return" }, allow_blank: true
 
   def run
     clear_old
@@ -38,20 +38,12 @@ class TableList < ActiveRecord::Base
 
   def csv_array
     table = []
-    table << csv_headers
-    csv_fields.each do |row|
-      table << row
+    table << headers.to_csv
+    table_items.each do |row|
+      table << row.fields.to_csv
     end
-    table << csv_footers if csv_footers.present?
+    table << footers.to_csv if csv_footers.present?
     table
-  end
-
-  def csv_headers
-    begin
-      CSV.parse_line(headers || ',')
-    rescue
-      CSV.parse_line(headers, quote_char: '\'')
-    end
   end
 
   def csv_fields
@@ -74,11 +66,11 @@ class TableList < ActiveRecord::Base
     csv_fields.group_by { |i| i[0] }
   end
 
-  def csv_string
+  def to_csv
     csv = ''
-    csv << headers
+    csv << headers.to_csv
     self.table_items.each do |table_item|
-      csv << table_item.fields
+      csv << table_item.fields.to_csv
     end
     csv
   end

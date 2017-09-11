@@ -1,16 +1,10 @@
-require 'csv'
-require 'the_data/config'
-class TheData::Table
+class TheData::Export
   # collect -> { User.limit(10) }
   # column :name, header: 'My name', field: -> {}
   # column :email, header: 'Email', field: -> {}
 
   class << self
     attr_reader :collection, :columns
-
-    def inflector
-      @inflector = TheData.config.inflector
-    end
 
     def config
       raise 'should call in subclass'
@@ -28,7 +22,7 @@ class TheData::Table
       @columns ||= {}
       name = name.to_sym
 
-      #raise 'The column is repeated' if @columns.keys.include?(name)
+      raise 'The column is repeated' if @columns.keys.include?(name)
 
       @columns[name] = {}
 

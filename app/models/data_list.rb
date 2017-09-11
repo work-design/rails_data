@@ -1,4 +1,4 @@
-class DataList < ActiveRecord::Base
+class DataList < ApplicationRecord
   serialize :parameters, Hash
   has_many :table_lists, dependent: :destroy
   has_many :table_items, through: :table_lists
@@ -27,7 +27,6 @@ class DataList < ActiveRecord::Base
   def importer(file)
     @importer ||= TheDataImport.new(config_table.config, file)
   end
-
 
 
 end

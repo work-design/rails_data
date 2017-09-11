@@ -3,10 +3,9 @@ module TheDataExport
   def to_table
     initialize_table
 
-    self.headers = header_result.to_csv
-    to_table_items
-
-    self.footers = footer_result.to_csv
+    self.headers = header_result
+    self.to_table_items
+    self.footers = footer_result
     self.done = true
     self.save
   end
@@ -32,7 +31,7 @@ module TheDataExport
   def to_table_items
     @config_table.collection.call.each_with_index do |object, index|
       row = field_result(object, index)
-      table_items.create(fields: row.to_csv)
+      table_items.create(fields: row)
     end
   end
 
@@ -43,10 +42,12 @@ module TheDataExport
         results << column[:field].call(object, index)
       elsif column[:field].arity == 1
         results << column[:field].call(object)
+      else
+        results << nil
       end
     end
 
-    CSV::Row.new(header_result, results)
+    results
   end
 
   def footer_result

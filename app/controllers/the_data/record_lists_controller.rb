@@ -21,22 +21,6 @@ class TheData::RecordListsController < TheData::BaseController
     redirect_to data_list_record_lists_url(@data_list)
   end
 
-  def new_import
-    @record_list = @data_list.record_lists.build
-  end
-
-  def create_import
-    @record_list = @data_list.record_lists.build
-    @record_list.import_to_record_list(file_params.tempfile)
-
-    @table_items = @record_list.table_items.page(params[:page]).per(100)
-  end
-
-  def migrate
-    @record_list.migrate
-    redirect_back fallback_location: data_list_record_lists_url(@data_list)
-  end
-
   def show
     @table_items = @record_list.table_items.page(params[:page]).per(100)
 
@@ -94,7 +78,7 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def record_list_params
-    params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys, columns: @record_list.columns.keys)
+    params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys, columns: @data_list.columns.keys)
   end
 
   def file_params

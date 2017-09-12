@@ -5,10 +5,9 @@ class CreateReportLists < ActiveRecord::Migration
     create_table :data_lists do |t|
       t.string :title
       t.string :comment, limit: 4096
-      t.boolean :done
-      t.boolean :published
-      t.integer :table_lists_count, default: 0
       t.string :type
+      t.string :parameters, limit: 1024
+      t.string :columns, limit: 1024
       t.timestamps
     end
 
@@ -16,10 +15,10 @@ class CreateReportLists < ActiveRecord::Migration
       t.references :data_list
       t.string :headers, limit: 4096
       t.string :footers, limit: 4096
-      t.string :note_header, limit: 4096
-      t.string :note_footer, limit: 4096
       t.integer :table_items_count, default: 0
       t.string :parameters, limit: 1024
+      t.boolean :done
+      t.boolean :published
       t.timestamps
     end
 

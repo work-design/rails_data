@@ -9,7 +9,7 @@ class TableList < ApplicationRecord
   serialize :headers, Array
   serialize :footers, Array
 
-  belongs_to :data_list, counter_cache: true, optional: true
+  belongs_to :data_list, optional: true
   has_many :table_items, dependent: :delete_all
 
   def run

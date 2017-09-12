@@ -1,0 +1,54 @@
+<div>
+
+  <ul class="ui segment breadcrumb">
+    <li class="section"><%= link_to 'back', data_lists_path %></li>
+    <li class="divider">/</li>
+    <li class="section">Table lists</li>
+  </ul>
+
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>Table List</strong></div>
+  </div>
+
+  <div class="ui segment top attached">
+    <%= link_to '新建', new_data_list_record_list_path(@data_list), class: 'ui teal button' %>
+  </div>
+
+  <table class="ui bottom attached table">
+    <thead>
+    <tr>
+      <th class="one wide">ID</th>
+      <th class="two wide">Parameters</th>
+      <th class="nine wide">Headers</th>
+      <th class="one wide">Done</th>
+      <th class="three wide"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @record_lists.each do |record_list| %>
+      <tr>
+        <td><%= record_list.id %></td>
+        <td><%= simple_format_hash(record_list.parameters) %></td>
+        <td><%= record_list.headers.to_csv %></td>
+        <td id="done_<%= record_list.id %>">
+          <% if record_list.done %>
+            <i class="green checkmark icon"></i>
+          <% else %>
+            <i class="grey remove icon"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '运行', run_data_list_record_list_path(@data_list, record_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+          <%= link_to '预览', data_list_record_list_path(@data_list, record_list), class: 'ui blue label' %>
+          <%= link_to 'edit', edit_data_list_record_list_path(@data_list, record_list), class: 'ui yellow label' %>
+          <%= link_to 'destroy', data_list_record_list_path(@data_list, record_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+<%= js_load(root: TheData::Engine.root) %>

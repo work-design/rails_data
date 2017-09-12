@@ -5,10 +5,10 @@ class RecordList < ApplicationRecord
     string: { input: 'text', output: 'to_s' }
   }
 
-  serialize :attrs, Hash
+  serialize :columns, Hash
 
-  belongs_to :data_list, counter_cache: true, optional: true
-  has_many :table_items, dependent: :delete_all
+  belongs_to :data_list
+  has_many :record_items, dependent: :delete_all
 
 
 

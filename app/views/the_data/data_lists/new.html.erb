@@ -7,7 +7,13 @@
   </div>
 
   <div class="ui segment">
-    <%= render 'form' %>
+    <%= default_form_for @data_list do |f| %>
+      <%= f.select :type, options_for_select(DataList.options_i18n(:type)) %>
+      <%= f.text_field :title, label: 'Title' %>
+      <%= f.text_area :comment, label: 'Comment' %>
+      <%= f.text_field :data_table, label: 'DataTable' %>
+      <%= f.submit %>
+    <% end %>
   </div>
 
 </div>

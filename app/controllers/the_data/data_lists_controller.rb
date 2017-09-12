@@ -2,7 +2,12 @@ class TheData::DataListsController < TheData::BaseController
   before_action :set_data_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @data_lists = DataList.all
+    query = params.permit(:type).reverse_merge type: 'DataExport'
+    @data_lists = DataList.default_where(query)
+  end
+
+  def records
+    @data_lists = DataRecord.all
   end
 
   def new
@@ -13,7 +18,7 @@ class TheData::DataListsController < TheData::BaseController
     @data_list = DataList.new(data_list_params)
     @data_list.save
 
-    redirect_to data_lists_url
+    redirect_back fallback_location: data_lists_url
   end
 
   def show
@@ -24,7 +29,7 @@ class TheData::DataListsController < TheData::BaseController
 
   def update
     @data_list.update(data_list_params)
-    redirect_to data_lists_url
+    redirect_back fallback_location: data_lists_url
   end
 
   def destroy
@@ -38,7 +43,7 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def data_list_params
-    params[:data_list].permit(:title, :comment, :data_table, parameters: params[:data_list][:parameters].try(:keys))
+    params[:data_list].permit(:type, :title, :comment, :data_table, parameters: params[:data_list][:parameters].try(:keys))
   end
 
 end

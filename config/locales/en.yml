@@ -1,0 +1,11 @@
+en:
+  admin:
+    data_lists:
+      index:
+        new: 新增
+  activerecord:
+    attributes:
+      data_list/type:
+        DataImport: Import
+        DataExport: Export
+        DataRecord: Recod

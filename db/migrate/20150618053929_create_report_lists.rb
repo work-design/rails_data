@@ -8,6 +8,7 @@ class CreateReportLists < ActiveRecord::Migration
       t.boolean :done
       t.boolean :published
       t.integer :table_lists_count, default: 0
+      t.string :type
       t.timestamps
     end
 
@@ -24,6 +25,18 @@ class CreateReportLists < ActiveRecord::Migration
     create_table :table_items do |t|
       t.references :table_list
       t.string :fields, limit: 4096
+      t.timestamps
+    end
+
+    create_table :record_lists do |t|
+      t.references :data_list
+      t.string :columns, limit: 4096
+      t.timestamps
+    end
+
+    create_table :record_items do |t|
+      t.references :record_list
+      t.string :fields, limit: 10240
       t.timestamps
     end
 

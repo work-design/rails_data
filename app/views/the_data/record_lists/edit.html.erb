@@ -3,16 +3,16 @@
   <div class="ui segment breadcrumb">
     <%= link_to 'Back', data_list_table_lists_path(@data_list), class: 'section' %>
     <div class="divider"> / </div>
-    <div class="active section">New</div>
+    <div class="active section">Edit</div>
   </div>
 
   <div class="ui segment">
-    <%= default_form_with url: data_list_table_lists_path do |f| %>
-      <% @data_list.parameters.each do |k, v| %>
+    <%= default_form_for [@data_list, @table_list] do |f| %>
+      <% @table_list.parameters.each do |k, v| %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <div class="six wide field">
-            <%= text_field_tag :"table_list[parameters][#{k}]", nil, type: TableList::TYPE[v.to_sym][:input] %>
+            <%= text_field_tag :"table_list[parameters][#{k}]", v, type: TableList::TYPE[@data_list.parameters[k].to_sym][:input] %>
           </div>
         </div>
       <% end %>

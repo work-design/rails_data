@@ -2,8 +2,8 @@
 
   <div class="ui top attached menu borderless">
     <div class="item header">Data List</div>
-    <%= link_to 'Export', filter_params(type: 'DataExport'), class: active_params(type: 'DataExport', active_class: 'item active', item_class: 'item') %>
-    <%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
+    <%= link_to 'Export', data_lists_path(type: 'DataExport'), class: active_params(type: 'DataExport', active_class: 'item active', item_class: 'item') %>
+    <%= link_to 'Import', data_lists_path(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
     <%= link_to 'Record', records_data_lists_path, class: active_helper(paths: records_data_lists_path) %>
   </div>
 
@@ -32,7 +32,7 @@
         <td><%= data_list.comment %></td>
         <td><%= data_list.data_table %></td>
         <td><%= data_list.parameters %></td>
-        <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
+        <td><%= link_to 'record list', data_list_record_lists_path(data_list) %></td>
         <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
         <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

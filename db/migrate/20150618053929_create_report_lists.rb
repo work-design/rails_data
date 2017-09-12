@@ -19,6 +19,7 @@ class CreateReportLists < ActiveRecord::Migration
       t.string :note_header, limit: 4096
       t.string :note_footer, limit: 4096
       t.integer :table_items_count, default: 0
+      t.string :parameters, limit: 1024
       t.timestamps
     end
 
@@ -31,6 +32,7 @@ class CreateReportLists < ActiveRecord::Migration
     create_table :record_lists do |t|
       t.references :data_list
       t.string :columns, limit: 4096
+      t.string :parameters, limit: 1024
       t.timestamps
     end
 

@@ -1,4 +1,6 @@
 class RecordList < ApplicationRecord
+  include TheRecordExport
+
   TYPE = {
     date: { input: 'date', output: 'to_date' },
     integer: { input: 'number', output: 'to_i' },
@@ -6,10 +8,12 @@ class RecordList < ApplicationRecord
   }
 
   serialize :columns, Hash
-
+  serialize :parameters, Hash
   belongs_to :data_list
-  has_many :record_items, dependent: :delete_all
 
+  def run
+
+  end
 
 
 end

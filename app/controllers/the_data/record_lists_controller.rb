@@ -63,7 +63,8 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def run
-    TableJob.perform_later(@record_list.id, current_user&.id)
+    @record_list.run
+    redrect_back fallback_location: data_list_record_lists_url(@data_list)
   end
 
   def destroy

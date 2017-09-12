@@ -1,14 +1,17 @@
 class DataList < ApplicationRecord
   serialize :parameters, Hash
   serialize :columns, Hash
+
   has_many :table_lists, dependent: :destroy
   has_many :table_items, through: :table_lists
+
   scope :published, -> { where(published: true) }
 
   before_create :update_parameters
 
   def update_parameters
     self.parameters = config_params
+    self.columns = config_columns
   end
 
   def config_params
@@ -19,6 +22,10 @@ class DataList < ApplicationRecord
       end
     end
     params
+  end
+
+  def config_columns
+    {}
   end
 
   def config_table

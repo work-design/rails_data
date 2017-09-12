@@ -1,25 +1,29 @@
 require 'write_xlsx'
-
 module ReportXlsx
-  extend self
 
-  def write_csv(csv_array)
-    sheet.write_row(1, csv_array)
+  def xlsx_file_name
+    "#{self.id}.xlsx"
+  end
+
+  def to_xlsx
+    sheet.write_row(0, 0, headers)
+
+    self.table_items.each_with_index do |table_item, index|
+      sheet.write_row(index + 1, 0, table_item.fields)
+    end
+
+    sheet.write_row self.table_items_count + 1, 0, self.footers
+
     @workbook.close
-    @io
+    @io.string
   end
 
   def sheet
+    return @worksheet if @worksheet
+
     @io = StringIO.new
     @workbook = WriteXLSX.new(@io)
     @worksheet = @workbook.add_worksheet
-
-    @format = @workbook.add_format
-    @format.set_bold
-    @format.set_color('red')
-    @format.set_align('center')
-
-    @worksheet
   end
 
 

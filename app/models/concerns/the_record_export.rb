@@ -1,9 +1,4 @@
 module TheRecordExport
-  TYPE = {
-    date: { input: 'date', output: 'to_date' },
-    integer: { input: 'number', output: 'to_i' },
-    string: { input: 'text', output: 'to_s' }
-  }
 
   def to_table
     initialize_table
@@ -21,7 +16,7 @@ module TheRecordExport
   def converted_parameters
     param = {}
     parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(TYPE[data_list.parameters[k].to_sym][:output])
+      param.merge! k.to_sym => v.send(DynamicForm::TYPE[data_list.parameters[k].to_sym][:output])
     end
     param
   end

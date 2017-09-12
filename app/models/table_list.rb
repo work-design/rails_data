@@ -1,10 +1,7 @@
 class TableList < ApplicationRecord
-  TYPE = {
-    date: { input: 'date', output: 'to_date' },
-    integer: { input: 'number', output: 'to_i' },
-    string: { input: 'text', output: 'to_s' }
-  }
   include TheDataExport
+  include ReportXlsx
+
   serialize :parameters, Hash
   serialize :headers, Array
   serialize :footers, Array
@@ -20,7 +17,7 @@ class TableList < ApplicationRecord
   def converted_parameters
     param = {}
     parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(TYPE[data_list.parameters[k].to_sym][:output])
+      param.merge! k.to_sym => v.send(DynamicForm::TYPE[data_list.parameters[k].to_sym][:output])
     end
     param
   end
@@ -32,40 +29,6 @@ class TableList < ApplicationRecord
     end
   end
 
-  def brothers
-    self.class.where(data_list_id: self.data_list_id)
-  end
-
-  def csv_array
-    table = []
-    table << headers.to_csv
-    table_items.each do |row|
-      table << row.fields.to_csv
-    end
-    table << footers.to_csv if csv_footers.present?
-    table
-  end
-
-  def csv_fields
-    csv = []
-    self.table_items.each do |item|
-      csv << item.csv_fields
-    end
-    csv
-  end
-
-  def csv_footers
-    if self.footers.present?
-      CSV.parse_line(self.footers)
-    else
-      []
-    end
-  end
-
-  def group_by_first_column
-    csv_fields.group_by { |i| i[0] }
-  end
-
   def to_csv
     csv = ''
     csv << headers.to_csv
@@ -75,10 +38,6 @@ class TableList < ApplicationRecord
     csv
   end
 
-  def to_xlsx
-    io = ReportXlsx.write_csv csv_array
-    io.string
-  end
 
   # for import
   def import_to_table_list(file)
@@ -104,7 +63,7 @@ class TableList < ApplicationRecord
   def migrate
     config = data_list.config_table.config
     columns = import_columns
-    self.csv_fields.each do |row|
+    self.fields.each do |row|
       attr = {}
       columns.map do |key, value|
         attr[key] = row[value[:index]]
@@ -122,8 +81,5 @@ class TableList < ApplicationRecord
     "#{self.id}.pdf"
   end
 
-  def xlsx_file_name
-    "#{self.id}.xlsx"
-  end
 
 end

@@ -1,5 +1,4 @@
 require 'roo'
-
 class TheDataImport
   attr_reader :sheet, :column_index
 

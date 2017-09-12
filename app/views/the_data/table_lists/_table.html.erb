@@ -8,7 +8,7 @@
 <table class="ui celled red bottom attached fixed table">
   <thead>
   <tr>
-    <% @table_list.csv_headers.each do |header| %>
+    <% @table_list.headers.each do |header| %>
       <th><%= header %></th>
     <% end %>
   </tr>
@@ -17,7 +17,7 @@
   <tbody>
   <% @table_items.limit(100).each do |item| %>
     <tr>
-      <% item.csv_fields.each do |field| %>
+      <% item.fields.each do |field| %>
         <td><%= field %></td>
       <% end %>
     </tr>
@@ -26,7 +26,7 @@
 
   <tfoot>
   <tr>
-    <% @table_list.csv_footers.each do |footer| %>
+    <% @table_list.footers.each do |footer| %>
       <th><%= footer %></th>
     <% end %>
   </tr>

@@ -4,5 +4,4 @@ class DataImport < DataList
     @importer ||= TheDataImport.new(config_table.config, file)
   end
 
-
 end

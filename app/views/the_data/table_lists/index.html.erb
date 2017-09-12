@@ -11,8 +11,11 @@
   </div>
 
   <div class="ui segment top attached">
-    <%= link_to '新建', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
-    <%= link_to '导入', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
+    <% if @data_list.type == 'DataImport' %>
+      <%= link_to '导入', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
+    <% else %>
+      <%= link_to '新建', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
+    <% end %>
   </div>
 
   <table class="ui bottom attached table">

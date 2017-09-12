@@ -1,5 +1,5 @@
 class TheData::Record
-  # model BankPayment
+  # object -> { Order.find order_id }
   # column :amount, header: 'My name', field: -> {}
   # column :email, header: 'Email', field: -> {}
 
@@ -10,8 +10,20 @@ class TheData::Record
       raise 'should call in subclass'
     end
 
+    def config_column
+      raise 'should call in subclass'
+    end
+
+    def config_object
+      raise 'should call in subclass'
+    end
+
     def object(object)
-      @record = object
+      if object.respond_to?(:call)
+        @record = object
+      else
+        raise 'The Record must be callable'
+      end
     end
 
     def column(name, field: nil)

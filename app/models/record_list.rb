@@ -12,7 +12,7 @@ class RecordList < ApplicationRecord
   belongs_to :data_list
 
   def run
-
+    to_table
   end
 
 

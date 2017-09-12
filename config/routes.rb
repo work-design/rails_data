@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       resources :record_lists do
         get :row, on: :member
         patch :run, on: :member
-        patch :migrate, on: :member
+        get 'columns' => :edit_columns, on: :member
+        patch 'columns' => :update_columns, on: :member
       end
     end
   end

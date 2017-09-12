@@ -7,12 +7,12 @@
   </div>
 
   <div class="ui segment">
-    <%= default_form_with model: @record_list, url: data_list_record_list_path(@data_list) do |f| %>
-      <% @record_list.parameters.each do |k, v| %>
+    <%= default_form_with model: @record_list, url: columns_data_list_record_list_path(@data_list) do |f| %>
+      <% @record_list.columns.each do |k, v| %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <div class="six wide field">
-            <%= text_field_tag :"record_list[parameters][#{k}]", v, type: RecordList::TYPE[@data_list.parameters[k].to_sym][:input] %>
+            <%= text_field_tag :"record_list[columns][#{k}]", v %>
           </div>
         </div>
       <% end %>

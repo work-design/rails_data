@@ -1,6 +1,6 @@
 class TheData::RecordListsController < TheData::BaseController
   before_action :set_data_list
-  before_action :set_record_list, only: [:show, :edit, :row, :run, :migrate, :update, :destroy]
+  before_action :set_record_list, only: [:show, :edit, :row, :run, :migrate, :update, :edit_columns, :update_columns, :destroy]
   skip_before_action :require_role
   before_action do |controller|
     controller.require_role(params[:data_list_id])
@@ -56,6 +56,14 @@ class TheData::RecordListsController < TheData::BaseController
     redirect_to data_list_record_lists_url(@data_list)
   end
 
+  def edit_columns
+  end
+
+  def update_columns
+    @record_list.update(record_list_params)
+    redirect_to data_list_record_lists_url(@data_list)
+  end
+
   def row
     send_data @record_list.to_row_pdf.render,
               filename: @record_list.pdf_file_name,
@@ -64,7 +72,7 @@ class TheData::RecordListsController < TheData::BaseController
 
   def run
     @record_list.run
-    redrect_back fallback_location: data_list_record_lists_url(@data_list)
+    redirect_back fallback_location: data_list_record_lists_url(@data_list)
   end
 
   def destroy
@@ -86,7 +94,7 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def record_list_params
-    params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys)
+    params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys, columns: @record_list.columns.keys)
   end
 
   def file_params

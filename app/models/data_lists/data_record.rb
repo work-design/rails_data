@@ -3,11 +3,8 @@ class DataRecord < DataList
   has_many :record_items, through: :record_lists
 
 
-  before_create :set_columns
-
-
-  def set_columns
-    config_table.config_column
+  def config_columns
+    config_table.config_column.transform_values { |x| x[:type] }
   end
-  
+
 end

@@ -17,7 +17,7 @@ class TableList < ApplicationRecord
   def converted_parameters
     param = {}
     parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(DynamicForm::TYPE[data_list.parameters[k].to_sym][:output])
+      param.merge! k.to_sym => v.send(TheData.config.mappings[data_list.parameters[k].to_sym][:output])
     end
     param
   end

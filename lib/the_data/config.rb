@@ -11,6 +11,12 @@ module TheData
     config.inflector = :titleize
     config.method_name = :report
     config.admin_class = 'Admin::BaseController'
+    config.mapping = {
+      date: { input: 'date', output: 'to_date' },
+      integer: { input: 'number', output: 'to_i' },
+      string: { input: 'text', output: 'to_s' },
+      text: { input: 'textarea', output: 'to_s' }
+    }
   end
 
 end

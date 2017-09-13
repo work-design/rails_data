@@ -26,7 +26,7 @@ class TheData::Record
       end
     end
 
-    def column(name, field: nil)
+    def column(name, field: nil, type: nil)
       @columns ||= {}
       name = name.to_sym
 
@@ -36,7 +36,13 @@ class TheData::Record
         @columns[name][:field] = field
       end
 
-      self
+      if type
+        @columns[name][:type] = type
+      else
+        @columns[name][:type] = 'string'
+      end
+
+      @columns
     end
 
   end

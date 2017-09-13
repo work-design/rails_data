@@ -14,7 +14,7 @@
       <% @data_list.parameters.each do |k, v| %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
-          <%= select_tag :"data_list[parameters][#{k}]", options_for_select(TableList::TYPE.keys, v), class: 'six wide field ui dropdown selection' %>
+          <%= select_tag :"data_list[parameters][#{k}]", options_for_select(TheData.config.mapping.keys, v), class: 'six wide field ui dropdown selection' %>
         </div>
       <% end %>
       <%= f.submit %>

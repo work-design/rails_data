@@ -12,7 +12,7 @@
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <div class="six wide field">
-            <%= text_field_tag :"record_list[columns][#{k}]", v %>
+            <%= text_field_tag :"record_list[columns][#{k}]", v, type: TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] %>
           </div>
         </div>
       <% end %>

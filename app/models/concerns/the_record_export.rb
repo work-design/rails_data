@@ -9,14 +9,14 @@ module TheRecordExport
   def initialize_table
     @config_table = data_list.config_table
     @config_table.config(converted_parameters)
-    @record = @config_table.record
+    @record = @config_table.record.call
     @config_table
   end
 
   def converted_parameters
     param = {}
     parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(TheData.config.mappings[data_list.parameters[k].to_sym][:output])
+      param.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
     end
     param
   end

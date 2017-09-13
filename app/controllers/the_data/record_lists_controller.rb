@@ -22,8 +22,6 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def show
-    @table_items = @record_list.table_items.page(params[:page]).per(100)
-
     respond_to do |format|
       format.html
       format.csv { send_data @record_list.to_csv, filename: @record_list.csv_file_name, type: 'application/csv' }

@@ -21,6 +21,11 @@ class TheData::RecordListsController < TheData::BaseController
     redirect_to data_list_record_lists_url(@data_list)
   end
 
+  def find
+    @record_list = @data_list.record_lists.find_or_create_by(parameters: params.permit(*@data_list.parameters.keys).to_h)
+    @record_list.run unless @record_list.done
+  end
+
   def show
     respond_to do |format|
       format.html

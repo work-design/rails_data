@@ -18,19 +18,6 @@
     </div>
   </div>
 
-  <table class="ui celled red bottom attached fixed table">
-
-    <tbody>
-    <% @record_list.columns.each do |key, value| %>
-      <tr>
-        <th><%= key %></th>
-        <td><%= value %></td>
-      </tr>
-    <% end %>
-    </tbody>
-
-    <tfoot>
-    </tfoot>
-  </table>
+  <%= render 'table' %>
 
 </div>

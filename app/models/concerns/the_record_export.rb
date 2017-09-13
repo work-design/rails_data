@@ -3,6 +3,7 @@ module TheRecordExport
   def to_table
     initialize_table
     self.to_table_items
+    self.done = true
     self.save
   end
 

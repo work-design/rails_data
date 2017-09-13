@@ -8,6 +8,9 @@ class CreateReportLists < ActiveRecord::Migration
       t.string :type
       t.string :parameters, limit: 1024
       t.string :columns, limit: 1024
+      t.string :data_table
+      t.string :export_excel
+      t.string :export_pdf
       t.timestamps
     end
 

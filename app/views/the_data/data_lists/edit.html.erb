@@ -7,10 +7,12 @@
   </div>
 
   <div class="ui segment">
-    <%= default_form_with model: @data_list, url: data_list_path(@data_list), locale: true do |f| %>
+    <%= default_form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>
       <%= f.text_field :title, label: 'Title' %>
       <%= f.text_area :comment, label: 'Comment' %>
       <%= f.text_field :data_table, label: 'DataTable' %>
+      <%= f.text_field :export_excel %>
+      <%= f.text_field :export_pdf %>
       <% @data_list.parameters.each do |k, v| %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>

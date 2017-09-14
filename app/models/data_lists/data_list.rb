@@ -32,4 +32,8 @@ class DataList < ApplicationRecord
     @config_table ||= data_table.to_s.safe_constantize
   end
 
+  def config_excel
+    @config_excel ||= export_excel.to_s.safe_constantize
+  end
+
 end

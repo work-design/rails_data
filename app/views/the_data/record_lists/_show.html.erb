@@ -4,6 +4,9 @@
     预览
   </div>
 
+  <%= link_to 'download Xlsx', data_list_record_list_path(@data_list, @record_list, format: 'xlsx'), class: 'item ui blue button' %>
+
+
   <div class="content">
     <%= render 'table' %>
   </div>

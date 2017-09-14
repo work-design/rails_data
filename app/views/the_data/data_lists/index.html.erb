@@ -18,6 +18,7 @@
       <th>Title</th>
       <th>备注</th>
       <th>Job Name</th>
+      <th colspan="2">Export</th>
       <th>Parameters</th>
       <th colspan="3"></th>
     </tr>
@@ -31,6 +32,8 @@
         <td><%= data_list.title %></td>
         <td><%= data_list.comment %></td>
         <td><%= data_list.data_table %></td>
+        <td><%= data_list.export_excel %></td>
+        <td><%= data_list.export_pdf %></td>
         <td><%= simple_format_hash(data_list.parameters) %></td>
         <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
         <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>

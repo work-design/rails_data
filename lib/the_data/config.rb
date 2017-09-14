@@ -15,7 +15,8 @@ module TheData
       date: { input: 'date', output: 'to_date' },
       integer: { input: 'number', output: 'to_i' },
       string: { input: 'text', output: 'to_s' },
-      text: { input: 'textarea', output: 'to_s' }
+      text: { input: 'textarea', output: 'to_s' },
+      array: { input: 'array', output: 'to_s' }
     }
   end
 

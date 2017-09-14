@@ -7,14 +7,25 @@
   </div>
 
   <div class="ui segment">
-    <%= default_form_with model: @record_list, url: columns_data_list_record_list_path(@data_list) do |f| %>
+    <%= default_form_with url: columns_data_list_record_list_path(@data_list), method: :patch do |f| %>
       <% @record_list.columns.each do |k, v| %>
-        <div class="inline fields">
-          <label class="six wide field"><%= k.to_s.titleize %>:</label>
-          <div class="six wide field">
-            <%= text_field_tag :"record_list[columns][#{k}]", v, type: TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] %>
+        <% if TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] == 'array' %>
+          <div class="inline fields">
+            <label class="six wide field"><%= k.to_s.titleize %>:</label>
+            <% v.each_with_index do |_value, _index| %>
+              <% _value.each do |_k, _v| %>
+                <%= text_field_tag "columns[#{k}][][#{_k}]", _v %>
+              <% end %>
+            <% end %>
           </div>
-        </div>
+        <% else %>
+          <div class="inline fields">
+            <label class="six wide field"><%= k.to_s.titleize %>:</label>
+            <div class="six wide field">
+              <%= text_field_tag :"columns[#{k}]", v, type: TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
       <%= f.submit %>
     <% end %>

@@ -47,7 +47,7 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def update_columns
-    @record_list.update(record_list_params)
+    @record_list.update(columns: columns_params)
     redirect_to data_list_record_lists_url(@data_list)
   end
 
@@ -82,6 +82,10 @@ class TheData::RecordListsController < TheData::BaseController
 
   def record_list_params
     params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys, columns: @data_list.columns.keys)
+  end
+
+  def columns_params
+    params.fetch(:columns, {}).permit!.to_h
   end
 
   def file_params

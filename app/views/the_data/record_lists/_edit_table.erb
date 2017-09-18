@@ -1,0 +1,39 @@
+<table class="ui very basic striped table">
+  <thead>
+    <tr>
+      <th><%= form_with url: columns_data_list_record_list_path(@data_list), method: :patch, id: 'edit_record_list' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @record_list.columns.each do |k, v| %>
+
+    <% if TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] == 'array' %>
+      <tr>
+        <td class="right aligned"><%= k.to_s.titleize %></td>
+        <td>
+          <% v.each_with_index do |_value, _index| %>
+            <% _value.each do |_k, _v| %>
+              <%= text_field_tag "columns[#{k}][][#{_k}]", _v, id: 'edit_record_list' %>
+            <% end %>
+            <% end %>
+        </td>
+      </tr>
+    <% else %>
+      <tr>
+        <td class="right aligned"><%= k.to_s.titleize %>:</td>
+        <td>
+          <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym], form_id: 'edit_record_list' %>
+        </td>
+      </tr>
+    <% end %>
+
+  <% end %>
+  <tr>
+    <td></td>
+    <td><%= submit_tag 'Save', form_id: 'edit_record_list', class: 'ui mina blue button' %></td>
+  </tr>
+  </tbody>
+
+</table>

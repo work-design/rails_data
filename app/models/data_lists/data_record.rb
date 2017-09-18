@@ -4,7 +4,7 @@ class DataRecord < DataList
 
 
   def config_columns
-    config_table.config_column.transform_values { |x| x[:type] }
+    config_table.config_column.transform_values { |x| x[:as] }
   end
 
 end

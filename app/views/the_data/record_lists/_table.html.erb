@@ -1,9 +1,9 @@
-<table class="ui celled red bottom attached fixed table">
+<table class="ui very basic striped table">
 
   <tbody>
   <% @record_list.columns.each do |key, value| %>
     <tr>
-      <td><%= key %></td>
+      <td class="right aligned"><%= key %></td>
       <td><%= value %></td>
     </tr>
   <% end %>

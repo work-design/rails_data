@@ -40,12 +40,12 @@ module TheRecordExport
   end
 
   def to_xlsx
-    @config_excel = data_list.config_excel
-    @config_excel.new(self.columns).render
+    @config_excel = data_list.config_excel.new(self.columns)
+    @config_excel.render
   end
 
   def xlsx_file_name
-    "#{self.id}.xlsx"
+    @config_excel.file_name || "#{self.id}.xlsx"
   end
 
 end

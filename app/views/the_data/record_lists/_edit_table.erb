@@ -12,10 +12,10 @@
     <% if TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] == 'array' %>
       <tr>
         <td class="right aligned"><%= k.to_s.titleize %></td>
-        <td>
+        <td class="ui small input">
           <% v.each_with_index do |_value, _index| %>
             <% _value.each do |_k, _v| %>
-              <%= text_field_tag "columns[#{k}][][#{_k}]", _v, form: 'edit_record_list' %>
+              <p><%= text_field_tag "columns[#{k}][][#{_k}]", _v, form: 'edit_record_list' %></p>
             <% end %>
             <% end %>
         </td>
@@ -23,7 +23,7 @@
     <% else %>
       <tr>
         <td class="right aligned"><%= k.to_s.titleize %>:</td>
-        <td>
+        <td class="ui small input">
           <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym], form: 'edit_record_list' %>
         </td>
       </tr>

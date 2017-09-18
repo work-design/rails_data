@@ -15,7 +15,7 @@
         <td>
           <% v.each_with_index do |_value, _index| %>
             <% _value.each do |_k, _v| %>
-              <%= text_field_tag "columns[#{k}][][#{_k}]", _v, id: 'edit_record_list' %>
+              <%= text_field_tag "columns[#{k}][][#{_k}]", _v, form: 'edit_record_list' %>
             <% end %>
             <% end %>
         </td>
@@ -24,7 +24,7 @@
       <tr>
         <td class="right aligned"><%= k.to_s.titleize %>:</td>
         <td>
-          <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym], form_id: 'edit_record_list' %>
+          <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym], form: 'edit_record_list' %>
         </td>
       </tr>
     <% end %>
@@ -32,7 +32,10 @@
   <% end %>
   <tr>
     <td></td>
-    <td><%= submit_tag 'Save', form_id: 'edit_record_list', class: 'ui mina blue button' %></td>
+    <td>
+      <%= submit_tag 'Save', form: 'edit_record_list', class: 'ui mina blue button' %>
+      <%= link_to 'Cancel', data_list_record_list_path(@record_list.data_list_id, @record_list.id), remote: true, class: 'ui mina grey button' %>
+    </td>
   </tr>
   </tbody>
 

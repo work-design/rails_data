@@ -29,6 +29,7 @@ class TheData::RecordListsController < TheData::BaseController
   def show
     respond_to do |format|
       format.html
+      format.js
       format.csv { send_data @record_list.to_csv, filename: @record_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @record_list.to_pdf.render, filename: @record_list.pdf_file_name, type: 'application/pdf' }
       format.xlsx { send_data @record_list.to_xlsx, filename: @record_list.xlsx_file_name, type: 'application/xlsx' }
@@ -48,7 +49,6 @@ class TheData::RecordListsController < TheData::BaseController
 
   def update_columns
     @record_list.update(columns: columns_params)
-    redirect_to data_list_record_lists_url(@data_list)
   end
 
   def row

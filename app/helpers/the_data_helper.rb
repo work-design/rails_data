@@ -14,7 +14,7 @@ module TheDataHelper
         return select_tag name, options_for_select(opts, selected), options
       end
     end
-    
+
     super
   end
 

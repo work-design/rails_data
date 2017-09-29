@@ -22,7 +22,14 @@ class TheData::Export
       @columns ||= {}
       name = name.to_sym
 
-      raise 'The column is repeated' if @columns.keys.include?(name)
+      # if @columns.keys.include?(name)
+      #
+      #   binding.pry
+      #
+      #   raise 'The column is repeated'
+      # else
+      #   binding.pry
+      # end
 
       @columns[name] = {}
 

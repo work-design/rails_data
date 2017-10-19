@@ -1,6 +1,6 @@
 class TheData::RecordListsController < TheData::BaseController
   before_action :set_data_list
-  before_action :set_record_list, only: [:show, :edit, :row, :run, :migrate, :update, :edit_columns, :update_columns, :destroy]
+  before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
   skip_before_action :require_role
   before_action do |controller|
     controller.require_role(params[:data_list_id])

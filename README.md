@@ -39,3 +39,6 @@ The table defined the report's data format
 
 #### step-3: (optional) Define report pdf's style
 [Define report pdf style](doc/define-pdf-style)
+
+# 依赖
+[the_role](https://github.com/yigexiangfa/the_role)

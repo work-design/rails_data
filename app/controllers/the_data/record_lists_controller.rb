@@ -7,7 +7,15 @@ class TheData::RecordListsController < TheData::BaseController
   end
 
   def index
-    @record_lists = @data_list.record_lists.page(params[:page]).per(50)
+    extra_params = params.fetch(:q, {}).permit(@data_list.parameters.keys)
+    extra_params.reject! { |_, value| value.blank? }
+    if extra_params.present?
+      query = { parameters: extra_params.to_unsafe_hash }
+    else
+      query = {}
+    end
+
+    @record_lists = @data_list.record_lists.where(query).page(params[:page])
   end
 
   def new

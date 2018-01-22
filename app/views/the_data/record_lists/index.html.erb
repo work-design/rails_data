@@ -11,6 +11,7 @@
   </div>
 
   <div class="ui segment top attached">
+    <%= render 'search_form' %>
     <%= link_to '新建', new_data_list_record_list_path(@data_list), class: 'ui teal button' %>
   </div>
 
@@ -41,6 +42,8 @@
     <% end %>
     </tbody>
   </table>
+
+  <%= paginate @record_lists %>
 
 </div>
 

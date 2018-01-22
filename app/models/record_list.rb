@@ -5,6 +5,8 @@ class RecordList < ApplicationRecord
   serialize :parameters, Hash
   belongs_to :data_list
 
+  default_scope -> { order(id: :desc) }
+
   def run
     to_table
   end

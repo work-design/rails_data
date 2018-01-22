@@ -1,5 +1,5 @@
 class TheData::DataListsController < TheData::BaseController
-  before_action :set_data_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index
     query = params.permit(:type).reverse_merge type: 'DataExport'
@@ -29,6 +29,13 @@ class TheData::DataListsController < TheData::BaseController
 
   def update
     @data_list.update(data_list_params)
+    redirect_back fallback_location: data_lists_url
+  end
+
+  def rebuild
+    @data_list.columns = @data_list.config_columns
+    @data_list.save
+
     redirect_back fallback_location: data_lists_url
   end
 

@@ -7,7 +7,7 @@
   </div>
 
   <div class="ui segment">
-    <%= default_form_for @data_list do |f| %>
+    <%= form_with model: @data_list, local: true do |f| %>
       <%= f.select :type, options_for_select(DataList.options_i18n(:type)) %>
       <%= f.text_field :title, label: 'Title' %>
       <%= f.text_area :comment, label: 'Comment' %>

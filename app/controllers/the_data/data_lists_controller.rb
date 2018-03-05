@@ -18,7 +18,7 @@ class TheData::DataListsController < TheData::BaseController
     @data_list = DataList.new(data_list_params)
     @data_list.save
 
-    redirect_back fallback_location: data_lists_url
+    redirect_to data_lists_url(type: @data_list.type)
   end
 
   def show

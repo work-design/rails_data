@@ -7,7 +7,7 @@
   </div>
 
   <div class="ui segment">
-    <%= default_form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>
+    <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>
       <%= f.text_field :title, label: 'Title' %>
       <%= f.text_area :comment, label: 'Comment' %>
       <%= f.text_field :data_table, label: 'DataTable' %>

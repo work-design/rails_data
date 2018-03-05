@@ -32,13 +32,13 @@ rake db:migrate
 #### step-1: Define table
 The table defined the report's data format
 
-[Define Report Table](doc/define-report-table.md)
+[Define Report Table](docs/define-report-table.md)
 
 #### step-2: Define report method
-[Define Report Method](doc/define-report-method.md)
+[Define Report Method](docs/define-report-method.md)
 
 #### step-3: (optional) Define report pdf's style
-[Define report pdf style](doc/define-pdf-style)
+[Define report pdf style](docs/define-pdf-style)
 
 # 依赖
 [the_role](https://github.com/yigexiangfa/the_role)

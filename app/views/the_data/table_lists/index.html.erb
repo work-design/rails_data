@@ -42,7 +42,7 @@
             <i class="grey remove icon"></i>
           <% end %>
         </td>
-        <td>
+        <td class="ui labels">
           <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
           <%= link_to '预览', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
           <%= link_to 'edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>

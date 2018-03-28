@@ -33,9 +33,12 @@ module TheDataExport
   def field_result(object, index)
     results = []
     @config_table.columns.each do |_, column|
-      if column[:field].arity == 2
+      params = column[:field].parameters.to_combined_h
+      if params[:key].include? :index
         results << column[:field].call(object, index)
-      elsif column[:field].arity == 1
+      elsif params[:key]
+        results << column[:field].call(object, converted_parameters)
+      elsif params[:key].blank? && params[:req]
         results << column[:field].call(object)
       else
         results << nil

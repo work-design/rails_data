@@ -59,7 +59,13 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def data_list_params
-    params[:data_list].permit(:type, :title, :comment, :data_table, :export_excel, :export_pdf, parameters: params[:data_list][:parameters].try(:keys))
+    params[:data_list].permit(:type,
+                              :title,
+                              :comment,
+                              :data_table,
+                              :export_excel,
+                              :export_pdf,
+                              parameters: params[:data_list][:parameters].try(:keys))
   end
 
 end

@@ -2,7 +2,9 @@ module TheData::Export
   # collect -> (params) { User.default_where(params) }
   # column :name, header: 'My name', field: -> {}
   # column :email, header: 'Email', field: -> {}
-  attr_reader :collection, :columns
+  attr_reader :collection,
+              :columns,
+              :parameters
 
   def config(*args, &block)
     block.call(*args) if block_given?
@@ -11,6 +13,8 @@ module TheData::Export
   def collect(collection)
     if collection.respond_to?(:call)
       @collection = collection
+      @parameters ||= {}
+      @parameters << collection.parameters.to_combined_h[:key].values
     else
       raise 'The collection must be callable'
     end
@@ -29,20 +33,14 @@ module TheData::Export
 
     if header.nil?
       @columns[name][:header] = name.titleize
-    elsif header.is_a?(String)
-      @columns[name][:header] = header
     else
-      raise 'wrong header type'
+      @columns[name][:header] = header
     end
+    @columns[name][:field] = field
+    @columns[name][:footer] = footer
 
     if field.respond_to?(:call)
-      @columns[name][:field] = field
-    else
-      raise 'wrong field type'
-    end
-
-    if footer.present?
-      @columns[name][:footer] = footer
+      @parameters << field.parameters.to_combined_h[:key].values
     end
 
     self

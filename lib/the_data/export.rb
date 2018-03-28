@@ -11,12 +11,10 @@ module TheData::Export
   end
 
   def collect(collection)
+    @collection = collection
+    @parameters ||= {}
     if collection.respond_to?(:call)
-      @collection = collection
-      @parameters ||= {}
       @parameters << collection.parameters.to_combined_h[:key].values
-    else
-      raise 'The collection must be callable'
     end
   end
 
@@ -25,8 +23,7 @@ module TheData::Export
     name = name.to_sym
 
     if @columns.keys.include?(name)
-      raise 'The column is repeated'
-    else
+      warn 'The column is repeated'
     end
 
     @columns[name] = {}

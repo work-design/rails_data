@@ -26,7 +26,7 @@ module TheData::Import
     if header.is_a?(String) && header.size > 0
       @columns[name][:header] = header
     else
-      raise 'wrong header type'
+      warn 'wrong header type'
     end
 
     if field.respond_to?(:call)

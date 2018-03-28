@@ -32,6 +32,15 @@ class TheData::DataListsController < TheData::BaseController
     redirect_back fallback_location: data_lists_url
   end
 
+  def add_item
+    @purchase = Purchase.new
+    @purchase.purchase_items.build
+  end
+
+  def remove_item
+
+  end
+
   def rebuild
     @data_list.columns = @data_list.config_columns
     @data_list.save

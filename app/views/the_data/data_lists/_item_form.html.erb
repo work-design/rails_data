@@ -1,0 +1,16 @@
+<div class="inline fields" id="purchase_purchase_items_<%= params[:index] %>">
+  <label class="six wide field"></label>
+  <%= f.fields_for :purchase_items, child_index: params[:index], on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'two wide field' } do |pf| %>
+    <%= pf.text_field :name %>
+    <%= pf.number_field :quantity %>
+    <%= pf.number_field :price, step: '0.01' %>
+    <div class="field">
+      <%= link_to add_item_my_purchases_path(index: params[:index].to_i + 1), remote: true do %>
+        <i class="plus circle icon"></i>
+      <% end %>
+      <%= link_to remove_item_my_purchases_path(index: params[:index].to_i), remote: true do %>
+        <i class="minus circle icon"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

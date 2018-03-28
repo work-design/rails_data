@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   scope module: 'the_data' do
     resources :data_lists do
       get :records, on: :collection
+      get :add_item, on: :collection
+      get :remove_item, on: :collection
       put :update_publish, on: :member
       patch :rebuild, on: :member
       resources :table_lists do

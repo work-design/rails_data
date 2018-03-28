@@ -14,7 +14,9 @@ class DataList < ApplicationRecord
   end
 
   def config_params
-    config_table.parameters
+    hash = {}
+    config_table.parameters.map { |p| hash[p] = nil }
+    hash
   end
 
   def config_table

@@ -12,9 +12,10 @@ module TheData::Export
 
   def collect(collection)
     @collection = collection
-    @parameters ||= {}
+    @parameters ||= []
     if collection.respond_to?(:call)
-      @parameters << collection.parameters.to_combined_h[:key].values
+      _params = collection.parameters.to_combined_h
+      @parameters << _params[:key] if _params[:key]
     end
   end
 
@@ -34,10 +35,11 @@ module TheData::Export
       @columns[name][:header] = header
     end
     @columns[name][:field] = field
-    @columns[name][:footer] = footer
+    @columns[name][:footer] = footer if footer
 
     if field.respond_to?(:call)
-      @parameters << field.parameters.to_combined_h[:key].values
+      _params = field.parameters.to_combined_h
+      @parameters << _params[:key] if _params[:key]
     end
 
     self

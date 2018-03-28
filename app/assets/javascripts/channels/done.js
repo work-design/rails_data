@@ -1,7 +1,7 @@
 App.cable.subscriptions.create('DoneChannel', {
   received: function(data) {
-    var c_id = '#done_' + data.done_id;
-    var collection = $(c_id);
+    let c_id = '#done_' + data.done_id;
+    let collection = $(c_id);
     collection.html(data.body);
   },
   connected: function() {

@@ -1,18 +1,13 @@
 module TheDataExport
 
   def to_table
-    initialize_table
+    @config_table = data_list.config_table
 
     self.headers = header_result
     self.to_table_items
     self.footers = footer_result
     self.done = true
     self.save
-  end
-
-  def initialize_table
-    @config_table = data_list.config_table
-    @config_table.config(converted_parameters)
   end
 
   def header_result
@@ -29,7 +24,7 @@ module TheDataExport
   end
 
   def to_table_items
-    @config_table.collection.call.each_with_index do |object, index|
+    @config_table.collection.call(converted_parameters).each_with_index do |object, index|
       row = field_result(object, index)
       table_items.create(fields: row)
     end

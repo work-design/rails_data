@@ -15,7 +15,8 @@ So, just config them.
 
 ```ruby
 # we usually place the file in app/reports/example_table
-class ExampleTable < TheData::Table
+class ExampleTable  
+  extend TheData::Export
 end
 ```
 

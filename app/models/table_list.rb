@@ -80,5 +80,4 @@ class TableList < ApplicationRecord
     "#{self.id}.pdf"
   end
 
-
 end

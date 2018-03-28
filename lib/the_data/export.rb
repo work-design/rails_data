@@ -1,11 +1,11 @@
 module TheData::Export
-  # collect -> { User.limit(10) }
+  # collect -> (params) { User.default_where(params) }
   # column :name, header: 'My name', field: -> {}
   # column :email, header: 'Email', field: -> {}
   attr_reader :collection, :columns
 
-  def config(&block)
-    block.call if block_given?
+  def config(*args, &block)
+    block.call(*args) if block_given?
   end
 
   def collect(collection)

@@ -10,7 +10,8 @@ class DataList < ApplicationRecord
   before_create :update_parameters
 
   def form_parameters
-    parameters.map { |k, v| { key: k, value: v } }
+    r = parameters.map { |k, v| { key: k, value: v } }
+    Settings.new(r)
   end
 
   def update_parameters

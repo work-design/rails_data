@@ -59,13 +59,19 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def data_list_params
-    params[:data_list].permit(:type,
-                              :title,
-                              :comment,
-                              :data_table,
-                              :export_excel,
-                              :export_pdf,
-                              parameters: params[:data_list][:parameters].try(:keys))
+    result = params[:data_list].permit(
+      :type,
+      :title,
+      :comment,
+      :data_table,
+      :export_excel,
+      :export_pdf,
+      parameters: [:key, :value]
+    )
+    _params = result['parameters'].values.map { |i|  {i['key'] => i['value'] } }
+    _params = _params.to_combined_hash
+    result['parameters'] = _params
+    result
   end
 
 end

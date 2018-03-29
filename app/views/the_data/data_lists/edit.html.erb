@@ -13,18 +13,19 @@
       <%= f.text_field :data_table, label: 'DataTable' %>
       <%= f.text_field :export_excel %>
       <%= f.text_field :export_pdf %>
-      <%= f.fields_for :form_parameters, @data_list.form_parameters, { index: 0, as: :parameters, on: {wrapper_all: false, label: false, placeholder: true}, css: {wrapper_input: 'two wide field'} } do |pf| %>
+      <% @data_list.form_parameters.each do |parameter| %>
+      <%= f.fields :parameters, model: parameter, index: 0, on: {wrapper_all: false, label: false, placeholder: true}, css: {wrapper_input: 'two wide field'} do |pf| %>
         <div class="inline fields" id="purchase_purchase_items_0">
           <%= f.label :form_parameters %>
-          <% binding.pry %>
-          <%= pf.text_field :key %>
-          <%= pf.select :value, options_for_select(TheData.config.mapping.keys), class: 'ui dropdown selection' %>
+          <%= pf.text_field :key, readonly: true %>
+          <%= pf.select :value, options_for_select(TheData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
           <div class="field">
             <%= link_to add_item_data_lists_path(index: 1), remote: true do %>
               <i class="plus circle icon"></i>
             <% end %>
           </div>
         </div>
+      <% end %>
       <% end %>
       <%= f.submit %>
     <% end %>

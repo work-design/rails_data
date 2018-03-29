@@ -11,6 +11,9 @@ class DataList < ApplicationRecord
 
   def form_parameters
     r = parameters.map { |k, v| { key: k, value: v } }
+    if r.blank?
+      r = [{ key: nil, value: nil }]
+    end
     Settings.new(r)
   end
 

@@ -67,8 +67,8 @@ class TheData::DataListsController < TheData::BaseController
       :export_pdf,
       parameters: [:key, :value]
     )
-    _params = result['parameters'].values.map { |i|  {i['key'] => i['value'] } }
-    _params = _params.to_combined_hash
+    _params = result['parameters']&.values&.map { |i|  {i['key'] => i['value'] } }
+    _params = Array(_params).to_combined_hash
     result['parameters'] = _params
     result
   end

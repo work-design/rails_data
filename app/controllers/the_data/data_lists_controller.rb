@@ -29,12 +29,11 @@ class TheData::DataListsController < TheData::BaseController
 
   def update
     @data_list.update(data_list_params)
-    redirect_back fallback_location: data_lists_url
+    redirect_to data_lists_url(type: @data_list.type)
   end
 
   def add_item
-    @purchase = Purchase.new
-    @purchase.purchase_items.build
+    @data_list = DataList.new
   end
 
   def remove_item

@@ -15,7 +15,7 @@ So, just config them.
 
 ```ruby
 # we usually place the file in app/reports/example_table
-class ExampleTable  
+class ExampleTable
   extend TheData::Export
 end
 ```
@@ -37,27 +37,9 @@ end
 ```ruby
 class ExampleTable < TheData::Table
 
-  def config(size)
-
+  config(size)
     # the collection should respond to method `each`
-    collecttion -> { User.one_report_scope(size) }
-
-  end
-
-end
-```
-
-#### step-3: Config Each Column
-use for each collection element's method, to pass a method name or a lambda
-the order is important, all columns order by It's defined order
-
-```ruby
-class ExampleTable < TheData::Table
-
-  def initialize(size)
-
-    # the collection should respond to method `each`
-    collection -> { User.one_report_scope(size) }
+    collect -> (params) { User.default_where(params) }
 
     # with default header and default field method
     # default header use 'titleize' method to format
@@ -73,6 +55,12 @@ class ExampleTable < TheData::Table
 
 end
 ```
+
+#### step-3: Config Each Column
+use for each collection element's method, to pass a method name or a lambda
+the order is important, all columns order by It's defined order
+
+
 
 
 ```ruby

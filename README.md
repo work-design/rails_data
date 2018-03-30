@@ -34,9 +34,6 @@ The table defined the report's data format
 
 [Define Report Table](docs/define-report-table.md)
 
-#### step-2: Define report method
-[Define Report Method](docs/define-report-method.md)
-
 #### step-3: (optional) Define report pdf's style
 [Define report pdf style](docs/define-pdf-style)
 

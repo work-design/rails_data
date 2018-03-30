@@ -1,7 +1,7 @@
 <div class="ui top attached menu borderless">
   <div class="item"><strong>TableID:<%= @table_list.id %></strong></div>
   <div class="right menu">
-    <%= link_to 'migrate', migrate_data_list_table_list_path(@data_list, @table_list), method: :patch, class: 'ui red button' %>
+    <%= link_to 'download Xlsx', data_list_table_list_path(@data_list, @table_list, format: 'xlsx'), class: 'item ui blue button' %>
   </div>
 </div>
 
@@ -33,5 +33,5 @@
   </tfoot>
 </table>
 
-<%= paginate @table_items %>
+<%= paginate @table_items, remote: true %>
 

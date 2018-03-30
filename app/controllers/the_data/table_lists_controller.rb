@@ -7,7 +7,7 @@ class TheData::TableListsController < TheData::BaseController
   end
 
   def index
-    @table_lists = @data_list.table_lists.page(params[:page]).per(50)
+    @table_lists = @data_list.table_lists.page(params[:page])
   end
 
   def new

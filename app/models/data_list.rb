@@ -1,3 +1,4 @@
+require 'rails_com/setting'
 class DataList < ApplicationRecord
   serialize :parameters, Hash
   serialize :columns, Hash

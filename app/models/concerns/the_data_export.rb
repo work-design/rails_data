@@ -37,7 +37,7 @@ module TheDataExport
       if Array(params[:key]).include? :index
         results << column[:field].call(object, index)
       elsif params[:key]
-        results << column[:field].call(object, converted_parameters)
+        results << column[:field].call(object, **converted_parameters.slice(params[:key]))
       elsif params[:key].blank? && params[:req]
         results << column[:field].call(object)
       else

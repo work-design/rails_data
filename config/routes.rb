@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'the_data' do
+  scope module: 'the_data_admin' do
     resources :data_lists do
       get :records, on: :collection
       get :add_item, on: :collection

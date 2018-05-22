@@ -11,7 +11,7 @@ class TheData::DataListsController < TheData::BaseController
   end
 
   def new
-    @data_list = DataList.new
+    @data_list = DataList.new(type: params[:type])
   end
 
   def create

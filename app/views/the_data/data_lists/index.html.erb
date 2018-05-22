@@ -1,47 +1,44 @@
-<div>
-
-  <div class="ui top attached menu borderless">
-    <div class="item header">Data List</div>
-    <%= link_to 'Export', filter_params(type: 'DataExport'), class: active_params(type: 'DataExport', active_class: 'item active', item_class: 'item') %>
-    <%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
-    <%= link_to 'Record', records_data_lists_path, class: active_helper(paths: records_data_lists_path) %>
+<div class="ui top attached borderless menu">
+  <div class="item header">Data List</div>
+  <%= link_to 'Export', filter_params(type: 'DataExport'), class: active_params(type: 'DataExport', active_class: 'item active', item_class: 'item') %>
+  <%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
+  <%= link_to 'Record', records_data_lists_path, class: active_helper(paths: records_data_lists_path) %>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to '新建', new_data_list_path(type: params[:type]), class: 'ui teal button' %>
+    </div>
   </div>
-
-  <div class="ui segment top attached">
-    <%= link_to '新建', new_data_list_path, class: 'ui teal button' %>
-  </div>
-
-  <table class="ui bottom attached table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>备注</th>
-      <th>Job Name</th>
-      <th colspan="2">Export</th>
-      <th>Parameters</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @data_lists.each do |data_list| %>
-      <% if the_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
-      <tr>
-        <td><%= data_list.id %></td>
-        <td><%= data_list.title %></td>
-        <td><%= data_list.comment %></td>
-        <td><%= data_list.data_table %></td>
-        <td><%= data_list.export_excel %></td>
-        <td><%= data_list.export_pdf %></td>
-        <td><%= simple_format_hash(data_list.parameters) %></td>
-        <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
-        <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
-        <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    <% end %>
-    </tbody>
-  </table>
-
 </div>
+
+<table class="ui bottom attached table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>备注</th>
+    <th>Job Name</th>
+    <th colspan="2">Export</th>
+    <th>Parameters</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @data_lists.each do |data_list| %>
+    <% if the_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
+    <tr>
+      <td><%= data_list.id %></td>
+      <td><%= data_list.title %></td>
+      <td><%= data_list.comment %></td>
+      <td><%= data_list.data_table %></td>
+      <td><%= data_list.export_excel %></td>
+      <td><%= data_list.export_pdf %></td>
+      <td><%= simple_format_hash(data_list.parameters) %></td>
+      <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
+      <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
+      <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

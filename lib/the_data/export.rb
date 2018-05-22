@@ -1,7 +1,11 @@
 module TheData::Export
-  # collect -> (params) { User.default_where(params) }
-  # column :name, header: 'My name', field: -> {}
-  # column :email, header: 'Email', field: -> {}
+
+  # extend TheData::Export
+  # config do
+  #   collect -> (params) { User.default_where(params) }
+  #   column :name, header: 'My name', field: -> {}
+  #   column :email, header: 'Email', field: -> {}
+  # end
   attr_reader :collection,
               :columns,
               :parameters

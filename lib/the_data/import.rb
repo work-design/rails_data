@@ -1,8 +1,11 @@
 module TheData::Import
-  # model BankPayment
-  # column :amount, header: 'My name', field: -> {}
-  # column :email, header: 'Email', field: -> {}
 
+  # extend TheData::Import
+  # config do
+  #   model BankPayment
+  #   column :amount, header: 'My name', field: -> {}
+  #   column :email, header: 'Email', field: -> {}
+  # end
   attr_reader :record, :columns
 
   def config(&block)

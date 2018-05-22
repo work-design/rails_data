@@ -9,8 +9,7 @@ module TheRecordExport
 
   def initialize_table
     @config_table = data_list.config_table
-    @config_table.config(converted_parameters)
-    @record = @config_table.record.call
+    @record = @config_table.record.call(converted_parameters)
     @config_table
   end
 

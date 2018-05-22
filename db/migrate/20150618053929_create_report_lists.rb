@@ -35,6 +35,7 @@ class CreateReportLists < ActiveRecord::Migration
       t.references :data_list
       t.string :columns, limit: 4096
       t.string :parameters, limit: 1024
+      t.boolean :done
       t.timestamps
     end
 

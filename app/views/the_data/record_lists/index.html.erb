@@ -33,7 +33,7 @@
       <td><%= record_list.id %></td>
       <td><%= simple_format_hash(record_list.parameters) %></td>
       <td><%= simple_format_hash(record_list.columns) %></td>
-      <td>
+      <td class="ui labels">
         <%= link_to '运行', run_data_list_record_list_path(@data_list, record_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
         <%= link_to '预览', find_data_list_record_lists_path(@data_list.data_table, record_list.parameters), remote: true, class: 'ui blue label' %>
         <%= link_to '修改', columns_data_list_record_list_path(@data_list, record_list), remote: true, class: 'ui blue label' %>

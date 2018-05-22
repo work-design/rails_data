@@ -36,4 +36,8 @@ class DataList < ApplicationRecord
     @config_excel ||= export_excel.to_s.safe_constantize
   end
 
+  def config_pdf
+    @config_pdf ||= export_pdf.to_s.safe_constantize
+  end
+
 end

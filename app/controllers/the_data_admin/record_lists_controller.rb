@@ -39,7 +39,7 @@ class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
       format.html
       format.js
       format.csv { send_data @record_list.to_csv, filename: @record_list.csv_file_name, type: 'application/csv' }
-      format.pdf { send_data @record_list.to_pdf.render, filename: @record_list.pdf_file_name, type: 'application/pdf' }
+      format.pdf { send_data @record_list.to_pdf, filename: @record_list.pdf_file_name, disposition: 'inline', type: 'application/pdf' }
       format.xlsx { send_data @record_list.to_xlsx, filename: @record_list.xlsx_file_name, type: 'application/xlsx' }
     end
   end

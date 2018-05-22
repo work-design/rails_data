@@ -43,8 +43,17 @@ module TheRecordExport
     @config_excel.render
   end
 
+  def to_pdf
+    @config_pdf ||= data_list.config_pdf.new(self.columns)
+    @config_pdf.render
+  end
+
   def xlsx_file_name
     @config_excel.file_name || "#{self.id}.xlsx"
+  end
+
+  def pdf_file_name
+    "#{self.id}.pdf"
   end
 
 end

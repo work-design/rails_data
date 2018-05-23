@@ -1,4 +1,4 @@
-module DefaultPdfText
+module PdfTextHelper
 
   # font
   #

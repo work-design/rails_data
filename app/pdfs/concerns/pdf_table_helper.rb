@@ -1,4 +1,4 @@
-module DefaultPdfTable
+module PdfTableHelper
 
   def left_header_table(data)
     th_style = {

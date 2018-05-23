@@ -1,19 +1,6 @@
 require 'prawn/measurement_extensions'
 
-# a pdf object should response these methods
-# * document
-# * repeat_header
-# * once_header
-# * custom_table
-# * once_footer
-# * repeat_footer
-
-
 class TheDataPdf < Prawn::Document
-  include DefaultPdfTable
-  include DefaultPdfText
-  include DefaultPdfPage
-  attr_accessor :beginning_data, :header_data, :footer_data, :ending_data, :table_data
 
   def initialize
     default_config = {

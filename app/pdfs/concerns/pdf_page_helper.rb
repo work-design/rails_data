@@ -1,4 +1,4 @@
-module DefaultPdfPage
+module PdfPageHelper
 
   def repeat_header(data = nil)
     repeat :all do

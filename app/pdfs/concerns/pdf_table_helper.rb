@@ -33,8 +33,8 @@ module PdfTableHelper
     }
     undash
     table(data, options) do
-      columns(0).style th_style
-      columns(1..-1).style td_style
+      columns(0).style NORMAL_TH
+      columns(1..-1).style NORMAL_TD
     end
   end
 
@@ -48,32 +48,38 @@ module PdfTableHelper
     }
     undash
     table(data, options) do
-      row(0).style th_style
-      row(1..-1).style td_style
+      row(0).style NORMAL_TH
+      row(1..-1).style NORMAL_TD
     end
   end
 
   def grid_table(data)
-
     options = {
       position: :center,
       width: bounds.width,
       cell_style: {
-        borders: [],
-        border_width: 0
+        borders: []
       }
     }
     undash
     table(data, options) do
-      columns(0).style left_style
-      columns(-1).style right_style
+      columns(0).style LEFT_TD
+      columns(-1).style RIGHT_TD
     end
   end
 
   def content_table(data)
+    options = {
+      position: :center,
+      width: bounds.width,
+      cell_style: {
+        border_lines: [:solid, :solid, :solid, :solid],
+        border_color: '999999'
+      }
+    }
     undash
     table(data, options) do
-      row(0..-1).style td_style
+      row(0..-1).style NORMAL_TD
     end
   end
 

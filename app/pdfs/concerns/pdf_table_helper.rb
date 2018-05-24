@@ -10,7 +10,8 @@ module PdfTableHelper
   NORMAL_TD = {
     align: :left,
     valign: :center,
-    size: 8
+    size: 9,
+    height: 21
   }
   LEFT_TD = {
     align: :left,

@@ -20,7 +20,7 @@
     <th colspan="2">Export</th>
     <th>Parameters</th>
     <th>Columns</th>
-    <th colspan="3"></th>
+    <th>Actions</th>
   </tr>
   </thead>
 
@@ -37,11 +37,11 @@
       <td><%= simple_format_hash(data_list.parameters) %></td>
       <td><%= simple_format_hash(data_list.columns) %></td>
       <td><%= link_to 'record list', data_list_record_lists_path(data_list) %></td>
-      <td>
-        <%= link_to 'edit', edit_data_list_path(data_list), class: 'ui mini green button' %>
-        <%= link_to 'Rebuild', rebuild_data_list_path(data_list), method: :patch, data: { confirm: 'Confirm' }, class: 'ui mini button' %>
+      <td class="ui labels">
+        <%= link_to 'edit', edit_data_list_path(data_list), class: 'ui green label' %>
+        <%= link_to 'Rebuild', rebuild_data_list_path(data_list), method: :patch, data: { confirm: 'Confirm' }, class: 'ui blue label' %>
+        <%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
-      <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   <% end %>

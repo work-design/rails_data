@@ -13,13 +13,19 @@
 <table class="ui bottom attached table">
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Title</th>
-    <th>备注</th>
-    <th>Job Name</th>
-    <th colspan="2">Export</th>
+    <th><%= DataList.human_attribute_name(:id) %></th>
+    <th>
+      <p><%= DataList.human_attribute_name(:title) %></p>
+      <p><%= DataList.human_attribute_name(:comment) %></p>
+    </th>
+    <th><%= DataList.human_attribute_name(:data_table) %></th>
+    <th>
+      <p><%= DataList.human_attribute_name(:export_excel) %></p>
+      <p><%= DataList.human_attribute_name(:export_pdf) %></p>
+    </th>
     <th>Parameters</th>
     <th>Columns</th>
+    <th></th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -29,10 +35,14 @@
     <% if the_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
     <tr>
       <td><%= data_list.id %></td>
-      <td><%= data_list.title %></td>
-      <td><%= data_list.comment %></td>
-      <td><%= data_list.data_table %></td>
-      <td><%= data_list.export_excel %></td>
+      <td>
+        <p><%= data_list.title %></p>
+        <p><%= data_list.comment %></p>
+      </td>
+      <td>
+        <p><%= data_list.data_table %></p>
+        <p><%= data_list.export_excel %></p>
+      </td>
       <td><%= data_list.export_pdf %></td>
       <td><%= simple_format_hash(data_list.parameters) %></td>
       <td><%= simple_format_hash(data_list.columns) %></td>

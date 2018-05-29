@@ -1,9 +1,8 @@
-class TheDataAdmin::DataListsController < TheDataAdmin::BaseController
+class TheDataAdmin::DataRecordsController < TheDataAdmin::BaseController
   before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index
-    query = params.permit(:type).reverse_merge type: 'DataExport'
-    @data_lists = DataList.default_where(query)
+    @data_lists = DataRecord.page(params[:page])
   end
 
   def new

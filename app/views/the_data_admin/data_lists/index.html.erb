@@ -2,7 +2,6 @@
   <div class="item header">Data List</div>
   <%= link_to 'Export', filter_params(type: 'DataExport'), class: active_params(type: 'DataExport', active_class: 'item active', item_class: 'item') %>
   <%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
-  <%= link_to 'Record', records_data_lists_path, class: active_helper(paths: records_data_lists_path) %>
   <div class="right menu">
     <div class="item">
       <%= link_to '新建', new_data_list_path(type: params[:type]), class: 'ui teal button' %>

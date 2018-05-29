@@ -1,7 +1,7 @@
 <table class="ui very basic striped table">
   <thead>
     <tr>
-      <th><%= form_with url: columns_data_list_record_list_path(@data_list), method: :patch, id: 'edit_record_list' %></th>
+      <th><%= form_with url: columns_data_record_record_list_path(@data_record), method: :patch, id: 'edit_record_list' %></th>
       <th></th>
     </tr>
   </thead>
@@ -9,7 +9,7 @@
   <tbody>
   <% @record_list.columns.each do |k, v| %>
 
-    <% if TheData.config.mapping[@data_list.columns[k.to_sym].to_s.to_sym]&.fetch(:input, nil) == 'array' %>
+    <% if TheData.config.mapping[@data_record.columns[k.to_sym].to_s.to_sym]&.fetch(:input, nil) == 'array' %>
       <tr>
         <td class="right aligned"><%= k.to_s.titleize %></td>
         <td>
@@ -26,7 +26,7 @@
       <tr>
         <td class="right aligned"><%= k.to_s.titleize %>:</td>
         <td class="ui small input">
-          <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym], form: 'edit_record_list' %>
+          <%= text_field_tag :"columns[#{k}]", v, as: @data_record.columns[k.to_sym], form: 'edit_record_list' %>
         </td>
       </tr>
     <% end %>
@@ -36,7 +36,7 @@
     <td></td>
     <td>
       <%= submit_tag 'Save', form: 'edit_record_list', class: 'ui mina blue button' %>
-      <%= link_to 'Cancel', data_list_record_list_path(@record_list.data_list_id, @record_list.id), remote: true, class: 'ui mina grey button' %>
+      <%= link_to 'Cancel', data_record_record_list_path(@record_list.data_record_id, @record_list.id), remote: true, class: 'ui mina grey button' %>
     </td>
   </tr>
   </tbody>

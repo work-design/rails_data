@@ -1,13 +1,13 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', data_list_record_lists_path(@data_list), class: 'section' %>
+  <%= link_to 'Back', data_record_record_lists_path(@data_record), class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
 
 <div class="ui segment">
-  <%= default_form_with url: columns_data_list_record_list_path(@data_list), method: :patch do |f| %>
+  <%= default_form_with url: columns_data_record_record_list_path(@data_record), method: :patch do |f| %>
     <% @record_list.columns.each do |k, v| %>
-      <% if TheData.config.mapping[@data_list.columns[k.to_sym].to_sym][:input] == 'array' %>
+      <% if TheData.config.mapping[@data_record.columns[k.to_sym].to_sym][:input] == 'array' %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <% v.each_with_index do |_value, _index| %>
@@ -20,7 +20,7 @@
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <div class="six wide field">
-            <%= text_field_tag :"columns[#{k}]", v, as: @data_list.columns[k.to_sym] %>
+            <%= text_field_tag :"columns[#{k}]", v, as: @data_record.columns[k.to_sym] %>
           </div>
         </div>
       <% end %>

@@ -1,13 +1,13 @@
 class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
-  before_action :set_data_list
+  before_action :set_data_record
   before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
   skip_before_action :require_role
   before_action do |controller|
-    controller.require_role(params[:data_list_id])
+    controller.require_role(params[:data_record_id])
   end
 
   def index
-    extra_params = params.fetch(:q, {}).permit(@data_list.parameters.keys)
+    extra_params = params.fetch(:q, {}).permit(@data_record.parameters.keys)
     extra_params.reject! { |_, value| value.blank? }
     if extra_params.present?
       query = { parameters: extra_params.to_unsafe_hash }
@@ -15,22 +15,22 @@ class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
       query = {}
     end
 
-    @record_lists = @data_list.record_lists.where(query).page(params[:page])
+    @record_lists = @data_record.record_lists.where(query).page(params[:page])
   end
 
   def new
-    @record_list = @data_list.record_lists.build
+    @record_list = @data_record.record_lists.build
   end
 
   def create
-    @record_list = @data_list.record_lists.build(record_list_params)
+    @record_list = @data_record.record_lists.build(record_list_params)
     @record_list.save
 
-    redirect_to data_list_record_lists_url(@data_list)
+    redirect_to data_record_record_lists_url(@data_record)
   end
 
   def find
-    @record_list = @data_list.record_lists.find_or_create_by(parameters: params.permit(*@data_list.parameters.keys).to_h)
+    @record_list = @data_record.record_lists.find_or_create_by(parameters: params.permit(*@data_record.parameters.keys).to_h)
     @record_list.run unless @record_list.done
   end
 
@@ -50,7 +50,7 @@ class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
 
   def update
     @record_list.update(record_list_params)
-    redirect_to data_list_record_lists_url(@data_list)
+    redirect_to data_record_record_lists_url(@data_record)
   end
 
   def edit_columns
@@ -68,29 +68,29 @@ class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
 
   def run
     @record_list.run
-    redirect_back fallback_location: data_list_record_lists_url(@data_list)
+    redirect_back fallback_location: data_record_record_lists_url(@data_record)
   end
 
   def destroy
     @record_list.destroy
-    redirect_to data_list_record_lists_url(@data_list), notice: 'Export file was successfully destroyed.'
+    redirect_to data_record_record_lists_url(@data_record), notice: 'Export file was successfully destroyed.'
   end
 
   private
   def set_record_list
-    @record_list = @data_list.record_lists.find(params[:id])
+    @record_list = @data_record.record_lists.find(params[:id])
   end
 
-  def set_data_list
-    if /\d/.match? params[:data_list_id]
-      @data_list = DataList.find params[:data_list_id]
+  def set_data_record
+    if /\d/.match? params[:data_record_id]
+      @data_record = DataRecord.find params[:data_record_id]
     else
-      @data_list = DataList.find_by data_table: params[:data_list_id]
+      @data_record = DataRecord.find_by data_table: params[:data_record_id]
     end
   end
 
   def record_list_params
-    params.fetch(:record_list, {}).permit(parameters: @data_list.parameters.keys, columns: @data_list.columns.keys)
+    params.fetch(:record_list, {}).permit(parameters: @data_record.parameters.keys, columns: @data_record.columns.keys)
   end
 
   def columns_params

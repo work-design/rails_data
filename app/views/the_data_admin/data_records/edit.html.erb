@@ -1,27 +1,27 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', data_lists_path, class: 'section' %>
+  <%= link_to 'Back', data_records_path, class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
 
 <div class="ui segment">
-  <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>
+  <%= form_with model: @data_record, scope: :data_record, url: data_record_path(@data_record), locale: true do |f| %>
     <%= f.text_field :title %>
     <%= f.text_area :comment %>
     <%= f.text_field :data_table %>
     <%= f.text_field :export_excel %>
     <%= f.text_field :export_pdf %>
-    <% @data_list.form_parameters.each_with_index do |parameter, index| %>
+    <% @data_record.form_parameters.each_with_index do |parameter, index| %>
     <%= f.fields :parameters, model: parameter, index: index, on: {wrapper_all: false, label: false, placeholder: true}, css: {wrapper_input: 'two wide field'} do |pf| %>
       <div class="inline fields" id="parameters_<%= index %>">
         <%= f.label :form_parameters %>
         <%= pf.text_field :key, readonly: true %>
         <%= pf.select :value, options_for_select(TheData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
         <div class="field">
-          <%= link_to add_item_data_lists_path(index: index + 1), remote: true do %>
+          <%= link_to add_item_data_records_path(index: index + 1), remote: true do %>
             <i class="plus circle icon"></i>
           <% end %>
-          <%= link_to remove_item_data_lists_path(index: index), remote: true do %>
+          <%= link_to remove_item_data_records_path(index: index), remote: true do %>
             <i class="minus circle icon"></i>
           <% end %>
         </div>

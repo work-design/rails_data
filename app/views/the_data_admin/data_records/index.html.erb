@@ -29,26 +29,26 @@
   </thead>
 
   <tbody>
-  <% @data_lists.each do |data_list| %>
-    <% if the_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
+  <% @data_records.each do |data_record| %>
+    <% if the_role_user.has_role?('the_data/data_records', 'read', data_record.id) %>
     <tr>
-      <td><%= data_list.id %></td>
+      <td><%= data_record.id %></td>
       <td>
-        <p><%= data_list.title %></p>
-        <p><%= data_list.comment %></p>
+        <p><%= data_record.title %></p>
+        <p><%= data_record.comment %></p>
       </td>
       <td>
-        <p><%= data_list.data_table %></p>
-        <p><%= data_list.export_excel %></p>
+        <p><%= data_record.data_table %></p>
+        <p><%= data_record.export_excel %></p>
       </td>
-      <td><%= data_list.export_pdf %></td>
-      <td><%= simple_format_hash(data_list.parameters) %></td>
-      <td><%= simple_format_hash(data_list.columns) %></td>
-      <td><%= link_to 'record list', data_record_record_lists_path(data_list) %></td>
+      <td><%= data_record.export_pdf %></td>
+      <td><%= simple_format_hash(data_record.parameters) %></td>
+      <td><%= simple_format_hash(data_record.columns) %></td>
+      <td><%= link_to 'record list', data_record_record_lists_path(data_record) %></td>
       <td class="ui labels">
-        <%= link_to 'edit', edit_data_record_path(data_list), class: 'ui green label' %>
-        <%= link_to 'Rebuild', rebuild_data_record_path(data_list), method: :patch, data: { confirm: 'Confirm' }, class: 'ui blue label' %>
-        <%= link_to 'destroy', data_record_path(data_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to 'edit', edit_data_record_path(data_record), class: 'ui green label' %>
+        <%= link_to 'Rebuild', rebuild_data_record_path(data_record), method: :patch, data: { confirm: 'Confirm' }, class: 'ui blue label' %>
+        <%= link_to 'destroy', data_record_path(data_record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
     <% end %>

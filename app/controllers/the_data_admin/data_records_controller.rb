@@ -1,19 +1,19 @@
 class TheDataAdmin::DataRecordsController < TheDataAdmin::BaseController
-  before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
+  before_action :set_data_record, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index
-    @data_lists = DataRecord.page(params[:page])
+    @data_records = DataRecord.page(params[:page])
   end
 
   def new
-    @data_list = DataList.new(type: params[:type])
+    @data_record = DataRecord.new(type: params[:type])
   end
 
   def create
-    @data_list = DataList.new(data_list_params)
-    @data_list.save
+    @data_record = DataRecord.new(data_record_params)
+    @data_record.save
 
-    redirect_to data_lists_url(type: @data_list.type)
+    redirect_to data_records_url(type: @data_record.type)
   end
 
   def show
@@ -23,12 +23,12 @@ class TheDataAdmin::DataRecordsController < TheDataAdmin::BaseController
   end
 
   def update
-    @data_list.update(data_list_params)
-    redirect_to data_lists_url(type: @data_list.type)
+    @data_record.update(data_record_params)
+    redirect_to data_records_url(type: @data_record.type)
   end
 
   def add_item
-    @data_list = DataList.new
+    @data_record = DataRecord.new
   end
 
   def remove_item
@@ -36,24 +36,24 @@ class TheDataAdmin::DataRecordsController < TheDataAdmin::BaseController
   end
 
   def rebuild
-    @data_list.columns = @data_list.config_columns
-    @data_list.save
+    @data_record.columns = @data_record.config_columns
+    @data_record.save
 
-    redirect_back fallback_location: data_lists_url
+    redirect_back fallback_location: data_records_url
   end
 
   def destroy
-    @data_list.destroy
-    redirect_to data_lists_url, notice: 'Export file was successfully destroyed.'
+    @data_record.destroy
+    redirect_to data_records_url, notice: 'Export file was successfully destroyed.'
   end
 
   private
-  def set_data_list
-    @data_list = DataList.find params[:id]
+  def set_data_record
+    @data_record = DataRecord.find params[:id]
   end
 
-  def data_list_params
-    result = params[:data_list].permit(
+  def data_record_params
+    result = params[:data_record].permit(
       :type,
       :title,
       :comment,

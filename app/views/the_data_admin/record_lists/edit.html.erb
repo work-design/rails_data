@@ -1,16 +1,16 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', data_list_record_lists_path(@data_list), class: 'section' %>
+  <%= link_to 'Back', data_record_record_lists_path(@data_record), class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
 
 <div class="ui segment">
-  <%= default_form_with model: @record_list, url: data_list_record_list_path(@data_list) do |f| %>
+  <%= default_form_with model: @record_list, url: data_record_record_list_path(@data_record) do |f| %>
     <% @record_list.parameters.each do |k, v| %>
       <div class="inline fields">
         <label class="six wide field"><%= k.to_s.titleize %>:</label>
         <div class="six wide field">
-          <%= text_field_tag :"record_list[parameters][#{k}]", v, as: @data_list.parameters[k].to_sym %>
+          <%= text_field_tag :"record_list[parameters][#{k}]", v, as: @data_record.parameters[k].to_sym %>
         </div>
       </div>
     <% end %>

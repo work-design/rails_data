@@ -6,7 +6,6 @@
 
 <div class="ui segment">
   <%= form_with model: @data_record, scope: :data_record, url: data_records_path, local: true do |f| %>
-    <%= f.select :type, options_for_select(DataList.options_i18n(:type), @data_record.type) %>
     <%= f.text_field :title %>
     <%= f.text_area :comment %>
     <%= f.text_field :data_table %>

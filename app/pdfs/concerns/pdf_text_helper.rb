@@ -10,4 +10,9 @@ module PdfTextHelper
     }
   end
 
+  def pdf_content_style
+
+  end
+
+
 end

@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'write_xlsx', '~> 0.83.0'
   s.add_dependency 'roo'
   s.add_dependency 'roo-xls'
+  s.add_dependency 'prawn'
+  s.add_dependency 'prawn-table'
 end

@@ -1,3 +1,4 @@
+require 'prawn'
 require 'prawn/measurement_extensions'
 
 class TheDataPdf < Prawn::Document

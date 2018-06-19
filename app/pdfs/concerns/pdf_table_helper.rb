@@ -84,4 +84,18 @@ module PdfTableHelper
     end
   end
 
+  def footer_table(data)
+    options = {
+      position: :center,
+      width: bounds.width,
+      cell_style: {
+        borders: []
+      }
+    }
+    undash
+    table(data, options) do
+      columns(0..-1).style NORMAL_TD
+    end
+  end
+
 end

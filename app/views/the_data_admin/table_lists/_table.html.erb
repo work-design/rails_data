@@ -1,36 +1,38 @@
 <div class="ui top attached menu borderless">
   <div class="header item">TableID:<%= @table_list.id %></div>
   <div class="right menu">
+    <%= link_to 'Migrate', migrate_data_list_table_list_path(@data_list, @table_list), class: 'item ui button' if @table_list.data_list.is_a?(DataImport) %>
+    <%= link_to 'download Csv', data_list_table_list_path(@data_list, @table_list, format: 'csv'), class: 'item ui button' %>
     <%= link_to 'download Xlsx', data_list_table_list_path(@data_list, @table_list, format: 'xlsx'), class: 'item ui blue button' %>
   </div>
 </div>
 
 <table class="ui celled red bottom attached fixed table">
   <thead>
-  <tr>
-    <% @table_list.headers.each do |header| %>
-      <th><%= header %></th>
-    <% end %>
-  </tr>
+    <tr>
+      <% @table_list.headers.each do |header| %>
+        <th><%= header %></th>
+      <% end %>
+    </tr>
   </thead>
-
+  
   <tbody>
   <% @table_items.limit(100).each do |item| %>
     <tr>
-      <% item.fields.each do |field| %>
-        <td><pre><%= field %></pre></td>
-      <% end %>
+    <% item.fields.each do |field| %>
+      <td><pre><%= field %></pre></td>
+    <% end %>
     </tr>
   <% end %>
   </tbody>
-
+  
   <tfoot>
-  <tr>
-    <% @table_list.footers.each do |footer| %>
-      <th><%= footer %></th>
-    <% end %>
-  </tr>
+    <tr>
+      <% @table_list.footers.each do |footer| %>
+        <th><%= footer %></th>
+      <% end %>
+    </tr>
   </tfoot>
 </table>
 
-<%= paginate @table_items, remote: true %>
+<%= paginate @table_items, remote: remote %>

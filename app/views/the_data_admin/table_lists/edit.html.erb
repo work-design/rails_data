@@ -1,23 +1,19 @@
-<div>
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', data_list_table_lists_path(@data_list), class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Edit</div>
+</div>
 
-  <div class="ui segment breadcrumb">
-    <%= link_to 'Back', data_list_table_lists_path(@data_list), class: 'section' %>
-    <div class="divider"> / </div>
-    <div class="active section">Edit</div>
-  </div>
-
-  <div class="ui segment">
-    <%= default_form_with model: @table_list, url: data_list_table_list_path, locale: true do |f| %>
-      <% @table_list.parameters.each do |k, v| %>
-        <div class="inline fields">
-          <label class="six wide field"><%= k.to_s.titleize %>:</label>
-          <div class="six wide field">
-            <%= text_field_tag :"table_list[parameters][#{k}]", v, type: TheData.config.mapping[@data_list.parameters[k].to_sym][:input] %>
-          </div>
+<div class="ui segment">
+  <%= default_form_with model: @table_list, url: data_list_table_list_path, locale: true do |f| %>
+    <% @table_list.parameters.each do |k, v| %>
+      <div class="inline fields">
+        <label class="six wide field"><%= k.to_s.titleize %>:</label>
+        <div class="six wide field">
+          <%= text_field_tag :"table_list[parameters][#{k}]", v, type: TheData.config.mapping[@data_list.parameters[k].to_sym][:input] %>
         </div>
-      <% end %>
-      <%= f.submit %>
+      </div>
     <% end %>
-  </div>
-
+    <%= f.submit %>
+  <% end %>
 </div>

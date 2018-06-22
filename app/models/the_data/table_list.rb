@@ -51,7 +51,7 @@ class TableList < ApplicationRecord
 
   # for import
   def import_columns
-    config = data_list.config_table.config
+    config = data_list.config_table
     columns = {}
     config.columns.each do |key, value|
       columns[key] = config.columns[key].merge(index: self.headers.find_index(value[:header]))
@@ -60,7 +60,7 @@ class TableList < ApplicationRecord
   end
 
   def migrate
-    config = data_list.config_table.config
+    config = data_list.config_table
     columns = import_columns
     self.table_items.each do |table_item|
       attr = {}

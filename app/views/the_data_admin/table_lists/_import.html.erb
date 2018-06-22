@@ -5,8 +5,8 @@
   </div>
 
   <div class="content">
-    <%= default_form_with model: @table_list, url: import_data_list_table_lists_path(@data_list), id: 'import_table' do |f| %>
-      <%= f.file_field :file, label: 'File' %>
+    <%= form_with model: @table_list, url: import_data_list_table_lists_path(@data_list), local: true, id: 'import_table' do |f| %>
+      <%= f.file_field :file %>
       <%= f.submit %>
     <% end %>
   </div>

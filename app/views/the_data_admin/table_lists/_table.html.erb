@@ -1,5 +1,5 @@
 <div class="ui top attached menu borderless">
-  <div class="item"><strong>TableID:<%= @table_list.id %></strong></div>
+  <div class="header item">TableID:<%= @table_list.id %></div>
   <div class="right menu">
     <%= link_to 'download Xlsx', data_list_table_list_path(@data_list, @table_list, format: 'xlsx'), class: 'item ui blue button' %>
   </div>
@@ -34,4 +34,3 @@
 </table>
 
 <%= paginate @table_items, remote: true %>
-

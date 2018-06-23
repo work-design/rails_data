@@ -65,9 +65,14 @@ class TableList < ApplicationRecord
     self.table_items.each do |table_item|
       attr = {}
       columns.map do |key, value|
-        attr[key] = table_item.fields[value[:index]]
+        r = table_item.fields[value[:index]]
+        if value[:field] && value[:field].respond_to?(:call)
+          attr[key] = value[:field].call(r)
+        else
+          attr[key] = r
+        end
       end
-       config.record.create attr
+      config.record.create attr
     end
     self.destroy
   end

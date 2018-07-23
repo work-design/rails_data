@@ -11,8 +11,9 @@ module TheDataConnection
   end
 
   protected
+  # todo why session got nil
   def find_verified_user
-    if session['user_id']
+    if session && session['user_id']
       User.find_by id: session['user_id']
     else
       logger.error 'An unauthorized connection attempt was rejected'

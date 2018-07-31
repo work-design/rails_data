@@ -3,7 +3,7 @@
   <%= link_to 'Record', data_records_path, class: active_helper(controllers: 'data_records') %>
   <div class="right menu">
     <div class="item">
-      <%= link_to '新建', new_data_record_path, class: 'ui teal button' %>
+      <%= link_to 'New', new_data_record_path, class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -46,9 +46,9 @@
       <td><%= simple_format_hash(data_record.columns) %></td>
       <td><%= link_to 'record list', data_record_record_lists_path(data_record) %></td>
       <td class="ui labels">
-        <%= link_to 'edit', edit_data_record_path(data_record), class: 'ui green label' %>
+        <%= link_to 'Edit', edit_data_record_path(data_record), class: 'ui green label' %>
         <%= link_to 'Rebuild', rebuild_data_record_path(data_record), method: :patch, data: { confirm: 'Confirm' }, class: 'ui blue label' %>
-        <%= link_to 'destroy', data_record_path(data_record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to 'Delete', data_record_path(data_record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
     <% end %>

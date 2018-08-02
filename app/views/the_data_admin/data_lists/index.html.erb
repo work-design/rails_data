@@ -4,7 +4,7 @@
   <%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport', active_class: 'item active', item_class: 'item') %>
   <div class="right menu">
     <div class="item">
-      <%= link_to '新建', new_data_list_path(type: params[:type]), class: 'ui teal button' %>
+      <%= link_to 'New', new_data_list_path(type: params[:type]), class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -14,7 +14,7 @@
   <tr>
     <th>ID</th>
     <th>Title</th>
-    <th>备注</th>
+    <th>Note</th>
     <th>Job Name</th>
     <th colspan="2">Export</th>
     <th>Parameters</th>
@@ -35,7 +35,7 @@
       <td><%= simple_format_hash(data_list.parameters) %></td>
       <td><%= link_to 'table list', data_list_table_lists_path(data_list) %></td>
       <td><%= link_to 'edit', edit_data_list_path(data_list) %></td>
-      <td><%= link_to 'destroy', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'delete', data_list_path(data_list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   <% end %>

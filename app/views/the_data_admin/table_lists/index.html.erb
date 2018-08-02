@@ -10,9 +10,9 @@
 
 <div class="ui segment top attached">
   <% if @data_list.type == 'DataImport' %>
-    <%= link_to '导入', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
+    <%= link_to 'Import', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
   <% else %>
-    <%= link_to '新建', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
+    <%= link_to 'New', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
   <% end %>
 </div>
 
@@ -41,10 +41,10 @@
         <% end %>
       </td>
       <td class="ui labels">
-        <%= link_to '运行', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
-        <%= link_to '预览', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
-        <%= link_to 'edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>
-        <%= link_to 'destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to 'Run', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+        <%= link_to 'Preview', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
+        <%= link_to 'Edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>
+        <%= link_to 'Destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>

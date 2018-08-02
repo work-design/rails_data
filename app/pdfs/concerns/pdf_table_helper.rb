@@ -54,23 +54,24 @@ module PdfTableHelper
     end
   end
 
-  def grid_table(data)
-    options = {
+  def grid_table(data, options = {})
+    default_options = {
       position: :center,
       width: bounds.width,
       cell_style: {
         borders: []
       }
     }
+    default_options.merge!(options)
     undash
-    table(data, options) do
+    table(data, default_options) do
       columns(0).style LEFT_TD
       columns(-1).style RIGHT_TD
     end
   end
 
-  def content_table(data)
-    options = {
+  def content_table(data, options = {}, &block)
+    default_options = {
       position: :center,
       width: bounds.width,
       cell_style: {
@@ -78,9 +79,14 @@ module PdfTableHelper
         border_color: '999999'
       }
     }
+    default_options.merge!(options)
     undash
-    table(data, options) do
-      row(0..-1).style NORMAL_TD
+    if block_given?
+      table(data, default_options, &block)
+    else
+      table(data, default_options) do
+        row(0..-1).style NORMAL_TD
+      end
     end
   end
 

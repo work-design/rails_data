@@ -15,10 +15,10 @@ class TableList < ApplicationRecord
   end
 
   def cached_run(_timestamp = nil)
-    if timestamp.present? && timestamp == _timestamp.to_s
-      return
+    unless timestamp.present? && timestamp == _timestamp.to_s
+      self.timestamp = _timestamp
+      run
     end
-    run
   end
 
   def converted_parameters
@@ -30,8 +30,9 @@ class TableList < ApplicationRecord
   end
 
   def clear_old
+    self.done = false
     self.class.transaction do
-      self.update!(done: false)
+      self.save!
       table_items.delete_all
     end
   end

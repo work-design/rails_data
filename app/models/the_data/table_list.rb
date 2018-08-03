@@ -14,6 +14,13 @@ class TableList < ApplicationRecord
     to_table
   end
 
+  def cached_run(_timestamp = nil)
+    if timestamp.present? && timestamp == _timestamp.to_s
+      return
+    end
+    run
+  end
+
   def converted_parameters
     param = {}
     parameters.each do |k, v|

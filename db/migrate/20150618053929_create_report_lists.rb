@@ -20,6 +20,7 @@ class CreateReportLists < ActiveRecord::Migration
       t.string :footers, limit: 4096
       t.integer :table_items_count, default: 0
       t.string :parameters, limit: 1024
+      t.string :timestamp
       t.boolean :done
       t.boolean :published
       t.timestamps

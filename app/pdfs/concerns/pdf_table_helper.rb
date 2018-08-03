@@ -2,7 +2,7 @@ module PdfTableHelper
   NORMAL_TH = {
     align: :center,
     valign: :center,
-    size: 12,
+    size: 14,
     font_style: :bold,
     height: 30,
     background_color: 'eeeeee'
@@ -10,18 +10,18 @@ module PdfTableHelper
   NORMAL_TD = {
     align: :left,
     valign: :center,
-    size: 9,
-    height: 21
+    size: 12,
+    height: 30
   }
   LEFT_TD = {
     align: :left,
     valign: :center,
-    size: 8
+    size: 12
   }
   RIGHT_TD = {
     align: :right,
     valign: :center,
-    size: 8
+    size: 12
   }
 
   def left_header_table(data)

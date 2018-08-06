@@ -1,7 +1,11 @@
-module TheDataExport
+class DataExportService
+
+  def initialize(config_table)
+    @config_table = data_list.config_table
+
+  end
 
   def to_table
-    @config_table = data_list.config_table
 
     self.headers = header_result
     self.to_table_items

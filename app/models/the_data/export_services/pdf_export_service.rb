@@ -1,4 +1,4 @@
-module ReportPdf
+class PdfExportService
 
   def pdf
     if reportable.respond_to?(:pdf_object)
@@ -68,6 +68,10 @@ module ReportPdf
     end
 
     filename
+  end
+
+  def pdf_file_name
+    "#{self.id}.pdf"
   end
 
 end

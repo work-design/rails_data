@@ -4,7 +4,8 @@ module TheData
     config.eager_load_paths += Dir[
       "#{config.root}/app/models/the_data",
       "#{config.root}/app/models/the_data/concerns",
-      "#{config.root}/app/models/the_data/data_lists"
+      "#{config.root}/app/models/the_data/data_lists",
+      "#{config.root}/app/models/the_data/export_services"
     ]
 
     initializer 'the_data.assets.precompile' do |app|

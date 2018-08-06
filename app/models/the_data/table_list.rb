@@ -37,15 +37,6 @@ class TableList < ApplicationRecord
     end
   end
 
-  def to_csv
-    csv = ''
-    csv << headers.to_csv
-    self.table_items.each do |table_item|
-      csv << table_item.fields.to_csv
-    end
-    csv
-  end
-
   # for import
   def import_to_table_list(file)
     importer = data_list.importer(file)
@@ -83,14 +74,6 @@ class TableList < ApplicationRecord
       config.record.create attr
     end
     self.destroy
-  end
-
-  def csv_file_name
-    "#{self.id}.csv"
-  end
-
-  def pdf_file_name
-    "#{self.id}.pdf"
   end
 
 end

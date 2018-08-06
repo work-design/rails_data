@@ -9,7 +9,7 @@ class TableList < ApplicationRecord
 
   def run
     clear_old
-    export = DataExportService.new(self)
+    export = DataCacheService.new(self)
     export.cache_table
   end
 

@@ -3,7 +3,7 @@ module DataExportHelper
   def convert_parameters(parameters)
     @params = {}
     parameters.each do |k, v|
-      @params.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
+      @params.merge! k.to_sym => v.send(TheData.config.mapping[@data_list.parameters[k].to_sym][:output])
     end
     @params
   end

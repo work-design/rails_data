@@ -1,5 +1,13 @@
 require 'write_xlsx'
-module ReportXlsx
+class XlsxExportService
+  attr_reader :sheet
+
+  def initialize
+    @io = StringIO.new
+    @workbook = WriteXLSX.new(@io)
+    @sheet = @workbook.add_worksheet
+  end
+
 
   def xlsx_file_name
     "#{self.id}.xlsx"
@@ -17,14 +25,5 @@ module ReportXlsx
     @workbook.close
     @io.string
   end
-
-  def sheet
-    return @worksheet if @worksheet
-
-    @io = StringIO.new
-    @workbook = WriteXLSX.new(@io)
-    @worksheet = @workbook.add_worksheet
-  end
-
 
 end

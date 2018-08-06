@@ -1,29 +1,35 @@
 require 'write_xlsx'
 module DataListXlsx
 
-  def xlsx_file_name
-    "#{self.id}.xlsx"
-  end
 
-  def to_xlsx
-    sheet.write_row(0, 0, headers)
+  def to_xlsx(params)
+    sheet.write_row(0, 0, self.headers)
 
-    self.table_items.each_with_index do |table_item, index|
-      sheet.write_row(index + 1, 0, table_item.fields)
+    @config_table.collection.call(params).each_with_index do |object, index|
+      row = field_result(object, index)
+      sheet.write_row(index + 1, 0, row)
     end
-
-    sheet.write_row self.table_items_count + 1, 0, self.footers
 
     @workbook.close
     @io.string
   end
 
-  def sheet
-    return @worksheet if @worksheet
+  def field_result(object, index)
+    results = []
+    @config_table.columns.each do |_, column|
+      params = column[:field].parameters.to_combined_h
+      if Array(params[:key]).include? :index
+        results << column[:field].call(object, index)
+      elsif params[:key]
+        results << column[:field].call(object, **converted_parameters.slice(params[:key]))
+      elsif params[:key].blank? && params[:req]
+        results << column[:field].call(object)
+      else
+        results << nil
+      end
+    end
 
-    @io = StringIO.new
-    @workbook = WriteXLSX.new(@io)
-    @worksheet = @workbook.add_worksheet
+    results
   end
 
 

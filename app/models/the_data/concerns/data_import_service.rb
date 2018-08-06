@@ -1,5 +1,5 @@
 require 'roo'
-class TheDataImport
+class DataImportService
   attr_reader :sheet, :column_index
 
   def initialize(config, sheet_file)

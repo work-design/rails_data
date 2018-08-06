@@ -1,7 +1,7 @@
 class DataImport < DataList
 
   def importer(file)
-    @importer ||= TheDataImport.new(config_table, file)
+    @importer ||= DataImportService.new(config_table, file)
   end
 
 

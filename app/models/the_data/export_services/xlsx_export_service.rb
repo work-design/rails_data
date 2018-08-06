@@ -4,7 +4,6 @@ class XlsxExportService
   attr_reader :sheet, :headers, :table_list,
               :parameters
 
-
   def initialize(table_list: nil, data_list: nil, params: {})
     @config_table = data_list.config_table
     @parameters = params

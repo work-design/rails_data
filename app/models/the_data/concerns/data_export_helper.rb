@@ -8,25 +8,10 @@ module DataExportHelper
     param
   end
 
-  def cache_table
-    table_list.headers = header_result
-    table_list.cache_table_items
-    table_list.footers = footer_result
-    table_list.done = true
-    table_list.save
-  end
-
-  def cache_table_items
-    @config_table.collection.call(converted_parameters).each_with_index do |object, index|
-      row = field_result(object, index)
-      table_list.table_items.create(fields: row)
-    end
-  end
-
   def header_result
     results = []
 
-    @config_table.columns.each do |_, column|
+    config_table.columns.each do |_, column|
       if column[:header].respond_to?(:call)
         results << column[:header].call
       else
@@ -38,7 +23,7 @@ module DataExportHelper
 
   def field_result(object, index)
     results = []
-    @config_table.columns.each do |_, column|
+    config_table.columns.each do |_, column|
       params = column[:field].parameters.to_combined_h
       if Array(params[:key]).include? :index
         results << column[:field].call(object, index)
@@ -57,7 +42,7 @@ module DataExportHelper
   def footer_result
     results = []
 
-    @config_table.columns.each do |_, column|
+    config_table.columns.each do |_, column|
       if column[:footer].respond_to?(:call)
         results << column[:footer].call
       else

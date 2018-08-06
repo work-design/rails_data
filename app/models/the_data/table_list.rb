@@ -9,7 +9,12 @@ class TableList < ApplicationRecord
 
   def run
     clear_old
-    export = DataExportService.new(self.id)
+    export = DataExportService.new(self)
+    export.cache_table
+  end
+
+  def direct_xlsx
+    export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: self.headers)
     export.cache_table
   end
 

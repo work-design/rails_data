@@ -68,6 +68,10 @@ class TheDataAdmin::TableListsController < TheDataAdmin::BaseController
               type: 'application/pdf'
   end
 
+  def direct_run
+
+  end
+
   def run
     TableJob.perform_later(@table_list.id, current_user&.id)
   end

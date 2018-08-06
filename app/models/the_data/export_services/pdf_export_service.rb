@@ -36,7 +36,6 @@ class PdfExportService
     pdf
   end
 
-
   def header_data
     if reportable.respond_to? :header_info
       reportable.header_info

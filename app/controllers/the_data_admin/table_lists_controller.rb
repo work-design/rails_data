@@ -1,6 +1,6 @@
 class TheDataAdmin::TableListsController < TheDataAdmin::BaseController
   before_action :set_data_list
-  before_action :set_table_list, only: [:show, :edit, :row, :run, :migrate, :update, :destroy]
+  before_action :set_table_list, only: [:show, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
   skip_before_action :require_role
   before_action do |controller|
     controller.require_role(params[:data_list_id])
@@ -68,8 +68,10 @@ class TheDataAdmin::TableListsController < TheDataAdmin::BaseController
               type: 'application/pdf'
   end
 
-  def direct_run
-
+  def xlsx
+    respond_to do |format|
+      format.xlsx { send_data @table_list.direct_xlsx, filename: @table_list.file_name(formats[0]), type: 'application/xlsx' }
+    end
   end
 
   def run

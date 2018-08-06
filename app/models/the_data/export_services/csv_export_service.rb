@@ -21,8 +21,4 @@ class CsvExportService
     csv
   end
 
-  def csv_file_name
-    "#{self.id}.csv"
-  end
-
 end

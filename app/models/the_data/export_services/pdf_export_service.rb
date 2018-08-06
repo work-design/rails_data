@@ -71,8 +71,4 @@ class PdfExportService
     filename
   end
 
-  def pdf_file_name
-    "#{self.id}.pdf"
-  end
-
 end

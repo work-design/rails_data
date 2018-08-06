@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post 'import' => :create_import, on: :collection
         get :row, on: :member
         patch :run, on: :member
-        patch :direct_run, on: :member
+        get :xlsx, on: :member
         patch :migrate, on: :member
       end
     end

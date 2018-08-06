@@ -1,21 +1,22 @@
 require 'write_xlsx'
 class XlsxExportService
   include DataExportHelper
-  attr_reader :sheet, :headers, :table_list, :data_list
-              :parameters
+  attr_reader :sheet,
+              :table_list, :data_list,
+              :params, :headers
 
   def initialize(table_list: nil, data_list: nil, params: {}, headers: [])
     if table_list
       @table_list = table_list
       @data_list = table_list.data_list
+      @headers = table_list.headers
+      convert_parameters(params)
     elsif data_list
       @data_list = data_list
-      @params = params
       @headers = headers
+      convert_parameters(params)
     end
     @config_table = data_list.config_table
-    @parameters = params
-    @headers = headers
 
     @io = StringIO.new
     @workbook = WriteXLSX.new(@io)
@@ -45,10 +46,6 @@ class XlsxExportService
 
     @workbook.close
     @io.string
-  end
-
-  def xlsx_file_name
-    "#{self.id}.xlsx"
   end
 
 end

@@ -15,7 +15,7 @@ class TableList < ApplicationRecord
 
   def direct_xlsx
     export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: self.headers)
-    export.cache_table
+    export.direct_xlsx
   end
 
   def cached_run(_timestamp = nil)
@@ -31,6 +31,10 @@ class TableList < ApplicationRecord
       self.save!
       table_items.delete_all
     end
+  end
+
+  def file_name(format)
+    "#{self.id}.#{format}"
   end
 
 end

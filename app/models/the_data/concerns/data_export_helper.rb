@@ -1,17 +1,17 @@
 module DataExportHelper
 
-  def converted_parameters
-    param = {}
+  def convert_parameters(parameters)
+    @params = {}
     parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
+      @params.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
     end
-    param
+    @params
   end
 
   def header_result
     results = []
 
-    config_table.columns.each do |_, column|
+    @config_table.columns.each do |_, column|
       if column[:header].respond_to?(:call)
         results << column[:header].call
       else
@@ -23,12 +23,12 @@ module DataExportHelper
 
   def field_result(object, index)
     results = []
-    config_table.columns.each do |_, column|
+    @config_table.columns.each do |_, column|
       params = column[:field].parameters.to_combined_h
       if Array(params[:key]).include? :index
         results << column[:field].call(object, index)
       elsif params[:key]
-        results << column[:field].call(object, **converted_parameters.slice(params[:key]))
+        results << column[:field].call(object, **@params.slice(params[:key]))
       elsif params[:key].blank? && params[:req]
         results << column[:field].call(object)
       else
@@ -42,7 +42,7 @@ module DataExportHelper
   def footer_result
     results = []
 
-    config_table.columns.each do |_, column|
+    @config_table.columns.each do |_, column|
       if column[:footer].respond_to?(:call)
         results << column[:footer].call
       else

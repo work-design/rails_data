@@ -44,6 +44,7 @@
       </td>
       <td class="ui labels">
         <%= link_to 'Run', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+        <%= link_to 'xlsx', xlsx_data_list_table_list_path(@data_list, table_list, format: 'xlsx'), class: 'ui yellow label' %>
         <%= link_to 'Preview', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
         <%= link_to 'Edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>
         <%= link_to 'Destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>

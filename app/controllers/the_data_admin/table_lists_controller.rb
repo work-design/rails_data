@@ -27,6 +27,13 @@ class TheDataAdmin::TableListsController < TheDataAdmin::BaseController
     @table_items = @table_list.table_items.page(params[:page]).per(100)
   end
 
+  def direct
+    @table_list = @data_list.table_lists.build(parameters: params.permit(*@data_list.parameters.keys).to_h)
+    respond_to do |format|
+      format.xlsx { send_data @table_list.direct_xlsx, filename: @table_list.file_name(formats[0]), type: 'application/xlsx' }
+    end
+  end
+
   def new_import
     @table_list = @data_list.table_lists.build
   end

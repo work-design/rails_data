@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       patch :rebuild, on: :member
       resources :table_lists do
         get :find, on: :collection
+        get :direct, on: :collection
         get 'import' => :new_import, on: :collection
         post 'import' => :create_import, on: :collection
         get :row, on: :member

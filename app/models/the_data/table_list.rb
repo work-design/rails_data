@@ -14,7 +14,8 @@ class TableList < ApplicationRecord
   end
 
   def direct_xlsx
-    export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: self.headers)
+    _headers = self.headers || self.data_list.headers
+    export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: _headers)
     export.direct_xlsx
   end
 
@@ -34,7 +35,8 @@ class TableList < ApplicationRecord
   end
 
   def file_name(format)
-    "#{self.id}.#{format}"
+    name = self.id || 'example'
+    "#{name}.#{format}"
   end
 
 end

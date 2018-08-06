@@ -57,7 +57,7 @@ class TheDataAdmin::TableListsController < TheDataAdmin::BaseController
       format.html
       format.csv { send_data @table_list.to_csv, filename: @table_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @table_list.to_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf' }
-      format.xlsx { send_data @table_list.to_xlsx, filename: @table_list.xlsx_file_name, type: 'application/xlsx' }
+      format.xlsx { send_data @table_list.cached_xlsx, filename: @table_list.file_name(self.formats[0]), type: 'application/xlsx' }
     end
   end
 

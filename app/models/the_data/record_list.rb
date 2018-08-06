@@ -63,8 +63,9 @@ class RecordList < ApplicationRecord
     @config_excel.file_name || "#{self.id}.xlsx"
   end
 
-  def pdf_file_name
-    "#{self.id}.pdf"
+  def file_name(format)
+    name = self.id || 'example'
+    "#{name}.#{format}"
   end
 
 end

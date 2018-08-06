@@ -19,6 +19,11 @@ class TableList < ApplicationRecord
     export.direct_xlsx
   end
 
+  def cached_xlsx
+    export = XlsxExportService.new(table_list: self)
+    export.cached_xlsx
+  end
+
   def cached_run(_timestamp = nil)
     unless self.timestamp.present? && self.timestamp == _timestamp.to_s
       self.timestamp = _timestamp

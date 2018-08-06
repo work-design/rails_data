@@ -1,17 +1,26 @@
-class DataExportService
+module DataExportHelper
 
-  def initialize(config_table)
-    @config_table = data_list.config_table
-
+  def converted_parameters
+    param = {}
+    parameters.each do |k, v|
+      param.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
+    end
+    param
   end
 
-  def to_table
+  def cache_table_summary
+    table_list.headers = header_result
+    table_list.cache_table_items
+    table_list.footers = footer_result
+    table_list.done = true
+    table_list.save
+  end
 
-    self.headers = header_result
-    self.to_table_items
-    self.footers = footer_result
-    self.done = true
-    self.save
+  def cache_table_items
+    @config_table.collection.call(converted_parameters).each_with_index do |object, index|
+      row = field_result(object, index)
+      table_list.table_items.create(fields: row)
+    end
   end
 
   def header_result
@@ -25,13 +34,6 @@ class DataExportService
       end
     end
     results
-  end
-
-  def to_table_items
-    @config_table.collection.call(converted_parameters).each_with_index do |object, index|
-      row = field_result(object, index)
-      table_items.create(fields: row)
-    end
   end
 
   def field_result(object, index)

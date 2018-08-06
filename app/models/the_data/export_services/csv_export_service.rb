@@ -1,5 +1,7 @@
 require 'csv'
 class CsvExportService
+  include DataExportHelper
+
   attr_reader :sheet, :headers
 
   def initialize

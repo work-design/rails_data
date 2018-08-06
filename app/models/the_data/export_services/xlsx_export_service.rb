@@ -1,10 +1,16 @@
 require 'write_xlsx'
 class XlsxExportService
-  attr_reader :sheet, :headers, :table_list
+  include DataExportHelper
+  attr_reader :sheet, :headers, :table_list,
+              :parameters
 
-  def initialize
+
+  def initialize(table_list = nil, data_list, params)
     headers =
-    config_table
+
+    @config_table = data_list.config_table
+    @parameters = params
+
 
     @io = StringIO.new
     @workbook = WriteXLSX.new(@io)

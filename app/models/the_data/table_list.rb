@@ -1,7 +1,4 @@
 class TableList < ApplicationRecord
-  include TheDataExport
-  include ReportXlsx
-
   serialize :parameters, Hash
   serialize :headers, Array
   serialize :footers, Array
@@ -19,14 +16,6 @@ class TableList < ApplicationRecord
       self.timestamp = _timestamp
       run
     end
-  end
-
-  def converted_parameters
-    param = {}
-    parameters.each do |k, v|
-      param.merge! k.to_sym => v.send(TheData.config.mapping[data_list.parameters[k].to_sym][:output])
-    end
-    param
   end
 
   def clear_old

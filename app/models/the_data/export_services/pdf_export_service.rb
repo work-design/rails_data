@@ -1,4 +1,6 @@
+require 'prawn/table'
 class PdfExportService
+  include DataExportHelper
 
   def pdf
     if reportable.respond_to?(:pdf_object)

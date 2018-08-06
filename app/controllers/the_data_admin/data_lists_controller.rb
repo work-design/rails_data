@@ -37,10 +37,13 @@ class TheDataAdmin::DataListsController < TheDataAdmin::BaseController
   end
 
   def rebuild
-    @data_list.columns = @data_list.config_columns
-    @data_list.save
+    @data_list.rebuild!
 
     redirect_back fallback_location: data_lists_url
+  end
+
+  def just_run
+
   end
 
   def destroy

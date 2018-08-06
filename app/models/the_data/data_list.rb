@@ -10,6 +10,15 @@ class DataList < ApplicationRecord
 
   before_create :update_parameters
 
+  def just_run
+
+  end
+
+  def rebuild!
+    self.update_headers
+    self.save
+  end
+
   def form_parameters
     r = parameters.map { |k, v| { key: k, value: v } }
     if r.blank?
@@ -26,6 +35,10 @@ class DataList < ApplicationRecord
     hash = {}
     config_table.parameters.map { |p| hash[p] = nil }
     hash
+  end
+
+  def update_headers
+    self.headers = config_table.columns.map { |p| p[1][:header] }.join(',')
   end
 
   def config_table

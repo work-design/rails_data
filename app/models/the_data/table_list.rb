@@ -15,7 +15,7 @@ class TableList < ApplicationRecord
   end
 
   def cached_run(_timestamp = nil)
-    unless timestamp.present? && timestamp == _timestamp.to_s
+    unless self.timestamp.present? && self.timestamp == _timestamp.to_s
       self.timestamp = _timestamp
       run
     end

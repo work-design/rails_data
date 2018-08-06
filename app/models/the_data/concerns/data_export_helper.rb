@@ -8,7 +8,7 @@ module DataExportHelper
     param
   end
 
-  def cache_table_summary
+  def cache_table
     table_list.headers = header_result
     table_list.cache_table_items
     table_list.footers = footer_result

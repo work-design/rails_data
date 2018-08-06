@@ -10,10 +10,6 @@ class DataList < ApplicationRecord
 
   before_create :update_parameters
 
-  def just_run
-
-  end
-
   def rebuild!
     self.save
   end

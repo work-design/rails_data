@@ -11,7 +11,6 @@ class CreateReportLists < ActiveRecord::Migration
       t.string :data_table
       t.string :export_excel
       t.string :export_pdf
-      t.string :headers, limit: 4096
       t.timestamps
     end
 

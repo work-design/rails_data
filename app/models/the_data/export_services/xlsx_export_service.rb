@@ -16,7 +16,6 @@ class XlsxExportService
       @headers = headers
       convert_parameters(params)
     end
-    binding.pry
     @config_table = @data_list.config_table
 
     @io = StringIO.new

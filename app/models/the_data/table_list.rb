@@ -14,7 +14,7 @@ class TableList < ApplicationRecord
   end
 
   def direct_xlsx
-    _headers = self.headers || self.data_list.headers
+    _headers = self.headers.presence || self.data_list.headers
     export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: _headers)
     export.direct_xlsx
   end

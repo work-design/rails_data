@@ -9,13 +9,14 @@ class XlsxExportService
     if table_list
       @table_list = table_list
       @data_list = table_list.data_list
-      @headers = table_list.headers
+      @headers = headers.presence || table_list.headers
       convert_parameters(params)
     elsif data_list
       @data_list = data_list
       @headers = headers
       convert_parameters(params)
     end
+    binding.pry
     @config_table = @data_list.config_table
 
     @io = StringIO.new

@@ -4,6 +4,7 @@ class DataImportService
 
   def initialize(config, sheet_file)
     if File.extname(sheet_file.path) == '.xls'
+      require 'roo-xls'
       xlsx = Roo::Excel.new(sheet_file)
     else
       xlsx = Roo::Excelx.new(sheet_file)

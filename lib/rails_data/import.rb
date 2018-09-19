@@ -1,6 +1,6 @@
-module TheData::Import
+module RailsData::Import
 
-  # extend TheData::Import
+  # extend RailsData::Import
   # config do
   #   model BankPayment
   #   column :amount, header: 'My name', field: -> {}

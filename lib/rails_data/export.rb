@@ -1,6 +1,6 @@
-module TheData::Export
+module RailsData::Export
 
-  # extend TheData::Export
+  # extend RailsData::Export
   # config do
   #   collect -> (params) { User.default_where(params) }
   #   column :name, header: 'My name', field: -> {}

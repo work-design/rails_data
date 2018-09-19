@@ -1,4 +1,4 @@
-class TheDataAdmin::RecordListsController < TheDataAdmin::BaseController
+class RailsDataAdmin::RecordListsController < RailsDataAdmin::BaseController
   before_action :set_data_record
   before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
   skip_before_action :require_role

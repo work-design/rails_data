@@ -1,5 +1,5 @@
 require 'test_helper'
-class TheData::ReportListsControllerTest < ActionController::TestCase
+class RailsData::ReportListsControllerTest < ActionController::TestCase
 
   setup do
     @report_list = create :report_list

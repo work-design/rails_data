@@ -1,6 +1,6 @@
 require 'active_support/configurable'
 
-module TheData
+module RailsData
   # Config
   # Configure the standard CSV default options
   # as well the option to output the header row

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TheData::TableListsControllerTest < ActionController::TestCase
+class RailsData::TableListsControllerTest < ActionController::TestCase
   setup do
     @table_list = create :table_list
   end

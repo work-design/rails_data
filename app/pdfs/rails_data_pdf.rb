@@ -1,7 +1,7 @@
 require 'prawn'
 require 'prawn/measurement_extensions'
 
-class TheDataPdf < Prawn::Document
+class RailsDataPdf < Prawn::Document
 
   def initialize
     default_config = {

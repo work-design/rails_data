@@ -1,6 +1,6 @@
-module TheData::Record
+module RailsData::Record
 
-  # extend TheData::Record
+  # extend RailsData::Record
   # config do
   #   object -> { Order.find order_id }
   #   column :amount, header: 'My name', field: -> {}

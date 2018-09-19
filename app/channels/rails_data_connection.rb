@@ -1,5 +1,5 @@
 # prepend this module
-module TheDataConnection
+module RailsDataConnection
 
   def self.prepended(model)
     model.identified_by :current_user

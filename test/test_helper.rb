@@ -17,5 +17,5 @@ class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
 
-FactoryGirl.definition_file_paths << TheData::Engine.root.join('test', 'factories')
+FactoryGirl.definition_file_paths << RailsData::Engine.root.join('test', 'factories')
 FactoryGirl.find_definitions

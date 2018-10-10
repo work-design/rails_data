@@ -1,4 +1,4 @@
-class Data::Admin::DataRecordsController < Data::Admin::BaseController
+class Datum::Admin::DataRecordsController < Datum::Admin::BaseController
   before_action :set_data_record, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index

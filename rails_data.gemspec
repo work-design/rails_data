@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$:.push File.expand_path('lib', __dir__)
 require 'rails_data/version'
 
 Gem::Specification.new do |s|
@@ -12,12 +12,12 @@ Gem::Specification.new do |s|
   s.license = 'LGPL-3.0'
 
   s.files = Dir[
-    "{app,config,db,lib}/**/*",
+    '{app,config,db,lib}/**/*',
     'LICENSE',
     'Rakefile',
     'README.md'
   ]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir['test/**/*']
 
   s.add_dependency 'rails', '>= 5.0'
   s.add_dependency 'write_xlsx', '~> 0.83.0'

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version = RailsData::VERSION
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/yougexiangfa/the_data'
+  s.homepage = 'https://github.com/yougexiangfa/rails_data'
   s.summary = 'Data Import & Export for Rails'
   s.description = 'Description of TheData.'
   s.license = 'LGPL-3.0'

@@ -1,4 +1,4 @@
-class RailsDataAdmin::DataRecordsController < RailsDataAdmin::BaseController
+class Data::Admin::DataRecordsController < Data::Admin::BaseController
   before_action :set_data_record, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index

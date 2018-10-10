@@ -1,4 +1,4 @@
-class RailsDataAdmin::DataListsController < RailsDataAdmin::BaseController
+class Data::Admin::DataListsController < Data::Admin::BaseController
   before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index

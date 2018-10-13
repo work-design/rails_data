@@ -1,4 +1,4 @@
-class CreateReportLists < ActiveRecord::Migration
+class RailsDataInit < ActiveRecord::Migration[5.0]
 
   def change
 

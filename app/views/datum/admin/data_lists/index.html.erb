@@ -24,7 +24,7 @@
 
   <tbody>
   <% @data_lists.each do |data_list| %>
-    <% if the_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
+    <% if rails_role_user.has_role?('the_data/data_lists', 'read', data_list.id) %>
     <tr>
       <td><%= data_list.id %></td>
       <td><%= data_list.title %></td>

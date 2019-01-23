@@ -1,6 +1,6 @@
 # Define Table
 
- Table is used for config report's export data format.
+ Export is used for config report's export data format.
 
 ## A table is composed of:
 
@@ -10,13 +10,13 @@
 
 So, just config them.
 
-#### step-1: Define a subclass inherit from TheData::Base
+#### step-1: Define a subclass inherit from RailsData::Base
 
 
 ```ruby
 # we usually place the file in app/reports/example_table
 class ExampleTable
-  extend TheData::Export
+  extend RailsData::Export
 end
 ```
 
@@ -35,9 +35,10 @@ end
 - call `collect` method for define collection, the params should be a lambda, and the collection should response to method `each`
 
 ```ruby
-class ExampleTable < TheData::Table
+class ExampleTable 
+  extend RailsData::Export
 
-  config(size)
+  config(size) do
     # the collection should respond to method `each`
     collect -> (params) { User.default_where(params) }
 

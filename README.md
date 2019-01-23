@@ -1,5 +1,5 @@
-# TheData
-TheData is a MiddleMan for import data and export data, It can be used for generating complex report.
+# RailsData
+RailsData is a MiddleMan for import data and export data, It can be used for generating complex report.
 And It can transfer data to many format, Like: csv, pdf, html, xml and more.
 
 ## Features

@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_data'
   s.summary = 'Data Import & Export for Rails'
-  s.description = 'Description of TheData.'
+  s.description = 'Description of RailsData.'
   s.license = 'LGPL-3.0'
 
   s.files = Dir[

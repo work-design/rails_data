@@ -10,7 +10,7 @@
       <div class="inline fields">
         <label class="six wide field"><%= k.to_s.titleize %>:</label>
         <div class="six wide field">
-          <%= text_field_tag :"table_list[parameters][#{k}]", nil, type: TheData.config.mapping[v.to_sym][:input] %>
+          <%= text_field_tag :"table_list[parameters][#{k}]", nil, type: RailsData.config.mapping[v.to_sym][:input] %>
         </div>
       </div>
     <% end %>

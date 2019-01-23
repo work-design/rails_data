@@ -2,8 +2,11 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
   before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index
-    query = params.permit(:type).reverse_merge type: 'DataExport'
-    @data_lists = DataList.default_where(query)
+    q_params = {
+      type: 'DataExport'
+    }.with_indifferent_access
+    q_params.merge! params.permit(:type)
+    @data_lists = DataList.default_where(q_params)
   end
 
   def new

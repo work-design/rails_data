@@ -16,7 +16,7 @@
       <div class="inline fields" id="parameters_<%= index %>">
         <%= f.label :form_parameters %>
         <%= pf.text_field :key, readonly: true %>
-        <%= pf.select :value, options_for_select(TheData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
+        <%= pf.select :value, options_for_select(RailsData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
         <div class="field">
           <%= link_to add_item_data_records_path(index: index + 1), remote: true do %>
             <i class="plus circle icon"></i>

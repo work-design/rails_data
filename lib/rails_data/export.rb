@@ -18,7 +18,7 @@ module RailsData::Export
     @collection = collection
     @parameters ||= []
     if collection.respond_to?(:call)
-      _params = collection.parameters.to_combined_h
+      _params = collection.parameters.to_array_h.to_combine_h
       @parameters << _params[:key] if _params[:key]
     end
   end
@@ -42,7 +42,7 @@ module RailsData::Export
     @columns[name][:footer] = footer if footer
 
     if field.respond_to?(:call)
-      _params = field.parameters.to_combined_h
+      _params = field.parameters.to_array_h.to_combine_h
       @parameters << _params[:key] if _params[:key]
     end
 

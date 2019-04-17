@@ -24,7 +24,7 @@ module DataExportHelper
   def field_result(object, index)
     results = []
     @config_table.columns.each do |_, column|
-      params = column[:field].parameters.to_combined_h
+      params = column[:field].parameters.to_array_h.to_combine_h
       if Array(params[:key]).include? :index
         results << column[:field].call(object, index)
       elsif params[:key]

@@ -70,7 +70,7 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
       parameters: [:key, :value]
     )
     _params = result['parameters']&.values&.map { |i|  {i['key'] => i['value'] } }
-    _params = Array(_params).to_combined_hash
+    _params = Array(_params).to_combine_h
     result['parameters'] = _params
     result
   end

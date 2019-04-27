@@ -1,12 +1,15 @@
-class TableList < ApplicationRecord
-  include DataImportHelper
-  serialize :parameters, Hash
-  serialize :headers, Array
-  serialize :footers, Array
-
-  belongs_to :data_list, optional: true
-  has_many :table_items, dependent: :delete_all
-
+module RailsData::TableList
+  extend ActiveSupport::Concern
+  included do
+    include DataImportHelper
+    serialize :parameters, Hash
+    serialize :headers, Array
+    serialize :footers, Array
+  
+    belongs_to :data_list, optional: true
+    has_many :table_items, dependent: :delete_all
+  end
+  
   def run
     clear_old
     export = DataCacheService.new(self)

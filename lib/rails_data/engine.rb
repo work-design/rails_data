@@ -1,11 +1,8 @@
 module RailsData
   class Engine < ::Rails::Engine
 
-    config.eager_load_paths += Dir[
-      "#{config.root}/app/models/rails_data",
-      "#{config.root}/app/models/rails_data/concerns",
-      "#{config.root}/app/models/rails_data/data_lists",
-      "#{config.root}/app/models/rails_data/export_services"
+    config.autoload_paths += Dir[
+      "#{config.root}/app/models/data_list"
     ]
 
     initializer 'rails_data.assets.precompile' do |app|

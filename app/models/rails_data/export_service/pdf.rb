@@ -1,5 +1,5 @@
 require 'prawn/table'
-class PdfExportService
+class RailsData::ExportService::Pdf
   include DataExportHelper
 
   def pdf

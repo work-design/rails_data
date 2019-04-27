@@ -1,5 +1,5 @@
 require 'csv'
-class CsvExportService
+class RailsData::ExportService::Csv
   include DataExportHelper
 
   attr_reader :sheet, :headers

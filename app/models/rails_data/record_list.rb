@@ -1,10 +1,13 @@
-class RecordList < ApplicationRecord
-  serialize :columns, Hash
-  serialize :parameters, Hash
-  belongs_to :data_list
+module RailsData::RecordList
+  extend ActiveSupport::Concern
+  included do
+    serialize :columns, Hash
+    serialize :parameters, Hash
+    belongs_to :data_list
 
-  default_scope -> { order(id: :desc) }
-
+    default_scope -> { order(id: :desc) }
+  end
+  
   def run
     to_table
   end

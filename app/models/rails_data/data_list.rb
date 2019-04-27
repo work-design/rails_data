@@ -1,14 +1,17 @@
 require 'rails_com/utils/setting'
-class DataList < ApplicationRecord
-  serialize :parameters, Hash
-  serialize :columns, Hash
+module RailsData::DataList
+  extend ActiveSupport::Concern
+  included do
+    serialize :parameters, Hash
+    serialize :columns, Hash
 
-  has_many :table_lists, dependent: :destroy
-  has_many :table_items, through: :table_lists
+    has_many :table_lists, dependent: :destroy
+    has_many :table_items, through: :table_lists
 
-  scope :published, -> { where(published: true) }
+    scope :published, -> { where(published: true) }
 
-  before_create :update_parameters
+    before_create :update_parameters
+  end
 
   def rebuild!
     self.save

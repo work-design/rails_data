@@ -1,5 +1,5 @@
 require 'write_xlsx'
-class XlsxExportService
+class RailsData::ExportService::Xlsx
   include DataExportHelper
   attr_reader :sheet,
               :table_list,

@@ -4,7 +4,8 @@ zh:
       index:
         new: 新增
   activerecord:
-    attributes:
-      data_list/type:
-        DataImport: 导入
-        DataExport: 导出
+    enum:
+      data_list:
+        type:
+          DataImport: 导入
+          DataExport: 导出

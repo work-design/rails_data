@@ -51,7 +51,7 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
 
   def destroy
     @data_list.destroy
-    redirect_to data_lists_url, notice: 'Export file was successfully destroyed.'
+    redirect_to data_lists_url
   end
 
   private

@@ -15,7 +15,7 @@
     <%= f.fields :parameters, model: parameter, index: index, on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'two wide field' } do |pf| %>
       <div class="inline fields" id="parameters_<%= index %>">
         <%= f.label :form_parameters %>
-        <%= pf.text_field :key, value: parameter.key, readonly: true %>
+        <%= pf.text_field :key, value: parameter.key %>
         <%= pf.select :value, options_for_select(RailsData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
         <div class="field">
           <%= link_to add_item_data_lists_path(index: index + 1), remote: true do %>

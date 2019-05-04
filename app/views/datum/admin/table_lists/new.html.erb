@@ -8,7 +8,7 @@
   <%= form_with model: @table_list, url: data_list_table_lists_path, local: true do |f| %>
     <% @data_list.parameters.each do |k, v| %>
       <div class="inline fields">
-        <label class="six wide field"><%= k.to_s.titleize %>:</label>
+        <label class="six wide field"><%= k.to_s.titleize %></label>
         <div class="six wide field">
           <%= text_field_tag :"table_list[parameters][#{k}]", nil, type: RailsData.config.mapping[v.to_sym][:input] %>
         </div>

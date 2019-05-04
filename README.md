@@ -17,7 +17,7 @@ And It can transfer data to many format, Like: csv, pdf, html, xml and more.
 #### step-1: Add one_report to you Gemfile:
 
 ```ruby
-gem 'the_data'
+gem 'rails_data'
 ```
 
 #### step-2: Run migrations

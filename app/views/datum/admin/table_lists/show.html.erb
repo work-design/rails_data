@@ -1,11 +1,7 @@
-<ul class="ui segment breadcrumb">
-  <li class="section"><%= link_to 'Data List', data_lists_path %></li>
-  <li class="divider">/</li>
-  <li class="section"><%= link_to 'Table List', data_list_table_lists_path(@data_list) %></li>
-</ul>
-
-<div class="ui top attached menu borderless">
-  <div class="item"><strong>Preview</strong></div>
+<div class="ui segment breadcrumb">
+  <%= link_to 'Data List', data_lists_path, class: 'section' %>
+  <div class="divider">/</div>
+  <%= link_to 'Table List', data_list_table_lists_path(@data_list), class: 'section' %>
 </div>
 
 <%= render partial: 'table', locals: { remote: false } %>

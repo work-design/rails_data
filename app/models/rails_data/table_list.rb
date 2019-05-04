@@ -18,12 +18,12 @@ module RailsData::TableList
 
   def direct_xlsx
     _headers = self.headers.presence || self.data_list.headers
-    export = XlsxExportService.new(data_list: self.data_list, params: self.parameters, headers: _headers)
+    export = RailsData::ExportService::Xlsx.new(data_list: self.data_list, params: self.parameters, headers: _headers)
     export.direct_xlsx
   end
 
   def cached_xlsx
-    export = XlsxExportService.new(table_list: self)
+    export = RailsData::ExportService::Xlsx.new(table_list: self)
     export.cached_xlsx
   end
 

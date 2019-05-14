@@ -1,8 +1,10 @@
+<% content_for :breadcrumb do %>
 <div class="ui segment breadcrumb">
   <%= link_to 'Back', data_lists_path, class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
+<% end %>
 
 <div class="ui segment">
   <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>

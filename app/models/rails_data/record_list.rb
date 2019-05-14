@@ -1,8 +1,8 @@
 module RailsData::RecordList
   extend ActiveSupport::Concern
   included do
-    serialize :columns, Hash
-    serialize :parameters, Hash
+    attribute :columns, :json
+    attribute :parameters, :json
     belongs_to :data_list
 
     default_scope -> { order(id: :desc) }

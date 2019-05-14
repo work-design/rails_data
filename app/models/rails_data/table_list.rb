@@ -2,9 +2,9 @@ module RailsData::TableList
   extend ActiveSupport::Concern
   included do
     include DataImportHelper
-    serialize :parameters, Hash
-    serialize :headers, Array
-    serialize :footers, Array
+    attribute :parameters, :json, default: {}
+    attribute :headers, :string, array: true, default: []
+    attribute :footers, :string, array: true, default: []
   
     belongs_to :data_list, optional: true
     has_many :table_items, dependent: :delete_all

@@ -1,22 +1,12 @@
-<ul class="ui segment breadcrumb">
-  <li class="section"><%= link_to 'back', data_lists_path(type: @data_list.type) %></li>
-  <li class="divider">/</li>
-  <li class="section">Table lists</li>
-</ul>
-
-<div class="ui top attached borderless menu">
-  <div class="header item">Table List</div>
+<% content_for :breadcrumb do %>
+<div class="ui segment breadcrumb">
+  <%= link_to 'back', data_lists_path(type: @data_list.type), class: 'section' %>
+  <div class="divider">/</div>
+  <div class="section">Table lists</div>
 </div>
+<% end %>
 
-<div class="ui attached segment">
-  <% if @data_list.type == 'DataImport' %>
-    <%= link_to 'Import', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
-  <% else %>
-    <%= link_to 'New', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
-  <% end %>
-</div>
-
-<table class="ui bottom attached table">
+<table class="ui table">
   <thead>
     <tr>
       <th class="one wide">ID</th>
@@ -24,7 +14,13 @@
       <th class="eight wide">Headers</th>
       <th class="one wide"><%= TableList.human_attribute_name(:timestamp) %></th>
       <th class="one wide">Done</th>
-      <th class="three wide"></th>
+      <th class="three wide">
+        <% if @data_list.type == 'DataImport' %>
+          <%= link_to 'Import', import_data_list_table_lists_path(@data_list), class: 'ui blue button', remote: true %>
+        <% else %>
+          <%= link_to 'New', new_data_list_table_list_path(@data_list), class: 'ui teal button' %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
@@ -42,12 +38,22 @@
           <i class="grey remove icon"></i>
         <% end %>
       </td>
-      <td class="ui labels">
-        <%= link_to 'Run', run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
-        <%= link_to 'xlsx', xlsx_data_list_table_list_path(@data_list, table_list, format: 'xlsx'), class: 'ui yellow label' %>
-        <%= link_to 'Preview', data_list_table_list_path(@data_list, table_list), class: 'ui blue label' %>
-        <%= link_to 'Edit', edit_data_list_table_list_path(@data_list, table_list), class: 'ui yellow label' %>
-        <%= link_to 'Destroy', data_list_table_list_path(@data_list, table_list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+      <td>
+        <%= link_to run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-caret-right"></i>
+        <% end %>
+        <%= link_to xlsx_data_list_table_list_path(@data_list, table_list, format: 'xlsx'), data: { tooltip: t('.export') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-file-excel"></i>
+        <% end %>
+        <%= link_to data_list_table_list_path(@data_list, table_list), data: { tooltip: t('.show') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <%= link_to edit_data_list_table_list_path(@data_list, table_list), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+        <%= link_to data_list_table_list_path(@data_list, table_list), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>

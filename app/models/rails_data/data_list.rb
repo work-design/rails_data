@@ -2,8 +2,8 @@ require 'rails_com/utils/setting'
 module RailsData::DataList
   extend ActiveSupport::Concern
   included do
-    serialize :parameters, Hash
-    serialize :columns, Hash
+    attribute :parameters, :json, default: {}
+    attribute :columns, :json, default: {}
 
     has_many :table_lists, dependent: :destroy
     has_many :table_items, through: :table_lists

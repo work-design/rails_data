@@ -42,7 +42,7 @@ class RailsDataInit < ActiveRecord::Migration[5.0]
 
     create_table :record_items do |t|
       t.references :record_list
-      t.string :fields, limit: 10240
+      t.jsonb :fields
       t.timestamps
     end
 

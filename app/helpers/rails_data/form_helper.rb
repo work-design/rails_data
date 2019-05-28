@@ -1,4 +1,4 @@
-module RailsDataHelper
+module RailsData::FormHelper
 
   def text_field_tag(name, value = nil, options = {})
     if options[:as]

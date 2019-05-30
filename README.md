@@ -39,3 +39,6 @@ The table defined the report's data format
 
 # 依赖
 [the_role](https://github.com/yigexiangfa/the_role)
+
+## License
+The gem is available as open source under the terms of the [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).

@@ -1,4 +1,4 @@
-App.cable.subscriptions.create('DoneChannel', {
+ApplicationCable.subscriptions.create('DoneChannel', {
   received: function(data) {
     var c_id = '#done_' + data.done_id;
     var collection = $(c_id);

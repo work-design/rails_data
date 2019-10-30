@@ -1,5 +1,4 @@
 require 'test_helper'
-
 class ReportListTest < ActiveSupport::TestCase
 
 

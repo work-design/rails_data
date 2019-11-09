@@ -4,7 +4,7 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
   def index
     q_params = {
       type: 'DataExport'
-    }.with_indifferent_access
+    }
     q_params.merge! params.permit(:type)
     @data_lists = DataList.default_where(q_params)
   end

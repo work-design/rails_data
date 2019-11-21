@@ -5,7 +5,7 @@
 </div>
 
 <div class="ui segment">
-  <%= default_form_with url: columns_data_record_record_list_path(@data_record), method: :patch do |f| %>
+  <%= form_with url: columns_data_record_record_list_path(@data_record), method: :patch do |f| %>
     <% @record_list.columns.each do |k, v| %>
       <% if RailsData.config.mapping[@data_record.columns[k.to_sym].to_sym][:input] == 'array' %>
         <div class="inline fields">

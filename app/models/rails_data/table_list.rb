@@ -5,7 +5,11 @@ module RailsData::TableList
     attribute :parameters, :json, default: {}
     attribute :headers, :string, array: true, default: []
     attribute :footers, :string, array: true, default: []
-  
+    attribute :table_items_count, :integer, default: 0
+    attribute :timestamp, :string
+    attribute :done, :boolean
+    attribute :published, :boolean
+    
     belongs_to :data_list, optional: true
     has_many :table_items, dependent: :delete_all
   end

@@ -3,6 +3,8 @@ module RailsData::RecordList
   included do
     attribute :columns, :json
     attribute :parameters, :json
+    attribute :done, :boolean, default: false
+    
     belongs_to :data_list
 
     default_scope -> { order(id: :desc) }

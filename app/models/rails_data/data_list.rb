@@ -2,8 +2,14 @@ require 'rails_com/utils/setting'
 module RailsData::DataList
   extend ActiveSupport::Concern
   included do
+    attribute :title, :string
+    attribute :comment, :string, limit: 4096
+    attribute :type, :string
     attribute :parameters, :json, default: {}
     attribute :columns, :json, default: {}
+    attribute :data_table, :string
+    attribute :export_excel, :string
+    attribute :export_pdf, :string
 
     has_many :table_lists, dependent: :destroy
     has_many :table_items, through: :table_lists

@@ -1,4 +1,4 @@
-module RailsData::TableItem
+module RailsData::RecordItem
   extend ActiveSupport::Concern
   included do
     attribute :fields, :string, array: true

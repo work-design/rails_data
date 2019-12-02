@@ -1,4 +1,4 @@
-<% form_object = default_form_object(@data_record, on: { wrapper_id: true }) %>
+<% form_object = form_object(@data_record, on: { wrapper_id: true }) %>
 
 var template = '<%= j(render partial: 'item_form', locals: { f: form_object }) %>'
 $('#parameters_<%= params[:index].to_i - 1 %>').after(template);

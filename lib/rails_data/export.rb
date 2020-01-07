@@ -6,9 +6,7 @@ module RailsData::Export
   #   column :name, header: 'My name', field: -> {}
   #   column :email, header: 'Email', field: -> {}
   # end
-  attr_reader :collection,
-              :columns,
-              :parameters
+  attr_reader :collection, :columns, :parameters
 
   def config(*args, &block)
     block.call(*args) if block_given?

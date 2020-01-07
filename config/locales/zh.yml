@@ -1,8 +1,13 @@
 zh:
-  admin:
-    data_lists:
-      index:
-        new: 新增
+  datum:
+    admin:
+      data_lists:
+        index:
+          new: 新增
+      table_lists:
+        table:
+          csv: 下载 CSV 文件
+          excel: 下载 Excel 文件
   activerecord:
     enum:
       data_list:

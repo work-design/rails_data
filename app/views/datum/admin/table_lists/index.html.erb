@@ -29,7 +29,7 @@
     <tr>
       <td><%= table_list.id %></td>
       <td><%= simple_format_hash(table_list.parameters) %></td>
-      <td><%= table_list.headers.to_csv %></td>
+      <td><%= table_list.headers %></td>
       <td><%= table_list.timestamp %></td>
       <td id="done_<%= table_list.id %>">
         <% if table_list.done %>

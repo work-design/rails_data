@@ -12,7 +12,7 @@ module RailsData
 
     config.inflector = :titleize
     config.method_name = :report
-    config.admin_class = 'AdminController'
+    config.admin_controller = 'AdminController'
     config.mapping.date = { input: 'date', output: 'to_date' }
     config.mapping.integer = { input: 'number', output: 'to_i' }
     config.mapping.string = { input: 'text', output: 'to_s' }

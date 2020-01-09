@@ -1,7 +1,7 @@
 class Datum::Admin::TableListsController < Datum::Admin::BaseController
   before_action :set_data_list
   before_action :set_table_list, only: [:show, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
-  skip_before_action :require_role
+  #skip_before_action :require_role
   #before_action do |controller|
   #  controller.require_role(params[:data_list_id])
   #end

@@ -1,9 +1,9 @@
 require 'test_helper'
-class ReportListTest < ActiveSupport::TestCase
+class DataListTest < ActiveSupport::TestCase
 
 
   test 'create_model' do
-    report_list = create :report_list
+    report_list = create :data_list
   end
 
 end

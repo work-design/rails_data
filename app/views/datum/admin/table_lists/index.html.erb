@@ -1,6 +1,6 @@
 <% content_for :breadcrumb do %>
 <div class="ui segment breadcrumb">
-  <%= link_to 'back', data_lists_path(type: @data_list.type), class: 'section' %>
+  <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path(type: @data_list.type), class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
   <div class="section">Table lists</div>
 </div>
@@ -28,8 +28,8 @@
   <% @table_lists.each do |table_list| %>
     <tr>
       <td><%= table_list.id %></td>
-      <td><%= simple_format_hash(table_list.parameters) %></td>
-      <td><%= table_list.headers %></td>
+      <td><%= simple_format(table_list.parameters) %></td>
+      <td><%= table_list.headers.join(',') %></td>
       <td><%= table_list.timestamp %></td>
       <td id="done_<%= table_list.id %>">
         <% if table_list.done %>

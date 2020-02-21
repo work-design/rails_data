@@ -3,9 +3,9 @@
   <i class="fas fa-angle-right divider"></i>
   <%= link_to 'Table List', data_list_table_lists_path(@data_list), class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
-  <div class="section"></div>
+  <%= link_to @table_list.headers.join(','), data_list_table_list_path(@data_list, @table_list), class: 'section' %>
+  <i class="fas fa-angle-right divider"></i>
+  <div class="section"><%= t('.title') %></div>
 </div>
-
-<%= render partial: 'table', locals: { remote: false } %>
 
 <div id="chart" data-url="<%= data_list_table_list_path(@data_list, @table_list) %>" data-columns="创建时间,邀请人"></div>

@@ -1,9 +1,3 @@
-if ($('.ui.modals').length === 0) {
-  $('body').append('<%= j(render 'edit_columns') %>');
-} else {
-  $('.ui.modals').html('<%= j(render 'edit_columns') %>');
-}
-
-
-$('.ui.modal').modal('setting', {autofocus: false}).modal('show');
-$('#columns_main').dropdown();
+$('#modal').replaceWith('<%= j(render 'show') %>')
+$('#modal').modal('setting', {autofocus: false}).modal('show')
+$('#columns_main').dropdown()

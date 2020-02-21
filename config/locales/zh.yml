@@ -3,8 +3,13 @@ zh:
     admin:
       data_lists:
         index:
+          title: 所有报表
           new: 新增
       table_lists:
+        index:
+          title: 数据列表
+        chart:
+          title: 图表
         table:
           csv: 下载 CSV 文件
           excel: 下载 Excel 文件

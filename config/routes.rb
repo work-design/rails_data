@@ -2,32 +2,47 @@ Rails.application.routes.draw do
 
   scope module: 'datum/admin' do
     resources :data_lists do
-      get :add_item, on: :collection
-      get :remove_item, on: :collection
-      put :update_publish, on: :member
-      patch :rebuild, on: :member
+      collection do
+        get :add_item
+        get :remove_item
+      end
+      member do
+        put :update_publish
+        patch :rebuild
+      end
       resources :table_lists do
-        get :find, on: :collection
-        get :direct, on: :collection
-        get 'import' => :new_import, on: :collection
-        post 'import' => :create_import, on: :collection
-        get :row, on: :member
-        patch :run, on: :member
-        get :xlsx, on: :member
-        patch :migrate, on: :member
+        collection do
+          get :find
+          get :direct
+          get 'import' => :new_import
+          post 'import' => :create_import
+        end
+        member do
+          get :chart
+          get :row
+          get :xlsx
+          patch :run
+          patch :migrate
+        end
       end
     end
 
     resources :data_records do
-      get :add_item, on: :collection
-      get :remove_item, on: :collection
-      patch :rebuild, on: :member
+      collection do
+        get :add_item
+        get :remove_item
+      end
+      member do
+        patch :rebuild
+      end
       resources :record_lists do
         get :find, on: :collection
-        get :row, on: :member
-        patch :run, on: :member
-        get 'columns' => :edit_columns, on: :member
-        patch 'columns' => :update_columns, on: :member
+        member do
+          get :row
+          patch :run
+          get 'columns' => :edit_columns
+          patch 'columns' => :update_columns
+        end
       end
     end
   end

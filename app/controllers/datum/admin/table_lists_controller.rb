@@ -1,6 +1,6 @@
 class Datum::Admin::TableListsController < Datum::Admin::BaseController
   before_action :set_data_list
-  before_action :set_table_list, only: [:show, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
+  before_action :set_table_list, only: [:show, :chart, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
   #skip_before_action :require_role
   #before_action do |controller|
   #  controller.require_role(params[:data_list_id])
@@ -61,6 +61,10 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
     end
   end
 
+  def chart
+    @table_items = @table_list.table_items.page(params[:page]).per(100)
+  end
+
   def edit
   end
 
@@ -70,9 +74,7 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
   end
 
   def row
-    send_data @table_list.to_row_pdf.render,
-              filename: @table_list.pdf_file_name,
-              type: 'application/pdf'
+    send_data @table_list.to_row_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf'
   end
 
   def xlsx
@@ -87,7 +89,6 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
 
   def destroy
     @table_list.destroy
-    redirect_to data_list_table_lists_url(@data_list), notice: 'Export file was successfully destroyed.'
   end
 
   private

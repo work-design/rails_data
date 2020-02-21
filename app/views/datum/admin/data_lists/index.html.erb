@@ -13,7 +13,7 @@
       <th colspan="2">Export</th>
       <th><%= DataList.human_attribute_name(:parameters) %></th>
       <th>
-        <%= link_to new_data_list_path(type: params[:type]), class: 'ui mini teal button' do %>
+        <%= link_to new_data_list_path(type: params[:type]), remote: true, class: 'ui mini teal button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -34,7 +34,7 @@
         <%= link_to data_list_table_lists_path(data_list), data: { tooltip: t('.show') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-eye"></i>
         <% end %>
-        <%= link_to edit_data_list_path(data_list), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_data_list_path(data_list), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
         <%= link_to data_list_path(data_list), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>

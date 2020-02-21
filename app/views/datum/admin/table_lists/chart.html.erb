@@ -8,4 +8,4 @@
 
 <%= render partial: 'table', locals: { remote: false } %>
 
-<div id="chart"></div>
+<div id="chart" data-url="<%= data_list_table_list_path(@data_list, @table_list) %>" data-columns="创建时间,邀请人"></div>

@@ -50,6 +50,20 @@ module RailsData::TableList
     csv
   end
 
+  def export_json(*columns)
+    indexes = {}
+    columns.each { |column| indexes.merge! column => headers.index(column) }
+    indexes.compact!
+
+    table_items.map do |table_item|
+      r = {}
+      indexes.each do |column, index|
+        r.merge! column => table_item.fields[index]
+      end
+      r
+    end
+  end
+
   def cached_run(_timestamp = nil)
     unless self.timestamp.present? && self.timestamp == _timestamp.to_s
       self.timestamp = _timestamp

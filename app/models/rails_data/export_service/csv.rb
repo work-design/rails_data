@@ -12,13 +12,6 @@ class RailsData::ExportService::Csv
   end
 
 
-  def to_csv
-    csv = ''
-    csv << headers.to_csv
-    self.table_items.each do |table_item|
-      csv << table_item.fields.to_csv
-    end
-    csv
-  end
+  
 
 end

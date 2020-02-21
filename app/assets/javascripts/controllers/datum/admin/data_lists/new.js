@@ -1,1 +1,1 @@
-$('#data_list_type').dropdown();
+$('#data_list_type').dropdown()

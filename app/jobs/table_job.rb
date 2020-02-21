@@ -1,4 +1,4 @@
-class TableJob < ActiveJob::Base
+class TableJob < ApplicationJob
   queue_as :default
 
   def perform(table_list_id, user_id)

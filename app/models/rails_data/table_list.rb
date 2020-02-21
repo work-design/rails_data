@@ -1,3 +1,4 @@
+require 'csv'
 module RailsData::TableList
   extend ActiveSupport::Concern
   included do
@@ -9,11 +10,11 @@ module RailsData::TableList
     attribute :timestamp, :string
     attribute :done, :boolean
     attribute :published, :boolean
-    
+
     belongs_to :data_list, optional: true
     has_many :table_items, dependent: :delete_all
   end
-  
+
   def run
     clear_old
     export = DataCacheService.new(self)
@@ -29,6 +30,24 @@ module RailsData::TableList
   def cached_xlsx
     export = RailsData::ExportService::Xlsx.new(table_list: self)
     export.cached_xlsx
+  end
+
+  def to_ary
+    ary = []
+    ary << headers
+    table_items.each do |table_item|
+      ary << table_item.fields
+    end
+    ary
+  end
+
+  def to_csv
+    csv = ''
+    csv << headers.to_csv
+    self.table_items.each do |table_item|
+      csv << table_item.fields.to_csv
+    end
+    csv
   end
 
   def cached_run(_timestamp = nil)

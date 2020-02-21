@@ -1,11 +1,6 @@
 <div class="ui top attached menu borderless">
   <div class="item header">Data List</div>
   <%= link_to 'Record', data_records_path, class: active_helper(controllers: 'data_records') %>
-  <div class="right menu">
-    <div class="item">
-      <%= link_to 'New', new_data_record_path, class: 'ui teal button' %>
-    </div>
-  </div>
 </div>
 
 <table class="ui bottom attached table">
@@ -24,7 +19,11 @@
     <th>Parameters</th>
     <th>Columns</th>
     <th></th>
-    <th>Actions</th>
+    <th>
+      <%= link_to new_data_record_path, remote: true, class: 'ui teal button' do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </th>
   </tr>
   </thead>
 

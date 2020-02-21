@@ -14,19 +14,6 @@ And It can transfer data to many format, Like: csv, pdf, html, xml and more.
 
 ## Getting Started
 
-#### step-1: Add one_report to you Gemfile:
-
-```ruby
-gem 'rails_data'
-```
-
-#### step-2: Run migrations
-
-```bash
-rake the_auth_engine:install:migrations
-rake db:migrate
-```
-
 ## How to use
 
 #### step-1: Define table
@@ -38,7 +25,7 @@ The table defined the report's data format
 [Define report pdf style](docs/define-pdf-style)
 
 # 依赖
-[the_role](https://github.com/yigexiangfa/the_role)
+[rails_role](https://github.com/work-design/rails_role)
 
 ## License
 License 采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).

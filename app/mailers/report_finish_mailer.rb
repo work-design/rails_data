@@ -1,5 +1,4 @@
-class ReportFinishMailer < ActionMailer::Base
-  default from: ""
+class ReportFinishMailer < ApplicationMailer
 
   def finish_notify(id)
     @report_list = ReportList.find(id)
@@ -11,7 +10,7 @@ class ReportFinishMailer < ActionMailer::Base
       @email = 'mingyuan0715@foxmail.com'
     end
 
-    mail to: @email, subject: "Generation Complete"
+    mail to: @email, subject: 'Generation Complete'
   end
 
 end

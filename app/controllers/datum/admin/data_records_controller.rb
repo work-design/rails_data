@@ -44,7 +44,6 @@ class Datum::Admin::DataRecordsController < Datum::Admin::BaseController
 
   def destroy
     @data_record.destroy
-    redirect_to data_records_url, notice: 'Export file was successfully destroyed.'
   end
 
   private

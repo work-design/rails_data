@@ -5,10 +5,10 @@
   </div>
 
   <div class="content">
-    <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list), locale: true do |f| %>
+    <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list) do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
       <% @data_list.form_parameters.each_with_index do |parameter, index| %>
-      <%= f.fields :parameters, model: parameter, index: index, on: { wrapper_all: false, label: false, placeholder: true }, css: { wrapper_input: 'two wide field' } do |pf| %>
+      <%= f.fields :parameters, model: parameter, index: index, on: { wrap_all: false, label: false, placeholder: true }, css: { wrap_input: 'two wide field' } do |pf| %>
         <div class="inline fields" id="parameters_<%= index %>">
           <%= f.label :form_parameters %>
           <%= pf.text_field :key, value: parameter.key %>

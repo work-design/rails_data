@@ -3,6 +3,7 @@ module RailsData::Export
   # extend RailsData::Export
   # config do
   #   collect -> (params) { User.default_where(params) }
+  #   primary :date, header: 'Date'
   #   column :name, header: 'My name', field: -> {}
   #   column :email, header: 'Email', field: -> {}
   # end
@@ -21,11 +22,16 @@ module RailsData::Export
     end
   end
 
+  # will use for x field with chart
+  def primary(name, header: nil, field: nil, footer: nil)
+    column(name, header: header, field: field, footer: footer)
+  end
+
   def column(name, header: nil, field: nil, footer: nil)
     @columns ||= {}
     name = name.to_sym
 
-    if @columns.keys.include?(name)
+    if @columns.key?(name)
       warn 'The column is repeated'
     end
 

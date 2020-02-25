@@ -59,7 +59,7 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
         columns = params[:columns].to_s.split(',').presence || @table_list.headers
         render json: @table_list.export_json(*columns)
       }
-      format.csv { send_data @table_list.to_csv, filename: @table_list.csv_file_name, type: 'application/csv' }
+      format.csv { send_data @table_list.export_csv, filename: @table_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @table_list.to_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf' }
       format.xlsx { send_data @table_list.cached_xlsx, filename: @table_list.file_name(self.formats[0]), type: 'application/xlsx' }
     end

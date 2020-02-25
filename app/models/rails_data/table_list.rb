@@ -32,7 +32,7 @@ module RailsData::TableList
     export.cached_xlsx
   end
 
-  def to_ary
+  def export_ary
     ary = []
     ary << headers
     table_items.each do |table_item|
@@ -41,7 +41,7 @@ module RailsData::TableList
     ary
   end
 
-  def to_csv
+  def export_csv
     csv = ''
     csv << headers.to_csv
     self.table_items.each do |table_item|

@@ -29,7 +29,7 @@
 
   <tbody>
   <% @data_records.each do |data_record| %>
-    <% if the_role_user.has_role?('the_data/data_records', 'read', data_record.id) %>
+    <% if rails_role_user.has_role?('rails_data/data_records', 'read', data_record.id) %>
     <tr>
       <td><%= data_record.id %></td>
       <td>
@@ -44,10 +44,10 @@
       <td><%= simple_format_hash(data_record.parameters) %></td>
       <td><%= simple_format_hash(data_record.columns) %></td>
       <td><%= link_to 'record list', data_record_record_lists_path(data_record) %></td>
-      <td class="ui labels">
-        <%= link_to 'Edit', edit_data_record_path(data_record), class: 'ui green label' %>
-        <%= link_to 'Rebuild', rebuild_data_record_path(data_record), method: :patch, data: { confirm: 'Confirm' }, class: 'ui blue label' %>
-        <%= link_to 'Delete', data_record_path(data_record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+      <td>
+        <%= link_to 'Edit', edit_data_record_path(data_record), remote: true, class: 'ui green label' %>
+        <%= link_to 'Rebuild', rebuild_data_record_path(data_record), method: :patch, data: { confirm: t('.confirm') }, remote: true, class: 'ui blue label' %>
+        <%= link_to 'Delete', data_record_path(data_record), method: :delete, data: { confirm: t('.confirm') }, remote: true, class: 'ui red label' %>
       </td>
     </tr>
     <% end %>

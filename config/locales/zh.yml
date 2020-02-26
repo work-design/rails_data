@@ -19,3 +19,7 @@ zh:
         type:
           DataImport: 导入
           DataExport: 导出
+    attributes:
+      data_list:
+        title: 标题
+        comment: 评论

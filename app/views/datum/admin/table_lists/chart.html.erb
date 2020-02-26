@@ -1,7 +1,7 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Data List', data_lists_path, class: 'section' %>
+  <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
-  <%= link_to 'Table List', data_list_table_lists_path(@data_list), class: 'section' %>
+  <%= link_to t('datum.admin.table_lists.index.title'), data_list_table_lists_path(@data_list), class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
   <%= link_to @table_list.headers.join(','), data_list_table_list_path(@data_list, @table_list), class: 'section' %>
   <i class="fas fa-angle-right divider"></i>

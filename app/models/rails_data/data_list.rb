@@ -7,6 +7,7 @@ module RailsData::DataList
     attribute :type, :string
     attribute :parameters, :json, default: {}
     attribute :columns, :json, default: {}
+    attribute :x_field, :string
     attribute :data_table, :string
     attribute :export_excel, :string
     attribute :export_pdf, :string
@@ -33,13 +34,10 @@ module RailsData::DataList
   end
 
   def update_parameters
-    self.parameters = config_params
-  end
-
-  def config_params
-    hash = {}
-    config_table.parameters.map { |p| hash[p] = nil }
-    hash
+    config_table.parameters.each do |p|
+      self.parameters[p] = nil
+    end
+    self.x_field = config_table.x_field
   end
 
   def config_table

@@ -1,4 +1,4 @@
-<div class="ui top attached menu borderless">
+<div class="ui menu">
   <div class="header item">TableID:<%= @table_list.id %></div>
   <div class="right menu">
     <%= link_to 'Migrate', migrate_data_list_table_list_path(@data_list, @table_list), method: :patch, class: 'item ui button' if @table_list.data_list.is_a?(DataImport) %>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<table class="ui celled red bottom attached fixed table">
+<table class="ui bottom attached celled fixed table">
   <thead>
     <tr>
       <% @table_list.headers.each do |header| %>

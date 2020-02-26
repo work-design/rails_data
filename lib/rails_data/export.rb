@@ -3,11 +3,11 @@ module RailsData::Export
   # extend RailsData::Export
   # config do
   #   collect -> (params) { User.default_where(params) }
-  #   primary :date, header: 'Date'
+  #   def_x_column :date, header: 'Date'
   #   column :name, header: 'My name', field: -> {}
   #   column :email, header: 'Email', field: -> {}
   # end
-  attr_reader :collection, :columns, :parameters
+  attr_reader :collection, :x_field, :columns, :parameters
 
   def config(*args, &block)
     block.call(*args) if block_given?
@@ -23,7 +23,11 @@ module RailsData::Export
   end
 
   # will use for x field with chart
-  def primary(name, header: nil, field: nil, footer: nil)
+  def x_column(name, header: nil, field: nil, footer: nil)
+    if @x_field.present?
+      warn 'The x column is present'
+    end
+    @x_field = name.to_sym
     column(name, header: header, field: field, footer: footer)
   end
 

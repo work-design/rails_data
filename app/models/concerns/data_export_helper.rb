@@ -1,4 +1,8 @@
 module DataExportHelper
+  extend ActiveSupport::Concern
+  included do
+    attr_reader :params, :config_table
+  end
 
   def convert_parameters(parameters)
     @params = {}

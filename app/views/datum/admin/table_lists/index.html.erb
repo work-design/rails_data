@@ -2,23 +2,25 @@
 <div class="ui segment breadcrumb">
   <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path(type: @data_list.type), class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
-  <div class="section">Table lists</div>
+  <div class="section"><%= t('.title') %></div>
 </div>
 <% end %>
 
 <table class="ui table">
   <thead>
     <tr>
-      <th class="one wide">ID</th>
-      <th class="two wide">Parameters</th>
-      <th class="eight wide">Headers</th>
+      <th class="one wide"><%= TableList.human_attribute_name(:id) %></th>
+      <th class="two wide"><%= TableList.human_attribute_name(:parameters) %></th>
+      <th class="eight wide"><%= TableList.human_attribute_name(:headers) %></th>
       <th class="one wide"><%= TableList.human_attribute_name(:timestamp) %></th>
-      <th class="one wide">Done</th>
+      <th class="one wide"><%= TableList.human_attribute_name(:done) %></th>
       <th class="three wide">
         <% if @data_list.type == 'DataImport' %>
           <%= link_to 'Import', import_data_list_table_lists_path(@data_list), remote: true, class: 'ui blue button' %>
         <% else %>
-          <%= link_to 'New', new_data_list_table_list_path(@data_list), remote: true, class: 'ui teal button' %>
+          <%= link_to new_data_list_table_list_path(@data_list), remote: true, class: 'ui teal button' do %>
+            <i class="fas fa-plus"></i><%= t('.new') %>
+          <% end %>
         <% end %>
       </th>
     </tr>

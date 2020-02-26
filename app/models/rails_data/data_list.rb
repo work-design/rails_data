@@ -20,6 +20,7 @@ module RailsData::DataList
   end
 
   def rebuild!
+    update_parameters
     self.save
   end
 

@@ -53,14 +53,10 @@ module RailsData::TableList
   end
 
   def export_json(*columns)
-    indexes = {}
-    columns.each { |column| indexes.merge! column => headers.index(column) }
-    indexes.compact!
-
     table_items.map do |table_item|
       r = {}
-      indexes.each do |column, index|
-        r.merge! column => table_item.fields[index]
+      columns.each do |column|
+        r.merge! column => table_item.keyed_fields[column.to_s]
       end
       r
     end

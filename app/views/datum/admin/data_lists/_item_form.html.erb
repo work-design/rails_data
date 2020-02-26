@@ -1,14 +1,14 @@
 <div class="inline fields" id="parameters_<%= params[:index] %>">
   <label class="six wide field"></label>
   <%= f.fields :parameters, index: params[:index], on: { wrap_all: false, label: false, placeholder: true }, css: { wrap_input: 'two wide field' } do |pf| %>
-    <%= pf.text_field :key %>
+    <%= pf.text_field :column %>
     <%= pf.select :value, options_for_select(RailsData.config.mapping.keys), class: 'ui dropdown selection' %>
     <div class="field">
       <%= link_to add_item_data_lists_path(index: params[:index].to_i + 1), remote: true do %>
-        <i class="plus circle icon"></i>
+        <i class="fas fa-plus"></i>
       <% end %>
       <%= link_to remove_item_data_lists_path(index: params[:index].to_i), remote: true do %>
-        <i class="minus circle icon"></i>
+        <i class="fas fa-minus"></i>
       <% end %>
     </div>
   <% end %>

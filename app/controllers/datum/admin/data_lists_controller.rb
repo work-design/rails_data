@@ -67,9 +67,9 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
       :data_table,
       :export_excel,
       :export_pdf,
-      parameters: [:key, :value]
+      parameters: [:column, :value]  #todo key is original method of hash
     )
-    _params = result['parameters']&.values&.map { |i|  {i['key'] => i['value'] } }
+    _params = result['parameters']&.values&.map { |i|  {i['column'] => i['value'] } }
     _params = Array(_params).to_combine_h
     result['parameters'] = _params
     result

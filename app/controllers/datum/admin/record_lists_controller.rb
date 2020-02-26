@@ -1,10 +1,10 @@
 class Datum::Admin::RecordListsController < Datum::Admin::BaseController
   before_action :set_data_record
   before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
-  skip_before_action :require_role
-  before_action do |controller|
-    controller.require_role(params[:data_record_id])
-  end
+  # skip_before_action :require_role
+  # before_action do |controller|
+  #   controller.require_role(params[:data_record_id])
+  # end
 
   def index
     extra_params = params.fetch(:q, {}).permit(@data_record.parameters.keys)

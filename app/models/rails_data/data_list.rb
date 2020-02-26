@@ -30,7 +30,7 @@ module RailsData::DataList
     if r.blank?
       r = [{ key: nil, value: nil }]
     end
-    Settings.new(r)
+    RailsCom::Settings.new(r)
   end
 
   def update_parameters

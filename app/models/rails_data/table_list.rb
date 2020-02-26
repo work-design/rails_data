@@ -4,7 +4,9 @@ module RailsData::TableList
   included do
     include DataImportHelper
     attribute :parameters, :json, default: {}
+    attribute :keyed_headers, :json, default: {}
     attribute :headers, :string, array: true, default: []
+    attribute :keyed_footers, :json, default: {}
     attribute :footers, :string, array: true, default: []
     attribute :table_items_count, :integer, default: 0
     attribute :timestamp, :string

@@ -13,30 +13,30 @@ module DataExportHelper
   end
 
   def header_result
-    results = []
+    results = {}
 
-    @config_table.columns.each do |_, column|
+    @config_table.columns.each do |key, column|
       if column[:header].respond_to?(:call)
-        results << column[:header].call
+        results[key] = column[:header].call
       else
-        results << column[:header]
+        results[key] = column[:header]
       end
     end
     results
   end
 
   def field_result(object, index)
-    results = []
-    @config_table.columns.each do |_, column|
+    results = {}
+    @config_table.columns.each do |key, column|
       params = column[:field].parameters.to_array_h.to_combine_h
       if Array(params[:key]).include? :index
-        results << column[:field].call(object, index)
+        results[key] = column[:field].call(object, index)
       elsif params[:key]
-        results << column[:field].call(object, **@params.slice(params[:key]))
+        results[key] = column[:field].call(object, **@params.slice(params[:key]))
       elsif params[:key].blank? && params[:req]
-        results << column[:field].call(object)
+        results[key] = column[:field].call(object)
       else
-        results << nil
+        results[key] = nil
       end
     end
 
@@ -44,13 +44,13 @@ module DataExportHelper
   end
 
   def footer_result
-    results = []
+    results = {}
 
-    @config_table.columns.each do |_, column|
+    @config_table.columns.each do |key, column|
       if column[:footer].respond_to?(:call)
-        results << column[:footer].call
+        results[key] = column[:footer].call
       else
-        results << column[:footer]
+        results[key] = column[:footer]
       end
     end
     results

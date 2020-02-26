@@ -1,9 +1,9 @@
 import { Line } from '@antv/g2plot'
 
 const chart = document.getElementById('chart')
-const url = new URL(location)
-url.pathname = url.pathname.replace(/\/chart$/, '')
-url.searchParams.set('columns', chart.dataset.columns)
+const url = chart.dataset.url
+const params = new URLSearchParams(location.search.substring(1))
+
 fetch(url, {
   headers: {
     'Accept': 'application/json'
@@ -11,8 +11,8 @@ fetch(url, {
 }).then((res) => res.json()).then((data) => {
   const linePlot = new Line('chart', {
     data,
-    xField: '创建时间',
-    yField: '邀请人'
+    xField: params.get('x_field'),
+    yField: params.get('column')
   })
   linePlot.render()
 })

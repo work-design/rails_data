@@ -10,8 +10,8 @@
 <table class="ui bottom attached celled fixed table">
   <thead>
     <tr>
-      <% @table_list.headers.each do |header| %>
-        <th><%= header %></th>
+      <% @table_list.keyed_headers.each do |col, header| %>
+        <th><%= link_to header, chart_data_list_table_list_path(x_field: @table_list.data_list.x_field, column: col) %></th>
       <% end %>
     </tr>
   </thead>

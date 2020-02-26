@@ -62,6 +62,10 @@ module RailsData::TableList
     end
   end
 
+  def export_chart_json(column)
+    export_json(data_list.x_field, column)
+  end
+
   def cached_run(_timestamp = nil)
     unless self.timestamp.present? && self.timestamp == _timestamp.to_s
       self.timestamp = _timestamp

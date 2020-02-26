@@ -56,8 +56,8 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
     respond_to do |format|
       format.html
       format.json {
-        columns = params[:columns].to_s.split(',').presence || @table_list.headers
-        render json: @table_list.export_json(*columns)
+        #columns = params[:columns].to_s.split(',').presence || @table_list.headers
+        render json: @table_list.export_chart_json(params[:column])
       }
       format.csv { send_data @table_list.export_csv, filename: @table_list.csv_file_name, type: 'application/csv' }
       format.pdf { send_data @table_list.to_pdf.render, filename: @table_list.pdf_file_name, type: 'application/pdf' }

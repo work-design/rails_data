@@ -88,7 +88,8 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
   end
 
   def run
-    TableJob.perform_later(@table_list.id, current_user&.id)
+    user_id = defined?(current_user) && current_user&.id
+    TableJob.perform_later(@table_list.id, user_id)
   end
 
   def destroy

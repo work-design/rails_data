@@ -22,7 +22,7 @@
 
   <tbody>
   <% @data_lists.each do |data_list| %>
-    <% if rails_role_user.has_role?('datum/admin/data_lists', 'read', data_list.id) %>
+    <% if !defined?(rails_role_user) || rails_role_user.has_role?('datum/admin/data_lists', 'read', data_list.id) %>
     <tr>
       <td><%= data_list.title %></td>
       <td><%= data_list.comment %></td>

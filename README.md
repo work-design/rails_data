@@ -30,7 +30,7 @@ The table defined the report's data format
 [Define report pdf style](docs/define-pdf-style)
 
 # 依赖
-[rails_role](https://github.com/work-design/rails_role)
+[rails_com](https://github.com/work-design/rails_com)
 
 ## License
 License 采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).

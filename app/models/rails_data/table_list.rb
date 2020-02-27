@@ -4,9 +4,7 @@ module RailsData::TableList
   included do
     include DataImportHelper
     attribute :parameters, :json, default: {}
-    attribute :keyed_headers, :json, default: {}
     attribute :headers, :string, array: true, default: []
-    attribute :keyed_footers, :json, default: {}
     attribute :footers, :string, array: true, default: []
     attribute :table_items_count, :integer, default: 0
     attribute :timestamp, :string
@@ -53,17 +51,21 @@ module RailsData::TableList
   end
 
   def export_json(*columns)
+    indexes = {}
+    columns.each { |column| indexes.merge! column => headers.index(column) }
+    indexes.compact!
+
     table_items.map do |table_item|
       r = {}
-      columns.each do |column|
-        r.merge! column => table_item.keyed_fields[column.to_s]
+      indexes.each do |column, index|
+        r.merge! column => table_item.fields[index]
       end
       r
     end
   end
 
   def export_chart_json(column)
-    export_json(data_list.x_field, column)
+    export_json(headers[data_list.x_position], column)
   end
 
   def cached_run(_timestamp = nil)

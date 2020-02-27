@@ -7,7 +7,7 @@ module RailsData::Export
   #   column :name, header: 'My name', field: -> {}
   #   column :email, header: 'Email', field: -> {}
   # end
-  attr_reader :collection, :x_field, :columns, :parameters
+  attr_reader :collection, :columns, :parameters
 
   def config(*args, &block)
     block.call(*args) if block_given?
@@ -22,38 +22,17 @@ module RailsData::Export
     end
   end
 
-  # will use for x field with chart
-  def x_column(name, header: nil, field: nil, footer: nil)
-    if @x_field.present?
-      warn 'The x column is present'
-    end
-    @x_field = name.to_sym
-    column(name, header: header, field: field, footer: footer)
-  end
+  # x_axis: will use for x field with chart
+  def column(header:, field: nil, footer: nil, x_axis: false)
+    @columns ||= []
+    col = {}
 
-  def column(name, header: nil, field: nil, footer: nil)
-    @columns ||= {}
-    name = name.to_sym
+    col[:header] = header
+    col[:field] = field
+    col[:footer] = footer if footer
+    col[:x_axis] = true if x_axis
 
-    if @columns.key?(name)
-      warn 'The column is repeated'
-    end
-
-    @columns[name] = {}
-
-    if header.nil?
-      @columns[name][:header] = name.titleize
-    else
-      @columns[name][:header] = header
-    end
-    @columns[name][:field] = field
-    @columns[name][:footer] = footer if footer
-
-    if field.respond_to?(:call)
-      _params = field.parameters.to_array_h.to_combine_h
-      @parameters << _params[:key] if _params[:key]
-    end
-
+    @columns << col
     self
   end
 

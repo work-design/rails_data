@@ -7,7 +7,7 @@ module RailsData::DataList
     attribute :type, :string
     attribute :parameters, :json, default: {}
     attribute :columns, :json, default: {}
-    attribute :x_field, :string
+    attribute :x_position, :integer
     attribute :data_table, :string
     attribute :export_excel, :string
     attribute :export_pdf, :string
@@ -37,7 +37,15 @@ module RailsData::DataList
     config_table.parameters.each do |p|
       self.parameters[p] = nil
     end
-    self.x_field = config_table.x_field
+    self.x_position = config_table.columns.index { |i| i[:x_axis] }
+  end
+
+  def convert_parameters
+    params = {}
+    parameters.each do |k, v|
+      params.merge! k.to_sym => v.send(RailsData.config.mapping[data_list.parameters[k].to_sym][:output])
+    end
+    params
   end
 
   def config_table

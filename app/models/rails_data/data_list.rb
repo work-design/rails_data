@@ -40,14 +40,6 @@ module RailsData::DataList
     self.x_position = config_table.columns.index { |i| i[:x_axis] }
   end
 
-  def convert_parameters
-    params = {}
-    parameters.each do |k, v|
-      params.merge! k.to_sym => v.send(RailsData.config.mapping[data_list.parameters[k].to_sym][:output])
-    end
-    params
-  end
-
   def config_table
     @config_table ||= data_table.to_s.safe_constantize
   end

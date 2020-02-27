@@ -21,7 +21,11 @@ module DataExportHelper
     results = []
 
     @config_table.columns.each do |column|
-      results << column[:field].call(object, *args)
+      if column[:field].arity == 1
+        results << column[:field].call(object)
+      else
+        results << column[:field].call(object, *args)
+      end
     end
 
     results

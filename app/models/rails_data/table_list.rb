@@ -21,6 +21,14 @@ module RailsData::TableList
     export.cache_table
   end
 
+  def convert_parameters
+    params = {}
+    parameters.each do |k, v|
+      params.merge! k.to_sym => v.send(RailsData.config.mapping[data_list.parameters[k].to_sym][:output])
+    end
+    params
+  end
+
   def direct_xlsx
     _headers = self.headers.presence || self.data_list.headers
     export = RailsData::ExportService::Xlsx.new(data_list: self.data_list, params: self.parameters, headers: _headers)

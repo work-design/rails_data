@@ -6,8 +6,8 @@
     <i class="dropdown icon"></i>
   </a>
   <div class="menu">
-    <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controller: 'data_lists') %>
-    <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controller: 'data_records') %>
+    <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controllers: 'data_lists') %>
+    <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controllers: 'data_records') %>
   </div>
 </div>
 <% end %>

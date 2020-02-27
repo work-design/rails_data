@@ -1,8 +1,8 @@
 require 'test_helper'
-
 class DataRecordsControllerTest < ActionDispatch::IntegrationTest
+ 
   setup do
-    @data_record = data_records(:one)
+    @data_record = create :data_record
   end
 
   test "should get index" do

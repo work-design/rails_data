@@ -1,8 +1,8 @@
 require 'test_helper'
-class Datum::Admin::ReportListsControllerTest < ActionDispatch::IntegrationTest
+class Datum::Admin::DataListsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @report_list = create :report_list
+    @data_list = create :data_list
   end
 
   test 'index ok' do
@@ -16,34 +16,34 @@ class Datum::Admin::ReportListsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'create report_list' do
+  test 'create data_list' do
     assert_difference('TableList.count') do
-      post :create, report_list: {  }
+      post :create, data_list: {  }
     end
 
-    assert_redirected_to report_list_path(assigns(:report_list))
+    assert_response :success
   end
 
-  test 'show report_list' do
-    get :show, id: @report_list
+  test 'show data_list' do
+    get :show, id: @data_list
     assert_response :success
   end
 
   test 'edit' do
-    get :edit, id: @report_list
+    get :edit, id: @data_list, xhr: true
     assert_response :success
   end
 
-  test 'update report_list' do
-    patch :update, id: @report_list, report_list: {  }
-    assert_redirected_to report_list_path(assigns(:report_list))
+  test 'update data_list' do
+    patch :update, id: @data_list, data_list: {  }
+    assert_response :success
   end
 
-  test 'destroy report_list' do
+  test 'destroy data_list' do
     assert_difference('TableList.count', -1) do
-      delete :destroy, id: @report_list
+      delete :destroy, id: @data_list
     end
 
-    assert_redirected_to report_lists_path
+    assert_response :success
   end
 end

@@ -34,6 +34,9 @@
         <%= link_to data_list_table_lists_path(data_list), data: { tooltip: t('.show') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-eye"></i>
         <% end %>
+        <%= link_to rebuild_data_list_path(data_list), method: :patch, data: { tooltip: t('.rebuild'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-recycle"></i>
+        <% end %>
         <%= link_to edit_data_list_path(data_list), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>

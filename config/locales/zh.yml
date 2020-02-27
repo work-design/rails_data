@@ -1,10 +1,15 @@
 zh:
   datum:
     admin:
+      title: 报表系统
       data_lists:
         index:
           title: 所有报表
-          new: 新增
+          rebuild: 重置参数
+      data_records:
+        index:
+          title: 报表
+          rebuild: 重置参数
       table_lists:
         index:
           title: 数据列表

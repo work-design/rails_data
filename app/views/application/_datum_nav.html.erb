@@ -1,9 +1,13 @@
-<div class="ui fluid vertical menu">
-  <div class="item">
-    <span>Report Management</span>
-    <div class="menu">
-      <%= link_to 'Report', data_lists_path, class: active_helper(controller: 'data_lists') %>
-      <%= link_to 'Record', data_records_path, class: active_helper(controller: 'data_records') %>
-    </div>
+<% if rails_role_user.any_role?('datum/admin') %>
+<div class="item">
+  <a class="<%= active_helper(modules: 'datum/admin', active_class: 'title active', item_class: 'title') %>">
+    <i class="fas fa-chart-bar"></i>
+    <span><%= t('datum.admin.title') %></span>
+    <i class="dropdown icon"></i>
+  </a>
+  <div class="menu">
+    <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controller: 'data_lists') %>
+    <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controller: 'data_records') %>
   </div>
 </div>
+<% end %>

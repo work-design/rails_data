@@ -1,8 +1,10 @@
 en:
-  admin:
-    data_lists:
-      index:
-        new: 新增
+  datum:
+    admin:
+      title: Report Management
+      data_lists:
+        index:
+          new: 新增
   activerecord:
     attributes:
       data_list/type:

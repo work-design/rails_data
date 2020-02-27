@@ -11,7 +11,12 @@
   <thead>
     <tr>
       <% @table_list.headers.each do |header| %>
-        <th><%= link_to header, chart_data_list_table_list_path(x_field: @table_list.x_field, column: header) %></th>
+        <th>
+          <%= header %>
+          <%= link_to chart_data_list_table_list_path(x_field: @table_list.x_field, column: header) do %>
+            <i class="fas fa-chart-line"></i>
+          <% end %>
+        </th>
       <% end %>
     </tr>
   </thead>

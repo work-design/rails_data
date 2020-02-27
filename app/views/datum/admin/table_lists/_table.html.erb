@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <% @table_list.headers.each do |header| %>
-        <th><%= link_to header, chart_data_list_table_list_path(x_field: header, column: header) %></th>
+        <th><%= link_to header, chart_data_list_table_list_path(x_field: @table_list.x_field, column: header) %></th>
       <% end %>
     </tr>
   </thead>

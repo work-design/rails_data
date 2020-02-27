@@ -64,8 +64,12 @@ module RailsData::TableList
     end
   end
 
+  def x_field
+    headers[data_list.x_position]
+  end
+
   def export_chart_json(column)
-    export_json(headers[data_list.x_position], column)
+    export_json(x_field, column)
   end
 
   def cached_run(_timestamp = nil)

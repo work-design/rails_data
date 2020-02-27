@@ -5,17 +5,11 @@ class RailsData::ExportService::Xlsx
               :table_list,
               :params, :headers
 
-  def initialize(table_list: nil, data_list: nil, params: {}, headers: [])
-    if table_list
-      @table_list = table_list
-      @data_list = table_list.data_list
-      @headers = headers.presence || table_list.headers
-      convert_parameters(params)
-    elsif data_list
-      @data_list = data_list
-      @headers = headers
-      convert_parameters(params)
-    end
+  def initialize(table_list:, params: {}, headers: [])
+    @table_list = table_list
+    @data_list = table_list.data_list
+    @headers = table_list.headers
+    @table_list.convert_parameters
     @config_table = @data_list.config_table
 
     @io = StringIO.new

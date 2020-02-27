@@ -1,6 +1,5 @@
 require 'prawn/table'
 class RailsData::ExportService::Pdf
-  include DataExportHelper
 
   def pdf
     if reportable.respond_to?(:pdf_object)

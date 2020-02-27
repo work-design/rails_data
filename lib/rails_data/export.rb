@@ -3,7 +3,7 @@ module RailsData::Export
   # extend RailsData::Export
   # config do
   #   collect -> (params) { User.default_where(params) }
-  #   def_x_column :date, header: 'Date'
+  #   column :date, header: 'Date', x_axis: true
   #   column :name, header: 'My name', field: -> {}
   #   column :email, header: 'Email', field: -> {}
   # end

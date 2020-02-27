@@ -30,7 +30,10 @@ The table defined the report's data format
 [Define report pdf style](docs/define-pdf-style)
 
 # 依赖
-[rails_com](https://github.com/work-design/rails_com)
+* [rails_com](https://github.com/work-design/rails_com)
+  * [default_where](https://github.com/qinmingyuan/default_where)
+  * [default_form](https://github.com/qinmingyuan/default_form)
 
-## License
-License 采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).
+## 许可证
+* [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
+如需闭源使用本项目，请联系作者

@@ -73,7 +73,7 @@ module RailsData::TableList
   end
 
   def x_field
-    headers[data_list.x_position]
+    headers[data_list.x_position] if data_list.x_position
   end
 
   def export_chart_json(column)

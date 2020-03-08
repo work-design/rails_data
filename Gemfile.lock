@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e4600e93de120cc2d3a49970f6f1606179f8aa06
+  revision: c55e73c74f188513b852393e12dfef7b31764303
   specs:
     default_form (1.5.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 56312b47fd52b15b39871e4d2a5a3ae7cb5f1176
+  revision: 2cceb52a6d47ec2bfa87475fc81244f3dd1cba92
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -245,4 +245,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.17.2
+   2.1.2

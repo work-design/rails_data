@@ -5,7 +5,7 @@
     <span><%= t('datum.admin.title') %></span>
     <i class="dropdown icon"></i>
   </a>
-  <div class="menu">
+  <div class="<%= active_helper(modules: ['datum/admin'], active_class: 'menu content active', item_class: 'menu content') %>">
     <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controllers: 'data_lists') %>
     <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controllers: 'data_records') %>
   </div>

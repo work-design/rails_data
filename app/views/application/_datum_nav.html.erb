@@ -1,5 +1,4 @@
-<% if rails_role_user.any_role?('datum/admin') %>
-<div class="item">
+<div class="item" data-controller="menu">
   <a class="<%= active_helper(modules: 'datum/admin', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-chart-bar"></i>
     <span><%= t('datum.admin.title') %></span>
@@ -10,4 +9,3 @@
     <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controllers: 'data_records') %>
   </div>
 </div>
-<% end %>

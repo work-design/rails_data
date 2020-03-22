@@ -1,7 +1,7 @@
 class Datum::Admin::RecordListsController < Datum::Admin::BaseController
   before_action :set_data_record
   before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
-  if wether_filter :require_role
+  if whether_filter :require_role
     skip_before_action :require_role
     before_action do |controller|
       controller.require_role(params[:data_record_id])

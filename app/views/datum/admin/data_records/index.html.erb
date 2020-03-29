@@ -45,13 +45,13 @@
       <td><%= simple_format_hash(data_record.columns) %></td>
       <td><%= link_to 'record list', data_record_record_lists_path(data_record) %></td>
       <td>
-        <%= link_to edit_data_record_path(data_record), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_data_record_path(data_record), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to rebuild_data_record_path(data_record), method: :patch, data: { tooltip: t('.rebuild'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to rebuild_data_record_path(data_record), method: :patch, aria: { label: t('.rebuild'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-recycle"></i>
         <% end %>
-        <%= link_to data_record_path(data_record), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to data_record_path(data_record), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-trash"></i>
         <% end %>
       </td>

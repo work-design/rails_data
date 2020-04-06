@@ -1,2 +1,1 @@
-$('#modal').replaceWith('<%= j(render 'show') %>')
-$('#modal').modal('setting', {autofocus: false}).modal('show')
+document.getElementById('modal').innerHTML = '<%= j(render 'find') %>'

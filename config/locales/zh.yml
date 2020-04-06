@@ -18,6 +18,8 @@ zh:
         table:
           csv: 下载 CSV 文件
           excel: 下载 Excel 文件
+        find:
+          title: 预览
   activerecord:
     enum:
       data_list:

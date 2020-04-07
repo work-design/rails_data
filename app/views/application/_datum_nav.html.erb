@@ -1,11 +1,11 @@
 <div class="<%= active_helper(modules: 'datum/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
+  <%= content_tag :div, class: 'menu-list' do -%>
+    <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controllers: 'data_lists') %>
+    <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controllers: 'data_records') %>
+  <% end %>
   <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-chart-bar"></i>
     <span><%= t('datum.admin.title') %></span>
     <i class="fas dropdown"></i>
   </a>
-  <div class="menu-list">
-    <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: active_helper(controllers: 'data_lists') %>
-    <%= link_to t('datum.admin.data_records.index.title'), data_records_path, class: active_helper(controllers: 'data_records') %>
-  </div>
 </div>

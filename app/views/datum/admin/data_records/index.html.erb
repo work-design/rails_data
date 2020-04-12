@@ -1,6 +1,8 @@
-<div class="ui top attached menu borderless">
-  <div class="item header">Data List</div>
-  <%= link_to 'Record', data_records_path, class: active_helper(controllers: 'data_records') %>
+<div class="tabs">
+  <ul>
+    <li class="is-active">Data List</li>
+    <li><%= link_to 'Record', data_records_path, class: active_helper(controllers: 'data_records') %></li>
+  </ul>
 </div>
 
 <table class="table is-hoverable is-fullwidth">

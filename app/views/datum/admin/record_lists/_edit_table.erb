@@ -11,7 +11,7 @@
 
     <% if RailsData.config.mapping[@data_record.columns[k.to_sym].to_s.to_sym]&.fetch(:input, nil) == 'array' %>
       <tr>
-        <td class="right aligned"><%= k.to_s.titleize %></td>
+        <td class="has-text-right"><%= k.to_s.titleize %></td>
         <td>
           <% v.each_with_index do |_value, _index| %>
             <div class="ui attached segment">
@@ -24,7 +24,7 @@
       </tr>
     <% else %>
       <tr>
-        <td class="right aligned"><%= k.to_s.titleize %>:</td>
+        <td class="has-text-right"><%= k.to_s.titleize %>:</td>
         <td class="ui small input">
           <%= text_field_tag :"columns[#{k}]", v, as: @data_record.columns[k.to_sym], form: 'edit_record_list' %>
         </td>

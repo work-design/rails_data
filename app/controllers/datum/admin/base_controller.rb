@@ -1,3 +1,3 @@
-class Datum::Admin::BaseController < RailsData.config.admin_controller.constantize
+class Datum::Admin::BaseController < AdminController
 
-end
+end unless defined? Datum::Admin::BaseController

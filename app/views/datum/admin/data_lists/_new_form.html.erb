@@ -1,0 +1,4 @@
+<%= form_with model: @data_list, scope: :data_list, url: data_lists_path do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
+<% end %>

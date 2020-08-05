@@ -1,5 +1,5 @@
 <div class="inline fields" id="parameters_<%= params[:index] %>">
-  <label class="six wide field"></label>
+  <label></label>
   <%= f.fields :parameters, index: params[:index], can: { wrap_all: false, label: false, placeholder: true }, css: { wrap_input: 'two wide field' } do |pf| %>
     <%= pf.text_field :column %>
     <%= pf.select :value, options_for_select(RailsData.config.mapping.keys), class: 'ui dropdown selection' %>

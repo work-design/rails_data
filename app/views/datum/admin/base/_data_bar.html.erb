@@ -1,0 +1,7 @@
+<div class="tabs">
+  <ul>
+    <li class="">Data List</li>
+    <li class="<%= active_params(type: 'DataExport', active: 'is-active') %>"><%= link_to 'Export', filter_params(type: 'DataExport') %></li>
+    <li class="<%= active_params(type: 'DataImport', active: 'is-active') %>"><%= link_to 'Import', filter_params(type: 'DataImport') %></li>
+  </ul>
+</div>

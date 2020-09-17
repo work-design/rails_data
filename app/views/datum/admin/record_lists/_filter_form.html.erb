@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', css: { wrapper_all: 'inline field', wrapper_input: 'field', wrapper_submit: 'field', submit: 'ui green button'} do |f| %>
+<%= form_with theme: 'search', wrap: { all: 'inline field', input: 'field', submit: 'field' } do |f| %>
   <div class="fields">
     <% @data_record.parameters.keys.each do |extra| %>
       <%= f.text_field extra, placeholder: extra %>

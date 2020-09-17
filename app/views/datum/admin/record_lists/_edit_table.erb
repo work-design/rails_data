@@ -26,7 +26,7 @@
       <tr>
         <td class="has-text-right"><%= k.to_s.titleize %>:</td>
         <td class="ui small input">
-          <%= text_field_tag :"columns[#{k}]", v, as: @data_record.columns[k.to_sym], form: 'edit_record_list' %>
+          <%= text_field_tag "columns[#{k}]", v, as: @data_record.columns[k.to_sym], form: 'edit_record_list' %>
         </td>
       </tr>
     <% end %>

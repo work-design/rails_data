@@ -1,10 +1,4 @@
-<div class="tabs">
-  <ul>
-    <li class="is-active">Data List</li>
-    <li><%= link_to 'Export', filter_params(type: 'DataExport'), class: active_params(type: 'DataExport') %></li>
-    <li><%= link_to 'Import', filter_params(type: 'DataImport'), class: active_params(type: 'DataImport') %></li>
-  </ul>
-</div>
+<%= render 'data_bar' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>

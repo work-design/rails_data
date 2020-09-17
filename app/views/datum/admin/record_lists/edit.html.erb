@@ -1,8 +1,7 @@
-<div class="ui segment breadcrumb">
-  <%= link_to 'Back', data_record_record_lists_path(@data_record), class: 'section' %>
-  <div class="divider"> / </div>
-  <div class="active section">Edit</div>
-</div>
+<ul class="breadcrumb">
+  <li><%= link_to 'Back', data_record_record_lists_path(@data_record) %></li>
+  <li class="is-active">Edit</li>
+</ul>
 
 <div class="ui segment">
   <%= form_with model: @record_list, url: data_record_record_list_path(@data_record) do |f| %>

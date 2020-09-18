@@ -112,12 +112,15 @@ class Datum::Admin::TableListsController < Datum::Admin::BaseController
   end
 
   def table_list_params
-    params.fetch(:table_list, {}).permit(parameters: @data_list.parameters.keys)
+    params.fetch(:table_list, {}).permit(
+      parameters: @data_list.parameters.keys
+    )
   end
 
   def file_params
-    params.fetch(:table_list, {}).fetch(:file)
+    params.fetch(:table_list, {}).fetch(
+      :file
+    )
   end
-
 
 end

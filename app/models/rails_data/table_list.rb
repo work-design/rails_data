@@ -1,6 +1,7 @@
 require 'csv'
 module RailsData::TableList
   extend ActiveSupport::Concern
+
   included do
     include DataImportHelper
     attribute :parameters, :json, default: {}

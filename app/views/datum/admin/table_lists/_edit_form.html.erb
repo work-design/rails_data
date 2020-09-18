@@ -1,11 +1,4 @@
 <%= form_with model: @table_list, url: data_list_table_list_path, locale: true do |f| %>
-  <% @table_list.parameters.each do |k, v| %>
-    <div class="field is-horizontal">
-      <label class="six wide field"><%= k.to_s.titleize %></label>
-      <div class="six wide field">
-        <%= text_field_tag "table_list[parameters][#{k}]", v, type: RailsData.config.mapping[@data_list.parameters[k].to_sym][:input] %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'com/parameter/extra_form', locals: { taxon: @table_list.data_list, f: f } %>
   <%= f.submit %>
 <% end %>

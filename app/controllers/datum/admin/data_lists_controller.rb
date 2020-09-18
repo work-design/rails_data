@@ -31,14 +31,6 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
     redirect_to data_lists_url(type: @data_list.type)
   end
 
-  def add_item
-    @data_list = DataList.new
-  end
-
-  def remove_item
-
-  end
-
   def rebuild
     @data_list.rebuild!
 
@@ -46,7 +38,6 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
   end
 
   def just_run
-
   end
 
   def destroy

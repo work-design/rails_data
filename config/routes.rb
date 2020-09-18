@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   scope module: 'datum/admin' do
     resources :data_lists do
-      collection do
-        get :add_item
-        get :remove_item
-      end
       member do
         put :update_publish
         patch :rebuild

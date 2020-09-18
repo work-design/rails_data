@@ -1,21 +1,5 @@
 <%= form_with model: @data_list, scope: :data_list, url: data_list_path(@data_list) do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
-  <% @data_list.form_parameters.each_with_index do |parameter, index| %>
-  <%= f.fields :parameters, model: parameter, index: index, wrap: { all: false, input: 'two wide field', label: false, placeholder: true } do |pf| %>
-    <div class="inline fields" id="parameters_<%= index %>">
-      <%= f.label :form_parameters %>
-      <%= pf.text_field :column, value: parameter.key %>
-      <%= pf.select :value, options_for_select(RailsData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
-      <div class="field">
-        <%= link_to add_item_data_lists_path(index: index + 1), remote: true do %>
-          <i class="fas fa-plus"></i>
-        <% end %>
-        <%= link_to remove_item_data_lists_path(index: index), remote: true do %>
-          <i class="fas fa-minus"></i>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  <% end %>
+  <%= render partial: 'com/parameter/item', locals: { model: @data_list, f: f } %>
   <%= f.submit %>
 <% end %>

@@ -1,11 +1,10 @@
-require 'rails_com/utils/setting'
 module RailsData::DataList
   extend ActiveSupport::Concern
+
   included do
     attribute :title, :string
     attribute :comment, :string, limit: 4096
     attribute :type, :string
-    attribute :parameters, :json, default: {}
     attribute :columns, :json, default: {}
     attribute :x_position, :integer
     attribute :data_table, :string
@@ -23,14 +22,6 @@ module RailsData::DataList
   def rebuild!
     update_parameters
     self.save
-  end
-
-  def form_parameters
-    r = parameters.map { |k, v| { key: k, value: v } }
-    if r.blank?
-      r = [{ key: nil, value: nil }]
-    end
-    RailsCom::Settings.new(r)
   end
 
   def update_parameters

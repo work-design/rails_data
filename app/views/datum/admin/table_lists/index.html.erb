@@ -1,8 +1,9 @@
 <% content_for :breadcrumb do %>
-<div class="ui segment breadcrumb">
-  <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path(type: @data_list.type), class: 'section' %>
-  <i class="fas fa-angle-right divider"></i>
-  <div class="section"><%= t('.title') %></div>
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <li><%= link_to t('datum.admin.data_lists.index.title'), data_lists_path(type: @data_list.type) %></li>
+    <li><div class="is-active"><%= t('.title') %></div></li>
+  </ul>
 </div>
 <% end %>
 

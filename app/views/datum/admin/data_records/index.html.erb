@@ -1,64 +1,7 @@
-<div class="tabs">
-  <ul>
-    <li class="is-active">Data List</li>
-    <li><%= link_to 'Record', data_records_path, class: active_helper(controllers: 'data_records') %></li>
-  </ul>
-</div>
+<%= render 'data_bar' %>
 
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-  <tr>
-    <th><%= DataList.human_attribute_name(:id) %></th>
-    <th>
-      <p><%= DataList.human_attribute_name(:title) %></p>
-      <p><%= DataList.human_attribute_name(:comment) %></p>
-    </th>
-    <th><%= DataList.human_attribute_name(:data_table) %></th>
-    <th>
-      <p><%= DataList.human_attribute_name(:export_excel) %></p>
-      <p><%= DataList.human_attribute_name(:export_pdf) %></p>
-    </th>
-    <th>Parameters</th>
-    <th>Columns</th>
-    <th></th>
-    <th>
-      <%= link_to new_data_record_path, remote: true, class: 'button is-link is-small' do %>
-        <i class="fas fa-plus"></i><%= t('.new') %>
-      <% end %>
-    </th>
-  </tr>
-  </thead>
+<%= render layout: 'index_table', locals: { cache_key: DataRecord.column_names.hash } do %>
+  <%= render partial: 'index_tbody', collection: @data_records, as: :data_record %>
+<% end %>
 
-  <tbody>
-  <% @data_records.each do |data_record| %>
-    <% if rails_role_user.has_role?('rails_data/data_records', 'read', data_record.id) %>
-    <tr>
-      <td><%= data_record.id %></td>
-      <td>
-        <p><%= data_record.title %></p>
-        <p><%= data_record.comment %></p>
-      </td>
-      <td>
-        <p><%= data_record.data_table %></p>
-        <p><%= data_record.export_excel %></p>
-      </td>
-      <td><%= data_record.export_pdf %></td>
-      <td><%= simple_format_hash(data_record.parameters) %></td>
-      <td><%= simple_format_hash(data_record.columns) %></td>
-      <td><%= link_to 'record list', data_record_record_lists_path(data_record) %></td>
-      <td>
-        <%= link_to edit_data_record_path(data_record), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to rebuild_data_record_path(data_record), method: :patch, aria: { label: t('.rebuild'), confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-recycle"></i>
-        <% end %>
-        <%= link_to data_record_path(data_record), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-</table>
+<%= paginate @data_records %>

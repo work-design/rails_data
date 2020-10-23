@@ -1,0 +1,30 @@
+<tr>
+  <td><%= table_list.id %></td>
+  <td><%= simple_format(table_list.parameters) %></td>
+  <td><%= table_list.headers.join(',') %></td>
+  <td><%= table_list.timestamp %></td>
+  <td id="done_<%= table_list.id %>">
+    <% if table_list.done %>
+      <i class="fas fa-check"></i>
+    <% else %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-caret-right"></i>
+    <% end %>
+    <%= link_to xlsx_data_list_table_list_path(@data_list, table_list, format: 'xlsx'), aria: { label: t('.export') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-file-excel"></i>
+    <% end %>
+    <%= link_to data_list_table_list_path(@data_list, table_list), aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-eye"></i>
+    <% end %>
+    <%= link_to edit_data_list_table_list_path(@data_list, table_list), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-pencil-alt"></i>
+    <% end %>
+    <%= link_to data_list_table_list_path(@data_list, table_list), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </td>
+</tr>

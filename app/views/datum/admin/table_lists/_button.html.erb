@@ -1,0 +1,9 @@
+<div class="buttons are-small">
+  <% if @data_list.type == 'DataImport' %>
+    <%= link_to 'Import', import_data_list_table_lists_path(@data_list), remote: true, class: 'button is-primary' %>
+  <% else %>
+    <%= link_to new_data_list_table_list_path(@data_list), remote: true, class: 'button is-link' do %>
+      <i class="fas fa-plus"></i><span><%= t('.new') %></span>
+    <% end %>
+  <% end %>
+</div>

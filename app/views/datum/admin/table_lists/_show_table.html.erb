@@ -1,25 +1,15 @@
-<div class="ui menu">
-  <div class="header item">TableID:<%= @table_list.id %></div>
-  <div class="right menu">
-    <%= link_to 'Migrate', migrate_data_list_table_list_path(@data_list, @table_list), method: :patch, class: 'item ui button' if @table_list.data_list.is_a?(DataImport) %>
-    <%= link_to t('.csv'), data_list_table_list_path(@data_list, @table_list, format: 'csv'), class: 'item ui button' %>
-    <%= link_to t('.excel'), data_list_table_list_path(@data_list, @table_list, format: 'xlsx'), class: 'item ui blue button' %>
-  </div>
-</div>
-
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <% @table_list.headers.each do |header| %>
-        <th>
-          <%= header %>
-          <%= link_to chart_data_list_table_list_path(@table_list.data_list_id, @table_list, x_field: @table_list.x_field, column: header) do %>
-            <i class="fas fa-chart-line"></i>
-          <% end %>
-        </th>
-      <% end %>
-    </tr>
-  </thead>
+<thead>
+  <tr>
+    <% @table_list.headers.each do |header| %>
+      <th>
+        <%= header %>
+        <%= link_to chart_data_list_table_list_path(@table_list.data_list_id, @table_list, x_field: @table_list.x_field, column: header) do %>
+          <i class="fas fa-chart-line"></i>
+        <% end %>
+      </th>
+    <% end %>
+  </tr>
+</thead>
 
   <tbody>
   <% @table_items.limit(100).each do |item| %>

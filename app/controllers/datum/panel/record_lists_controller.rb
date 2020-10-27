@@ -1,4 +1,4 @@
-class Datum::Admin::RecordListsController < Datum::Admin::BaseController
+class Datum::Panel::RecordListsController < Datum::Panel::BaseController
   before_action :set_data_record
   before_action :set_record_list, only: [:show, :edit, :row, :run, :update, :edit_columns, :update_columns, :destroy]
   if whether_filter :require_role

@@ -1,5 +1,6 @@
 module RailsData::TableItem
   extend ActiveSupport::Concern
+
   included do
     attribute :fields, :string, array: true, default: []
 

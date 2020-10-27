@@ -1,4 +1,4 @@
-class Datum::Admin::TableListsController < Datum::Admin::BaseController
+class Datum::Panel::TableListsController < Datum::Panel::BaseController
   before_action :set_data_list
   before_action :set_table_list, only: [:show, :chart, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
   if whether_filter :require_role

@@ -1,4 +1,4 @@
-class Datum::Admin::DataListsController < Datum::Admin::BaseController
+class Datum::Panel::DataListsController < Datum::Panel::BaseController
   before_action :set_data_list, only: [:show, :edit, :update, :rebuild, :destroy]
 
   def index
@@ -6,6 +6,7 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
       type: 'DataExport'
     }
     q_params.merge! params.permit(:type)
+
     @data_lists = DataList.default_where(q_params)
   end
 
@@ -42,7 +43,6 @@ class Datum::Admin::DataListsController < Datum::Admin::BaseController
 
   def destroy
     @data_list.destroy
-    redirect_to data_lists_url
   end
 
   private

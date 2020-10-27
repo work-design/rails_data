@@ -1,4 +1,4 @@
-<%= form_with model: @data_record, scope: :data_record, url: data_record_path(@data_record), locale: true do |f| %>
+<%= form_with model: @data_record, scope: :data_record, url: { action: 'update' } do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
   <% @data_record.form_parameters.each_with_index do |parameter, index| %>
     <%= f.fields :parameters, model: parameter, index: index, can: {wrapper_all: false, label: false, placeholder: true}, css: {wrapper_input: 'two wide field'} do |pf| %>

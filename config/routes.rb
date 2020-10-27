@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'datum/admin' do
+  scope :panel, module: 'datum/panel' do
     resources :data_lists do
       member do
         put :update_publish

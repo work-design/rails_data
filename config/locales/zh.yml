@@ -1,5 +1,6 @@
 zh:
   datum:
+    title: 数据
     admin:
       title: 报表系统
       data_lists:
@@ -20,13 +21,3 @@ zh:
           excel: 下载 Excel 文件
         find:
           title: 预览
-  activerecord:
-    enum:
-      data_list:
-        type:
-          DataImport: 导入
-          DataExport: 导出
-    attributes:
-      data_list:
-        title: 标题
-        comment: 评论

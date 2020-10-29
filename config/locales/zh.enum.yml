@@ -1,0 +1,7 @@
+zh:
+  activerecord:
+    enum:
+      data_list:
+        type:
+          DataImport: 导入
+          DataExport: 导出

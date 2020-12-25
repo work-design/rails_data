@@ -22,9 +22,9 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'rails_com', '~> 1.2'
-  s.add_dependency 'write_xlsx', '~> 0.83.0'
-  s.add_dependency 'roo', '~> 2.7'
-  s.add_dependency 'roo-xls', '~> 1.2'
-  s.add_dependency 'prawn', '~> 2.2'
-  s.add_dependency 'prawn-table', '~> 0.2'
+  s.add_dependency 'write_xlsx'
+  s.add_dependency 'roo'
+  s.add_dependency 'roo-xls'
+  s.add_dependency 'prawn'
+  s.add_dependency 'prawn-table'
 end

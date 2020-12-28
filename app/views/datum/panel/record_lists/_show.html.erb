@@ -8,7 +8,7 @@
     <div class="ui basic segment">
       <%= link_to 'download Xlsx', data_record_record_list_path(@data_record, @record_list, format: 'xlsx'), class: 'button is-link is-small' %>
       <%= link_to 'Download pdf', data_record_record_list_path(@data_record, @record_list, format: 'pdf', disposition: 'attachment'), class: 'ui label' %>
-      <%= link_to 'Edit', columns_data_record_record_list_path(@data_record, @record_list), class: 'ui green label', remote: true %>
+      <%= link_to 'Edit', columns_data_record_record_list_path(@data_record, @record_list), class: 'ui green label' %>
     </div>
     <%= render 'table' %>
   </div>

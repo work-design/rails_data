@@ -1,4 +1,4 @@
-import { Line } from '@antv/g2plot'
+//import { Line } from '@antv/g2plot'
 
 const chart = document.getElementById('chart')
 const url = chart.dataset.url

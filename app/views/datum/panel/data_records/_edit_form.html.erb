@@ -7,10 +7,10 @@
         <%= pf.text_field :key, readonly: true %>
         <%= pf.select :value, options_for_select(RailsData.config.mapping.keys, parameter.value), class: 'ui dropdown selection' %>
         <div class="field">
-          <%= link_to add_item_data_records_path(index: index + 1), remote: true do %>
+          <%= link_to add_item_data_records_path(index: index + 1) do %>
             <i class="plus circle icon"></i>
           <% end %>
-          <%= link_to remove_item_data_records_path(index: index), remote: true do %>
+          <%= link_to remove_item_data_records_path(index: index) do %>
             <i class="minus circle icon"></i>
           <% end %>
         </div>

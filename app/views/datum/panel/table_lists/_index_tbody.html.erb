@@ -11,7 +11,7 @@
     <% end %>
   </td>
   <td>
-    <%= link_to run_data_list_table_list_path(@data_list, table_list), method: :patch, remote: true, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to run_data_list_table_list_path(@data_list, table_list), method: :patch, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-caret-right"></i>
     <% end %>
     <%= link_to xlsx_data_list_table_list_path(@data_list, table_list, format: 'xlsx'), aria: { label: t('.export') }, class: 'button is-small is-rounded is-light' do %>
@@ -23,7 +23,7 @@
     <%= link_to edit_data_list_table_list_path(@data_list, table_list), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to data_list_table_list_path(@data_list, table_list), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to data_list_table_list_path(@data_list, table_list), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>

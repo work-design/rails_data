@@ -1,5 +1,5 @@
 <%= render 'data_bar' %>
 
 <%= render layout: 'index_table', locals: { cache_key: DataList.column_names.hash } do %>
-  <%= render partial: 'index_tbody', collection: @data_lists, as: :data_list %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @data_lists, as: :model %>
 <% end %>

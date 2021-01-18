@@ -1,3 +1,4 @@
-class Datum::Panel::BaseController < PanelController
-
-end unless defined? Datum::Panel::BaseController
+module Datum
+  class Panel::BaseController < PanelController
+  end
+end

@@ -1,5 +1,6 @@
-<thead>
-  <tr>
+<table>
+  <thead>
+    <tr>
     <% @table_list.headers.each do |header| %>
       <th>
         <%= header %>
@@ -8,9 +9,8 @@
         <% end %>
       </th>
     <% end %>
-  </tr>
-</thead>
-
+    </tr>
+  </thead>
   <tbody>
   <% @table_items.limit(100).each do |item| %>
     <tr>
@@ -20,14 +20,13 @@
     </tr>
   <% end %>
   </tbody>
-
   <tfoot>
     <tr>
-      <% @table_list.footers.each do |footer| %>
-        <th><%= footer %></th>
-      <% end %>
+    <% @table_list.footers.each do |footer| %>
+      <th><%= footer %></th>
+    <% end %>
     </tr>
   </tfoot>
 </table>
 
-<%= paginate @table_items, remote: remote %>
+<%= paginate @table_items %>

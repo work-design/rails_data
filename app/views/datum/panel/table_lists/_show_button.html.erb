@@ -1,0 +1,5 @@
+<div class="buttons are-small">
+  <%= button_to 'Migrate', { action: 'migrate', format: 'xlsx' }, method: :patch, class: 'button is-primary' if @table_list.data_list.is_a?(Datum::DataImport) %>
+  <%= link_to t('.csv'), { action: 'show', id: @table_list.id, format: 'csv' }, class: 'button is-link' %>
+  <%= link_to t('.excel'), { action: 'show', id: @table_list.id, format: 'xlsx' }, class: 'button is-link' %>
+</div>

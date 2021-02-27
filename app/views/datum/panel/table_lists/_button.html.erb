@@ -1,5 +1,5 @@
 <div class="buttons are-small">
-  <% if @data_list.type == 'DataImport' %>
+  <% if @data_list.type == 'Datum::DataImport' %>
     <%= link_to 'Import', import_data_list_table_lists_path(@data_list), class: 'button is-primary' %>
   <% else %>
     <%= link_to new_data_list_table_list_path(@data_list), class: 'button is-link' do %>

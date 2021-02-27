@@ -1,6 +1,6 @@
 zh:
   activerecord:
     attributes:
-      data_list:
+      datum/data_list:
         title: 标题
         comment: 评论

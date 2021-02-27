@@ -1,7 +1,7 @@
 zh:
   activerecord:
     enum:
-      data_list:
+      datum/data_list:
         type:
-          DataImport: 导入
-          DataExport: 导出
+          Datum::DataImport: 导入
+          Datum::DataExport: 导出

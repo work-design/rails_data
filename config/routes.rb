@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope :panel, module: 'datum/panel', defaults: { namespace: 'panel', business: 'datum' } do
+  scope :panel, module: 'datum/panel', defaults: { business: 'datum', namespace: 'panel' } do
     resources :data_lists do
       member do
         put :update_publish

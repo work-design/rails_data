@@ -1,12 +1,14 @@
 module DataImportHelper
 
-  def import_to_table_list(file)
-    importer = data_list.importer(file)
-    self.headers = importer.results[0]
-    self.done = true
-    self.save
-    importer.results[1..-1].each do |row|
-      table_items.create(fields: row)
+  def import_to_table_list
+    self.file.open do |f|
+      importer = DataImportService.new(data_list.config_table, f)
+      self.headers = importer.results[0]
+      self.done = true
+      importer.results[1..-1].each do |row|
+        table_items.build(fields: row)
+      end
+      self.save
     end
   end
 

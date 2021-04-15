@@ -1,24 +1,6 @@
-<% if !defined?(rails_role_user) || rails_role_user.has_role?('datum/panel/data_lists', 'read', data_list.id) %>
-<tr>
-  <td><%= data_list.title %></td>
-  <td><%= data_list.comment %></td>
-  <td><%= data_list.data_table %></td>
-  <td><%= data_list.export_excel %></td>
-  <td><%= data_list.export_pdf %></td>
-  <td><%= simple_format_hash(data_list.parameters) %></td>
-  <td>
-    <%= link_to({ controller: 'table_lists', data_list_id: data_list.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-info"></i>
-    <% end %>
-    <%= link_to({ action: 'rebuild', id: data_list.id }, method: :patch, aria: { label: t('.rebuild'), confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-recycle"></i>
-    <% end %>
-    <%= link_to({ action: 'edit', id: data_list.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <%= link_to({ action: 'destroy', id: data_list.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </td>
-</tr>
-<% end %>
+<td><%= model.title %></td>
+<td><%= model.comment %></td>
+<td><%= model.data_table %></td>
+<td><%= model.export_excel %></td>
+<td><%= model.export_pdf %></td>
+<td><%= simple_format_hash(model.parameters) %></td>

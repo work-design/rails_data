@@ -4,7 +4,7 @@ module Datum
 
     included do
       attribute :title, :string
-      attribute :comment, :string, limit: 4096
+      attribute :comment, :string
       attribute :type, :string
       attribute :columns, :json, default: {}
       attribute :x_position, :integer
@@ -17,7 +17,7 @@ module Datum
 
       scope :published, -> { where(published: true) }
 
-      before_create :update_parameters
+      before_create :update_parameters, if: -> { type == 'Datum::DataExport' }
     end
 
     def rebuild!

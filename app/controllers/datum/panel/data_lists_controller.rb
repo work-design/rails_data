@@ -17,9 +17,10 @@ module Datum
 
     def create
       @data_list = DataList.new(data_list_params)
-      @data_list.save
 
-      redirect_to data_lists_url(type: @data_list.type)
+      unless @data_list.save
+        render :new, locals: { model: @data_list }, status: :unprocessable_entity
+      end
     end
 
     def show
@@ -29,8 +30,11 @@ module Datum
     end
 
     def update
-      @data_list.update(data_list_params)
-      redirect_to data_lists_url(type: @data_list.type)
+      @data_list.assign_attributes(data_list_params)
+
+      unless @data_list.save
+        render :new, locals: { model: @data_list }, status: :unprocessable_entity
+      end
     end
 
     def rebuild

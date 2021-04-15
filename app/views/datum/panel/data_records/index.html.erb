@@ -1,6 +1,6 @@
 <%= render 'data_bar' %>
 
-<%= render layout: 'index_table', locals: { cache_key: DataRecord.column_names.hash } do %>
+<%= render layout: 'index_table', locals: { cache_key: Datum::DataRecord.column_names.hash } do %>
   <%= render partial: 'index_tbody', layout: 'index_tr', collection: @data_records, as: :model %>
 <% end %>
 

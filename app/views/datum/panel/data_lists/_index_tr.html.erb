@@ -1,0 +1,21 @@
+<% if !defined?(rails_role_user) || rails_role_user.has_role?(controller_path: 'datum/panel/data_lists', action_name: 'read', id: model.id) %>
+<tr id="tr_<%= model.id %>" data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
+  <%= yield %>
+  <td>
+    <span data-show-target="item" style="visibility: hidden">
+      <%= link_to({ controller: 'table_lists', data_list_id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-info"></i>
+      <% end %>
+      <%= link_to({ action: 'rebuild', id: model.id }, method: :patch, aria: { label: t('.rebuild'), confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-recycle"></i>
+      <% end %>
+      <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'model' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </span>
+  </td>
+</tr>
+<% end %>

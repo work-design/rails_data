@@ -5,10 +5,18 @@ module DataImportHelper
       importer = DataImportService.new(data_list.config_table, f)
       self.headers = importer.results[0]
       self.done = true
-      importer.results[1..-1].each do |row|
-        table_items.build(fields: row)
+      importer.results[1..-1].each_slice(500) do |result|
+        rows = result.map do |row|
+          r = { table_list_id: self.id }
+          r.merge!(
+            fields: row,
+            created_at: Time.current,
+            updated_at: Time.current
+          )
+        end
+
+        Datum::TableItem.insert_all(rows)
       end
-      self.save
     end
   end
 

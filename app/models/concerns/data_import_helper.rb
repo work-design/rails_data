@@ -5,6 +5,7 @@ module DataImportHelper
       importer = DataImportService.new(data_list.config_table, f)
       self.headers = importer.results[0]
       self.done = true
+      self.save
       importer.results[1..-1].each_slice(500) do |result|
         rows = result.map do |row|
           r = { table_list_id: self.id }
@@ -32,7 +33,7 @@ module DataImportHelper
   def migrate
     config = data_list.config_table
     columns = import_columns
-    self.table_items.each do |table_item|
+    self.table_items.find_each do |table_item|
       attr = {}
       columns.map do |key, value|
         r = table_item.fields[value[:index]]
@@ -44,7 +45,6 @@ module DataImportHelper
       end
       config.record.create attr
     end
-    self.destroy
   end
 
 end

@@ -2,19 +2,19 @@
   <%= yield %>
   <td>
     <span data-show-target="item" style="visibility: hidden">
-      <%= button_to({ action: 'run', id: table_list.id }, method: :patch, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'run', id: model.id }, method: :patch, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-caret-right"></i>
       <% end %>
-      <%= link_to({ actioon: 'xlsx', id: table_list, format: 'xlsx' }, aria: { label: t('.export') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ actioon: 'xlsx', id: model.id, format: 'xlsx' }, aria: { label: t('.export') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-file-excel"></i>
       <% end %>
-      <%= link_to({ action: 'show', id: table_list }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-info"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: table_list }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: model.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
-      <%= button_to({ action: 'destroy', id: table_list }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
     </span>

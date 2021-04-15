@@ -36,8 +36,9 @@ module Datum
     end
 
     def create_import
-      @table_list = @data_list.table_lists.build
-      @table_list.import_to_table_list(file_params.tempfile)
+      @table_list = @data_list.table_lists.build(file_params)
+      @table_list.save
+      #@table_list.import_to_table_list
 
       @table_items = @table_list.table_items.page(params[:page]).per(100)
     end
@@ -113,7 +114,7 @@ module Datum
     end
 
     def file_params
-      params.fetch(:table_list, {}).fetch(
+      params.fetch(:table_list, {}).permit(
         :file
       )
     end

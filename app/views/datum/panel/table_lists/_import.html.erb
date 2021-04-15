@@ -1,17 +1,4 @@
-<div class="ui modal">
-  <i class="fas fa-times close"></i>
-  <div class="ui header">
-    Import
-  </div>
-
-  <div class="content">
-    <%= form_with model: @table_list, url: import_data_list_table_lists_path(@data_list), local: true, id: 'import_table' do |f| %>
-      <%= f.file_field :file %>
-      <%= f.submit %>
-    <% end %>
-  </div>
-</div>
-
-
-
-
+<%= form_with model: @table_list, url: { action: 'create_import' } do |f| %>
+  <%= f.file_field :file %>
+  <%= f.submit %>
+<% end %>

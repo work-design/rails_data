@@ -15,6 +15,8 @@ module Datum
 
       belongs_to :data_list, optional: true
       has_many :table_items, dependent: :delete_all
+
+      has_one_attached :file
     end
 
     def run

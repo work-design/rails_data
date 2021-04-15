@@ -1,7 +1,7 @@
 <% if @data_list.type == 'Datum::DataImport' %>
-  <%= link_to 'Import', { action: 'new_import' }, class: 'button is-primary' %>
+  <%= link_to 'Import', { action: 'new_import' }, data: { turbo_frame: 'modal' }, class: 'button is-primary' %>
 <% else %>
-  <%= link_to({ action: 'new'} , class: 'button is-link') do %>
+  <%= link_to({ action: 'new'}, data: { turbo_frame: 'modal' }, class: 'button is-link') do %>
     <i class="fas fa-plus"></i><span><%= t('.new') %></span>
   <% end %>
 <% end %>

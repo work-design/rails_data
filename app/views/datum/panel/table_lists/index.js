@@ -1,4 +1,4 @@
-import 'rails_ui/cable'
+import { createConsumer } from '@rails/actioncable'
 
 ApplicationCable.subscriptions.create('DoneChannel', {
   received: function(data) {

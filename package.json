@@ -1,0 +1,19 @@
+{
+  "name": "rails_data",
+  "version": "1.0.0",
+  "description": "RailsData is a MiddleMan for import data and export data, It can be used for generating complex report. And It can transfer data to many format, Like: csv, pdf, html, xml and more.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@rails/actioncable": "^6.0.3-7"
+  }
+}

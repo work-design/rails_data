@@ -35,5 +35,4 @@ The table defined the report's data format
   * [default_form](https://github.com/qinmingyuan/default_form)
 
 ## 许可证
-* [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0)
-如需闭源使用本项目，请联系作者
+* [MIT](https://opensource.org/licenses/MIT)

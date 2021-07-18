@@ -4,14 +4,17 @@ module Datum
     include DataExportHelper # get export / field_result
     attr_reader :sheet, :table_list, :params, :headers
 
-    def initialize(table_list: nil, params: [], headers: [], export: nil)
+    def initialize(table_list: nil, export: nil, params: [], headers: [])
       if table_list
         @table_list = table_list
         @data_list = table_list.data_list
-      else
         @headers = headers || table_list.headers
         @params = params || table_list.convert_parameters
         @export = export || @data_list.export
+      else
+        @headers = headers || header_result
+        @params = params
+        @export = export
       end
 
       # 初始化 xlsx

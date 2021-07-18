@@ -35,12 +35,12 @@ module Datum
 
     def direct_xlsx
       _headers = self.headers.presence || self.data_list.headers
-      export = Service::Xlsx.new(data_list: self.data_list, params: self.parameters, headers: _headers)
+      export = XlsxExporter.new(table_list: self, params: self.parameters, headers: _headers)
       export.direct_xlsx
     end
 
     def cached_xlsx
-      export = Service::Xlsx.new(table_list: self)
+      export = XlsxExporter.new(table_list: self)
       export.cached_xlsx
     end
 

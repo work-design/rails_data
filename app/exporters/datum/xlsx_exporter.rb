@@ -1,16 +1,17 @@
 require 'write_xlsx'
 module Datum
-  class Service::Xlsx
-    include DataExportHelper
-    attr_reader :sheet, :table_list, :params, :headers, :config_table
+  class XlsxExporter
+    include DataExportHelper # get config_table / field_result
+    attr_reader :sheet, :table_list, :params, :headers
 
-    def initialize(table_list:, params: table_list.convert_parameters, headers: table_list.headers, config_table: @data_list.config_table)
+    def initialize(table_list:, params: [], headers: [], config_table: nil)
       @table_list = table_list
       @data_list = table_list.data_list
-      @headers = headers
-      @params = params
-      @config_table = config_table
+      @headers = headers || table_list.headers
+      @params = params || table_list.convert_parameters
+      @config_table = config_table || @data_list.config_table
 
+      # 初始化 xlsx
       @io = StringIO.new
       @workbook = WriteXLSX.new(@io)
       @sheet = @workbook.add_worksheet
@@ -19,7 +20,7 @@ module Datum
     def direct_xlsx
       sheet.write_row(0, 0, headers)
 
-      config_table.collection.call(params).each_with_index do |object, index|
+      @config_table.collection.call(params).each_with_index do |object, index|
         row = field_result(object, index)
         sheet.write_row(index + 1, 0, row)
       end

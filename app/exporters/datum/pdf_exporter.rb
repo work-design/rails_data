@@ -1,6 +1,6 @@
 require 'prawn/table'
 module Datum
-  class Service::Pdf
+  class PdfExporter
 
     def pdf
       if reportable.respond_to?(:pdf_object)

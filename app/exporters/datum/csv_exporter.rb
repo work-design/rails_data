@@ -1,6 +1,6 @@
 require 'csv'
 module Datum
-  class Service::Csv
+  class CsvExporter
     attr_reader :sheet, :headers
 
     def initialize

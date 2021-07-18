@@ -36,7 +36,7 @@ module Datum
 
     def direct_xlsx
       _headers = self.headers.presence || self.data_list.headers
-      export = XlsxExporter.new(table_list: self, params: self.parameters, headers: _headers)
+      export = XlsxExporter.new(export: self.data_list.export, params: self.parameters, headers: _headers)
       export.direct_xlsx
     end
 

@@ -8,7 +8,7 @@ module Datum
       attribute :type, :string
       attribute :columns, :json, default: {}
       attribute :x_position, :integer
-      attribute :export, :string
+      attribute :data_table, :string
       attribute :export_excel, :string
       attribute :export_pdf, :string
 

@@ -20,13 +20,20 @@ module Datum
     def direct_xlsx
       sheet.write_row(0, 0, headers)
 
-      @config_table.collection.call(params).each_with_index do |object, index|
+      @config_table.collection.call(@params).each_with_index do |object, index|
         row = field_result(object, index)
         sheet.write_row(index + 1, 0, row)
       end
 
       @workbook.close
       @io.string
+    end
+
+    def compute_table_items
+      @config_table.collection.call(@params).each_with_index do |object, index|
+        row = field_result(object, index)
+        yield row
+      end
     end
 
     def cached_xlsx

@@ -4,7 +4,6 @@ module Datum
     extend ActiveSupport::Concern
 
     included do
-      include DataImportHelper
       attribute :parameters, :json, default: {}
       attribute :headers, :string, array: true, default: []
       attribute :footers, :string, array: true, default: []

@@ -39,8 +39,18 @@ module Datum
     end
 
     def cached_xlsx
-      export = XlsxExporter.new(table_list: self)
-      export.cached_xlsx
+      io = StringIO.new
+      workbook = WriteXLSX.new(io)
+      sheet = workbook.add_worksheet
+
+      sheet.write_row(0, 0, headers)
+      table_items.each_with_index do |table_item, index|
+        sheet.write_row(index + 1, 0, table_item.fields)
+      end
+      sheet.write_row table_items_count + 1, 0, footers
+
+      workbook.close
+      io.string
     end
 
     def export_ary

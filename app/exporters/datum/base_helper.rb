@@ -34,6 +34,20 @@ module Datum
       results
     end
 
+    def field_object(object, *args)
+      results = {}
+
+      @export.columns.each do |column|
+        if column[:field].arity == 1
+          results.merge! column[:key] => column[:field].call(object)
+        else
+          results.merge! column[:key] => column[:field].call(object, *args)
+        end
+      end
+
+      results
+    end
+
     def footer_result
       results = []
 

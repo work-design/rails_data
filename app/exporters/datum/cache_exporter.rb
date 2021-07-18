@@ -10,8 +10,7 @@ module Datum
     def run
       @table_list.headers = header_result
       @export.collection.call(@params).each_with_index do |object, index|
-        row = field_result(object, index)
-        @table_list.table_items.build(fields: row)
+        @table_list.table_items.build fields: field_result(object, index)
       end
       @table_list.footers = footer_result
       @table_list.done = true

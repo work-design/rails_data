@@ -2,7 +2,7 @@ require 'write_xlsx'
 module Datum
   class XlsxExporter < BaseExporter
 
-    def direct_xlsx
+    def run
       io = StringIO.new
       workbook = WriteXLSX.new(io)
       sheet = workbook.add_worksheet

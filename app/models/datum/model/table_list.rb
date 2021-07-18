@@ -36,7 +36,7 @@ module Datum
 
     def direct_xlsx
       export = XlsxExporter.new(export: self.data_list.export, params: self.parameters)
-      export.direct_xlsx
+      export.run
     end
 
     def cached_xlsx

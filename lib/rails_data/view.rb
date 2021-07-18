@@ -1,6 +1,6 @@
-module RailsData::Export
+module RailsData::View
 
-  # extend RailsData::Export
+  # extend RailsData::View
   # config do
   #   collect -> (params) { User.default_where(params) }
   #   column key :date, header: 'Date', x_axis: true

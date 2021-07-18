@@ -1,4 +1,6 @@
 require 'csv'
+require 'write_xlsx'
+
 module Datum
   module Model::TableList
     extend ActiveSupport::Concern
@@ -20,8 +22,8 @@ module Datum
 
     def run
       clear_old
-      export = DataCacheService.new(self)
-      export.cache_table
+      exporter = CacheExporter.new(self)
+      exporter.run
     end
 
     def convert_parameters

@@ -24,9 +24,9 @@ module Datum
     end
 
     def initialize_table
-      @config_table = data_list.config_table
-      @record = @config_table.record.call(converted_parameters)
-      @config_table
+      @export = data_list.export
+      @record = @export.record.call(converted_parameters)
+      @export
     end
 
     def converted_parameters
@@ -43,7 +43,7 @@ module Datum
 
     def field_result(object)
       results = {}
-      @config_table.columns.each do |key, column|
+      @export.columns.each do |key, column|
         if column[:field].arity == 1
           results[key] = column[:field].call(object)
         else

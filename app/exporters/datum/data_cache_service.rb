@@ -4,7 +4,7 @@ class DataCacheService
   def initialize(table_list)
     @table_list = table_list
     @data_list = @table_list.data_list
-    @config_table = table_list.data_list.config_table
+    @export = table_list.data_list.export
     @params = @table_list.convert_parameters
   end
 
@@ -17,7 +17,7 @@ class DataCacheService
   end
 
   def cache_table_items
-    @config_table.collection.call(@params).each_with_index do |object, index|
+    @export.collection.call(@params).each_with_index do |object, index|
       row = field_result(object, index)
       @table_list.table_items.create(fields: row)
     end

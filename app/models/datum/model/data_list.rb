@@ -8,7 +8,7 @@ module Datum
       attribute :type, :string
       attribute :columns, :json, default: {}
       attribute :x_position, :integer
-      attribute :data_table, :string
+      attribute :export, :string
       attribute :export_excel, :string
       attribute :export_pdf, :string
 
@@ -26,14 +26,14 @@ module Datum
     end
 
     def update_parameters
-      config_table.parameters.each do |p|
+      export.parameters.each do |p|
         self.parameters[p] = nil
       end
-      self.x_position = config_table.columns.index { |i| i[:x_axis] }
+      self.x_position = export.columns.index { |i| i[:x_axis] }
     end
 
-    def config_table
-      @config_table ||= data_table.to_s.safe_constantize
+    def export
+      @export ||= data_table.to_s.safe_constantize
     end
 
     def config_excel

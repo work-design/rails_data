@@ -3,7 +3,7 @@ module Datum
 
     def import_to_table_list
       self.file.open do |f|
-        importer = Importer.new(data_list.config_table, f)
+        importer = Importer.new(data_list.export, f)
         self.headers = importer.results[0]
         self.done = true
         self.save
@@ -23,7 +23,7 @@ module Datum
     end
 
     def import_columns
-      config = data_list.config_table
+      config = data_list.export
       columns = {}
       config.columns.each do |key, value|
         columns[key] = config.columns[key].merge(index: self.headers.find_index(value[:header]))
@@ -32,7 +32,7 @@ module Datum
     end
 
     def migrate
-      config = data_list.config_table
+      config = data_list.export
       columns = import_columns
       self.table_items.find_each do |table_item|
         attr = {}

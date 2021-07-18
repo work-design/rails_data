@@ -5,7 +5,7 @@ module Datum
 
     def initialize
       headers =
-      config_table
+      export
     end
 
   end

@@ -8,7 +8,7 @@ module Datum
     end
 
     def update_parameters
-      self.columns = config_table.columns.transform_values { |x| x[:as] }
+      self.columns = export.columns.transform_values { |x| x[:as] }
     end
 
   end

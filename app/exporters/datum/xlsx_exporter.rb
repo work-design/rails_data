@@ -1,15 +1,18 @@
 require 'write_xlsx'
 module Datum
   class XlsxExporter
-    include DataExportHelper # get config_table / field_result
+    include DataExportHelper # get export / field_result
     attr_reader :sheet, :table_list, :params, :headers
 
-    def initialize(table_list:, params: [], headers: [], config_table: nil)
-      @table_list = table_list
-      @data_list = table_list.data_list
-      @headers = headers || table_list.headers
-      @params = params || table_list.convert_parameters
-      @config_table = config_table || @data_list.config_table
+    def initialize(table_list: nil, params: [], headers: [], export: nil)
+      if table_list
+        @table_list = table_list
+        @data_list = table_list.data_list
+      else
+        @headers = headers || table_list.headers
+        @params = params || table_list.convert_parameters
+        @export = export || @data_list.export
+      end
 
       # 初始化 xlsx
       @io = StringIO.new
@@ -20,7 +23,7 @@ module Datum
     def direct_xlsx
       sheet.write_row(0, 0, headers)
 
-      @config_table.collection.call(@params).each_with_index do |object, index|
+      @export.collection.call(@params).each_with_index do |object, index|
         row = field_result(object, index)
         sheet.write_row(index + 1, 0, row)
       end
@@ -30,7 +33,7 @@ module Datum
     end
 
     def compute_table_items
-      @config_table.collection.call(@params).each_with_index do |object, index|
+      @export.collection.call(@params).each_with_index do |object, index|
         row = field_result(object, index)
         yield row
       end

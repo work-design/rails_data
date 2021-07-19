@@ -9,7 +9,7 @@ module Datum
     end
 
     def filtered_columns
-      @export.columns.select(&->(i){ @fields.include?(i[:key]) })
+      @filtered_columns ||= @export.columns.select(&->(i){ @fields.include?(i[:key]) })
     end
 
     def header_result

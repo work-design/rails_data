@@ -7,6 +7,7 @@ module RailsData
 
     initializer 'rails_data.mime_type' do |app|
       Mime::Type.register 'application/xlsx', :xlsx
+      Mime::Type.register 'application/xlsx', :excel
     end
 
   end

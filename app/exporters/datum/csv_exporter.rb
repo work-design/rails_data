@@ -5,7 +5,7 @@ module Datum
     def run
       csv = ''
 
-      csv << headers.to_csv
+      csv << header_result.to_csv
       @export.collection.call(@params).each_with_index do |object, index|
         csv << field_result(object, index).to_csv
       end

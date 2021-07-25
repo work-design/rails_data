@@ -25,7 +25,6 @@ Rails Data 可以满足多层次场景的数据查看和导出需求
 
 
 
-
 ## Functions
 - sidekiq job;
 - report file store;
@@ -43,10 +42,6 @@ The table defined the report's data format
 #### step-3: (optional) Define report pdf's style
 [Define report pdf style](docs/define-pdf-style)
 
-# 依赖
-* [rails_com](https://github.com/work-design/rails_com)
-  * [default_where](https://github.com/qinmingyuan/default_where)
-  * [default_form](https://github.com/qinmingyuan/default_form)
 
 ## 许可证
-遵循 [MIT](https://opensource.org/licenses/MIT)
+遵循 [MIT](https://opensource.org/licenses/MIT) 协议

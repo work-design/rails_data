@@ -56,7 +56,7 @@ module Datum
     end
 
     def data_list_params
-      result = params[:data_list].permit(
+      result = params.fetch(:data_list, {}).permit(
         :type,
         :title,
         :comment,

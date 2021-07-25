@@ -1,0 +1,14 @@
+one:
+  comment: MyString
+  type: Datum::DataExport
+  x_position: 1
+  data_table: MyString
+  export_excel: MyString
+  export_pdf: MyString
+two:
+  comment: MyString
+  type: Datum::DataImport
+  x_position: 1
+  data_table: MyString
+  export_excel: MyString
+  export_pdf: MyString

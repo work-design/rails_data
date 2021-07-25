@@ -1,5 +1,5 @@
 <%= form_with model: @data_list, scope: :data_list, url: { action: 'update' } do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
-  <%= render partial: 'com/parameter/item', locals: { model: @data_list, f: f } %>
+  <%= render partial: 'com/extra/item', locals: { model: @data_list, f: f } %>
   <%= f.submit %>
 <% end %>

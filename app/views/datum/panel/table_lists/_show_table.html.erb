@@ -6,7 +6,7 @@
     <% @table_list.headers.each do |header| %>
       <th>
         <%= header %>
-        <%= link_to chart_data_list_table_list_path(@table_list.data_list_id, @table_list, x_field: @table_list.x_field, column: header) do %>
+        <%= link_to({ action: 'chart', x_field: @table_list.x_field, column: header }) do %>
           <i class="fas fa-chart-line"></i>
         <% end %>
       </th>

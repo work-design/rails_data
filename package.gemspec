@@ -1,9 +1,6 @@
-$:.push File.expand_path('lib', __dir__)
-require 'rails_data/version'
-
 Gem::Specification.new do |s|
   s.name = 'rails_data'
-  s.version = RailsData::VERSION
+  s.version = '1.0.2'
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_data'

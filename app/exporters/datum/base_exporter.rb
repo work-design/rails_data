@@ -1,5 +1,6 @@
 module Datum
   class BaseExporter
+    attr_reader :export, :params, :fields
 
     def initialize(export:, params: [], fields: [])
       @export = export

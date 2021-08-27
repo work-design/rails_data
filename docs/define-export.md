@@ -45,13 +45,11 @@ class ExampleTable
     # with default header and default field method
     # default header use 'titleize' method to format
     # default field method equal column's name
-    column :name
-
-    # with assigned header and default field method
-    column :name, header: 'My name'
-
-    # with assigned header and assigned field method
-    column :name, header: 'My name', field: -> { name }
+    column(
+      key: 'name',
+      header: 'My name', # with assigned header and default field method
+      field: -> { name } # with assigned header and assigned field method
+    )
   end
 
 end

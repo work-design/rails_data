@@ -23,11 +23,15 @@ module RailsData::Export
   end
 
   # x_axis: will use for x field with chart
-  def column(header: nil, key: nil, field: nil, footer: nil, x_axis: false)
+  def column(header: nil, field: nil, footer: nil, x_axis: false, **options)
     @columns ||= []
     col = {}
 
-    col[:key] = key
+    if options.key?(:key)
+      col[:key] = options[:key]
+    else
+      col[:key] = header
+    end
     col[:header] = header
     col[:field] = field
     col[:footer] = footer if footer
@@ -35,6 +39,10 @@ module RailsData::Export
 
     @columns << col
     self
+  end
+
+  def keys
+    columns.map(&->(i){ i[:key] })
   end
 
 end

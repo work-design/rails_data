@@ -5,8 +5,7 @@ module Datum
     def initialize(export:, params: [], fields: [])
       @export = export
       @params = params
-      @fields = fields
-      @headers = header_result
+      @fields = fields.presence || export.keys
     end
 
     def filtered_columns

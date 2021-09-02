@@ -2,30 +2,8 @@ module Datum
   class Panel::DataRecordsController < Panel::BaseController
     before_action :set_data_record, only: [:show, :edit, :update, :rebuild, :destroy]
 
-    def index
-      @data_records = DataRecord.page(params[:page])
-    end
-
     def new
       @data_record = DataRecord.new(type: params[:type])
-    end
-
-    def create
-      @data_record = DataRecord.new(data_record_params)
-      @data_record.save
-
-      redirect_to data_records_url(type: @data_record.type)
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @data_record.update(data_record_params)
-      redirect_to data_records_url(type: @data_record.type)
     end
 
     def add_item
@@ -33,7 +11,6 @@ module Datum
     end
 
     def remove_item
-
     end
 
     def rebuild
@@ -41,10 +18,6 @@ module Datum
       @data_record.save
 
       redirect_back fallback_location: data_records_url
-    end
-
-    def destroy
-      @data_record.destroy
     end
 
     private

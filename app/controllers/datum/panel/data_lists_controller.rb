@@ -15,28 +15,6 @@ module Datum
       @data_list = DataList.new(type: params[:type])
     end
 
-    def create
-      @data_list = DataList.new(data_list_params)
-
-      unless @data_list.save
-        render :new, locals: { model: @data_list }, status: :unprocessable_entity
-      end
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @data_list.assign_attributes(data_list_params)
-
-      unless @data_list.save
-        render :new, locals: { model: @data_list }, status: :unprocessable_entity
-      end
-    end
-
     def rebuild
       @data_list.rebuild!
 
@@ -44,10 +22,6 @@ module Datum
     end
 
     def just_run
-    end
-
-    def destroy
-      @data_list.destroy
     end
 
     private

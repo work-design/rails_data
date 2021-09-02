@@ -67,9 +67,6 @@ module Datum
       @table_items = @table_list.table_items.page(params[:page]).per(100)
     end
 
-    def edit
-    end
-
     def update
       @table_list.update(table_list_params)
       redirect_to data_list_table_lists_url(@data_list)
@@ -88,10 +85,6 @@ module Datum
     def run
       user_id = defined?(current_user) && current_user&.id
       TableJob.perform_later(@table_list.id, user_id)
-    end
-
-    def destroy
-      @table_list.destroy
     end
 
     private

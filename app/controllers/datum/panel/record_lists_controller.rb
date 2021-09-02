@@ -42,9 +42,6 @@ module Datum
       end
     end
 
-    def edit
-    end
-
     def update
       @record_list.update(record_list_params)
       redirect_to data_record_record_lists_url(@data_record)

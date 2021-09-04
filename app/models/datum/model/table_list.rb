@@ -29,7 +29,7 @@ module Datum
     def convert_parameters
       params = {}.with_indifferent_access
       parameters.each do |k, v|
-        params.merge! k => v.send(RailsCom.config.mapping[data_list.parameters[k].to_sym][:output])
+        params.merge! k => v.send(DefaultForm.config.mapping[data_list.parameters[k].to_sym][:output])
       end
       params
     end

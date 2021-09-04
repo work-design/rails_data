@@ -13,6 +13,7 @@ module Datum
 
     def new
       @data_list = DataList.new(type: params[:type])
+      render :new, locals: { model: @data_list }
     end
 
     def rebuild

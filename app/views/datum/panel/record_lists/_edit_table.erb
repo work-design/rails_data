@@ -9,7 +9,7 @@
   <tbody>
   <% @record_list.columns.each do |k, v| %>
 
-    <% if RailsData.config.mapping[@data_record.columns[k.to_sym].to_s.to_sym]&.fetch(:input, nil) == 'array' %>
+    <% if DefaultForm.config.mapping[@data_record.columns[k.to_sym].to_s.to_sym]&.fetch(:input, nil) == 'array' %>
       <tr>
         <td class="has-text-right"><%= k.to_s.titleize %></td>
         <td>

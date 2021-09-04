@@ -32,7 +32,7 @@ module Datum
     def converted_parameters
       param = {}
       parameters.each do |k, v|
-        param.merge! k.to_sym => v.send(RailsData.config.mapping[data_list.parameters[k].to_sym][:output])
+        param.merge! k.to_sym => v.send(DefaultForm.config.mapping[data_list.parameters[k].to_sym][:output])
       end
       param
     end

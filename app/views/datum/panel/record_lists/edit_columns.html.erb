@@ -7,7 +7,7 @@
 <div class="ui segment">
   <%= form_with url: columns_data_record_record_list_path(@data_record), method: :patch do |f| %>
     <% @record_list.columns.each do |k, v| %>
-      <% if RailsData.config.mapping[@data_record.columns[k.to_sym].to_sym][:input] == 'array' %>
+      <% if DefaultForm.config.mapping[@data_record.columns[k.to_sym].to_sym][:input] == 'array' %>
         <div class="inline fields">
           <label class="six wide field"><%= k.to_s.titleize %>:</label>
           <% v.each_with_index do |_value, _index| %>

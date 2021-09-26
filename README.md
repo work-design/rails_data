@@ -1,5 +1,9 @@
 # RailsData
 
+[![测试](https://github.com/work-design/rails_data/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_data/actions/workflows/test.yml)
+[![Docker构建](https://github.com/work-design/rails_data/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_data/actions/workflows/cd.yml)
+[![Gem](https://github.com/work-design/rails_data/actions/workflows/gempush.yml/badge.svg)](https://github.com/work-design/rails_data/actions/workflows/gempush.yml)
+
 RailsData 是Rails应用处理数据的利器，简单强大； 
 1. 可用于导出数据至多种格式，包括 json、csv、pdf、xlsx, 并能输出为在线图表；
 2. 将 excel, csv 格式的文件导入到 Model 中；

@@ -18,10 +18,11 @@ Gem::Specification.new do |s|
     'test/**/*'
   ]
 
-  s.add_dependency 'rails_com', '~> 1.2'
+  s.add_dependency 'rails_extend'
   s.add_dependency 'write_xlsx'
   s.add_dependency 'roo'
   s.add_dependency 'roo-xls'
   s.add_dependency 'prawn'
   s.add_dependency 'prawn-table'
+  s.add_dependency 'matrix'
 end

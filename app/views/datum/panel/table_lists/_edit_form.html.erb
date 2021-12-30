@@ -1,4 +1,4 @@
-<%= form_with model: @table_list, url: data_list_table_list_path, locale: true do |f| %>
-  <%= render partial: 'com/parameter/extra_form', locals: { taxon: @table_list.data_list, f: f } %>
+<%= form_with model: @table_list, url: { action: 'update' } do |f| %>
+  <%= render partial: 'com/extra/extra_form', locals: { taxon: @table_list.data_list, f: f } %>
   <%= f.submit %>
 <% end %>

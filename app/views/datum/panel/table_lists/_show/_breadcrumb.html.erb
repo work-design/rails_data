@@ -1,9 +1,7 @@
 <div class="ui segment breadcrumb">
-  <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: 'section' %>
+  <%= link_to t('datum.admin.data_lists.index.title'), { controller: 'data_lists' }, class: 'section' %>
   <i class="fa-light fa-angle-right divider"></i>
   <%= link_to t('datum.admin.table_lists.index.title'), data_list_table_lists_path(@data_list), class: 'section' %>
   <i class="fa-light fa-angle-right divider"></i>
   <div class="section"><%= @table_list.headers.join(',') %></div>
 </div>
-
-<%= render partial: 'table', locals: { remote: false } %>

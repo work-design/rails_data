@@ -3,16 +3,22 @@ module Datum
   class Importer
     attr_reader :sheet, :column_index
 
-    def initialize(config, sheet_file)
-      if File.extname(sheet_file.path) == '.xls'
+    def initialize(table_list)
+      @table_list = table_list
+      @sheet_file = table_list.file
+      if sheet_file.filename.extension == '.xls'
         require 'roo-xls'
-        xlsx = Roo::Excel.new(sheet_file)
+        @sheet_file.open do |file|
+          @xlsx = Roo::Excel.new(file)
+        end
       else
-        xlsx = Roo::Excelx.new(sheet_file)
+        @sheet_file.open do |file|
+          @xlsx = Roo::Excelx.new(file)
+        end
       end
-      @sheet = xlsx.sheet(xlsx.sheets[0])
-      @config = config
+      @sheet = @xlsx.sheet(@xlsx.sheets[0])
 
+      @config = @table_list.config
       @column_index = init_header.compact
     end
 

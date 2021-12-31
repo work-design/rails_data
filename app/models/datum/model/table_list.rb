@@ -22,8 +22,12 @@ module Datum
 
     def run
       clear_old
-      exporter = CacheExporter.new(self)
-      exporter.run
+      if data_list.is_a? DataImport
+        runner = Importer.new(self)
+      else
+        runner = CacheExporter.new(self)
+      end
+      runner.run
     end
 
     def convert_parameters

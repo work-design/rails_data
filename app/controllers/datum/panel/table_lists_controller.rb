@@ -45,7 +45,6 @@ module Datum
 
     def migrate
       @table_list.migrate
-      redirect_back fallback_location: data_list_table_lists_url(@data_list)
     end
 
     def show

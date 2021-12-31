@@ -18,7 +18,7 @@ module Datum
       end
       @sheet = @xlsx.sheet(@xlsx.sheets[0])
 
-      @config = @table_list.config
+      @config = @table_list.export
       @column_index = init_header.compact
     end
 
@@ -31,12 +31,13 @@ module Datum
       end
     end
 
-    def results
-      results = []
+    def run
+      @table_list.headers = header_result
       @sheet.each do |row|
-        results << column_index.map { |index| row[index] }
+        @table_list.table_items.build fields: column_index.map { |index| row[index] }
       end
-      results
+      @table_list.done = true
+      @table_list.save
     end
 
   end

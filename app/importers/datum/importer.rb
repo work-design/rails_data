@@ -6,7 +6,7 @@ module Datum
     def initialize(table_list)
       @table_list = table_list
       @sheet_file = table_list.file
-      if sheet_file.filename.extension == '.xls'
+      if @sheet_file.filename.extension == '.xls'
         require 'roo-xls'
         @sheet_file.open do |file|
           @xlsx = Roo::Excel.new(file)

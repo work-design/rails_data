@@ -5,9 +5,11 @@ gemspec
 gem 'rails'
 gem 'pg'
 gem 'puma'
+gem 'propshaft'
 
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_design', github: 'work-design/rails_design'
+gem 'rails_extend', github: 'work-design/rails_extend'
 
 gem 'amazing_print'
 gem 'sdoc'

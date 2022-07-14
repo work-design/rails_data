@@ -47,5 +47,5 @@ The table defined the report's data format
 [Define report pdf style](docs/define-pdf-style)
 
 
-## 许可证
-遵循 [MIT](https://opensource.org/licenses/MIT) 协议
+## 许可
+遵循 [MIT](LICENSE) 协议

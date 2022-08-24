@@ -3,19 +3,19 @@
   <td>
     <div data-show-target="item" style="visibility: hidden">
       <%= button_to({ action: 'run', id: model.id }, method: :patch, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-caret-right"></i>
+        <i class="fa-regular fa-caret-right"></i>
       <% end %>
       <%= link_to({ actioon: 'xlsx', id: model.id, format: 'xlsx' }, aria: { label: t('.export') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-file-excel"></i>
+        <i class="fa-regular fa-file-excel"></i>
       <% end %>
       <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-circle-info"></i>
+        <i class="fa-regular fa-circle-info"></i>
       <% end %>
       <%= link_to({ action: 'edit', id: model.id }, aria: { label: t('.edit') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-pencil"></i>
+        <i class="fa-regular fa-pencil"></i>
       <% end %>
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-light fa-trash"></i>
+        <i class="fa-regular fa-trash"></i>
       <% end %>
     </div>
   </td>

@@ -2,6 +2,7 @@
   <%= link_to 'Import', { action: 'new_import' }, data: { turbo_frame: 'modal' }, class: 'button is-primary' %>
 <% else %>
   <%= link_to({ action: 'new'}, data: { turbo_frame: 'modal' }, class: 'button is-link') do %>
-    <i class="fa-regular fa-plus"></i><span><%= t('.new') %></span>
+    <i class="fa-solid fa-plus"></i>
+    <span class="pl-1"><%= t('.new') %></span>
   <% end %>
 <% end %>

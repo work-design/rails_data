@@ -8,13 +8,13 @@
       <%= link_to({ actioon: 'xlsx', id: model.id, format: 'xlsx' }, aria: { label: t('.export') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-regular fa-file-excel"></i>
       <% end %>
-      <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-circle-info"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: model.id }, aria: { label: t('.edit') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil"></i>
       <% end %>
-      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-trash"></i>
       <% end %>
     </div>

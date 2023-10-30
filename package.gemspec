@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'rails_data'
   s.version = '1.0.2'
-  s.authors = ['qinmingyuan']
+  s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_data'
   s.summary = 'Data Import & Export for Rails'
@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'rails_extend'
+  s.add_dependency 'csv'
+  s.add_dependency 'nkf'
   s.add_dependency 'write_xlsx'
   s.add_dependency 'roo'
   s.add_dependency 'roo-xls'

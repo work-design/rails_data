@@ -1,11 +1,11 @@
 <div class="<%= active_helper(modules: 'datum/panel', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu empty">
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-chart-bar"></i>
-    <span><%= t('datum.admin.title') %></span>
+    <span><%= t('datum.panel.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
-    <%= link_to t('datum.admin.data_lists.index.title'), { controller: 'datum/panel/data_lists' }, class: active_helper(controllers: 'data_lists', active: 'is-active') %>
-    <%= link_to t('datum.admin.data_records.index.title'), { controller: 'datum/panel/data_records' }, class: active_helper(controllers: 'data_records', active: 'is-active') %>
+    <%= link_to t('datum.panel.data_lists.index.title'), { controller: 'datum/panel/data_lists' }, class: active_helper(controllers: 'data_lists', active: 'is-active') %>
+    <%= link_to t('datum.panel.data_records.index.title'), { controller: 'datum/panel/data_records' }, class: active_helper(controllers: 'data_records', active: 'is-active') %>
   </div>
 </div>

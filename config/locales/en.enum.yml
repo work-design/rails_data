@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    attributes:
+      datum/data_list:
+        type:
+          DataImport: Import
+          DataExport: Export

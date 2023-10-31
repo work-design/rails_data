@@ -1,0 +1,12 @@
+en:
+  datum:
+    panel:
+      title: Reports
+      data_lists:
+        index:
+          title: Reports
+      data_records:
+        index:
+          title: Reports
+    admin:
+      title: Reports

@@ -1,7 +1,7 @@
 en:
   activerecord:
-    attributes:
+    enum:
       datum/data_list:
         type:
-          DataImport: Import
-          DataExport: Export
+          Datum::DataImport: Import
+          Datum::DataExport: Export

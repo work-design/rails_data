@@ -2,7 +2,7 @@
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-chart-bar"></i>
     <span><%= t('datum.panel.title') %></span>
-    <i class="fa-solid dropdown"></i>
+    <i class="fa-solid fa-fw dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
     <%= link_to t('datum.panel.data_lists.index.title'), { controller: 'datum/panel/data_lists' }, class: active_helper(controllers: 'data_lists', active: 'is-active') %>

@@ -1,4 +1,12 @@
-<%= form_with model: @data_record, scope: :data_record, url: { action: 'create' } do |f| %>
-  <%= render partial: 'form', locals: { f: f } %>
-  <%= f.submit %>
+<%= form_with model: @data_record, scope: :data_record, url: { action: 'create' }, class: 'modal-card' do |f| %>
+  <header class="modal-card-head">
+    <p class="modal-card-title"><%= t('.title') %></p>
+    <button type="button" data-action="modal#close" class="delete"></button>
+  </header>
+  <section class="modal-card-body">
+    <%= render partial: 'form', locals: { f: f } %>
+  </section>
+  <footer class="modal-card-foot">
+    <%= f.submit %>
+  </footer>
 <% end %>

@@ -1,7 +1,7 @@
 zh:
   datum:
     title: 数据
-    admin:
+    panel:
       title: 报表系统
       data_lists:
         index:

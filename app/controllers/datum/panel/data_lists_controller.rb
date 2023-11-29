@@ -8,7 +8,7 @@ module Datum
       }
       q_params.merge! params.permit(:type)
 
-      @data_lists = DataList.default_where(q_params)
+      @data_lists = DataList.default_where(q_params).page(params[:page])
     end
 
     def new

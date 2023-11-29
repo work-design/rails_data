@@ -9,7 +9,7 @@ Rails.application.routes.draw do
           end
           resources :table_lists do
             collection do
-              get :find
+              match :find, via: [:get, :post]
               get :direct
               get 'import' => :new_import
               post 'import' => :create_import
@@ -32,7 +32,9 @@ Rails.application.routes.draw do
             patch :rebuild
           end
           resources :record_lists do
-            get :find, on: :collection
+            collection do
+              match :find, via: [:get, :post]
+            end
             member do
               get :row
               patch :run

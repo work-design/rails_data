@@ -3,5 +3,6 @@
     <i></i><span>Migrate</span>
   <% end if @table_list.data_list.is_a?(Datum::DataImport) %>
   <%= link_to t('.csv'), { action: 'show', id: @table_list.id, format: 'csv' }, class: 'button is-link' %>
-  <%= link_to t('.excel'), { action: 'show', id: @table_list.id, format: 'xlsx' }, class: 'button is-link' %>
+  <%= link_to t('.excel'), { action: 'show', id: @table_list.id, format: 'xlsx' }, class: 'button is-info' %>
+  <%= link_to t('.pdf'), { action: 'show', id: @table_list.id, format: 'pdf' }, class: 'button is-primary' %>
 </div>

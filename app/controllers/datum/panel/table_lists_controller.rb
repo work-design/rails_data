@@ -1,7 +1,9 @@
 module Datum
   class Panel::TableListsController < Panel::BaseController
     before_action :set_data_list
-    before_action :set_table_list, only: [:show, :chart, :xlsx, :edit, :row, :run, :migrate, :update, :destroy]
+    before_action :set_table_list, only: [
+      :show, :chart, :xlsx, :edit, :row, :run, :migrate, :update, :destroy
+    ]
 
     def index
       @table_lists = @data_list.table_lists.page(params[:page])

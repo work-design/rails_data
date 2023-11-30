@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     namespace :datum, defaults: { business: 'datum' } do
       namespace :panel, defaults: { namespace: 'panel' } do
         resources :data_lists do
+          collection do
+            post :sync
+          end
           member do
             put :update_publish
             patch :rebuild

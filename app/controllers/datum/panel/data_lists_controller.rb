@@ -11,6 +11,10 @@ module Datum
       @data_lists = DataList.default_where(q_params).page(params[:page])
     end
 
+    def sync
+      DataList.sync
+    end
+
     def new
       @data_list = DataList.new(type: params[:type])
       render :new, locals: { model: @data_list }

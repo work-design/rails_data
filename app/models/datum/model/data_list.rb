@@ -44,5 +44,13 @@ module Datum
       @config_pdf ||= export_pdf.to_s.safe_constantize
     end
 
+    class_methods do
+      def sync
+        RailsExtend::Exports.exports.each do |klass|
+          DataList.create(title: klass.name, data_table: klass.to_s, type: 'Datum::DataExport')
+        end
+      end
+    end
+
   end
 end

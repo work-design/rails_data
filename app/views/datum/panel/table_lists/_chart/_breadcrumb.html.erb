@@ -1,0 +1,4 @@
+<li><%= link_to t('.data_lists.index.title'), { controller: 'data_lists' } %></li>
+<li><%= link_to t('.table_lists.index.title'), { controller: 'table_lists' } %></li>
+<li><%= link_to @table_list.headers.join(','), { action: 'show' } %></li>
+<li class="is-active"><%= t('.title') %></li>

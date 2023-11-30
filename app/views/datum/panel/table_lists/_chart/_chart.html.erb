@@ -1,11 +1,2 @@
-<div class="ui segment breadcrumb">
-  <%= link_to t('datum.admin.data_lists.index.title'), data_lists_path, class: 'section' %>
-  <i class="fa-solid fa-angle-right divider"></i>
-  <%= link_to t('datum.admin.table_lists.index.title'), data_list_table_lists_path(@data_list), class: 'section' %>
-  <i class="fa-solid fa-angle-right divider"></i>
-  <%= link_to @table_list.headers.join(','), data_list_table_list_path(@data_list, @table_list), class: 'section' %>
-  <i class="fa-solid fa-angle-right divider"></i>
-  <div class="section"><%= t('.title') %></div>
-</div>
 
-<div id="chart" data-url="<%= data_list_table_list_path(@data_list, @table_list, *params.permit(:column, :x_field)) %>"></div>
+<div id="chart" data-url="<%= url_for(action: 'show', **params.permit(:column, :x_field)) %>"></div>

@@ -8,5 +8,8 @@ en:
       data_records:
         index:
           title: Reports
+      table_lists:
+        find:
+          title: Report
     admin:
       title: Reports

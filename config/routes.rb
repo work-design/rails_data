@@ -18,7 +18,7 @@ Rails.application.routes.draw do
               post 'import' => :create_import
             end
             member do
-              get :chart
+              match :chart, via: [:get, :post]
               get :row
               get :xlsx
               patch :run

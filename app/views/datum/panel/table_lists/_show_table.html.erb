@@ -4,8 +4,8 @@
     <% @table_list.headers.each do |header| %>
       <th>
         <%= header %>
-        <%= link_to({ action: 'chart', id: @table_list.id, x_field: @table_list.x_field, column: header }) do %>
-          <i class="fa-regular fa-chart-line"></i>
+        <%= button_to({ action: 'chart', id: @table_list.id, x_field: @table_list.x_field, column: header }) do %>
+          <i class="fa-solid fa-chart-line"></i>
         <% end %>
       </th>
     <% end %>

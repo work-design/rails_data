@@ -1,4 +1,4 @@
-<td><%= model.title %></td>
+<td><%= link_to model.title, { controller: 'table_lists', data_list_id: model.id } %></td>
 <td><%= model.comment %></td>
 <td><%= model.data_table %></td>
 <td><%= model.export_excel %></td>

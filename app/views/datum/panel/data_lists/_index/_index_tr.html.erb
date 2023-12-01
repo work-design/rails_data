@@ -3,9 +3,6 @@
   <%= yield %>
   <td>
     <div data-show-target="item" style="visibility: hidden">
-      <%= link_to({ controller: 'table_lists', data_list_id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-circle-info has-text-primary"></i>
-      <% end %>
       <%= button_to({ action: 'rebuild', id: model.id }, method: :patch, aria: { label: t('.rebuild'), turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-recycle has-text-warning"></i>
       <% end %>

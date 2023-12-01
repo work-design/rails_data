@@ -11,5 +11,7 @@ en:
       table_lists:
         find:
           title: Report
+        run:
+          title: Run
     admin:
       title: Reports

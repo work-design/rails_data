@@ -48,6 +48,7 @@ module Datum
 
       respond_to do |format|
         format.html
+        format.turbo_stream
         format.json {
           #columns = params[:columns].to_s.split(',').presence || @table_list.headers
           render json: @table_list.export_chart_json(params[:column])

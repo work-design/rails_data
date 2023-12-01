@@ -1,7 +1,3 @@
-<div class="ui segment breadcrumb">
-  <%= link_to t('datum.admin.data_lists.index.title'), { controller: 'data_lists' }, class: 'section' %>
-  <i class="fa-solid fa-angle-right divider"></i>
-  <%= link_to t('datum.admin.table_lists.index.title'), data_list_table_lists_path(@data_list), class: 'section' %>
-  <i class="fa-solid fa-angle-right divider"></i>
-  <div class="section"><%= @table_list.headers.join(',') %></div>
-</div>
+<li><%= link_to t('.data_lists.index.title'), { controller: 'data_lists' } %></li>
+<li><%= link_to t('.table_lists.index.title'), data_list_table_lists_path(@data_list) %></li>
+<li class="is-active"><%= @table_list.headers.join(',') %></li>

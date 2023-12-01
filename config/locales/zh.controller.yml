@@ -21,3 +21,5 @@ zh:
           excel: 下载 Excel 文件
         find:
           title: 预览
+        run:
+          title: 运行

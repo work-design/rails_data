@@ -27,8 +27,8 @@ module Datum
       size: 12
     }
 
-    def initialize(table: 'x')
-
+    def initialize()
+      super
     end
 
     def run

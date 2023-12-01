@@ -20,12 +20,6 @@ module Datum
       redirect_to data_list_table_lists_url(@data_list)
     end
 
-    def find
-      @table_list = @data_list.table_lists.find_or_create_by(parameters: params.permit(*@data_list.parameters.keys).to_h)
-      @table_list.cached_run(params[:timestamp])
-      @table_items = @table_list.table_items.page(params[:page]).per(100)
-    end
-
     def direct
       @table_list = @data_list.table_lists.build(parameters: params.permit(*@data_list.parameters.keys).to_h)
       respond_to do |format|

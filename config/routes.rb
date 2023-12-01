@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
     namespace :datum, defaults: { business: 'datum' } do
+      namespace :admin, defaults: { namespace: 'admin' } do
+        resources :data_lists, only: [] do
+          resources :table_lists do
+            collection do
+              match :find, via: [:get, :post]
+            end
+            member do
+              match :chart, via: [:get, :post]
+            end
+          end
+        end
+      end
       namespace :panel, defaults: { namespace: 'panel' } do
         resources :data_lists do
           collection do
@@ -12,7 +24,6 @@ Rails.application.routes.draw do
           end
           resources :table_lists do
             collection do
-              match :find, via: [:get, :post]
               get :direct
               get 'import' => :new_import
               post 'import' => :create_import

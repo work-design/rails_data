@@ -9,8 +9,8 @@ module Datum
         page_size: 'A4'
       }
       font_families['Alibaba'] = {
-        bold: { file: "#{Rails.root}/public/fonts/Alibaba-PuHuiTi-Bold.ttf" },
-        normal: { file: "#{Rails.root}/public/fonts/Alibaba-PuHuiTi-Regular.ttf" }
+        bold: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Bold.ttf" },
+        normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Regular.ttf" }
       }
       super(default_config)
       font('Alibaba')

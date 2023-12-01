@@ -2,7 +2,8 @@ module Datum
   class Panel::TableListsController < Panel::BaseController
     before_action :set_data_list
     before_action :set_table_list, only: [
-      :show, :chart, :xlsx, :edit, :row, :run, :migrate, :update, :destroy
+      :show, :edit, :row, :run, :migrate, :update, :destroy,
+      :pdf, :chart, :xlsx
     ]
 
     def index
@@ -76,6 +77,10 @@ module Datum
       respond_to do |format|
         format.xlsx { send_data @table_list.direct_xlsx, filename: @table_list.file_name(formats[0]), type: 'application/xlsx' }
       end
+    end
+
+    def pdf
+      send_data @table_list.to_pdf.render, filename: @table_list.file_name(formats[0]), type: 'application/pdf', disposition: 'inline'
     end
 
     def run

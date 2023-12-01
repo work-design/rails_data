@@ -33,7 +33,7 @@ module Datum
 
     # todo hack for a bug, need confirm ?
     def empty?
-      #page.content.stream.length <= 2
+      page.content.stream.length <= 2
     end
 
     def once_header(data = nil)

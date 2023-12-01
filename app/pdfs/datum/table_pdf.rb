@@ -36,10 +36,7 @@ module Datum
 
       once_header beginning_data if beginning_data
       repeat_header header_data if header_data
-      table_data.each_with_index do |value, index|
-        start_new_page unless index == 0
-        custom_table value
-      end
+      custom_table table_data
       once_footer ending_data if ending_data
       repeat_footer footer_data if footer_data
       self

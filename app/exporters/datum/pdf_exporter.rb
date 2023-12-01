@@ -6,7 +6,7 @@ module Datum
       if reportable.respond_to?(:pdf_object)
         @pdf ||= reportable.pdf_object(reportable_name)
       else
-        @pdf ||= TablePdf.new
+        @pdf ||= TopHeaderTablePdf.new
       end
     end
 

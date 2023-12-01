@@ -1,6 +1,6 @@
 require 'prawn/table'
 module Datum
-  class PdfExporter
+  class PdfExporter < CacheExporter
 
     def pdf
       if reportable.respond_to?(:pdf_object)

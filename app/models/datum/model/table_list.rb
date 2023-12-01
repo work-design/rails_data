@@ -38,6 +38,11 @@ module Datum
       params
     end
 
+    def to_pdf
+      export = PdfExporter.new(self)
+      export.run
+    end
+
     def direct_xlsx
       export = XlsxExporter.new(export: self.data_list.export, params: self.parameters)
       export.run

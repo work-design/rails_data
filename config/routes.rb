@@ -32,7 +32,7 @@ Rails.application.routes.draw do
               match :chart, via: [:get, :post]
               get :row
               get :xlsx
-              get :pdf
+              get :pdf, defaults: { format: 'pdf' }
               patch :run
               patch :migrate
             end

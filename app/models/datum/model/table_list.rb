@@ -40,7 +40,8 @@ module Datum
 
     def to_pdf
       export = PdfExporter.new(self)
-      export.run
+      export.pdf_result
+      export
     end
 
     def direct_xlsx

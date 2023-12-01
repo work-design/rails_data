@@ -2,9 +2,14 @@ require 'prawn/table'
 module Datum
   class PdfExporter < CacheExporter
 
+    def initialize(table_list)
+      super
+      @config_pdf = table_list.data_list.config_pdf
+    end
+
     def pdf
-      if reportable.respond_to?(:pdf_object)
-        @pdf ||= reportable.pdf_object(reportable_name)
+      if @config_pdf
+        @pdf ||= @config_pdf
       else
         @pdf ||= TopHeaderTablePdf.new
       end
@@ -29,7 +34,7 @@ module Datum
     end
 
     def pdf_result
-      pdf.table_data = table_lists.includes(:table_items).map { |i| i.csv_array }
+      pdf.table_data = table_list.export_ary
       pdf.header_data = header_data
       pdf.ending_data = ending_data
       pdf.run
@@ -37,8 +42,8 @@ module Datum
     end
 
     def header_data
-      if reportable.respond_to? :header_info
-        reportable.header_info
+      if table_list.respond_to? :header_info
+        table_list.header_info
       else
         [
           ['', ''],
@@ -48,8 +53,8 @@ module Datum
     end
 
     def ending_data
-      if reportable.respond_to? :ending_data
-        reportable.try(:ending_data)
+      if table_list.respond_to? :ending_data
+        table_list.try(:ending_data)
       else
         ''
       end

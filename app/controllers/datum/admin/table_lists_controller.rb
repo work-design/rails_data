@@ -3,9 +3,14 @@ module Datum
     include Controller::Admin
 
     def find
-      @table_list = @data_list.table_lists.find_or_create_by(parameters: params.permit(*@data_list.parameters.keys).to_h)
+      q_params = {}
+      q_params.merge! default_params
+      q_params.merge! params.permit(*@data_list.parameters.keys)
+
+      @table_list = @data_list.table_lists.find_or_create_by(parameters: q_params)
       @table_list.cached_run(params[:timestamp])
       @table_items = @table_list.table_items.page(params[:page]).per(100)
     end
+
   end
 end

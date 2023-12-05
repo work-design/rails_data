@@ -47,7 +47,14 @@ module Datum
     class_methods do
       def sync
         RailsExtend::Exports.exports.each do |klass|
-          DataList.create(title: klass.name, data_table: klass.to_s, type: 'Datum::DataExport')
+          r = Datum::DataExport.find_or_initialize_by(data_table: klass.to_s)
+          r.title = klass.name
+          r.save
+        end
+        RailsExtend::Exports.imports.each do |klass|
+          r = Datum::DataImport.find_or_initialize_by(data_table: klass.to_s)
+          r.title = klass.name
+          r.save
         end
       end
     end

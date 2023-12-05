@@ -5,6 +5,8 @@ en:
       data_lists:
         index:
           title: Reports
+        sync:
+          title: Sync
       data_records:
         index:
           title: Reports

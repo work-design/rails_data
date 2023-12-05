@@ -1,4 +1,12 @@
-<%= form_with model: @table_list, url: { action: 'update' } do |f| %>
-  <%= render partial: 'com/extra/extra_form', locals: { taxon: @table_list.data_list, f: f } %>
-  <%= f.submit %>
+<%= form_with model: @table_list, url: { action: 'update' }, class: 'modal-card' do |f| %>
+  <header class="modal-card-head">
+    <p class="modal-card-title"><%= t('.title') %></p>
+    <button type="button" data-action="modal#close" class="delete"></button>
+  </header>
+  <section class="modal-card-body">
+    <%= render partial: 'com/extra/extra_form', locals: { taxon: @table_list.data_list, f: f } %>
+  </section>
+  <footer class="modal-card-foot">
+    <%= f.submit %>
+  </footer>
 <% end %>

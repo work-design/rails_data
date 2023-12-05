@@ -17,7 +17,7 @@ module Datum
             )
           end
 
-          Datum::TableItem.insert_all(rows)
+          TableItem.insert_all(rows)
         end
       end
     end

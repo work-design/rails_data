@@ -37,8 +37,8 @@ Rails.application.routes.draw do
           resources :table_lists do
             collection do
               get :direct
-              get 'import' => :new_import
-              post 'import' => :create_import
+              match :new_import, via: [:get, :post]
+              post :create_import
             end
             member do
               match :chart, via: [:get, :post]

@@ -1,7 +1,10 @@
 <% if @data_list.type == 'Datum::DataImport' %>
-  <%= link_to 'Import', { action: 'new_import' }, data: { turbo_frame: 'modal' }, class: 'button is-primary' %>
+  <%= button_to({ action: 'new_import' }, class: 'button is-small is-primary') do %>
+    <i class="fa-solid fa-plus"></i>
+    <span class="pl-1"><%= t('.new_import.title') %></span>
+  <% end %>
 <% else %>
-  <%= link_to({ action: 'new'}, data: { turbo_frame: 'modal' }, class: 'button is-link') do %>
+  <%= button_to({ action: 'new'}, class: 'button is-small is-link') do %>
     <i class="fa-solid fa-plus"></i>
     <span class="pl-1"><%= t('.new.title') %></span>
   <% end %>

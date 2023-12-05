@@ -1,4 +1,6 @@
-<%= render layout: 'index_table', locals: { cache_key: Datum::TableList.column_names.hash } do %>
+<%= render 'index_actions' %>
+
+<%= render layout: 'index_table' do %>
   <%= render partial: 'index_tbody', layout: 'index_tr', collection: @table_lists, as: :model %>
 <% end %>
 

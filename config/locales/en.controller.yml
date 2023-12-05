@@ -18,6 +18,10 @@ en:
         index:
           title: Reports
       table_lists:
+        index:
+          title: Tables
+        new_import:
+          title: Import
         find:
           title: Report
         run:

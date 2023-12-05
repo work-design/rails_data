@@ -4,8 +4,9 @@
     <span><%= t('datum.panel.title') %></span>
     <i class="fa-solid fa-fw dropdown"></i>
   </a>
-  <div class="menu-list" data-empty-target="content">
-    <%= link_to t('datum.panel.data_lists.index.title'), { controller: 'datum/panel/data_lists' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'data_lists', active: 'is-active') %>
+  <div data-empty-target="content" class="menu-list">
+    <%= link_to t('datum.panel.data_exports.index.title'), { controller: 'datum/panel/data_exports' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'data_exports', active: 'is-active') %>
+    <%= link_to t('datum.panel.data_imports.index.title'), { controller: 'datum/panel/data_imports' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'data_imports', active: 'is-active') %>
     <%= link_to t('datum.panel.data_records.index.title'), { controller: 'datum/panel/data_records' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'data_records', active: 'is-active') %>
   </div>
 </div>

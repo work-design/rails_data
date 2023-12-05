@@ -18,5 +18,15 @@ module Datum
       export.columns.values.map(&->(i){ i[:header] })
     end
 
+    class_methods do
+      def sync
+        RailsExtend::Exports.imports.each do |klass|
+          r = Datum::DataImport.find_or_initialize_by(data_table: klass.to_s)
+          r.title = klass.name
+          r.save
+        end
+      end
+    end
+
   end
 end

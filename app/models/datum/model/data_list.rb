@@ -44,20 +44,5 @@ module Datum
       @config_pdf ||= export_pdf.to_s.safe_constantize
     end
 
-    class_methods do
-      def sync
-        RailsExtend::Exports.exports.each do |klass|
-          r = Datum::DataExport.find_or_initialize_by(data_table: klass.to_s)
-          r.title = klass.name
-          r.save
-        end
-        RailsExtend::Exports.imports.each do |klass|
-          r = Datum::DataImport.find_or_initialize_by(data_table: klass.to_s)
-          r.title = klass.name
-          r.save
-        end
-      end
-    end
-
   end
 end

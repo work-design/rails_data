@@ -14,21 +14,26 @@ Rails.application.routes.draw do
         end
       end
       namespace :panel, defaults: { namespace: 'panel' } do
+        root 'home#index'
         resources :data_exports do
+          collection do
+            post :sync
+          end
           member do
             put :update_publish
             patch :rebuild
           end
         end
         resources :data_imports do
+          collection do
+            post :sync
+          end
           member do
+            patch :rebuild
             match :template, via: [:get, :post]
           end
         end
         resources :data_lists, only: [] do
-          collection do
-            post :sync
-          end
           resources :table_lists do
             collection do
               get :direct

@@ -2,9 +2,14 @@ en:
   datum:
     panel:
       title: Reports
-      data_lists:
+      data_exports:
         index:
-          title: Reports
+          title: Exports
+        sync:
+          title: Sync
+      data_imports:
+        index:
+          title: Imports
         sync:
           title: Sync
       data_records:

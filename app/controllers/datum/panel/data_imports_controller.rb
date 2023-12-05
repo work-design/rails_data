@@ -1,6 +1,6 @@
 module Datum
   class Panel::DataImportsController < Panel::BaseController
-    before_action :set_data_import, only: [:show, :edit, :update, :rebuild, :destroy]
+    before_action :set_data_import, only: [:show, :edit, :update, :rebuild, :destroy, :template]
 
     def index
       q_params = {}
@@ -14,11 +14,10 @@ module Datum
 
     def rebuild
       @data_import.rebuild!
-
-      redirect_back fallback_location: data_imports_url
     end
 
-    def just_run
+    def template
+      send_data @data_import.template, filename: 'template.xlsx', type: 'application/xlsx'
     end
 
     private

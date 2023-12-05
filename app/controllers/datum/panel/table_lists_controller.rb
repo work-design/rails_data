@@ -17,8 +17,6 @@ module Datum
     def create
       @table_list = @data_list.table_lists.build(table_list_params)
       @table_list.save
-
-      redirect_to data_list_table_lists_url(@data_list)
     end
 
     def direct

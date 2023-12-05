@@ -14,8 +14,6 @@ module Datum
 
     def rebuild
       @data_export.rebuild!
-
-      redirect_back fallback_location: data_exports_url
     end
 
     def just_run

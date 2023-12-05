@@ -12,6 +12,8 @@ en:
           title: Imports
         sync:
           title: Sync
+        template:
+          title: Template
       data_records:
         index:
           title: Reports

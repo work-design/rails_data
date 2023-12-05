@@ -30,7 +30,7 @@ Rails.application.routes.draw do
           end
           member do
             patch :rebuild
-            match :template, via: [:get, :post]
+            get :template
           end
         end
         resources :data_lists, only: [] do

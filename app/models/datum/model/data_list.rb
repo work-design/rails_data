@@ -16,20 +16,11 @@ module Datum
       has_many :table_items, through: :table_lists
 
       scope :published, -> { where(published: true) }
-
-      before_create :update_parameters, if: -> { type == 'Datum::DataExport' }
     end
 
     def rebuild!
       update_parameters
       self.save
-    end
-
-    def update_parameters
-      export.parameters.each do |p|
-        self.parameters[p] = nil
-      end
-      self.x_position = export.columns.index { |i| i[:x_axis] }
     end
 
     def export

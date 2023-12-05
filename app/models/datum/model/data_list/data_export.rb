@@ -2,6 +2,17 @@ module Datum
   module Model::DataList::DataExport
     extend ActiveSupport::Concern
 
+    included do
+      before_create :update_parameters
+    end
+
+    def update_parameters
+      export.parameters.each do |p|
+        self.parameters[p] = nil
+      end
+      self.x_position = export.columns.index { |i| i[:x_axis] }
+    end
+
     def just_run
     end
 

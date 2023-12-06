@@ -6,6 +6,8 @@ Rails.application.routes.draw do
           resources :table_lists do
             collection do
               match :find, via: [:get, :post]
+              match :new_import, via: [:get, :post]
+              post :create_import
             end
             member do
               match :chart, via: [:get, :post]

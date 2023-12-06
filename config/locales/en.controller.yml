@@ -28,3 +28,8 @@ en:
           title: Run
     admin:
       title: Reports
+      table_lists:
+        find:
+          title: Export
+        new_import:
+          title: Import

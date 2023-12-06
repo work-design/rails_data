@@ -92,11 +92,7 @@ module Datum
     end
 
     def set_data_list
-      if /\d/.match? params[:data_list_id]
-        @data_list = DataList.find params[:data_list_id]
-      else
-        @data_list = DataList.find_by data_table: params[:data_list_id]
-      end
+      @data_list = DataList.find params[:data_list_id]
     end
 
     def table_list_params

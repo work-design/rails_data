@@ -20,7 +20,7 @@ module Datum
       has_one_attached :file
     end
 
-    def run
+    def run(identifier = nil)
       clear_old
       if data_list.is_a? DataImport
         runner = Importer.new(self)
@@ -28,10 +28,20 @@ module Datum
         runner = CacheExporter.new(self)
       end
       runner.run
+      notify_done(identifier)
     end
 
-    def run_later
-      TableJob.perform_later(self)
+    def notify_done(identifier)
+      content = ApplicationController.render(
+        formats: [:turbo_stream],
+        partial: 'datum/panel/table_lists/done_success',
+        locals: { model: self }
+      )
+      DoneChannel.broadcast_to identifier, content
+    end
+
+    def run_later(identifier)
+      TableJob.perform_later(self, identifier)
     end
 
     def convert_parameters

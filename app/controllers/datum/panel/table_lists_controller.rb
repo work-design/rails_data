@@ -82,8 +82,7 @@ module Datum
     end
 
     def run
-      user_id = defined?(current_user) && current_user&.id
-      TableJob.perform_later(@table_list, user_id)
+      @table_list.run_later
     end
 
     private

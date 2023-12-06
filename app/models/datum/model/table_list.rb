@@ -30,6 +30,10 @@ module Datum
       runner.run
     end
 
+    def run_later
+      TableJob.perform_later(self)
+    end
+
     def convert_parameters
       params = {}.with_indifferent_access
       parameters.each do |k, v|

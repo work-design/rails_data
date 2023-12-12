@@ -3,10 +3,8 @@ Gem::Specification.new do |s|
   s.version = '1.0.2'
   s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/work-design/rails_data'
   s.summary = 'Data Import & Export for Rails'
   s.description = '数据导出，导入'
-  s.license = 'MIT'
 
   s.files = Dir[
     '{app,config,db,lib}/**/*',

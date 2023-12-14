@@ -3,10 +3,17 @@ zh:
     title: 数据
     panel:
       title: 报表系统
-      data_lists:
+      data_exports:
         index:
-          title: 所有报表
+          title: 报表
           rebuild: 重置参数
+        sync:
+          title: 初始化
+      data_imports:
+        index:
+          title: 导入
+        sync:
+          title: 初始化
       data_records:
         index:
           title: 报表

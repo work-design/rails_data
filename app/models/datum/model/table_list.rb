@@ -28,7 +28,9 @@ module Datum
         runner = CacheExporter.new(self)
       end
       runner.run
+
       notify_done(identifier)
+      email_notify(identifier)
     end
 
     def notify_done(identifier)
@@ -38,6 +40,10 @@ module Datum
         locals: { model: self }
       )
       DoneChannel.broadcast_to identifier, content
+    end
+
+    def email_notify(identifier)
+      FinishMailer.notify(self, identifier).deliver_later
     end
 
     def run_later(identifier)

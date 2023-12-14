@@ -30,3 +30,7 @@ zh:
           title: 预览
         run:
           title: 运行
+    admin:
+      table_lists:
+        find:
+          title: 导出

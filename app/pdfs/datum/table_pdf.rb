@@ -13,8 +13,7 @@ module Datum
     NORMAL_TD = {
       align: :center,
       valign: :center,
-      size: 12,
-      height: 30
+      size: 12
     }
     LEFT_TD = {
       align: :left,

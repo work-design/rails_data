@@ -11,7 +11,7 @@ module Datum
       background_color: 'eeeeee'
     }
     NORMAL_TD = {
-      align: :left,
+      align: :center,
       valign: :center,
       size: 12,
       height: 30

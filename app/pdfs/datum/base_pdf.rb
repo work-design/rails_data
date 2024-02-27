@@ -67,11 +67,9 @@ module Datum
       move_down 50
     end
 
-    def once_footer(data = nil, options = {})
+    def once_footer(data = nil)
       text data
-      if options[:page]
-        number_pages "<page> / <total>", at: [bounds.right - 50, 0]
-      end
+      number_pages "<page> / <total>", at: [bounds.right - 50, 0]
     end
 
     def repeat_footer(data)

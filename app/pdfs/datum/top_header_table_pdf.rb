@@ -12,6 +12,7 @@ module Datum
         }
       }
       undash
+      data.prepend [] if data.size <= 1
       table(data, options) do
         row(0).style NORMAL_TH
         row(1..-1).style NORMAL_TD

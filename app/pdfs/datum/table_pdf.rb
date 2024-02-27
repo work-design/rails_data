@@ -31,17 +31,6 @@ module Datum
       super
     end
 
-    def run
-      return self unless self.empty?
-
-      once_header beginning_data if beginning_data
-      repeat_header header_data if header_data
-      custom_table table_data
-      once_footer ending_data if ending_data
-      repeat_footer footer_data if footer_data
-      self
-    end
-
     # 针对数据数据
     def grid_table(data, options = {})
       default_options = {

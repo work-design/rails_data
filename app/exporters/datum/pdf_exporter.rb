@@ -34,7 +34,7 @@ module Datum
     end
 
     def pdf_result
-      pdf.table_data = table_list.export_ary
+      pdf.table_data = [table_list.export_ary]
       pdf.header_data = header_data
       pdf.ending_data = ending_data
       pdf.run

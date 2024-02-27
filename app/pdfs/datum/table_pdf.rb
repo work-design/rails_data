@@ -27,7 +27,7 @@ module Datum
       size: 12
     }
 
-    def initialize()
+    def initialize
       super
     end
 

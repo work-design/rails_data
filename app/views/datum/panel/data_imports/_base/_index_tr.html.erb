@@ -2,7 +2,7 @@
   <%= yield %>
   <td>
     <div data-show-target="item" class="visibility-hidden">
-      <%= button_to({ action: 'rebuild', id: model.id }, method: :patch, aria: { label: t('.rebuild'), turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'rebuild', id: model.id }, method: :patch, aria: { label: t('.rebuild'), turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-recycle has-text-warning"></i>
       <% end %>
       <%= link_to({ action: 'template', id: model.id, format: 'xlsx' }, aria: { label: t('.template.title') }, class: 'button is-small is-rounded is-light') do %>
@@ -11,7 +11,7 @@
       <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil has-text-link"></i>
       <% end %>
-      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-trash has-text-danger"></i>
       <% end %>
     </div>

@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
     'test/**/*'
   ]
 
-  s.add_dependency 'rails_extend'
   s.add_dependency 'csv'
   s.add_dependency 'nkf'
   s.add_dependency 'write_xlsx'

@@ -18,7 +18,7 @@ module Datum
 
     class_methods do
       def sync
-        RailsExtend::Exports.exports.each do |klass|
+        RailsCom::Exports.exports.each do |klass|
           r = Datum::DataExport.find_or_initialize_by(data_table: klass.to_s)
           r.title = klass.name
           r.save

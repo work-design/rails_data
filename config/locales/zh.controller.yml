@@ -14,6 +14,10 @@ zh:
           title: 导入
         sync:
           title: 初始化
+        template:
+          title: 模板
+        rebuild:
+          title: 导入
       data_records:
         index:
           title: 报表
@@ -34,3 +38,5 @@ zh:
       table_lists:
         find:
           title: 导出
+        new_import:
+          title: 导入数据

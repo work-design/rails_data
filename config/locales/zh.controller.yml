@@ -3,6 +3,9 @@ zh:
     title: 数据
     panel:
       title: 报表系统
+      home:
+        index:
+          title: 报表系统
       data_exports:
         index:
           title: 报表

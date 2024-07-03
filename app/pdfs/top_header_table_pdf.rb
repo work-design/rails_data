@@ -2,7 +2,7 @@
 
 class TopHeaderTablePdf < TablePdf
 
-  def custom_table(data)
+  def custom_table(data, thead)
     options = {
       position: :center,
       width: bounds.width,
@@ -11,8 +11,9 @@ class TopHeaderTablePdf < TablePdf
       }
     }
     undash
-    table(data, options) do
-      if data.size > 1
+    real_data = data.prepend(thead) if thead.present?
+    table(real_data, options) do
+      if thead.present?
         row(0).style NORMAL_TH
         row(1..-1).style NORMAL_TD
       else

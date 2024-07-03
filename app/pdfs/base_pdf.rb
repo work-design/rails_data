@@ -33,7 +33,6 @@ class BasePdf < Prawn::Document
   end
 
   def once_header(data = nil)
-
   end
 
   def repeat_header(data = nil)

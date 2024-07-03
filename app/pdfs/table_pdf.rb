@@ -3,30 +3,39 @@
 class TablePdf < BasePdf
   NORMAL_TH = {
     align: :center,
-    valign: :center,
     size: 14,
     font_style: :bold,
-    height: 30,
     background_color: 'eeeeee'
   }
   NORMAL_TD = {
     align: :center,
-    valign: :center,
-    size: 12
+    size: 12,
   }
   LEFT_TD = {
     align: :left,
-    valign: :center,
     size: 12
   }
   RIGHT_TD = {
     align: :right,
-    valign: :center,
     size: 12
   }
 
-  def initialize
+  def initialize(**options)
     super
+  end
+
+  def run
+    return self unless self.empty?
+
+    once_header
+    repeat_header header_data if header_data
+    table_data.each_with_index do |value, index|
+      start_new_page unless index == 0
+      custom_table value[:table]
+    end
+    once_footer ending_data if ending_data
+    repeat_footer footer_data if footer_data
+    self
   end
 
   # 针对数据数据
@@ -48,6 +57,7 @@ class TablePdf < BasePdf
 
   # 针对文字内容
   def content_table(data, options = {}, &block)
+    return if data.blank?
     default_options = {
       position: :center,
       width: bounds.width,

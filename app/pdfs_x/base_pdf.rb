@@ -2,22 +2,6 @@ require 'prawn'
 require 'prawn/measurement_extensions'
 
 class BasePdf < Prawn::Document
-  attr_accessor(
-    :title,
-    :table_data,
-    :header_data,
-    :ending_data,
-    :footer_data,
-    :beginning_data
-  )
-
-  def initialize(**options)
-    default_config = {
-      page_size: 'A4'
-    }
-    default_config.merge!(options)
-    super(default_config)
-  end
 
   def run
   end

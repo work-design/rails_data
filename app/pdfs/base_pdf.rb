@@ -2,6 +2,12 @@ require 'prawn'
 require 'prawn/measurement_extensions'
 
 class BasePdf < Prawn::Document
+  FONT = {
+    'Alibaba' => {
+      bold: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Bold.ttf" },
+      normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Regular.ttf" }
+    }
+  }
   attr_accessor(
     :title,
     :table_data,
@@ -15,13 +21,10 @@ class BasePdf < Prawn::Document
     default_config = {
       page_size: 'A4'
     }
-    font_families['Alibaba'] = {
-      bold: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Bold.ttf" },
-      normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Regular.ttf" }
-    }
+    font_families.merge! FONT
     default_config.merge!(options)
     super(default_config)
-    font('Alibaba')
+    font(FONT.keys[0])
   end
 
   def run
@@ -35,7 +38,7 @@ class BasePdf < Prawn::Document
   def once_header(value = beginning_data)
     case value
     when String
-      font_size(20) { text value }
+      font(FONT.keys[0], style: :bold, size: 20) { text value }
     when Hash
       value.each do |k, v|
         formatted_text(

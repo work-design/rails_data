@@ -15,29 +15,6 @@ class BasePdf < Prawn::Document
     font_size(25) { text data }
   end
 
-  def once_header(data = beginning_data)
-    data.each do |value|
-      case value
-      when String
-        #text value
-        font_size(20) { text value }
-      when Hash
-        value.each do |k, v|
-          formatted_text(
-            [
-              { text: "#{k.to_s}: ", styles: [:bold] },
-              { text: v }
-            ]
-          )
-        end
-      when Array
-        formatted_text value
-      else
-        text value
-      end
-    end
-  end
-
   def repeat_header(data = header_data)
     repeat :all do
       canvas do

@@ -30,6 +30,7 @@ class TablePdf < BasePdf
 
     repeat_header header_data if header_data
     once_header table_data[:header]
+    move_down 20
     custom_table table_data[:table]
     once_footer ending_data if ending_data
     repeat_footer footer_data if footer_data

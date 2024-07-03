@@ -35,7 +35,6 @@ class BasePdf < Prawn::Document
   def once_header(value = beginning_data)
     case value
     when String
-      #text value
       font_size(20) { text value }
     when Hash
       value.each do |k, v|

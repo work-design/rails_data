@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'prawn/table'
 
 class TablePdf < BasePdf
   NORMAL_TH = {
@@ -27,12 +28,9 @@ class TablePdf < BasePdf
   def run
     return self unless self.empty?
 
-    once_header
     repeat_header header_data if header_data
-    table_data.each_with_index do |value, index|
-      start_new_page unless index == 0
-      custom_table value[:table]
-    end
+    once_header table_data[:header]
+    custom_table table_data[:table]
     once_footer ending_data if ending_data
     repeat_footer footer_data if footer_data
     self

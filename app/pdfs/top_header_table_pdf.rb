@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class TopHeaderTablePdf < TablePdf
+  NORMAL_TH = {
+    align: :center,
+    size: 14,
+    font_style: :bold,
+    background_color: 'eeeeee'
+  }
 
   def custom_table(data, thead = nil)
     options = {

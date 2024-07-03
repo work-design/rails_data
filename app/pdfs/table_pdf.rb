@@ -2,12 +2,6 @@
 require 'prawn/table'
 
 class TablePdf < BasePdf
-  NORMAL_TH = {
-    align: :center,
-    size: 14,
-    font_style: :bold,
-    background_color: 'eeeeee'
-  }
   NORMAL_TD = {
     align: :center,
     size: 12,

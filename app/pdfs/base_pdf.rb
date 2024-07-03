@@ -11,7 +11,7 @@ class BasePdf < Prawn::Document
     :beginning_data
   )
 
-  def initialize
+  def initialize(**options)
     default_config = {
       page_size: 'A4'
     }
@@ -19,6 +19,7 @@ class BasePdf < Prawn::Document
       bold: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Bold.ttf" },
       normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Regular.ttf" }
     }
+    default_config.merge!(options)
     super(default_config)
     font('Alibaba')
   end
@@ -74,8 +75,12 @@ class BasePdf < Prawn::Document
   end
 
   def once_footer(data = nil)
-    text data
+    text data if data
     number_pages "<page> / <total>", at: [bounds.right - 50, 0]
+  end
+
+  def deal_text(data)
+
   end
 
   def repeat_footer(data)

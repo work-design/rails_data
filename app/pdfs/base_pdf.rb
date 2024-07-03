@@ -32,26 +32,24 @@ class BasePdf < Prawn::Document
     page.content.stream.length <= 2
   end
 
-  def once_header(data = beginning_data)
-    data.each do |value|
-      case value
-      when String
-        #text value
-        font_size(20) { text value }
-      when Hash
-        value.each do |k, v|
-          formatted_text(
-            [
-              { text: "#{k.to_s}: ", styles: [:bold] },
-              { text: v }
-            ]
-          )
-        end
-      when Array
-        formatted_text value
-      else
-        text value
+  def once_header(value = beginning_data)
+    case value
+    when String
+      #text value
+      font_size(20) { text value }
+    when Hash
+      value.each do |k, v|
+        formatted_text(
+          [
+            { text: "#{k.to_s}: ", styles: [:bold] },
+            { text: v }
+          ]
+        )
       end
+    when Array
+      formatted_text value
+    else
+      text value
     end
   end
 

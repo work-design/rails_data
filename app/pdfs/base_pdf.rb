@@ -2,7 +2,14 @@ require 'prawn'
 require 'prawn/measurement_extensions'
 
 class BasePdf < Prawn::Document
-  attr_accessor :table_data, :header_data, :ending_data, :footer_data, :beginning_data
+  attr_accessor(
+    :title,
+    :table_data,
+    :header_data,
+    :ending_data,
+    :footer_data,
+    :beginning_data
+  )
 
   def initialize
     default_config = {

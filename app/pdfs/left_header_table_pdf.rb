@@ -10,6 +10,7 @@ class LeftHeaderTablePdf < TablePdf
       position: :center,
       width: bounds.width,
       cell_style: {
+        borders: [:top, :bottom],
         border_lines: [:solid, :solid, :solid, :solid]
       }
     }

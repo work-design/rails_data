@@ -11,6 +11,7 @@ class LeftHeaderTablePdf < TablePdf
       width: bounds.width,
       cell_style: {
         borders: [:top, :bottom],
+        border_width: 0.5,
         border_lines: [:solid, :solid, :solid, :solid]
       }
     }

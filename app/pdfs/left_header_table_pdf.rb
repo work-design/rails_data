@@ -7,6 +7,7 @@ class LeftHeaderTablePdf < TablePdf
 
   def custom_table(data)
     options = {
+      column_widths: { 0 => 120 },
       position: :center,
       width: bounds.width,
       cell_style: {

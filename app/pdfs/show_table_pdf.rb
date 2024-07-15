@@ -8,9 +8,18 @@ class ShowTablePdf < TablePdf
     padding: 0
   }
 
+  def xx
+    (bounds.width - 14 * 16) / 2
+  end
+
   def custom_table(data)
     options = {
-      column_widths: { 0 => 14 * 8 , 2 => 14 * 8 - 2 },
+      column_widths: {
+        0 => 14 * 8 ,
+        1 => xx,
+        2 => 14 * 8,
+        3 => xx
+      },
       position: :center,
       width: bounds.width,
       cell_style: {

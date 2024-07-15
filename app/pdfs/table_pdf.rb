@@ -3,8 +3,8 @@ require 'prawn/table'
 
 class TablePdf < BasePdf
   NORMAL_TD = {
-    align: :center,
     size: 12,
+    valign: :center
   }
   LEFT_TD = {
     align: :left,

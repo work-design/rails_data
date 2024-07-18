@@ -29,8 +29,7 @@ class ShowTablePdf < TablePdf
       }
     }
     undash
-    _data = data.flatten(1).in_groups_of(4)
-    table(_data, options) do
+    table(data, options) do
       columns(0).style NORMAL_TH
       columns(1).style NORMAL_TD
       columns(2).style NORMAL_TH

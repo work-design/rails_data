@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MultiTablePdf < TablePdf
+class MultiPagePdf < TablePdf
   attr_accessor :multi_data
 
   def run
@@ -8,7 +8,7 @@ class MultiTablePdf < TablePdf
 
     repeat_header header_data if header_data
     multi_data.each_with_index do |value, index|
-      move_down 20 unless index == 0
+      start_new_page unless index == 0
       once_header value[:header]
       content_table value[:table]
     end

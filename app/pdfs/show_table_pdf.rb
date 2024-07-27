@@ -15,7 +15,7 @@ class ShowTablePdf < TablePdf
   def custom_table(data)
     options = {
       column_widths: {
-        0 => 14 * 8 ,
+        0 => 14 * 8,
         1 => xx,
         2 => 14 * 8,
         3 => xx

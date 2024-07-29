@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TopHeaderTablePdf < TablePdf
+module Tables::TopHeader
   NORMAL_TH = {
     align: :center,
     size: 14,

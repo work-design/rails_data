@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LeftHeaderTablePdf < TablePdf
+module Tables::LeftHeader
   NORMAL_TH = {
     background_color: 'eeeeee'
   }

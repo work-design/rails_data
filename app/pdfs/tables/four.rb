@@ -12,17 +12,15 @@ module Tables::Four
     valign: :center
   }
 
-  def xx
-    (bounds.width - 14 * 16) / 2
-  end
-
   def four_table(data)
+    width = (bounds.width - 14 * 16) / 2
+
     options = {
       column_widths: {
         0 => 14 * 8,
-        1 => xx,
+        1 => width,
         2 => 14 * 8,
-        3 => xx
+        3 => width
       },
       position: :center,
       width: bounds.width,

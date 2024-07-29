@@ -15,13 +15,12 @@ module Tables::Total
   }
 
   def total_table(data, options = {})
+    width = bounds.width / data[0].size
+
     default_options = {
       position: :center,
       width: bounds.width,
-      column_widths: {
-        0 => bounds.width / 2,
-        1 => bounds.width / 2
-      },
+      column_widths: Array.new(data[0].size, width),
       cell_style: {
         borders: [],
         padding: [5, 0],

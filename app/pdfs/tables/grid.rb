@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module Tables::Grid
+  LEFT_TD = {
+    size: 12,
+    align: :left
+  }
+  RIGHT_TD = {
+    size: 12,
+    align: :right
+  }
 
   # 针对数据
   def grid_table(data, options = {})

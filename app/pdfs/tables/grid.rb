@@ -21,7 +21,7 @@ module Tables::Grid
       },
       cell_style: {
         borders: [],
-        padding: [3, 0],
+        padding: [5, 0],
         inline_format: true
       }
     }

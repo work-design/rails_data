@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MultiPagePdf < TablePdf
+class MultiPagePdf < BasePdf
   attr_accessor :multi_data
 
   def run

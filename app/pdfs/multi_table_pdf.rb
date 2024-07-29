@@ -6,6 +6,7 @@ class MultiTablePdf < BasePdf
   include Tables::Four
   include Tables::Grid
   include Tables::Total
+  include Tables::Image
   include Tables::LeftHeader
   include Tables::TopHeader
 

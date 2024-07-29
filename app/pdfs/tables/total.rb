@@ -11,7 +11,9 @@ module Tables::Total
   }
   HEAD_TD = {
     size: 12,
-    style: :bold
+    style: :bold,
+    borders: [:bottom],
+    border_color: 'eeeeee'
   }
 
   def total_table(data, options = {})

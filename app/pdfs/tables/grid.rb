@@ -7,7 +7,7 @@ module Tables::Grid
   }
   RIGHT_TD = {
     size: 12,
-    align: :right
+    align: :left
   }
 
   # 针对数据
@@ -16,7 +16,8 @@ module Tables::Grid
       position: :center,
       width: bounds.width,
       cell_style: {
-        borders: []
+        borders: [],
+        inline_format: true
       }
     }
     default_options.merge!(options)

@@ -2,10 +2,6 @@
 require 'prawn/table'
 
 class TablePdf < BasePdf
-  NORMAL_TD = {
-    size: 12,
-    valign: :center
-  }
   LEFT_TD = {
     align: :left,
     size: 12

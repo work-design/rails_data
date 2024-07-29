@@ -2,10 +2,14 @@
 
 module Tables::Four
   NORMAL_TH = {
-    background_color: 'eeeeee',
     size: 14,
+    background_color: 'eeeeee',
     valign: :center,
     padding: 0
+  }
+  NORMAL_TD = {
+    size: 12,
+    valign: :center
   }
 
   def xx

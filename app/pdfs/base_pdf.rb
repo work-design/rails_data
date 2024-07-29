@@ -6,6 +6,9 @@ class BasePdf < Prawn::Document
     'Alibaba' => {
       bold: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Bold.ttf" },
       normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/Alibaba-PuHuiTi-Regular.ttf" }
+    },
+    'DingTalk' => {
+      normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/DingTalk-JinBuTi.ttf" }
     }
   }
   attr_accessor(

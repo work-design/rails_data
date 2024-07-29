@@ -1,10 +1,9 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 9ccbdae61a3d196e64d7a9b3c500f1bd0423c86d
+  revision: 55576757b508288c0b9d98ede3f15cc482d124d9
   specs:
     rails_com (1.3.0)
       acme-client
-      acts_as_list (>= 1.0)
       closure_tree (>= 7.3)
       default_where (~> 2.2)
       http-form_data (~> 2.3)
@@ -15,12 +14,13 @@ GIT
       net-http
       net-pop
       ostruct
+      positioning
       rails (~> 7.0)
       turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 044eef4bac1818a5104df5f916cfc8662a716c26
+  revision: dbc2c0f245a71bd988838255d6b18ca3b3e5309a
   specs:
     rails_design (0.0.1)
       rails
@@ -118,9 +118,6 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    acts_as_list (1.2.2)
-      activerecord (>= 6.1)
-      activesupport (>= 6.1)
     amazing_print (1.6.0)
     base64 (0.2.0)
     bigdecimal (3.1.8)
@@ -143,13 +140,13 @@ GEM
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
       logger
-    faraday-net_http (3.1.0)
+    faraday-net_http (3.1.1)
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    http-2 (1.0.0)
+    http-2 (1.0.1)
     http-form_data (2.3.0)
     httpx (1.3.0)
       http-2 (>= 1.0.0)
@@ -210,9 +207,14 @@ GEM
     nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    nokogiri (1.16.5-x86_64-linux)
+      racc (~> 1.4)
     ostruct (0.6.0)
     pdf-core (0.10.0)
     pg (1.5.6)
+    positioning (0.2.3)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
@@ -290,7 +292,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.5)
+    turbo-rails (2.0.6)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -326,7 +328,7 @@ DEPENDENCIES
   sdoc
 
 CHECKSUMS
-  acme-client (2.0.18)
+  acme-client (2.0.18) sha256=3feab341926ffc16eb65babe51ba4dad8180c13e21e774871344e0b3502ef275
   actioncable (7.1.3.3) sha256=57323cda266c950b18d67b3a751ba388dc7e0615fde48eb17400fa785a61adcf
   actionmailbox (7.1.3.3) sha256=7525d8476412f98df445a5be07ca72366168dc16316e88609a7f0184cb20a663
   actionmailer (7.1.3.3) sha256=6bf548313f189f0cb54077c7d0682c2b93f7ed4dd8de16f9a58475530f575216
@@ -338,7 +340,6 @@ CHECKSUMS
   activerecord (7.1.3.3) sha256=3de333d49d84f7f03895de12f71e6e0a6e7df5fd9c80eea7e8b40ce04b4535c9
   activestorage (7.1.3.3) sha256=ba08fd11fea0ab0c72de6de3bb0f386feb8a45bfd969f630ba1da0ceaf02a142
   activesupport (7.1.3.3) sha256=f1147f1eedff05b7816b48d0aa89c912b83fed3f245d7ed3cf33a55ffbf3137d
-  acts_as_list (1.2.2)
   amazing_print (1.6.0) sha256=9903e93daadc15411c854239f8ca1ca6ce78be279ed99d43fec2bd3b0aa37397
   base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
   bigdecimal (3.1.8) sha256=a89467ed5a44f8ae01824af49cbc575871fa078332e8f77ea425725c1ffe27be
@@ -353,13 +354,13 @@ CHECKSUMS
   default_where (2.2.0) sha256=77f54769256ad5d961c44a6dd88d8d485a1c4487a549d2c178da9101f6fed0a0
   drb (2.2.1) sha256=e9d472bf785f558b96b25358bae115646da0dbfd45107ad858b0bc0d935cb340
   erubi (1.12.0) sha256=27bedb74dfb1e04ff60674975e182d8ca787f2224f2e8143268c7696f42e4723
-  faraday (2.10.0)
-  faraday-net_http (3.1.0) sha256=1627be414960d0131691190ff524506ba6607402a50fb6eccda9e64ca60f859f
+  faraday (2.10.0) sha256=1a3e6c02acc511fc334d799521f1013e449bde38aa2dceb3af71e8030519bda9
+  faraday-net_http (3.1.1) sha256=da93f0f426f4de2c09af0a9a95887726da7889b76eca2a2aff0ce5e66e768938
   faraday-retry (2.2.1) sha256=4146fed14549c0580bf14591fca419a40717de0dd24f267a8ec2d9a728677608
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
-  http-2 (1.0.0)
+  http-2 (1.0.1) sha256=635ff7a115e3e16be82c90a56f5ebf6efb47a1d772fe8aefe5ddfb14a123857e
   http-form_data (2.3.0) sha256=cc4eeb1361d9876821e31d7b1cf0b68f1cf874b201d27903480479d86448a5f3
-  httpx (1.3.0)
+  httpx (1.3.0) sha256=c7fc9eed0fbed825ee936d9efc26aca5fca4b97a6bfa3e448e6478f947b88bd7
   i18n (1.14.5) sha256=26dcbc05e364b57e27ab430148b3377bc413987d34cc042336271d8f42e9d1b9
   io-console (0.7.2) sha256=f0dccff252f877a4f60d04a4dc6b442b185ebffb4b320ab69212a92b48a7a221
   irb (1.13.1) sha256=aa552f30b33f15615cff4ca8d04bace0bdd442777efb5187d9a621707889f292
@@ -367,7 +368,7 @@ CHECKSUMS
   kaminari-actionview (1.2.2) sha256=1330f6fc8b59a4a4ef6a549ff8a224797289ebf7a3a503e8c1652535287cc909
   kaminari-activerecord (1.2.2) sha256=0dd3a67bab356a356f36b3b7236bcb81cef313095365befe8e98057dd2472430
   kaminari-core (1.2.2) sha256=3bd26fec7370645af40ca73b9426a448d09b8a8ba7afa9ba3c3e0d39cdbb83ff
-  logger (1.6.0)
+  logger (1.6.0) sha256=0ab7c120262dd8de2a18cb8d377f1f318cbe98535160a508af9e7710ff43ef3e
   loofah (2.22.0) sha256=10d76e070c86b12fec74b6a9515fd1940f4459198b991342d0a7897d86c372fe
   mail (2.8.1) sha256=ec3b9fadcf2b3755c78785cb17bc9a0ca9ee9857108a64b6f5cfc9c0b5bfc9ad
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
@@ -387,9 +388,11 @@ CHECKSUMS
   nio4r (2.7.3) sha256=54b94cdd4b8f9dc39aaad5f699e97afae13efb44f2b180a6e724df76105ff604
   nkf (0.2.0) sha256=fbc151bda025451f627fafdfcb3f4f13d0b22ae11f58c6d3a2939c76c5f5f126
   nokogiri (1.16.5) sha256=ec36162c68984fa0a90a5c4ae7ab7759460639e716cc1ce75f34c3cb54158ad2
+  nokogiri (1.16.5-x86_64-linux) sha256=0ca238da870066bed2f7837af6f35791bb9b76c4c5638999c46aac44818a6a97
   ostruct (0.6.0) sha256=3b1736c99f4d985de36bde1155be5e22aaf6e564b30ff9bd481e2ef7c2d9ba85
   pdf-core (0.10.0) sha256=0a5d101e2063c01e3f941e1ee47cbb97f1adfc1395b58372f4f65f1300f3ce91
   pg (1.5.6) sha256=4bc3ad2438825eea68457373555e3fd4ea1a82027b8a6be98ef57c0d57292b1c
+  positioning (0.2.3) sha256=71bb40a5ad81c52cd10c0ce2fe8b61b128516273467688b59e93a254e9080c9a
   prawn (2.5.0) sha256=f4e20e3b4f30bf5b9ae37dad15eb421831594553aa930b2391b0fa0a99c43cb6
   prawn-table (0.2.2) sha256=336d46e39e003f77bf973337a958af6a68300b941c85cb22288872dc2b36addb
   propshaft (0.9.0) sha256=fe1d2e6368b1147f4de844a58bcd90a0d9d7bd2930aaf225c84d31c068346091
@@ -416,11 +419,11 @@ CHECKSUMS
   rubyzip (2.3.2) sha256=3f57e3935dc2255c414484fbf8d673b4909d8a6a57007ed754dde39342d2373f
   sdoc (2.6.1) sha256=d78305be6fe9f81cb93787c24f8c2d47e418c2f1de2e7ff75c032d465fe3c5f8
   spreadsheet (1.3.1) sha256=abc8f3f652c3596ea7fdd72c58699d5f532553f95debb4976fed1605d87b9c9f
-  stringio (3.1.1)
+  stringio (3.1.1) sha256=53456e14175c594e0e8eb2206a1be33f3974d4fe21c131e628908b05c8c2ae1e
   thor (1.3.1) sha256=fa7e3471d4f6a27138e3d9c9b0d4daac9c3d7383927667ae83e9ab42ae7401ef
   timeout (0.4.1) sha256=6f1f4edd4bca28cffa59501733a94215407c6960bd2107331f0280d4abdebb9a
   ttfunk (1.8.0) sha256=a7cbc7e489cc46e979dde04d34b5b9e4f5c8f1ee5fc6b1a7be39b829919d20ca
-  turbo-rails (2.0.5) sha256=cef775349c24734e52937997c2c4582a95966b3f81a173a9bcf037074a766229
+  turbo-rails (2.0.6) sha256=e5fd7b2fd11d24f202c5d33597d291767491b9938563d4edbd4a174166eba35b
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   uri (0.13.0) sha256=26553c2a9399762e1e8bebd4444b4361c4b21298cf1c864b22eeabc9c4998f24
   webrick (1.8.1) sha256=19411ec6912911fd3df13559110127ea2badd0c035f7762873f58afc803e158f

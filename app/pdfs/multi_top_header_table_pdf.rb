@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MultiTopHeaderTablePdf < TopHeaderTablePdf
+class MultiTopHeaderTablePdf < BasePdf
   attr_accessor :multi_data
 
   def run

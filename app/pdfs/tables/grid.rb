@@ -10,7 +10,6 @@ module Tables::Grid
     align: :left
   }
 
-  # 针对数据
   def grid_table(data, options = {})
     default_options = {
       position: :center,

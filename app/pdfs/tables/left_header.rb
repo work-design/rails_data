@@ -5,7 +5,7 @@ module Tables::LeftHeader
     background_color: 'eeeeee'
   }
 
-  def custom_table(data)
+  def left_header_table(data)
     options = {
       column_widths: { 0 => 120 },
       position: :center,

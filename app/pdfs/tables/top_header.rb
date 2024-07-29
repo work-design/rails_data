@@ -8,7 +8,7 @@ module Tables::TopHeader
     background_color: 'eeeeee'
   }
 
-  def custom_table(data, thead = nil)
+  def top_header_table(data, thead = nil)
     options = {
       position: :center,
       width: bounds.width,

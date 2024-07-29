@@ -12,7 +12,7 @@ module Tables::Four
     (bounds.width - 14 * 16) / 2
   end
 
-  def custom_table(data)
+  def four_table(data)
     options = {
       column_widths: {
         0 => 14 * 8,

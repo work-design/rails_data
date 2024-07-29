@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-class MultiTablePdf < TablePdf
+class MultiTablePdf < BasePdf
+  include Tables::Content
+  include Tables::Four
+  include Tables::Grid
+  include Tables::LeftHeader
+  include Tables::TopHeader
+
   attr_accessor :multi_data
 
   def run
@@ -11,9 +17,8 @@ class MultiTablePdf < TablePdf
       pdf = value[:pdf].constantize.new
       pdf.table_data = {
         header: title,
-        table: value[:table_data]
       }
-      pdf.run
+      send('', value[:table_data])
     end
     once_footer ending_data if ending_data
     repeat_footer footer_data if footer_data

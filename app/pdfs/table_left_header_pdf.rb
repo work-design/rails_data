@@ -4,7 +4,7 @@ class TableLeftHeaderPdf < TablePdf
   include Tables::LeftHeader
 
   def custom_table(data)
-
+    left_header_table(data)
   end
 
 end

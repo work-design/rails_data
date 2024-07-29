@@ -15,8 +15,13 @@ module Tables::Grid
     default_options = {
       position: :center,
       width: bounds.width,
+      column_widths: {
+        0 => bounds.width / 2,
+        1 => bounds.width / 2
+      },
       cell_style: {
         borders: [],
+        padding: [3, 0],
         inline_format: true
       }
     }

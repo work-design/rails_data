@@ -14,11 +14,8 @@ class MultiTablePdf < BasePdf
 
     repeat_header header_data if header_data
     multi_data.each do |title, value|
-      pdf = value[:pdf].constantize.new
-      pdf.table_data = {
-        header: title,
-      }
-      send('', value[:table_data])
+      once_header title
+      send("#{value[:pdf]}_table", value[:table_data])
     end
     once_footer ending_data if ending_data
     repeat_footer footer_data if footer_data

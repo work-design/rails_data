@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-class TableGridPdf < TablePdf
+module Tables::Grid
 
   # 针对数据
-  def custom_table(data, options = {})
+  def grid_table(data, options = {})
     default_options = {
       position: :center,
       width: bounds.width,
       cell_style: {
-        borders: []
+        border_lines: [:solid, :solid, :solid, :solid],
+        border_color: '999999'
       }
     }
     default_options.merge!(options)

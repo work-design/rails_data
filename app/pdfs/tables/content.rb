@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TableContentPdf < TablePdf
+module Tables::Content
 
   # 针对文字内容
   def custom_table(data, options = {})

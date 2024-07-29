@@ -16,8 +16,7 @@ module Tables::Grid
       position: :center,
       width: bounds.width,
       cell_style: {
-        border_lines: [:solid, :solid, :solid, :solid],
-        border_color: '999999'
+        borders: []
       }
     }
     default_options.merge!(options)

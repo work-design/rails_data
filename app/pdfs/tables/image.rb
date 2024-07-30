@@ -9,6 +9,7 @@ module Tables::Image
   def image_table(data, options = {})
     images = data.values[0]
     width = bounds.width / images.size
+    _data = [images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }]
 
     default_options = {
       position: :center,
@@ -22,7 +23,7 @@ module Tables::Image
     }
     default_options.merge!(options)
     undash
-    table(data.values, default_options) do
+    table(_data, default_options) do
       rows(0).style HEAD_TD
     end
   end

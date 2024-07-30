@@ -20,14 +20,14 @@ class BasePdf < Prawn::Document
     :beginning_data
   )
 
-  def initialize(**options)
+  def initialize(font: FONT.keys[0], **options)
     default_config = {
       page_size: 'A4'
     }
     font_families.merge! FONT
     default_config.merge!(options)
     super(default_config)
-    font(FONT.keys[0])
+    font(font)
   end
 
   def run

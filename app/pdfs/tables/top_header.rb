@@ -7,6 +7,10 @@ module Tables::TopHeader
     font_style: :bold,
     background_color: 'eeeeee'
   }
+  NORMAL_TD = {
+    size: 12,
+    valign: :center
+  }
 
   def top_header_table(data, thead = nil)
     options = {

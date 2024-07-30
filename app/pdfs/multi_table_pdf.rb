@@ -6,6 +6,7 @@ class MultiTablePdf < BasePdf
   include Tables::Four
   include Tables::Grid
   include Tables::Total
+  include Tables::TotalRight
   include Tables::Image
   include Tables::LeftHeader
   include Tables::TopHeader
@@ -18,7 +19,7 @@ class MultiTablePdf < BasePdf
     repeat_header header_data if header_data
     multi_data.each do |title, value|
       move_down 20
-      once_header title
+      once_header title if title.present?
       send("#{value[:pdf]}_table", value[:table_data])
     end
     once_footer ending_data if ending_data

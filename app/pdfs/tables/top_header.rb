@@ -18,6 +18,7 @@ module Tables::TopHeader
       width: bounds.width,
       cell_style: {
         borders: [],
+        padding: [5, 10, 5, 0],
         inline_format: true
       }
     }

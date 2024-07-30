@@ -17,9 +17,9 @@ class MultiTablePdf < BasePdf
     return self unless self.empty?
 
     repeat_header header_data if header_data
-    multi_data.each do |title, value|
+    multi_data.each do |_, value|
       move_down 20
-      once_header title if title.present?
+      once_header value[:title] if value[:title].present?
       send("#{value[:pdf]}_table", value[:table_data])
     end
     once_footer ending_data if ending_data

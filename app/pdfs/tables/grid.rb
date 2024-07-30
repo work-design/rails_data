@@ -20,7 +20,7 @@ module Tables::Grid
       },
       cell_style: {
         borders: [],
-        padding: [5, 0],
+        padding: [5, 10, 5, 0],
         inline_format: true
       }
     }

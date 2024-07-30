@@ -17,7 +17,7 @@ module Tables::TopHeader
       position: :center,
       width: bounds.width,
       cell_style: {
-        border_lines: [:solid, :solid, :solid, :solid]
+        borders: []
       }
     }
     undash

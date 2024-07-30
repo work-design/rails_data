@@ -25,7 +25,7 @@ module Tables::Total
       column_widths: Array.new(data[0].size, width),
       cell_style: {
         borders: [],
-        padding: [5, 0],
+        padding: [5, 10, 5, 0],
         inline_format: true
       }
     }

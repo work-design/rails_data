@@ -8,6 +8,7 @@ module Tables::Image
 
   def image_table(data, options = {})
     images = data.values[0]
+    return if images.blank?
     width = bounds.width / images.size
     _data = [images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }]
 

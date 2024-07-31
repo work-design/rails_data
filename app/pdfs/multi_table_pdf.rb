@@ -23,7 +23,7 @@ class MultiTablePdf < BasePdf
       send("#{value[:pdf]}_table", value[:table_data])
     end
     once_footer ending_data if ending_data
-    repeat_footer footer_data if footer_data
+    page_footer
     self
   end
 

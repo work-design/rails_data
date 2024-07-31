@@ -62,7 +62,7 @@ class BasePdf < Prawn::Document
     repeat :all do
       canvas do
         bounding_box [bounds.left + 75, bounds.top - 20], width: bounds.width do
-          process_header(data)
+          process_header [data]
         end
       end
     end
@@ -70,12 +70,13 @@ class BasePdf < Prawn::Document
 
   def process_header(data)
     default_options = {
-      cell_style: { borders: [] },
-      column_widths: [225, 220]
+      column_widths: [225, 220],
+      cell_style: {
+        borders: []
+      }
     }
-
     table(data, default_options) do
-      row(0).style font_style: :bold, size: 14
+      row(0).style size: 14
       row(1..-1).style size: 10
       column(0).style align: :left, padding: 0
       column(1).style align: :right, padding: 0
@@ -91,11 +92,10 @@ class BasePdf < Prawn::Document
   end
 
   def deal_text(data)
-
   end
 
-  def repeat_footer(data)
-
+  def page_footer
+    number_pages "<page> / <total>", at: [bounds.right - 50, 0]
   end
 
 end

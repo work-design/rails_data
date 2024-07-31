@@ -41,7 +41,7 @@ class BasePdf < Prawn::Document
   def once_header(value = beginning_data)
     case value
     when String
-      font(FONT.keys[0], style: :bold, size: 20) { text value }
+      font(FONT.keys[0], style: :bold, size: 16) { text value }
     when Hash
       value.each do |k, v|
         formatted_text(
@@ -61,7 +61,7 @@ class BasePdf < Prawn::Document
   def repeat_header(data = nil)
     repeat :all do
       canvas do
-        bounding_box [bounds.left + 75, bounds.top - 20], width: bounds.width do
+        bounding_box [bounds.left + 25, bounds.top - 20], width: bounds.width do
           process_header [data]
         end
       end
@@ -76,7 +76,7 @@ class BasePdf < Prawn::Document
       }
     }
     table(data, default_options) do
-      row(0).style size: 14
+      row(0).style size: 18
       row(1..-1).style size: 10
       column(0).style align: :left, padding: 0
       column(1).style align: :right, padding: 0

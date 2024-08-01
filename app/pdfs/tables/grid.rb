@@ -20,8 +20,7 @@ module Tables::Grid
         borders: [],
         padding: [5, 10, 5, 0],
         inline_format: true
-      },
-      first_rows: []
+      }
     }
     default_options.merge!(options)
     undash

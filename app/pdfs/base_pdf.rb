@@ -58,21 +58,27 @@ class BasePdf < Prawn::Document
     end
   end
 
-  def repeat_header(data = nil)
+  def fullwidth_header
     repeat :all do
       canvas do
-        bounding_box [bounds.left + 25, bounds.top - 20], width: bounds.width do
-          process_header [data]
-        end
+
+      end
+    end
+  end
+
+  def repeat_header(data = nil)
+    repeat :all do
+      bounding_box [bounds.left, bounds.top + 20], width: bounds.width do
+        process_header [data]
       end
     end
   end
 
   def process_header(data)
     default_options = {
-      column_widths: [225, 220],
+      width: bounds.width,
       cell_style: {
-        borders: []
+        borders: [:bottom]
       }
     }
     table(data, default_options) do
@@ -83,7 +89,7 @@ class BasePdf < Prawn::Document
       cells[2, 0].style size: 12 if cells[2, 0].present?
     end
 
-    move_down 50
+    move_down 10
   end
 
   def once_footer(data = nil)

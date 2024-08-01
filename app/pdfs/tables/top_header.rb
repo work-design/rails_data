@@ -21,7 +21,7 @@ module Tables::TopHeader
         inline_format: true
       }
     }
-    default_options.merge!(options)
+    default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
     real_data = data
     real_data.prepend(thead) if thead.present?

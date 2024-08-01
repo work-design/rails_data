@@ -13,7 +13,7 @@ module Tables::Content
         border_color: '999999'
       }
     }
-    default_options.merge!(options)
+    default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
     table(data, default_options) do
       row(0..-1).style NORMAL_TD

@@ -16,7 +16,7 @@ module Tables::LeftHeader
         border_lines: [:solid, :solid, :solid, :solid]
       }
     }
-    default_options.merge!(options)
+    default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
     table(data, default_options) do
       columns(0).style NORMAL_TH

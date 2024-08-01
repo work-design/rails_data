@@ -22,7 +22,7 @@ module Tables::Image
         inline_format: true
       }
     }
-    default_options.merge!(options)
+    default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
     table(_data, default_options) do
       rows(0).style HEAD_TD

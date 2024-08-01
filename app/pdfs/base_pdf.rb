@@ -11,6 +11,7 @@ class BasePdf < Prawn::Document
       normal: { file: "#{RailsData::Engine.root}/app/assets/fonts/DingTalk-JinBuTi.ttf" }
     }
   }
+  ALLOW_OPTIONS = [:position, :column_widths, :width, :row_colors, :cell_style]
   attr_accessor(
     :title,
     :table_data,

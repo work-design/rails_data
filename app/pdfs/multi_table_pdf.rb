@@ -20,7 +20,9 @@ class MultiTablePdf < BasePdf
     multi_data.each do |_, value|
       move_down 20
       once_header value[:title] if value[:title].present?
-      send("#{value[:pdf]}_table", value[:table_data])
+      _options = {}
+      _options.merge! first_row: {} if value[:title].blank?
+      send("#{value[:pdf]}_table", value[:table_data], **_options)
     end
     once_footer ending_data if ending_data
     page_footer

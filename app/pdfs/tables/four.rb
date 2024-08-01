@@ -11,10 +11,9 @@ module Tables::Four
     valign: :center
   }
 
-  def four_table(data)
+  def four_table(data, **options)
     width = (bounds.width - 14 * 16) / 2
-
-    options = {
+    default_options = {
       column_widths: {
         0 => 14 * 8,
         1 => width,
@@ -29,8 +28,9 @@ module Tables::Four
         border_lines: [:solid, :solid, :solid, :solid]
       }
     }
+    default_options.merge!(options)
     undash
-    table(data, options) do
+    table(data, default_options) do
       columns(0).style NORMAL_TH
       columns(1).style NORMAL_TD
       columns(2).style NORMAL_TH

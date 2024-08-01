@@ -11,8 +11,8 @@ module Tables::TopHeader
     valign: :center
   }
 
-  def top_header_table(data, thead = nil)
-    options = {
+  def top_header_table(data, thead: nil, **options)
+    default_options = {
       position: :center,
       width: bounds.width,
       cell_style: {
@@ -21,10 +21,11 @@ module Tables::TopHeader
         inline_format: true
       }
     }
+    default_options.merge!(options)
     undash
     real_data = data
     real_data.prepend(thead) if thead.present?
-    table(real_data, options) do
+    table(real_data, default_options) do
       if thead.present?
         row(0).style NORMAL_TH
         row(1..-1).style NORMAL_TD

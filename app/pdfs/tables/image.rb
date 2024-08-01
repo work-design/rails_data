@@ -6,7 +6,7 @@ module Tables::Image
     border_color: 'eeeeee'
   }
 
-  def image_table(data, options = {})
+  def image_table(data, **options)
     images = data.values[0]
     return if images.blank?
     width = bounds.width / images.size

@@ -5,8 +5,8 @@ module Tables::LeftHeader
     background_color: 'eeeeee'
   }
 
-  def left_header_table(data)
-    options = {
+  def left_header_table(data, **options)
+    default_options = {
       column_widths: { 0 => 120 },
       position: :center,
       width: bounds.width,
@@ -16,8 +16,9 @@ module Tables::LeftHeader
         border_lines: [:solid, :solid, :solid, :solid]
       }
     }
+    default_options.merge!(options)
     undash
-    table(data, options) do
+    table(data, default_options) do
       columns(0).style NORMAL_TH
       columns(1..-1).style NORMAL_TD
     end

@@ -3,7 +3,7 @@
 module Tables::Content
 
   # 针对文字内容
-  def content_table(data, options = {})
+  def content_table(data, **options)
     return if data.blank?
     default_options = {
       position: :center,

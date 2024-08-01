@@ -13,7 +13,7 @@ module Tables::TotalRight
     border_color: 'eeeeee'
   }
 
-  def total_right_table(data, options = {})
+  def total_right_table(data, **options)
     width = bounds.width / (data[0].size + 4)
 
     default_options = {

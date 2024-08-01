@@ -2,15 +2,12 @@
 
 module Tables::TotalRight
   LEFT_TD = {
-    size: 12,
     align: :left
   }
   RIGHT_TD = {
-    size: 12,
     align: :right
   }
   HEAD_TD = {
-    size: 12,
     style: :bold,
     borders: [:bottom],
     border_color: 'eeeeee'

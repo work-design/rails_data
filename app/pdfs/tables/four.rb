@@ -8,7 +8,6 @@ module Tables::Four
     padding: 0
   }
   NORMAL_TD = {
-    size: 12,
     valign: :center
   }
 

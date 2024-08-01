@@ -8,7 +8,6 @@ module Tables::TopHeader
     background_color: 'eeeeee'
   }
   NORMAL_TD = {
-    size: 12,
     valign: :center
   }
 

@@ -2,11 +2,9 @@
 
 module Tables::Grid
   LEFT_TD = {
-    size: 12,
     align: :left
   }
   RIGHT_TD = {
-    size: 12,
     align: :left
   }
 

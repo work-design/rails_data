@@ -17,7 +17,11 @@ module Tables::Image
       size = images.size
     end
     width = bounds.width / size
-    _data = [images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }]
+    if size > images.size
+      _data = [(images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }).concat(Array.new(size - images.size, nil))]
+    else
+      _data = [images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }]
+    end
 
     default_options = {
       position: :center,

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 6b1abb280fafcb1152f199d6e511f8d1fad9cdf1
+  revision: f5c91d12a95abb04d05d7cc113f29b6fa4fa4154
   specs:
     rails_com (1.3.0)
       acme-client
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: b7a8fb201e20813e1302389ab8f58aad838ab0e9
+  revision: 253dd9306c3031a5d6ad5dec9a0b7f9093ff4379
   specs:
     rails_design (0.0.1)
       rails
@@ -137,7 +137,7 @@ GEM
       activerecord (>= 4.0.0)
     drb (2.2.1)
     erubi (1.12.0)
-    faraday (2.10.0)
+    faraday (2.10.1)
       faraday-net_http (>= 2.0, < 3.2)
       logger
     faraday-net_http (3.1.1)
@@ -212,7 +212,7 @@ GEM
     ostruct (0.6.0)
     pdf-core (0.10.0)
     pg (1.5.6)
-    positioning (0.2.3)
+    positioning (0.2.4)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     prawn (2.5.0)
@@ -354,7 +354,7 @@ CHECKSUMS
   default_where (2.2.0) sha256=77f54769256ad5d961c44a6dd88d8d485a1c4487a549d2c178da9101f6fed0a0
   drb (2.2.1) sha256=e9d472bf785f558b96b25358bae115646da0dbfd45107ad858b0bc0d935cb340
   erubi (1.12.0) sha256=27bedb74dfb1e04ff60674975e182d8ca787f2224f2e8143268c7696f42e4723
-  faraday (2.10.0) sha256=1a3e6c02acc511fc334d799521f1013e449bde38aa2dceb3af71e8030519bda9
+  faraday (2.10.1)
   faraday-net_http (3.1.1) sha256=da93f0f426f4de2c09af0a9a95887726da7889b76eca2a2aff0ce5e66e768938
   faraday-retry (2.2.1) sha256=4146fed14549c0580bf14591fca419a40717de0dd24f267a8ec2d9a728677608
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
@@ -392,7 +392,7 @@ CHECKSUMS
   ostruct (0.6.0) sha256=3b1736c99f4d985de36bde1155be5e22aaf6e564b30ff9bd481e2ef7c2d9ba85
   pdf-core (0.10.0) sha256=0a5d101e2063c01e3f941e1ee47cbb97f1adfc1395b58372f4f65f1300f3ce91
   pg (1.5.6) sha256=4bc3ad2438825eea68457373555e3fd4ea1a82027b8a6be98ef57c0d57292b1c
-  positioning (0.2.3) sha256=71bb40a5ad81c52cd10c0ce2fe8b61b128516273467688b59e93a254e9080c9a
+  positioning (0.2.4)
   prawn (2.5.0) sha256=f4e20e3b4f30bf5b9ae37dad15eb421831594553aa930b2391b0fa0a99c43cb6
   prawn-table (0.2.2) sha256=336d46e39e003f77bf973337a958af6a68300b941c85cb22288872dc2b36addb
   propshaft (0.9.0) sha256=fe1d2e6368b1147f4de844a58bcd90a0d9d7bd2930aaf225c84d31c068346091

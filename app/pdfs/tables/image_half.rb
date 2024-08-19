@@ -7,10 +7,14 @@ module Tables::ImageHalf
   }
 
   def image_half_table(data, **options)
-    images = data.values[0]
-    return if images.blank?
+    _data = []
     width = bounds.width / 2
-    _data = [images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }]
+    data.map do |title, images|
+      _data << [title]
+      _data << images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }
+    end
+
+    binding.b
 
     default_options = {
       position: :right,

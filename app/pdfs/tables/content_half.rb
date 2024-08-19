@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-module Tables::ImageHalf
+module Tables::ContentHalf
   HEAD_TD = {
     borders: [:bottom],
     border_color: 'eeeeee'
   }
 
-  def image_half_table(data, **options)
+  def content_half_table(data, **options)
     _data = []
-    width = bounds.width / 2
-    data.map do |title, images|
+    width = bounds.width / 2 - 20
+    data.map do |title, content|
       _data << [title]
-      _data << images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }
+      _data << [content]
     end
 
     default_options = {
-      position: :right,
+      position: :left,
       width: width,
       column_widths: [width],
       cell_style: {
@@ -26,7 +26,7 @@ module Tables::ImageHalf
     }
     default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
-    bounding_box [bounds.left + width, cursor + 320], width: width do
+    bounding_box [bounds.left, cursor], width: width, height: 300 do
       table(_data, default_options) do
         rows(0).style HEAD_TD
       end

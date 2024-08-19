@@ -3,6 +3,7 @@
 require 'prawn/table'
 class MultiTablePdf < BasePdf
   include Tables::Content
+  include Tables::ContentHalf
   include Tables::Four
   include Tables::Grid
   include Tables::Total

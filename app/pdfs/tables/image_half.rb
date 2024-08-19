@@ -2,7 +2,7 @@
 
 module Tables::ImageHalf
   HEAD_TD = {
-    borders: [:top],
+    borders: [:bottom],
     border_color: 'eeeeee'
   }
 
@@ -13,8 +13,6 @@ module Tables::ImageHalf
       _data << [title]
       _data << images.map { |i| i.merge! image_width: width, position: :center, vposition: :bottom }
     end
-
-    binding.b
 
     default_options = {
       position: :right,

@@ -4,14 +4,13 @@ module Tables::TopHeader
   NORMAL_TH = {
     align: :center,
     size: 14,
-    font_style: :bold,
     background_color: 'eeeeee'
   }
   NORMAL_TD = {
     valign: :center
   }
 
-  def top_header_table(data, thead: nil, **options)
+  def top_header_table(data, **options)
     default_options = {
       position: :center,
       width: bounds.width,
@@ -23,15 +22,13 @@ module Tables::TopHeader
     }
     default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
-    real_data = data
-    real_data.prepend(thead) if thead.present?
-    table(real_data, default_options) do
-      if thead.present?
-        row(0).style NORMAL_TH
-        row(1..-1).style NORMAL_TD
-      else
-        row(0..-1).style NORMAL_TD
-      end
+    real_data = []
+    data.each do |title, row|
+      real_data << row.prepend(title)
+    end
+    table(real_data.transpose, default_options) do
+      row(0).style NORMAL_TH
+      row(1..-1).style NORMAL_TD
     end
   end
 

@@ -15,7 +15,7 @@ class MultiTablePdf < BasePdf
 
   attr_accessor :multi_data
 
-  def run
+  def run(**options)
     return self unless self.empty?
 
     repeat_header header_data if header_data.present?

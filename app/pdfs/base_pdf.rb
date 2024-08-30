@@ -31,7 +31,7 @@ class BasePdf < Prawn::Document
     font(font)
   end
 
-  def run
+  def run(**options)
   end
 
   # todo hack for a bug, need confirm ?
@@ -75,13 +75,14 @@ class BasePdf < Prawn::Document
     end
   end
 
-  def process_header(data, size: 14)
+  def process_header(data, size: 14, **options)
     half_size = size / 2
     default_options = {
       width: bounds.width,
       cell_style: {
         borders: [:bottom]
-      }
+      },
+      **options
     }
 
     table(data, default_options) do

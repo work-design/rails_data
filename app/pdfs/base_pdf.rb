@@ -75,22 +75,35 @@ class BasePdf < Prawn::Document
     end
   end
 
-  def process_header(data)
+  def process_header(data, size: 14)
+    half_size = size / 2
     default_options = {
       width: bounds.width,
       cell_style: {
         borders: [:bottom]
       }
     }
+
     table(data, default_options) do
-      row(0).style size: 14
+      row(0).style size: size
       row(1..-1).style size: 10
-      column(0).style align: :left, padding: 0
-      column(1).style align: :right, padding: 0
-      cells[2, 0].style size: 12 if cells[2, 0].present?
+      if column_length == 1
+        column(0).style align: :center
+      elsif column_length == 2
+        column(0).style align: :left, padding: [half_size, 0]
+        column(1).style align: :right, padding: [half_size, 0]
+      elsif column_length == 3
+        column(0).style align: :left, padding: [half_size, 0]
+        column(1).style align: :center, padding: [half_size, 0]
+        column(-1).style align: :right, padding: [half_size, 0]
+      end
     end
 
-    move_down 10
+    move_down size
+  end
+
+  def key_value_header
+    #cells[2, 0].style size: 12 if cells[2, 0].present?
   end
 
   def repeat_footer(data = nil)

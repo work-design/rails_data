@@ -83,7 +83,7 @@ class BasePdf < Prawn::Document
       }
     }
     table(data, default_options) do
-      row(0).style size: 18
+      row(0).style size: 14
       row(1..-1).style size: 10
       column(0).style align: :left, padding: 0
       column(1).style align: :right, padding: 0

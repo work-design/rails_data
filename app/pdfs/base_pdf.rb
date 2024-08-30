@@ -93,16 +93,21 @@ class BasePdf < Prawn::Document
     move_down 10
   end
 
-  def once_footer(data = nil)
-    text data if data
-    number_pages "<page> / <total>", at: [bounds.right - 50, 0]
+  def repeat_footer(data = nil)
+    if data
+      repeat :all do
+        text_box data, at: [bounds.bottom, bounds.left + 50], align: :center
+        #text_box data, at: [bounds.bottom, 0], height: 50
+      end
+    end
+    page_footer
   end
 
   def deal_text(data)
   end
 
   def page_footer
-    number_pages "<page> / <total>", at: [bounds.right - 50, 0]
+    number_pages '<page> / <total>', at: [bounds.bottom, 0], align: :right
   end
 
 end

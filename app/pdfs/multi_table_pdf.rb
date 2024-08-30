@@ -26,8 +26,7 @@ class MultiTablePdf < BasePdf
       _options.merge! first_row: {} if value[:title].blank?
       send("#{value[:pdf]}_table", value[:table_data], **_options)
     end
-    once_footer ending_data if ending_data
-    page_footer
+    repeat_footer ending_data if ending_data
     self
   end
 

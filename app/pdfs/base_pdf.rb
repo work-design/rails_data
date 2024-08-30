@@ -67,10 +67,10 @@ class BasePdf < Prawn::Document
     end
   end
 
-  def repeat_header(data = nil)
+  def repeat_header(data = nil, **options)
     repeat :all do
       bounding_box [bounds.left, bounds.top + 20], width: bounds.width do
-        process_header [data]
+        process_header [data], **options
       end
     end
   end

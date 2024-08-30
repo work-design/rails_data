@@ -18,7 +18,7 @@ class MultiTablePdf < BasePdf
   def run
     return self unless self.empty?
 
-    repeat_header header_data if header_data
+    repeat_header header_data if header_data.present?
     multi_data.each do |_, value|
       move_down 20
       once_header value[:title] if value[:title].present?

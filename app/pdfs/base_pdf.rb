@@ -97,7 +97,6 @@ class BasePdf < Prawn::Document
     if data
       repeat :all do
         text_box data, at: [bounds.bottom, bounds.left + 50], align: :center
-        #text_box data, at: [bounds.bottom, 0], height: 50
       end
     end
     page_footer

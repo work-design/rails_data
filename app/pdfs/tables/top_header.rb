@@ -2,7 +2,6 @@
 
 module Tables::TopHeader
   NORMAL_TH = {
-    align: :center,
     size: 14,
     background_color: 'eeeeee'
   }

@@ -3,12 +3,13 @@
 module Tables::ImagePage
 
   def image_page_table(data, **options)
-    images = data.values[0]
-    return if images.blank?
-
-    images.each do |img|
-      start_new_page
-      image img, **options
+    data.each do |title, images|
+      images.each_with_index do |img, index|
+        start_new_page
+        move_down 20
+        text "#{title}, 共#{images.size}张，第#{index + 1}张"
+        image img, position: :center, vposition: :center, width: bounds.width, **options
+      end
     end
   end
 

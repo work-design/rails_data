@@ -10,6 +10,7 @@ class MultiTablePdf < BasePdf
   include Tables::TotalRight
   include Tables::Image
   include Tables::ImageHalf
+  include Tables::ImagePage
   include Tables::LeftHeader
   include Tables::TopHeader
 

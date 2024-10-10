@@ -17,6 +17,7 @@ class BasePdf < Prawn::Document
     :table_data,
     :header_data,
     :ending_data,
+    :ending_data_image,
     :footer_data,
     :beginning_data
   )
@@ -111,6 +112,20 @@ class BasePdf < Prawn::Document
     if data
       repeat :all do
         text_box data, at: [bounds.bottom, bounds.left + 50], align: :center
+      end
+    end
+    page_footer
+  end
+
+  def repeat_footer_image(data = nil)
+    if data
+      repeat :all do
+        bounding_box [bounds.left, bounds.bottom + 65], width: bounds.width, height: 80 do
+          image data[0], height: 80
+        end
+        bounding_box [bounds.left + 160, bounds.bottom + 65], width: bounds.width, height: 80 do
+          image data[1], height: 80
+        end
       end
     end
     page_footer

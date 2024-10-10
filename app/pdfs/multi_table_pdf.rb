@@ -28,6 +28,7 @@ class MultiTablePdf < BasePdf
       send("#{value[:pdf]}_table", value[:table_data], **_options)
     end
     repeat_footer ending_data if ending_data
+    repeat_footer_image ending_data_image if ending_data_image
     self
   end
 

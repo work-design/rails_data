@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 00322d783273e8e15c6b8e9b126c971c6c464543
+  revision: 4573b7a2f1166a3880a381fc955937b070785c25
   specs:
     rails_com (1.3.0)
       acme-client
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 2c72dccefb5c6405f6a0ecc9dd6259172d7bf72f
+  revision: 7f58fbc162e14ba6e63fa7a7b79737d2e096aae6
   specs:
     rails_design (0.0.1)
       rails
@@ -220,7 +220,7 @@ GEM
     ostruct (0.6.0)
     pdf-core (0.10.0)
     pg (1.5.8)
-    positioning (0.2.6)
+    positioning (0.3.0)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     prawn (2.5.0)
@@ -313,7 +313,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.10)
+    turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
@@ -416,7 +416,7 @@ CHECKSUMS
   ostruct (0.6.0) sha256=3b1736c99f4d985de36bde1155be5e22aaf6e564b30ff9bd481e2ef7c2d9ba85
   pdf-core (0.10.0) sha256=0a5d101e2063c01e3f941e1ee47cbb97f1adfc1395b58372f4f65f1300f3ce91
   pg (1.5.8) sha256=efd71939dd1d6d9f0b434dc61dee6ef64f1d2bfcd3c177598a8797c27e654f37
-  positioning (0.2.6) sha256=db8d4229d326c4ae4ac35bd4ce2d1c687142d9a55da3ad8fcf8ab2d2c98f339b
+  positioning (0.3.0)
   prawn (2.5.0) sha256=f4e20e3b4f30bf5b9ae37dad15eb421831594553aa930b2391b0fa0a99c43cb6
   prawn-table (0.2.2) sha256=336d46e39e003f77bf973337a958af6a68300b941c85cb22288872dc2b36addb
   propshaft (1.1.0) sha256=d389361faf66aeb17e8d204828962c1e506edd14a1a17adb3fa475435c070f6b
@@ -451,7 +451,7 @@ CHECKSUMS
   thor (1.3.2) sha256=eef0293b9e24158ccad7ab383ae83534b7ad4ed99c09f96f1a6b036550abbeda
   timeout (0.4.1) sha256=6f1f4edd4bca28cffa59501733a94215407c6960bd2107331f0280d4abdebb9a
   ttfunk (1.8.0) sha256=a7cbc7e489cc46e979dde04d34b5b9e4f5c8f1ee5fc6b1a7be39b829919d20ca
-  turbo-rails (2.0.10) sha256=11cde241f9335ef6962322642dfd764178de192d0ba45101963da0f10f8e5738
+  turbo-rails (2.0.11)
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   uri (0.13.1) sha256=df2d8b13e3e8c8a43432637e2ace4f9de7b42674361b4dd26302b40f7d7fcd1e
   useragent (0.16.10) sha256=1794380d9ea5c087d687bbfe14752f81839293f238c1132ef05c9344f09e65bb

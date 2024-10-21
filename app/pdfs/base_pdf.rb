@@ -123,7 +123,7 @@ class BasePdf < Prawn::Document
         bounding_box [bounds.left, bounds.bottom + 120], width: bounds.width, height: 140 do
           image data[0], height: 140
         end if data[0]
-        bounding_box [bounds.left + 160, bounds.bottom + 120], width: bounds.width, height: 140 do
+        bounding_box [bounds.left + 200, bounds.bottom + 120], width: bounds.width, height: 140 do
           image data[1], height: 140
         end if data[1]
       end

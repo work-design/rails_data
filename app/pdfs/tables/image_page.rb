@@ -8,7 +8,7 @@ module Tables::ImagePage
         start_new_page
         move_down 20
         text "#{title}, 共#{images.size}张，第#{index + 1}张"
-        image img, position: :center, vposition: :center, fit: [bounds.width, bounds.height - 60], **options
+        image img, position: :center, vposition: :center, fit: [bounds.width, bounds.height - 70], **options
       end
     end
   end

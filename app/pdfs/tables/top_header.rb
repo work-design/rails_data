@@ -8,6 +8,10 @@ module Tables::TopHeader
   NORMAL_TD = {
     valign: :center
   }
+  NO_BORDER = {
+    borders: [],
+    padding: [5, 10, 5, 0],
+  }
 
   def top_header_table(data, **options)
     default_options = {
@@ -17,8 +21,8 @@ module Tables::TopHeader
       position: :center,
       width: bounds.width,
       cell_style: {
-        borders: [],
-        padding: [5, 10, 5, 0],
+        borders: [:top, :right, :bottom, :left],
+        padding: [5, 10, 5, 5],
         inline_format: true
       }
     }

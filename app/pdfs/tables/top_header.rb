@@ -12,7 +12,7 @@ module Tables::TopHeader
   def top_header_table(data, **options)
     default_options = {
       column_widths: {
-        1 => (bounds.width / data.size) * 2
+        1 => bounds.width / data[0].size
       },
       position: :center,
       width: bounds.width,
@@ -24,11 +24,7 @@ module Tables::TopHeader
     }
     default_options.merge! options.slice(*BasePdf::ALLOW_OPTIONS)
     undash
-    real_data = []
-    data.each do |title, row|
-      real_data << row.prepend(title)
-    end
-    table(real_data.transpose, default_options) do
+    table(data, default_options) do
       row(0).style NORMAL_TH
       row(1..-1).style NORMAL_TD
     end

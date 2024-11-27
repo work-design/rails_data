@@ -16,7 +16,8 @@ module Tables::TopHeader
   def top_header_table(data, **options)
     default_options = {
       column_widths: {
-        1 => bounds.width / data[0].size
+        #1 => bounds.width / data[0].size,
+        #-1 => 22
       },
       position: :center,
       width: bounds.width,

@@ -60,6 +60,26 @@ class BasePdf < Prawn::Document
     end
   end
 
+  def once_footer(value = ending_data)
+    case value
+    when String
+      font_size(14) { text value }
+    when Hash
+      value.each do |k, v|
+        formatted_text(
+          [
+            { text: "#{k.to_s}: ", styles: [:bold] },
+            { text: v }
+          ]
+        )
+      end
+    when Array
+      formatted_text value
+    else
+      text value
+    end
+  end
+
   def fullwidth_header
     repeat :all do
       canvas do

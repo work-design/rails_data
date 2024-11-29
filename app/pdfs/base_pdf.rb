@@ -54,7 +54,9 @@ class BasePdf < Prawn::Document
         )
       end
     when Array
-      formatted_text value
+      value.each do |text|
+        formatted_text [text]
+      end
     else
       text value
     end

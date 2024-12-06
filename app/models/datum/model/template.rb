@@ -12,7 +12,10 @@ module Datum
 
     def xlsx
       return @xlsx if defined? @xlsx
-      @xlsx = Roo::Excelx.new(file.open)
+      file.open do |t|
+        @xlsx = Roo::Excelx.new(t)
+      end
+      @xlsx
     end
 
   end

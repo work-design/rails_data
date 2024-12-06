@@ -14,6 +14,7 @@ Rails.application.routes.draw do
             end
           end
         end
+        resources :templates
       end
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'

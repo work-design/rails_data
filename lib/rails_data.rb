@@ -6,3 +6,5 @@ require 'rails_data/record'
 require 'rails_data/view'
 
 require 'nkf'
+require 'roo'
+require 'write_xlsx'

@@ -1,6 +1,5 @@
 module Datum
   class Admin::TableListsController < Panel::TableListsController
-    include Controller::Admin
     before_action :set_data_list
     before_action :set_table_list, except: [:new_import, :create_import]
 

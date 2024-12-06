@@ -10,5 +10,10 @@ module Datum
       has_one_attached :file
     end
 
+    def xlsx
+      return @xlsx if defined? @xlsx
+      @xlsx = Roo::Excelx.new(file.open)
+    end
+
   end
 end

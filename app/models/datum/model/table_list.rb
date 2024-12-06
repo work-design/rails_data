@@ -22,15 +22,19 @@ module Datum
 
     def run(identifier = nil)
       clear_old
-      if data_list.is_a? DataImport
-        runner = Importer.new(self)
-      else
-        runner = CacheExporter.new(self)
-      end
+
       runner.run
 
       notify_done(identifier)
       email_notify(identifier)
+    end
+
+    def runner
+      if data_list.is_a? DataImport
+        Importer.new(self)
+      else
+        CacheExporter.new(self)
+      end
     end
 
     def notify_done(identifier)

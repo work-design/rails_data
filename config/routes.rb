@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
     namespace :datum, defaults: { business: 'datum' } do
       namespace :admin, defaults: { namespace: 'admin' } do
+        root 'home#index'
         resources :data_lists, only: [] do
           resources :table_lists do
             collection do

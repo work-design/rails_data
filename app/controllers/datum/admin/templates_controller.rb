@@ -7,7 +7,7 @@ module Datum
       respond_to do |format|
         format.html
         format.turbo_stream
-        format.xlsx { send_data @template.xx, filename: "#{@template.name}.xlsx", type: 'application/xlsx' }
+        format.xlsx { send_data @template.export, filename: "#{@template.name}.xlsx", type: 'application/xlsx' }
       end
     end
 

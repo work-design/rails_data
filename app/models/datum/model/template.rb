@@ -36,6 +36,9 @@ module Datum
     end
 
     def export
+      set_rows
+      set_validation
+
       workbook.close
       io = workbook.instance_variable_get :@file
       io.string
@@ -60,15 +63,15 @@ module Datum
     end
 
     def set_validation
-      validations.each do |x|
+      #validations.each do |v|
         worksheet.data_validation(
-          1, 1, 2, 2,
+          'A:A',
           {
             validate: 'list',
             value: ['open', 'high', 'close']
           }
         )
-      end
+      #end
     end
 
     def parse!

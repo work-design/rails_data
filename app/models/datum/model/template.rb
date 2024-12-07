@@ -35,9 +35,13 @@ module Datum
 
     def parse_validations!
       sheet = xlsx.sheet(1)
-      sheet_headers = sheet.row(1).compact
-      sheet_headers.each do |header|
-        validations.build(header: header, fields: sheet.parse(header => header)[0].values.compact)
+      sheet.to_matrix.column_vectors.each do |vector|
+        col = vector.compact
+
+        validations.build(
+          header: col[0],
+          fields: col[1..-1]
+        )
       end
       self.save
     end

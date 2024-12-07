@@ -54,31 +54,34 @@ module Datum
     end
 
     def set_rows(row_index = 0)
-      worksheet.write_row(row_index, 0, headers.keys)
+      worksheet.write_row(row_index, 0, headers)
       template_items.each do |item|
         row_index += 1
-        r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
+        r = headers.each_with_object({}) { |k, h| h.merge! k => item.extra[k] }
         worksheet.write_row(row_index, 0, r.values)
       end
     end
 
     def set_validation
-      #validations.each do |v|
+      validations.each do |v|
+        index = headers.index(v.header)
+        next unless index
+        col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
-          'A:A',
+          "#{col_str}:#{col_str}",
           {
             validate: 'list',
-            value: ['open', 'high', 'close']
+            value: v.fields
           }
         )
-      #end
+      end
     end
 
     def parse!
       sheet = xlsx.sheet(0)
       sheet_fields = sheet.parse smart: true
-      self.headers = sheet.headers
-      self.parameters = sheet.headers.each_with_object({}) { |(k, v), h| h.merge! k => 'string' }
+      self.headers = sheet.headers.keys
+      self.parameters = sheet.headers.each_with_object({}) { |(k, _), h| h.merge! k => 'string' }
       sheet_fields.each_with_index do |fields, index|
         template_examples.build(fields: fields, position: index + 1)
       end

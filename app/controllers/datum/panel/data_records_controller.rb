@@ -35,9 +35,7 @@ module Datum
         :export_pdf,
         parameters: [:key, :value]
       )
-      _params = result['parameters']&.values&.map { |i|  {i['key'] => i['value'] } }
-      _params = Array(_params).to_combine_h
-      result['parameters'] = _params
+      result['parameters'] = result['parameters'].values.each_with_object({}) { |i, h|  h.merge! i['column'] => i['value'] }
       result
     end
 

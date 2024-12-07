@@ -24,6 +24,19 @@ module Datum
       @xlsx
     end
 
+    def xx
+      io = StringIO.new
+      workbook = WriteXLSX.new(io)
+      sheet = workbook.add_worksheet
+      row_index = 0
+
+      sheet.write_row(row_index, 0, headers.keys)
+
+
+      workbook.close
+      io.string
+    end
+
     def parse!
       sheet = xlsx.sheet(0)
       sheet_fields = sheet.parse smart: true

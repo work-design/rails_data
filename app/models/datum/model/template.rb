@@ -24,20 +24,28 @@ module Datum
       @xlsx
     end
 
-    def xx
+    def workbook
+      return @workbook if defined? @workbook
       io = StringIO.new
-      workbook = WriteXLSX.new(io)
-      sheet = workbook.add_worksheet
+      @workbook = WriteXLSX.new(io)
+    end
+
+    def worksheet
+      return @worksheet if defined? @worksheet
+      @worksheet = workbook.add_worksheet
+    end
+
+    def xx
       row_index = 0
 
-      sheet.write_row(row_index, 0, headers.keys)
+      worksheet.write_row(row_index, 0, headers.keys)
       template_items.each do |item|
         row_index += 1
         r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
-        sheet.write_row(row_index, 0, r.values)
+        worksheet.write_row(row_index, 0, r.values)
       end
       #validations.each do |x|
-        sheet.data_validation(
+      worksheet.data_validation(
           1, 1, 2, 2,
           {
             validate: 'list',
@@ -45,9 +53,21 @@ module Datum
           }
         )
       #end
+      xxx
 
       workbook.close
+      io = workbook.instance_variable_get :@file
       io.string
+    end
+
+    def xxx
+      format = workbook.add_format(
+        border: 6,
+        valign: 'vcenter',
+        align:  'center'
+      )
+
+      worksheet.merge_range('B3:D4', 'Vertical and horizontal', format)
     end
 
     def validation(x)

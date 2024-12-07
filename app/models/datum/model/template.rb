@@ -36,9 +36,22 @@ module Datum
         r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
         sheet.write_row(row_index, 0, r.values)
       end
+      #validations.each do |x|
+        sheet.data_validation(
+          1, 1, 2, 2,
+          {
+            validate: 'list',
+            value: ['open', 'high', 'close']
+          }
+        )
+      #end
 
       workbook.close
       io.string
+    end
+
+    def validation(x)
+
     end
 
     def parse!

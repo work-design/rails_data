@@ -5,8 +5,11 @@ module Datum
     included do
       attribute :name, :string
       attribute :headers, :json
+      attribute :template_items_count, :integer
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
+
+      has_many :template_items
 
       has_one_attached :file
     end
@@ -17,6 +20,16 @@ module Datum
         @xlsx = Roo::Excelx.new(t, expand_merged_ranges: true)
       end
       @xlsx
+    end
+
+    def parse!
+      sheet = xlsx.sheet(0)
+      sheet_fields = sheet.parse smart: true
+      self.headers = sheet.headers
+      sheet_fields.each do |fields|
+        template_items.build(fields: fields)
+      end
+      self.save
     end
 
   end

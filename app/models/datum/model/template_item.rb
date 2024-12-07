@@ -4,8 +4,11 @@ module Datum
 
     included do
       attribute :fields, :json
+      attribute :position, :integer
 
       belongs_to :template, counter_cache: true
+
+      positioned on: :template
     end
 
   end

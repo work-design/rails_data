@@ -17,9 +17,11 @@ module Datum
     end
 
     def template_item_params
-      params.fetch(:template_item, {}).permit(
+      result = params.fetch(:template_item, {}).permit(
         extra: {}
       )
+      result[:extra].compact_blank! if result[:extra]
+      result
     end
 
   end

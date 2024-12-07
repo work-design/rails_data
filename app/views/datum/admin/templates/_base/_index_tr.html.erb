@@ -16,6 +16,9 @@
       <% end %>
     </div>
     <div data-show-target="item" class="visibility-hidden">
+      <%= link_to({ controller: 'template_examples', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
+        <span><%= t('.template_examples.index.title') %></span>
+      <% end %>
       <%= link_to({ controller: 'template_items', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
         <span><%= t('.template_items.index.title') %></span>
       <% end %>

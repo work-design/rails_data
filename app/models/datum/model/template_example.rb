@@ -1,5 +1,5 @@
 module Datum
-  module Model::TemplateItem
+  module Model::TemplateExample
     extend ActiveSupport::Concern
 
     included do
@@ -7,8 +7,6 @@ module Datum
       attribute :position, :integer
 
       belongs_to :template
-
-      positioned on: :template
     end
 
   end

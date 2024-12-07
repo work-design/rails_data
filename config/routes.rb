@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         end
         resources :templates do
           resources :validations
+          resources :template_examples
           resources :template_items
         end
       end

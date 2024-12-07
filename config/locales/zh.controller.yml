@@ -46,9 +46,12 @@ zh:
       templates:
         index:
           title: 模板
-      template_items:
+      template_examples:
         index:
           title: 示例数据
+      template_items:
+        index:
+          title: 数据
       validations:
         index:
           title: 验证数据

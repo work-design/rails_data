@@ -1,8 +1,5 @@
-<%= form_with model: @data_import, scope: :data_list, url: { action: 'update' }, class: 'modal-card' do |f| %>
-  <header class="modal-card-head">
-    <p class="modal-card-title"><%= t('.title') %></p>
-    <button type="button" data-action="modal#close" class="delete"></button>
-  </header>
+<%= form_with theme: 'modal', model: @data_import, scope: :data_list, url: { action: 'update' } do |f| %>
+  <%= render 'modal_header' %>
   <section class="modal-card-body">
     <%= render partial: 'form', locals: { f: f } %>
     <%= render partial: 'com/extra/item', locals: { model: @data_import, f: f } %>

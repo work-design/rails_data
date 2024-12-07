@@ -31,7 +31,11 @@ module Datum
       row_index = 0
 
       sheet.write_row(row_index, 0, headers.keys)
-
+      template_items.each do |item|
+        row_index += 1
+        r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
+        sheet.write_row(row_index, 0, r.values)
+      end
 
       workbook.close
       io.string

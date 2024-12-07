@@ -13,7 +13,7 @@ module Datum
     def xlsx
       return @xlsx if defined? @xlsx
       file.open do |t|
-        @xlsx = Roo::Excelx.new(t)
+        @xlsx = Roo::Excelx.new(t, expand_merged_ranges: true)
       end
       @xlsx
     end

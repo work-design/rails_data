@@ -5,6 +5,7 @@ require 'rails_data/import'
 require 'rails_data/record'
 require 'rails_data/view'
 
+require 'rails_data/roo'
+
 require 'nkf'
-require 'roo'
 require 'write_xlsx'

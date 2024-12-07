@@ -1,5 +1,4 @@
 require 'csv'
-require 'write_xlsx'
 
 module Datum
   module Model::TableList

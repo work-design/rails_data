@@ -1,4 +1,3 @@
-require 'write_xlsx'
 module Datum
   class CacheExporter < BaseExporter
     attr_reader :table_list

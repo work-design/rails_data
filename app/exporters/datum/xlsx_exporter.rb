@@ -1,4 +1,3 @@
-require 'write_xlsx'
 module Datum
   class XlsxExporter < BaseExporter
 

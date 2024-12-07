@@ -35,34 +35,14 @@ module Datum
       @worksheet = workbook.add_worksheet
     end
 
-    def xx
-      row_index = 0
-
-      worksheet.write_row(row_index, 0, headers.keys)
-      template_items.each do |item|
-        row_index += 1
-        r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
-        worksheet.write_row(row_index, 0, r.values)
-      end
-      #validations.each do |x|
-      worksheet.data_validation(
-          1, 1, 2, 2,
-          {
-            validate: 'list',
-            value: ['open', 'high', 'close']
-          }
-        )
-      #end
-      xxx
-
+    def export
       workbook.close
       io = workbook.instance_variable_get :@file
       io.string
     end
 
-    def xxx
+    def set_headers
       format = workbook.add_format(
-        border: 6,
         valign: 'vcenter',
         align:  'center'
       )
@@ -70,8 +50,25 @@ module Datum
       worksheet.merge_range('B3:D4', 'Vertical and horizontal', format)
     end
 
-    def validation(x)
+    def set_rows(row_index = 0)
+      worksheet.write_row(row_index, 0, headers.keys)
+      template_items.each do |item|
+        row_index += 1
+        r = headers.each_with_object({}) { |(k, _), h| h.merge! k => item.extra[k] }
+        worksheet.write_row(row_index, 0, r.values)
+      end
+    end
 
+    def set_validation
+      validations.each do |x|
+        worksheet.data_validation(
+          1, 1, 2, 2,
+          {
+            validate: 'list',
+            value: ['open', 'high', 'close']
+          }
+        )
+      end
     end
 
     def parse!

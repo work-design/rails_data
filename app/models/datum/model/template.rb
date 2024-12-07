@@ -26,8 +26,8 @@ module Datum
       sheet = xlsx.sheet(0)
       sheet_fields = sheet.parse smart: true
       self.headers = sheet.headers
-      sheet_fields.each do |fields|
-        template_items.build(fields: fields)
+      sheet_fields.each_with_index do |fields, index|
+        template_items.build(fields: fields, position: index + 1)
       end
       self.save
     end

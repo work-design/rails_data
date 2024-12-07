@@ -7,8 +7,6 @@ module Datum
       attribute :position, :integer
 
       belongs_to :template, counter_cache: true
-
-      positioned on: :template
     end
 
   end

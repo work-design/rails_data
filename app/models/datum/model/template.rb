@@ -4,6 +4,7 @@ module Datum
 
     included do
       attribute :name, :string
+      attribute :headers, :json
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 

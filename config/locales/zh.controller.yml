@@ -43,3 +43,12 @@ zh:
           title: 导出
         new_import:
           title: 导入数据
+      templates:
+        index:
+          title: 模板
+      template_items:
+        index:
+          title: 示例数据
+      validations:
+        index:
+          title: 验证数据

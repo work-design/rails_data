@@ -15,7 +15,10 @@ Rails.application.routes.draw do
             end
           end
         end
-        resources :templates
+        resources :templates do
+          resources :validations
+          resources :template_items
+        end
       end
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'

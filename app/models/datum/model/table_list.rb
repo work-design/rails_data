@@ -1,5 +1,3 @@
-require 'csv'
-
 module Datum
   module Model::TableList
     extend ActiveSupport::Concern

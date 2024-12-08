@@ -37,6 +37,7 @@ module Datum
     end
 
     def export
+      set_headers
       set_rows
       set_validation
 
@@ -51,11 +52,18 @@ module Datum
         align:  'center'
       )
 
-      worksheet.merge_range('B3:D4', 'Vertical and horizontal', format)
+      items = template_examples.where(position: 1..header_line).pluck(:fields)
+      items.each_with_index do |item, row|
+        item.chunk_while { |i, j| i == j }.each_with_index do |token, col|
+          if token.size > 1
+            worksheet.merge_range(row, col, row, col + token.size - 1, token[0], format)
+          end
+        end
+      end
     end
 
-    def set_rows(row_index = 0)
-      worksheet.write_row(row_index, 0, headers)
+    def set_rows
+      row_index = 0
       template_items.each do |item|
         row_index += 1
         r = headers.each_with_object({}) { |k, h| h.merge! k => item.extra[k] }

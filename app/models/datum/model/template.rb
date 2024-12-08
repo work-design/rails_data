@@ -65,10 +65,20 @@ module Datum
     end
 
     def set_rows
-      row_index = header_line - 1
-      template_items.each do |item|
-        row_index += 1
-        worksheet.write_row(row_index, 0, item.fields)
+      format = workbook.add_format(
+        valign: 'vcenter',
+        align:  'center'
+      )
+
+      columns = template_items.pluck(:fields).transpose
+      columns.each_with_index do |column, col|
+        column.adjoin_repeated(index: header_line).each do |row, value|
+          if row.is_a?(Array)
+            worksheet.merge_range(row[0], col, row[1], col, value, format)
+          else
+            worksheet.write(row, col, value, format)
+          end
+        end
       end
     end
 

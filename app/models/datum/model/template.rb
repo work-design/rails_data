@@ -68,8 +68,7 @@ module Datum
       row_index = header_line - 1
       template_items.each do |item|
         row_index += 1
-        r = headers.each_with_object({}) { |k, h| h.merge! k => item.extra[k] }
-        worksheet.write_row(row_index, 0, r.values)
+        worksheet.write_row(row_index, 0, item.fields)
       end
     end
 

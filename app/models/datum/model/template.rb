@@ -57,13 +57,15 @@ module Datum
         item.chunk_while { |i, j| i == j }.each_with_index do |token, col|
           if token.size > 1
             worksheet.merge_range(row, col, row, col + token.size - 1, token[0], format)
+          else
+            worksheet.write(row, col, token[0], format)
           end
         end
       end
     end
 
     def set_rows
-      row_index = 0
+      row_index = header_line - 1
       template_items.each do |item|
         row_index += 1
         r = headers.each_with_object({}) { |k, h| h.merge! k => item.extra[k] }

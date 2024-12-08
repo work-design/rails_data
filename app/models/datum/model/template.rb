@@ -5,11 +5,12 @@ module Datum
     included do
       attribute :name, :string
       attribute :headers, :json
+      attribute :header_line, :integer
       attribute :template_items_count, :integer
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
-      has_many :template_examples
+      has_many :template_examples, dependent: :delete_all
       has_many :template_items
       has_many :validations
 
@@ -79,10 +80,11 @@ module Datum
 
     def parse!
       sheet = xlsx.sheet(0)
-      sheet_fields = sheet.parse smart: true
+      sheet.set_headers smart: true
       self.headers = sheet.headers.keys
+      self.header_line = sheet.header_line
       self.parameters = sheet.headers.each_with_object({}) { |(k, _), h| h.merge! k => 'string' }
-      sheet_fields.each_with_index do |fields, index|
+      sheet.each_with_index do |fields, index|
         template_examples.build(fields: fields, position: index + 1)
       end
       self.save

@@ -54,7 +54,7 @@ module Datum
 
       items = template_examples.where(position: 1..header_line)
       items.each_with_index do |item, row|
-        item.fields.adjoin_repeated do |col, value|
+        item.fields.adjoin_repeated.each do |col, value|
           if col.is_a?(Array)
             worksheet.merge_range(row, col[0], row, col[1], value, format)
           else

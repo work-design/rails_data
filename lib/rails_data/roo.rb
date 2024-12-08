@@ -23,7 +23,6 @@ module RailsData::Roo
           @headers.merge! obj => index + 1
         end
       end
-      @headers
     else
       super
     end

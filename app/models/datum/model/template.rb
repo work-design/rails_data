@@ -80,6 +80,7 @@ module Datum
     def parse!
       sheet = xlsx.sheet(0)
       sheet_fields = sheet.parse smart: true
+      binding.b
       self.headers = sheet.headers.keys
       self.parameters = sheet.headers.each_with_object({}) { |(k, _), h| h.merge! k => 'string' }
       sheet_fields.each_with_index do |fields, index|

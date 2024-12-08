@@ -52,13 +52,13 @@ module Datum
         align:  'center'
       )
 
-      items = template_examples.where(position: 1..header_line).pluck(:fields)
+      items = template_examples.where(position: 1..header_line)
       items.each_with_index do |item, row|
-        item.chunk_while { |i, j| i == j }.each_with_index do |token, col|
-          if token.size > 1
-            worksheet.merge_range(row, col, row, col + token.size - 1, token[0], format)
+        item.fields.adjoin_repeated do |col, value|
+          if col.is_a?(Array)
+            worksheet.merge_range(row, col[0], row, col[1], value, format)
           else
-            worksheet.write(row, col, token[0], format)
+            worksheet.write(row, col, value, format)
           end
         end
       end

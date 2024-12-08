@@ -62,6 +62,15 @@ module Datum
           end
         end
       end
+
+      columns = items.pluck(:fields).transpose
+      columns.each_with_index do |column, col|
+        column.adjoin_repeated.each do |row, value|
+          if row.is_a?(Array)
+            worksheet.merge_range(row[0], col, row[1], col, value, format)
+          end
+        end
+      end
     end
 
     def set_rows

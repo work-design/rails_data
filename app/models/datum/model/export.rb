@@ -68,7 +68,7 @@ module Datum
 
       columns = export_items.pluck(:fields).transpose
       columns.each_with_index do |column, col|
-        column.adjoin_repeated(index: header_line).each do |row, value|
+        column.adjoin_repeated(index: template.header_line).each do |row, value|
           if row.is_a?(Array)
             worksheet.merge_range(row[0], col, row[1], col, value, format)
           else
@@ -80,7 +80,7 @@ module Datum
 
     def set_validation
       template.validations.each do |v|
-        index = headers.index(v.header)
+        index = template.headers.index(v.header)
         next unless index
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(

@@ -12,6 +12,7 @@ module Datum
 
       has_many :template_items, dependent: :delete_all
       has_many :validations
+      has_many :exports
 
       has_one_attached :file
     end

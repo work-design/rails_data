@@ -4,7 +4,7 @@ module Datum
     before_action :set_new_export_item, only: [:new, :create]
 
     def index
-      @export_items = @template.export_items.page(params[:page])
+      @export_items = @export.export_items.page(params[:page])
     end
 
     private
@@ -13,7 +13,7 @@ module Datum
     end
 
     def set_new_export_item
-      @export_item = @template.export_items.build(export_item_params)
+      @export_item = @export.export_items.build(export_item_params)
     end
 
     def export_item_params

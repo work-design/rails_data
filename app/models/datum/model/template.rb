@@ -40,6 +40,7 @@ module Datum
       set_headers
       set_rows
       set_validation
+      worksheet.autofit
 
       workbook.close
       io = workbook.instance_variable_get :@file
@@ -48,6 +49,7 @@ module Datum
 
     def set_headers
       format = workbook.add_format(
+        fg_color: '#cccccc',
         valign: 'vcenter',
         align:  'center'
       )

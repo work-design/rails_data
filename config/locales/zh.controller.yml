@@ -46,12 +46,15 @@ zh:
       templates:
         index:
           title: 模板
-      template_examples:
-        index:
-          title: 示例数据
       template_items:
         index:
-          title: 数据
+          title: 模板数据
+      exports:
+        index:
+          title: 导出
+      export_items:
+        index:
+          title: 导出数据
       validations:
         index:
           title: 验证数据

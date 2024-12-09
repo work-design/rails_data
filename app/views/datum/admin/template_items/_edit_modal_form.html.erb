@@ -1,9 +1,0 @@
-<%= form_with theme: 'modal', model: @template_item, url: { action: 'update' } do |f| %>
-  <%= render 'modal_header' %>
-  <section class="modal-card-body">
-    <%= render partial: 'com/extra/extra_form', locals: { taxon: @template, f: f } %>
-  </section>
-  <footer class="modal-card-foot">
-    <%= f.submit %>
-  </footer>
-<% end %>

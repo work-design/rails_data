@@ -1,9 +1,9 @@
 module Datum
-  class Admin::TemplateExamplesController < Admin::BaseController
+  class Admin::ExportsController < Admin::BaseController
     before_action :set_template
 
     def index
-      @template_examples = @template.template_examples.page(params[:page])
+      @template_items = @template.exports.page(params[:page])
     end
 
     private

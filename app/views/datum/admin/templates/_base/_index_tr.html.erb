@@ -16,14 +16,14 @@
       <% end %>
     </div>
     <div data-show-target="item" class="visibility-hidden">
-      <%= link_to({ controller: 'template_examples', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
-        <span><%= t('.template_examples.index.title') %></span>
-      <% end %>
       <%= link_to({ controller: 'template_items', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
         <span><%= t('.template_items.index.title') %></span>
       <% end %>
       <%= link_to({ controller: 'validations', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
         <span><%= t('.validations.index.title') %></span>
+      <% end %>
+      <%= link_to({ controller: 'exports', template_id: model.id }, class: 'button is-small is-rounded is-light') do %>
+        <span><%= t('.exports.index.title') %></span>
       <% end %>
     </div>
   </td>

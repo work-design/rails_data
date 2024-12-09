@@ -1,6 +1,6 @@
 module Datum
   class ExportItem < ApplicationRecord
-    include Model::TemplateItem
+    include Model::ExportItem
     include Com::Ext::Extra
   end
 end

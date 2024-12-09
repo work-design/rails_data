@@ -17,8 +17,10 @@ Rails.application.routes.draw do
         end
         resources :templates do
           resources :validations
-          resources :template_examples
           resources :template_items
+          resources :exports do
+            resources :export_items
+          end
         end
       end
       namespace :panel, defaults: { namespace: 'panel' } do

@@ -5,7 +5,7 @@ module Datum
     included do
       attribute :name, :string
 
-      belongs_to :template
+      belongs_to :template, class_name: 'Datum::Template'
 
       has_many :export_items
     end

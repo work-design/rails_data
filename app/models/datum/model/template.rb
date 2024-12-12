@@ -15,6 +15,9 @@ module Datum
       has_many :exports
 
       has_one_attached :file
+
+      after_create_commit :parse!
+      after_create_commit :parse_validations!
     end
 
     def xlsx

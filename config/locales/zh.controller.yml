@@ -38,6 +38,10 @@ zh:
         run:
           title: 运行
     admin:
+      title: 数据
+      home:
+        index:
+          title: 数据
       table_lists:
         find:
           title: 导出

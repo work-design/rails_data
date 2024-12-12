@@ -8,7 +8,7 @@ module Datum
         :file,
         parameters: {}
       )
-      result['parameters'] = result['parameters'].values.each_with_object({}) { |i, h|  h.merge! i['column'] => i['value'] }
+      result['parameters'] = result['parameters'].values.each_with_object({}) { |i, h|  h.merge! i['column'] => i['value'] } if result['parameters']
       result
     end
 

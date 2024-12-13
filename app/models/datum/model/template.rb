@@ -28,6 +28,11 @@ module Datum
       @xlsx
     end
 
+    def root_headers
+      x = template_items.first.fields
+      x.adjoin_repeated
+    end
+
     def parse!
       sheet = xlsx.sheet(0)
       sheet.set_headers smart: true
@@ -35,7 +40,9 @@ module Datum
       self.header_line = sheet.header_line
       self.parameters = sheet.headers.each_with_object({}) { |(k, _), h| h.merge! k => 'string' }
       sheet.each_with_index do |fields, index|
-        template_items.build(fields: fields, position: index + 1)
+        item = template_items.find { |i| i.position == index + 1 } || template_items.build(position: index + 1)
+        item.fields = fields
+        item.save
       end
       self.save
     end

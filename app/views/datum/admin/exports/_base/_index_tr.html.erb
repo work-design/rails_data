@@ -19,6 +19,10 @@
       <%= link_to({ controller: 'export_items', export_id: model.id }, class: 'button is-small is-rounded is-light') do %>
         <span><%= t('.export_items.index.title') %></span>
       <% end %>
+      <%= link_to({ action: 'show', id: model.id, format: 'xlsx' }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fa-solid fa-file-excel text-link"></i>
+        <span class="ml-1"><%= t('.show.title') %></span>
+      <% end %>
     </div>
   </td>
 </tr>

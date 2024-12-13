@@ -11,7 +11,7 @@ module RailsData::Roo
       row1 = row(first_row)
       row1.each_with_index do |col, index|
         if (index < row1.length - 1 && col == row1[index + 1]) || (index == row1.length - 1 && col == row1[index - 1])
-          obj = "#{col} #{row(first_row + 1)[index]}"
+          obj = "#{col}·#{row(first_row + 1)[index]}"
           @header_line = first_row + 1
         else
           obj = col

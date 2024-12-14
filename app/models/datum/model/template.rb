@@ -16,8 +16,7 @@ module Datum
 
       has_one_attached :file
 
-      after_create_commit :parse!
-      after_create_commit :parse_validations!
+      after_create_commit :parse_all!
     end
 
     def xlsx
@@ -33,6 +32,11 @@ module Datum
       x.adjoin_repeated
     end
 
+    def parse_all!
+      parse!
+      parse_validations!
+    end
+
     def parse!
       sheet = xlsx.sheet(0)
       sheet.set_headers smart: true
@@ -44,7 +48,6 @@ module Datum
         item.fields = fields
         item.save
       end
-      self.save
     end
 
     def parse_validations!
@@ -52,12 +55,11 @@ module Datum
       sheet.to_matrix.column_vectors.each do |vector|
         col = vector.compact
 
-        validations.build(
+        validations.create(
           header: col[0],
           fields: col[1..-1]
         )
       end
-      self.save
     end
 
   end

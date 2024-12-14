@@ -56,8 +56,6 @@ module Datum
       end
     end
 
-
-
     def set_validation
       template.validations.each do |v|
         index = template.headers.index(v.header)

@@ -48,6 +48,7 @@ module Datum
         item.fields = fields
         item.save
       end
+      self.save
     end
 
     def parse_validations!

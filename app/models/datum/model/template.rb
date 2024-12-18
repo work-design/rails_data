@@ -28,7 +28,7 @@ module Datum
     end
 
     def root_headers
-      x = template_items.first.fields
+      x = template_items.find_by(position: 1).fields
       x.adjoin_repeated
     end
 

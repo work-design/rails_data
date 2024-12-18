@@ -20,7 +20,9 @@ module Datum
     def export
       set_headers
       set_rows
+      set_validation_sheet
       set_validation
+      set_relevant_validation
       #worksheet.autofit
 
       workbook.close
@@ -56,6 +58,22 @@ module Datum
       end
     end
 
+    def set_validation_sheet
+      format = workbook.add_format(
+        fg_color: '#cccccc',
+        valign: 'vcenter',
+        align:  'center'
+      )
+      sheets = template.validations.where.not(sheet: '下拉列表').select(:sheet).distinct.pluck(:sheet)
+      sheets.each do |sheet_name|
+        sheet = workbook.add_worksheet(sheet_name)
+        template.validations.where(sheet: sheet_name).each_with_index do |v, index|
+          sheet.write(0, index, v.header, format)
+          sheet.write_col(1, index, v.fields)
+        end
+      end
+    end
+
     def set_validation
       template.validations.where(sheet: '下拉列表', header: template.headers).each do |v|
         index = template.headers.index(v.header)
@@ -70,8 +88,20 @@ module Datum
       end
     end
 
-    def xx
-
+    #
+    def set_relevant_validation
+      sheets = template.validations.where.not(sheet: '下拉列表').select(:sheet).distinct.pluck(:sheet)
+      sheets.each do |sheet_name|
+        index = template.headers.index(sheet_name)
+        col_str = ColName.instance.col_str(index)
+        worksheet.data_validation(
+          "#{col_str}:#{col_str}",
+          {
+            validate: 'list',
+            source: "=CHOOSECOLS(#{sheet_name}!A1:H6, MATCH(INDIRECT(ADDRESS(ROW(), COLUMN()-1))))"
+          }
+        )
+      end
     end
 
   end

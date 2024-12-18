@@ -52,7 +52,7 @@ zh:
           title: 模板
       template_items:
         index:
-          title: 模板数据
+          title: 模板数据解析
       exports:
         index:
           title: 导出
@@ -61,4 +61,4 @@ zh:
           title: 导出数据
       validations:
         index:
-          title: 验证数据
+          title: 验证数据解析

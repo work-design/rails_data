@@ -4,3 +4,6 @@ zh:
       datum/data_list:
         title: 标题
         comment: 评论
+      datum/template:
+        name: 模板名称
+        file: 模板文件

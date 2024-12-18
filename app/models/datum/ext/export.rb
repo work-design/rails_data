@@ -57,9 +57,8 @@ module Datum
     end
 
     def set_validation
-      template.validations.where(sheet: '下拉列表').each do |v|
+      template.validations.where(sheet: '下拉列表', header: template.headers).each do |v|
         index = template.headers.index(v.header)
-        next unless index
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
           "#{col_str}:#{col_str}",

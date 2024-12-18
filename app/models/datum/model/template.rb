@@ -52,14 +52,16 @@ module Datum
     end
 
     def parse_validations!
-      sheet = xlsx.sheet(1)
-      sheet.to_matrix.column_vectors.each do |vector|
-        col = vector.compact
+      xlsx.sheets[1..-1].each do |sheet|
+        xlsx.sheet(sheet).to_matrix.column_vectors.each do |vector|
+          col = vector.compact
 
-        validations.create(
-          header: col[0],
-          fields: col[1..-1]
-        )
+          validations.create(
+            sheet: sheet,
+            header: col[0],
+            fields: col[1..-1]
+          )
+        end
       end
     end
 

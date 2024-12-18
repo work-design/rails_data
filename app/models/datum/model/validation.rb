@@ -3,6 +3,7 @@ module Datum
     extend ActiveSupport::Concern
 
     included do
+      attribute :sheet, :string
       attribute :header, :string
       attribute :fields, :json
 

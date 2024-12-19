@@ -72,7 +72,7 @@ module Datum
           sheet.write_col(1, index, v.fields)
 
           col_str = ColName.instance.col_str(index)
-          workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$2:$#{col_str}$#{v.fields.size}")
+          workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$2:$#{col_str}$#{v.fields.size + 1}")
         end
       end
     end

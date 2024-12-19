@@ -70,6 +70,9 @@ module Datum
         template.validations.where(sheet: sheet_name).each_with_index do |v, index|
           sheet.write(0, index, v.header, format)
           sheet.write_col(1, index, v.fields)
+
+          col_str = ColName.instance.col_str(index)
+          workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$2:$#{col_str}$#{v.fields.size}")
         end
       end
     end
@@ -79,7 +82,7 @@ module Datum
         index = template.headers.index(v.header)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
-          "#{col_str}:#{col_str}",
+          "#{col_str}3:#{col_str}20",
           {
             validate: 'list',
             value: v.fields
@@ -94,11 +97,12 @@ module Datum
       sheets.each do |sheet_name|
         index = template.headers.index(sheet_name)
         col_str = ColName.instance.col_str(index)
+        prev_str = ColName.instance.col_str(index - 1)
         worksheet.data_validation(
-          "#{col_str}:#{col_str}",
+          "#{col_str}3:#{col_str}20",
           {
             validate: 'list',
-            source: "=CHOOSECOLS(#{sheet_name}!A1:H6, MATCH(INDIRECT(ADDRESS(ROW(), COLUMN()-1))))"
+            source: "=INDIRECT(#{prev_str}3)"
           }
         )
       end

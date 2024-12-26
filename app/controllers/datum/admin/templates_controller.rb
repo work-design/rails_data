@@ -16,6 +16,7 @@ module Datum
       result = params.fetch(:template, {}).permit(
         :name,
         :file,
+        :uploaded_at,
         parameters: {}
       )
       result['parameters'] = result['parameters'].values.each_with_object({}) { |i, h|  h.merge! i['column'] => i['value'] } if result['parameters']

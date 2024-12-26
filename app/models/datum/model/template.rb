@@ -7,6 +7,7 @@ module Datum
       attribute :headers, :json
       attribute :header_line, :integer
       attribute :template_items_count, :integer
+      attribute :uploaded_at, :datetime
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
@@ -16,7 +17,7 @@ module Datum
 
       has_one_attached :file
 
-      after_create_commit :parse_all!
+      after_save_commit :parse_all!, if: -> { saved_change_to_uploaded_at? }
     end
 
     def xlsx
@@ -38,13 +39,15 @@ module Datum
     end
 
     def parse!
+      template_items.delete_all
+
       sheet = xlsx.sheet(0)
       sheet.set_headers smart: true
       self.headers = sheet.headers.keys
       self.header_line = sheet.header_line
       self.parameters = sheet.headers.each_with_object({}) { |(k, _), h| h.merge! k => 'string' }
       sheet.each_with_index do |fields, index|
-        item = template_items.find { |i| i.position == index + 1 } || template_items.build(position: index + 1)
+        item = template_items.build(position: index + 1)
         item.fields = fields
         item.save
       end

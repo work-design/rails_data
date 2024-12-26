@@ -3,7 +3,15 @@ module Datum
     extend ActiveSupport::Concern
 
     included do
+      attribute :code, :string
+
       belongs_to :template, class_name: 'Datum::Template'
+
+      before_validation :sync_code, if: -> { template_id_changed? }
+    end
+
+    def sync_code
+      self.code = template&.code
     end
 
     def workbook

@@ -4,6 +4,7 @@ module Datum
 
     included do
       attribute :name, :string
+      attribute :code, :string
       attribute :headers, :json
       attribute :header_line, :integer
       attribute :template_items_count, :integer

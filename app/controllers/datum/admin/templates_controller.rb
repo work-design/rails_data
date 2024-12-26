@@ -15,6 +15,7 @@ module Datum
     def template_params
       result = params.fetch(:template, {}).permit(
         :name,
+        :code,
         :file,
         :uploaded_at,
         parameters: {}

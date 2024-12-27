@@ -40,7 +40,7 @@ module Datum
 
     def set_headers
       format = workbook.add_format(
-        fg_color: '#cccccc',
+        fg_color: '#bbbbbb',
         valign: 'vcenter',
         align:  'center'
       )

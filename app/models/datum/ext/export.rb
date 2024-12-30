@@ -39,29 +39,50 @@ module Datum
       io.string
     end
 
+    def required_indexes
+      []
+    end
+
     def set_headers
       format = workbook.add_format(
         fg_color: '#bbbbbb',
         valign: 'vcenter',
         align:  'center'
       )
+      required_format = workbook.add_format(
+        fg_color: '#bbbbbb',
+        valign: 'vcenter',
+        align:  'center',
+        color: 'red'
+      )
 
+      _format = format
       items = template.template_items.where(position: 1..template.header_line)
       items.each_with_index do |item, row|
         item.fields.adjoin_repeated.each do |col, value|
           if col.is_a?(Array)
-            worksheet.merge_range(row, col[0], row, col[1], value, format)
+            worksheet.merge_range(row, col[0], row, col[1], value, _format)
           else
-            worksheet.write(row, col, value, format)
+            if required_indexes.include?(col)
+              _format = required_format
+            else
+              _format = format
+            end
+            worksheet.write(row, col, value, _format)
           end
         end
       end
 
       columns = items.pluck(:fields).transpose
       columns.each_with_index do |column, col|
+        if required_indexes.include?(col)
+          _format = required_format
+        else
+          _format = format
+        end
         column.adjoin_repeated.each do |row, value|
           if row.is_a?(Array)
-            worksheet.merge_range(row[0], col, row[1], col, value, format)
+            worksheet.merge_range(row[0], col, row[1], col, value, _format)
           end
         end
       end

@@ -39,7 +39,7 @@ module Datum
       io.string
     end
 
-    def required_indexes
+    def export_required_indexes
       []
     end
 
@@ -63,7 +63,7 @@ module Datum
           if col.is_a?(Array)
             worksheet.merge_range(row, col[0], row, col[1], value, _format)
           else
-            if required_indexes.include?(col)
+            if export_required_indexes.include?(col)
               _format = required_format
             else
               _format = format
@@ -75,7 +75,7 @@ module Datum
 
       columns = items.pluck(:fields).transpose
       columns.each_with_index do |column, col|
-        if required_indexes.include?(col)
+        if export_required_indexes.include?(col)
           _format = required_format
         else
           _format = format

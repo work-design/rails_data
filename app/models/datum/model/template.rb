@@ -56,6 +56,8 @@ module Datum
     end
 
     def parse_validations!
+      validations.delete_all
+
       xlsx.sheets[1..-1].each do |sheet|
         xlsx.sheet(sheet).to_matrix.column_vectors.each do |vector|
           col = vector.compact

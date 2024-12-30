@@ -1,6 +1,7 @@
 module Datum
   module Ext::Export
     extend ActiveSupport::Concern
+    LIST_KEY = '数据源'
 
     included do
       attribute :code, :string
@@ -72,7 +73,7 @@ module Datum
         valign: 'vcenter',
         align:  'center'
       )
-      sheets = template.validations.where.not(sheet: '下拉列表').select(:sheet).distinct.pluck(:sheet)
+      sheets = template.validations.where.not(sheet: LIST_KEY).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
         sheet = workbook.add_worksheet(sheet_name)
         template.validations.where(sheet: sheet_name).each_with_index do |v, index|
@@ -86,7 +87,7 @@ module Datum
     end
 
     def set_validation
-      template.validations.where(sheet: '下拉列表', header: template.headers).each do |v|
+      template.validations.where(sheet: LIST_KEY, header: template.headers).each do |v|
         index = template.headers.index(v.header)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
@@ -101,7 +102,7 @@ module Datum
 
     #
     def set_relevant_validation
-      sheets = template.validations.where.not(sheet: '下拉列表').select(:sheet).distinct.pluck(:sheet)
+      sheets = template.validations.where.not(sheet: LIST_KEY).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
         index = template.headers.index(sheet_name)
         col_str = ColName.instance.col_str(index)

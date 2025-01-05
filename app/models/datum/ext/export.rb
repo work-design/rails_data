@@ -34,8 +34,8 @@ module Datum
       set_validation_sheet
       set_validation
       set_relevant_validation
+      set_note
       #worksheet.autofit
-
       workbook.close
       io = workbook.instance_variable_get :@file
       io.string
@@ -110,6 +110,20 @@ module Datum
         new_format = format
       end
       worksheet.write(row, col, value, new_format)
+    end
+
+    def set_note
+      template.template_items[template.header_line].fields.each_with_index do |content, index|
+        col_str = ColName.instance.col_str(index)
+        worksheet.data_validation(
+          "#{col_str}3:#{col_str}20",
+          {
+            validate: 'any',
+            input_title: '示例:',
+            input_message: content
+          }
+        )
+      end
     end
 
     def set_validation_sheet

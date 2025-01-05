@@ -5,6 +5,7 @@ module Datum
 
     included do
       attribute :code, :string
+      attribute :formats, :json, default: {}
 
       belongs_to :template, class_name: 'Datum::Template'
 
@@ -13,6 +14,7 @@ module Datum
 
     def sync_code
       self.code = template&.code
+      self.formats = template.parameters
     end
 
     def workbook

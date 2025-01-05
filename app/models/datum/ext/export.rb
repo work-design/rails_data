@@ -115,14 +115,7 @@ module Datum
     def set_note
       template.template_items[template.header_line].fields.each_with_index do |content, index|
         col_str = ColName.instance.col_str(index)
-        worksheet.data_validation(
-          "#{col_str}3:#{col_str}20",
-          {
-            validate: 'any',
-            input_title: '示例:',
-            input_message: content
-          }
-        )
+        worksheet.write_comment("#{col_str}3", "示例：\n#{content}") if content
       end
     end
 

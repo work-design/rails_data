@@ -90,6 +90,28 @@ module Datum
       end
     end
 
+    def write_merge_with_format(row1, col1, row2, col2, value, format)
+      if formats[headers[col1]] == 'date'
+        new_format = workbook.add_format
+        new_format.copy(format)
+        new_format.set_num_format('yyyy/mm/dd')
+      else
+        new_format = format
+      end
+      worksheet.merge_range(row1, col1, row2, col2, value, new_format)
+    end
+
+    def write_with_format(row, col, value, format)
+      if formats[headers[col]] == 'date'
+        new_format = workbook.add_format
+        new_format.copy(format)
+        new_format.set_num_format('yyyy/mm/dd')
+      else
+        new_format = format
+      end
+      worksheet.write(row, col, value, new_format)
+    end
+
     def set_validation_sheet
       format = workbook.add_format(
         fg_color: '#cccccc',

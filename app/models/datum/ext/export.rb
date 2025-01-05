@@ -49,13 +49,17 @@ module Datum
       format = workbook.add_format(
         fg_color: '#bbbbbb',
         valign: 'vcenter',
-        align:  'center'
+        align:  'center',
+        border: 1,
+        border_color: '#cccccc'
       )
       required_format = workbook.add_format(
         fg_color: '#bbbbbb',
         valign: 'vcenter',
         align:  'center',
-        color: 'red'
+        color: 'red',
+        border: 1,
+        border_color: '#cccccc'
       )
 
       _format = format

@@ -2,7 +2,7 @@ module Datum
   module Ext::Export
     extend ActiveSupport::Concern
     LIST_KEY = '数据源'
-    EXAMPLE = '示例'
+    EXAMPLE = '注释'
 
     included do
       attribute :code, :string
@@ -32,7 +32,6 @@ module Datum
     def export
       set_headers
       set_rows
-      set_example
       set_validation_names
       set_validation
       set_relevant_validation
@@ -119,9 +118,10 @@ module Datum
     end
 
     def set_note
-      template.template_items[template.header_line].fields.each_with_index do |content, index|
+      template.validations.where(sheet: EXAMPLE).each do |note|
+        index = template.headers.index(note.header)
         col_str = ColName.instance.col_str(index)
-        worksheet.write_comment("#{col_str}3", "示例：\n#{content}") if content
+        worksheet.write_comment("#{col_str}#{template.header_line}", "#{note.fields.join("\n")}")
       end
     end
 
@@ -155,22 +155,6 @@ module Datum
             value: v.fields
           }
         )
-      end
-    end
-
-    def set_example
-      format = workbook.add_format(
-        fg_color: '#cccccc',
-        valign: 'vcenter',
-        align:  'center'
-      )
-      sheets = template.validations.where(sheet: EXAMPLE).select(:sheet).distinct.pluck(:sheet)
-      sheets.each do |sheet_name|
-        sheet = workbook.add_worksheet(sheet_name)
-        template.validations.where(sheet: sheet_name).each_with_index do |v, index|
-          sheet.write(0, index, v.header, format)
-          sheet.write_col(1, index, v.fields)
-        end
       end
     end
 

@@ -120,8 +120,10 @@ module Datum
     def set_note
       template.validations.where(sheet: EXAMPLE).each do |note|
         index = template.headers.index(note.header)
-        col_str = ColName.instance.col_str(index)
-        worksheet.write_comment("#{col_str}#{template.header_line}", "#{note.fields.join("\n")}")
+        if index
+          col_str = ColName.instance.col_str(index)
+          worksheet.write_comment("#{col_str}#{template.header_line}", "#{note.fields.join("\n")}")
+        end
       end
     end
 

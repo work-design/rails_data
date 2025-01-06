@@ -2,6 +2,7 @@ module Datum
   module Ext::Export
     extend ActiveSupport::Concern
     LIST_KEY = '数据源'
+    EXAMPLE = '示例'
 
     included do
       attribute :code, :string
@@ -31,7 +32,8 @@ module Datum
     def export
       set_headers
       set_rows
-      set_validation_sheet
+      set_example
+      set_validation_names
       set_validation
       set_relevant_validation
       set_note
@@ -123,13 +125,13 @@ module Datum
       end
     end
 
-    def set_validation_sheet
+    def set_validation_names
       format = workbook.add_format(
         fg_color: '#cccccc',
         valign: 'vcenter',
         align:  'center'
       )
-      sheets = template.validations.where.not(sheet: LIST_KEY).select(:sheet).distinct.pluck(:sheet)
+      sheets = template.validations.where.not(sheet: [LIST_KEY, EXAMPLE]).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
         sheet = workbook.add_worksheet(sheet_name)
         template.validations.where(sheet: sheet_name).each_with_index do |v, index|
@@ -156,9 +158,20 @@ module Datum
       end
     end
 
+    def set_example
+      sheets = template.validations.where(sheet: EXAMPLE).select(:sheet).distinct.pluck(:sheet)
+      sheets.each do |sheet_name|
+        sheet = workbook.add_worksheet(sheet_name)
+        template.validations.where(sheet: sheet_name).each_with_index do |v, index|
+          sheet.write(0, index, v.header, format)
+          sheet.write_col(1, index, v.fields)
+        end
+      end
+    end
+
     #
     def set_relevant_validation
-      sheets = template.validations.where.not(sheet: LIST_KEY).select(:sheet).distinct.pluck(:sheet)
+      sheets = template.validations.where.not(sheet: [LIST_KEY, EXAMPLE]).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
         index = template.headers.index(sheet_name)
         col_str = ColName.instance.col_str(index)

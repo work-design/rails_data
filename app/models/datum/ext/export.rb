@@ -159,6 +159,11 @@ module Datum
     end
 
     def set_example
+      format = workbook.add_format(
+        fg_color: '#cccccc',
+        valign: 'vcenter',
+        align:  'center'
+      )
       sheets = template.validations.where(sheet: EXAMPLE).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
         sheet = workbook.add_worksheet(sheet_name)

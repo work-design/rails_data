@@ -107,7 +107,7 @@ module Datum
     end
 
     def write_with_format(row, col, value, format)
-      if formats[headers[col]] == 'date'
+      if formats[template.headers[col]] == 'date'
         new_format = workbook.add_format
         new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')

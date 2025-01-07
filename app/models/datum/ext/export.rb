@@ -122,7 +122,12 @@ module Datum
         index = template.headers.index(note.header)
         if index
           col_str = ColName.instance.col_str(index)
-          worksheet.write_comment("#{col_str}#{template.header_line}", "#{note.fields.join("\n")}")
+          worksheet.write_comment(
+            "#{col_str}#{template.header_line}",
+            "#{note.fields.join("\n")}",
+            width: 250,
+            height: 180
+          )
         end
       end
     end

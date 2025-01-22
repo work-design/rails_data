@@ -146,7 +146,7 @@ module Datum
           sheet.write_col(1, index, v.fields)
 
           col_str = ColName.instance.col_str(index)
-          workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$2:$#{col_str}$#{v.fields.size + 1}")
+          workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$#{header_line + 1}:$#{col_str}$#{v.fields.size + 1}")
         end
       end
     end
@@ -156,7 +156,7 @@ module Datum
         index = template.headers.index(v.header)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
-          "#{col_str}3:#{col_str}20",
+          "#{col_str}#{header_line + 1}:#{col_str}100",
           {
             validate: 'list',
             value: v.fields
@@ -165,7 +165,7 @@ module Datum
       end
     end
 
-    #
+    # 级联验证解析
     def set_relevant_validation
       sheets = template.validations.where.not(sheet: [LIST_KEY, EXAMPLE]).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
@@ -173,7 +173,7 @@ module Datum
         col_str = ColName.instance.col_str(index)
         prev_str = ColName.instance.col_str(index - 1)
         worksheet.data_validation(
-          "#{col_str}3:#{col_str}20",
+          "#{col_str}#{header_line + 1}:#{col_str}20",
           {
             validate: 'list',
             source: "=INDIRECT(#{prev_str}3)"

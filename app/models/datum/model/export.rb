@@ -19,7 +19,6 @@ module Datum
       io.string
     end
 
-
     def set_rows
       format = workbook.add_format(
         valign: 'vcenter',

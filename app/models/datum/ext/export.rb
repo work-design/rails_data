@@ -100,6 +100,14 @@ module Datum
         new_format = workbook.add_format
         new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')
+
+        worksheet.data_validation(row1, col1, row2, col2, {
+          validate: 'date',
+          criteria: '>=',
+          value: '1900-01-01',
+          input_message: '输入日期格式，如：2025-01-01',
+          error_message: '请输入正确的日期格式，如：2025-01-01'
+        })
       else
         new_format = format
       end
@@ -111,6 +119,14 @@ module Datum
         new_format = workbook.add_format
         new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')
+
+        worksheet.data_validation(row, col, {
+          validate: 'date',
+          criteria: '>=',
+          value: '1900-01-01',
+          input_message: '输入日期格式，如：2025-01-01',
+          error_message: '请输入正确的日期格式，如：2025-01-01'
+        })
       else
         new_format = format
       end

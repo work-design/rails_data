@@ -34,6 +34,7 @@ module Datum
       set_rows
       set_validation_names
       set_validation
+      set_user_validation
       set_relevant_validation
       set_note
       #worksheet.autofit
@@ -172,10 +173,25 @@ module Datum
         index = template.headers.index(v.header)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
-          "#{col_str}#{header_line + 1}:#{col_str}100",
+          "#{col_str}#{header_line + 1}:#{col_str}1000",
           {
             validate: 'list',
             value: v.fields
+          }
+        )
+      end
+    end
+
+    def set_user_validation
+      userids = application.app.users.pluck(:userid)
+      formats.select { |k, v| v == 'user' }.each do |k, v|
+        index = template.headers.index(k)
+        col_str = ColName.instance.col_str(index)
+        worksheet.data_validation(
+          "#{col_str}#{header_line + 1}:#{col_str}1000",
+          {
+            validate: 'list',
+            value: ['ssss', 'dddd', 'ddddd']
           }
         )
       end
@@ -189,7 +205,7 @@ module Datum
         col_str = ColName.instance.col_str(index)
         prev_str = ColName.instance.col_str(index - 1)
         worksheet.data_validation(
-          "#{col_str}#{header_line + 1}:#{col_str}20",
+          "#{col_str}#{header_line + 1}:#{col_str}1000",
           {
             validate: 'list',
             source: "=INDIRECT(#{prev_str}3)"

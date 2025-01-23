@@ -34,6 +34,7 @@ module Datum
       set_rows
       set_validation_names
       set_validation
+      set_validation_users
       set_user_validation
       set_relevant_validation
       set_note
@@ -182,8 +183,14 @@ module Datum
       end
     end
 
-    def set_user_validation
+    def set_validation_users(name = '工号')
+      sheet = workbook.add_worksheet(name)
       userids = application.app.users.pluck(:userid)
+      sheet.write_col(0, 0, userids)
+      workbook.define_name(name, "=#{name}!$A$1:$A$#{userids.size}")
+    end
+
+    def set_user_validation
       formats.select { |k, v| v == 'user' }.each do |k, v|
         index = template.headers.index(k)
         col_str = ColName.instance.col_str(index)

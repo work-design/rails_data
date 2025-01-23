@@ -166,6 +166,7 @@ module Datum
           col_str = ColName.instance.col_str(index)
           workbook.define_name(v.header, "=#{sheet_name}!$#{col_str}$#{header_line + 1}:$#{col_str}$#{v.fields.size + 1}")
         end
+        sheet.hide
       end
     end
 
@@ -188,6 +189,7 @@ module Datum
       userids = application.app.users.pluck(:userid)
       sheet.write_col(0, 0, userids)
       workbook.define_name(name, "=#{name}!$A$1:$A$#{userids.size}")
+      sheet.hide
     end
 
     def set_user_validation
@@ -198,7 +200,8 @@ module Datum
           "#{col_str}#{header_line + 1}:#{col_str}1000",
           {
             validate: 'list',
-            value: ['ssss', 'dddd', 'ddddd']
+            value: '=INDIRECT("工号")',
+            error_message: '请输入正确的工号'
           }
         )
       end

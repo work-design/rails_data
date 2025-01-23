@@ -48,6 +48,10 @@ module Datum
       []
     end
 
+    def header_line
+      template.header_line
+    end
+
     def set_headers
       format = workbook.add_format(
         fg_color: '#bbbbbb',
@@ -66,7 +70,7 @@ module Datum
       )
 
       _format = format
-      items = template.template_items.where(position: 1..template.header_line)
+      items = template.template_items.where(position: 1..header_line)
       items.each_with_index do |item, row|
         item.fields.adjoin_repeated.each do |col, value|
           if col.is_a?(Array)
@@ -141,7 +145,7 @@ module Datum
         if index
           col_str = ColName.instance.col_str(index)
           worksheet.write_comment(
-            "#{col_str}#{template.header_line}",
+            "#{col_str}#{header_line}",
             "#{note.fields.join("\n")}",
             width: 250,
             height: 180

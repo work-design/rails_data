@@ -51,6 +51,10 @@ module Datum
     def header_line
       template.header_line
     end
+    
+    def headers
+      template.headers
+    end
 
     def set_headers
       format = workbook.add_format(
@@ -121,7 +125,7 @@ module Datum
     end
 
     def write_with_format(row, col, value, format)
-      if formats[template.headers[col]] == 'date'
+      if formats[headers[col]] == 'date'
         new_format = workbook.add_format
         new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')
@@ -141,7 +145,7 @@ module Datum
 
     def set_note
       template.validations.where(sheet: EXAMPLE).each do |note|
-        index = template.headers.index(note.header)
+        index = headers.index(note.header)
         if index
           col_str = ColName.instance.col_str(index)
           worksheet.write_comment(
@@ -175,8 +179,8 @@ module Datum
     end
 
     def set_validation
-      template.validations.where(sheet: LIST_KEY, header: template.headers).each do |v|
-        index = template.headers.index(v.header)
+      template.validations.where(sheet: LIST_KEY, header: headers).each do |v|
+        index = headers.index(v.header)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
           "#{col_str}#{header_line + 1}:#{col_str}1000",
@@ -198,7 +202,7 @@ module Datum
 
     def set_user_validation
       formats.select { |k, v| v == 'user' }.each do |k, v|
-        index = template.headers.index(k)
+        index = headers.index(k)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
           "#{col_str}#{header_line + 1}:#{col_str}1000",
@@ -215,7 +219,7 @@ module Datum
     def set_relevant_validation
       sheets = template.validations.where.not(sheet: [LIST_KEY, EXAMPLE]).select(:sheet).distinct.pluck(:sheet)
       sheets.each do |sheet_name|
-        index = template.headers.index(sheet_name)
+        index = headers.index(sheet_name)
         col_str = ColName.instance.col_str(index)
         prev_str = ColName.instance.col_str(index - 1)
         worksheet.data_validation(

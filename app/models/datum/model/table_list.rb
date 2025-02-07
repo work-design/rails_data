@@ -4,8 +4,8 @@ module Datum
 
     included do
       attribute :parameters, :json, default: {}
-      attribute :headers, :string, array: true, default: []
-      attribute :footers, :string, array: true, default: []
+      attribute :headers, :json, default: []
+      attribute :footers, :json, default: []
       attribute :table_items_count, :integer, default: 0
       attribute :timestamp, :string
       attribute :done, :boolean

@@ -3,7 +3,7 @@ module Datum
     extend ActiveSupport::Concern
 
     included do
-      attribute :fields, :string, array: true, default: []
+      attribute :fields, :json, default: []
 
       belongs_to :table_list, counter_cache: true
     end

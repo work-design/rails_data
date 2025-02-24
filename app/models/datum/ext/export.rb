@@ -194,11 +194,14 @@ module Datum
 
     def set_validation_users(name = '工号')
       sheet = workbook.add_worksheet(name)
-      userids = application.app.users.pluck(:userid)
+      userids, user_names = application.app.users.pluck(:userid, :name).transpose
       sheet.write_col(0, 0, userids)
+      sheet.write_col(0, 1, user_names)
       workbook.define_name(name, "=#{name}!$A$1:$A$#{userids.size}")
       sheet.hide
     end
+
+    # =IFERROR(VLOOKUP(A1, Sheet2!A:B, 2, FALSE), "未找到")
 
     def set_user_validation
       formats.select { |k, v| v == 'user' }.each do |k, v|

@@ -214,7 +214,7 @@ module Datum
           }
         )
 
-        name_index = headers.index("#{k}_姓名")
+        name_index = headers.index("#{k.delete_suffix('_工号')}_姓名")
         if name_index
           worksheet.write_col(header_line, name_index, '=IFERROR(VLOOKUP(A1, 工号!A:B, 2, FALSE), "未找到")')
         end

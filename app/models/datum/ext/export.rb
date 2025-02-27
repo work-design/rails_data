@@ -201,10 +201,8 @@ module Datum
       sheet.hide
     end
 
-    # =IFERROR(VLOOKUP(A1, Sheet2!A:B, 2, FALSE), "未找到")
-
     def set_user_validation
-      formats.select { |k, v| v == 'user' }.each do |k, v|
+      formats.select { |_, v| v == 'user' }.each do |k, _|
         index = headers.index(k)
         col_str = ColName.instance.col_str(index)
         worksheet.data_validation(
@@ -215,6 +213,11 @@ module Datum
             error_message: '请输入正确的工号'
           }
         )
+
+        name_index = headers.index("#{k}_姓名")
+        if name_index
+          worksheet.write_col(header_line, name_index, '=IFERROR(VLOOKUP(A1, 工号!A:B, 2, FALSE), "未找到")')
+        end
       end
     end
 

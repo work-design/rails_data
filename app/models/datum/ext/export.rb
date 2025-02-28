@@ -223,7 +223,7 @@ module Datum
             border_color: '#cccccc'
           )
           (header_line .. 500).each do |line|
-            worksheet.write_with_format(line, name_index, "=IFERROR(VLOOKUP(#{col_str}#{line}, 工号!A:B, 2, FALSE), '未找到')", format)
+            write_with_format(line, name_index, "=IFERROR(VLOOKUP(#{col_str}#{line}, 工号!A:B, 2, FALSE), '未找到')", format)
           end
         end
       end

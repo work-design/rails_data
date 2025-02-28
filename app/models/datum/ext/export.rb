@@ -222,7 +222,7 @@ module Datum
             border: 1,
             border_color: '#cccccc'
           )
-          (header_line .. 500).each do |line|
+          (header_line .. 1000).each do |line|
             write_with_format(line, name_index, "=IFERROR(VLOOKUP(#{col_str}#{line + 1}, 工号!A:B, 2, FALSE), \"\")", format)
           end
         end

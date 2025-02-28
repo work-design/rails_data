@@ -216,7 +216,7 @@ module Datum
 
         name_index = headers.index("#{k.delete_suffix('_工号')}_姓名")
         if name_index
-          format = export.workbook.add_format(
+          format = workbook.add_format(
             valign: 'vcenter',
             align:  'center',
             border: 1,

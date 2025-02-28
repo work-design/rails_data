@@ -223,7 +223,7 @@ module Datum
             border_color: '#cccccc'
           )
           (header_line .. 500).each do |line|
-            write_with_format(line, name_index, "=VLOOKUP(#{col_str}#{line}, 工号!A:B, 2, FALSE)", format)
+            write_with_format(line, name_index, "=VLOOKUP(#{col_str}#{line + 1}, 工号!A:B, 2, FALSE)", format)
           end
         end
       end

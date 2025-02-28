@@ -216,7 +216,15 @@ module Datum
 
         name_index = headers.index("#{k.delete_suffix('_工号')}_姓名")
         if name_index
-          worksheet.write_col(header_line, name_index, '=IFERROR(VLOOKUP(A1, 工号!A:B, 2, FALSE), "未找到")')
+          format = export.workbook.add_format(
+            valign: 'vcenter',
+            align:  'center',
+            border: 1,
+            border_color: '#cccccc'
+          )
+          (header_line .. 500).each do |line|
+            worksheet.write_with_format(line, name_index, "=IFERROR(VLOOKUP(#{col_str}#{line}, 工号!A:B, 2, FALSE), '未找到')", format)
+          end
         end
       end
     end

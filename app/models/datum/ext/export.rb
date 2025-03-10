@@ -193,11 +193,11 @@ module Datum
     end
 
     def set_validation_users(name = '工号')
-      format = workbook.add_format(num_format: '@')
       sheet = workbook.add_worksheet(name)
+      sheet.keep_leading_zeros(true)
       userids, user_names = application.app.users.pluck(:userid, :name).transpose
-      sheet.write_col(0, 0, userids, format)
-      sheet.write_col(0, 1, user_names, format)
+      sheet.write_col(0, 0, userids)
+      sheet.write_col(0, 1, user_names)
       workbook.define_name(name, "=#{name}!$A$1:$A$#{userids.size}")
       sheet.hide
     end

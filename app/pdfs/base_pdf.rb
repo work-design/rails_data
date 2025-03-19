@@ -142,12 +142,15 @@ class BasePdf < Prawn::Document
   def repeat_footer_image(data = nil)
     if data
       repeat :all do
-        bounding_box [bounds.left, bounds.bottom + 120], width: bounds.width, height: 140 do
-          image data[0], height: 140
+        bounding_box [bounds.left, bounds.bottom + 120], width: bounds.width, height: 120 do
+          image data[0], height: 120
         end if data[0]
-        bounding_box [bounds.left + 200, bounds.bottom + 120], width: bounds.width, height: 140 do
-          image data[1], height: 140
+        bounding_box [bounds.left + 150, bounds.bottom + 120], width: bounds.width, height: 120 do
+          image data[1], height: 120
         end if data[1]
+        bounding_box [bounds.left + 300, bounds.bottom + 120], width: bounds.width, height: 120 do
+          image data[2], height: 120
+        end if data[2]
       end
     end
     page_footer

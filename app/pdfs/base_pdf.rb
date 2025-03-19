@@ -144,7 +144,7 @@ class BasePdf < Prawn::Document
       repeat :all do
         width = bounds.width / data.size
         data.each_with_index do |item, index|
-          bounding_box [bounds.left + (index * width), bounds.bottom + 120], width: width, height: 90 do
+          bounding_box [bounds.left + (index * width), bounds.bottom + 90], width: width, height: 90 do
             image item, fit: [width, 90]
           end
         end

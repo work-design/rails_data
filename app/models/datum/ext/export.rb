@@ -7,6 +7,7 @@ module Datum
     included do
       attribute :code, :string
       attribute :formats, :json, default: {}
+      attribute :editable, :json, default: {}
 
       belongs_to :template, class_name: 'Datum::Template'
 

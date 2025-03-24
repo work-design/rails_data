@@ -107,11 +107,10 @@ module Datum
     end
 
     def write_merge_with_format(row1, col1, row2, col2, value, format)
+      new_format = workbook.add_format
+      new_format.copy(format)
       if formats[headers[col1]] == 'date'
-        new_format = workbook.add_format
-        new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')
-
         worksheet.data_validation(row1, col1, row2, col2, {
           validate: 'date',
           criteria: '>=',
@@ -119,18 +118,20 @@ module Datum
           input_message: '输入日期格式，如：2025-01-01',
           error_message: '请输入正确的日期格式，如：2025-01-01'
         })
-      else
-        new_format = format
       end
+
+      if editable[headers[col1]] == '0'
+        new_format.set_fg_color('#dddddd')
+      end
+
       worksheet.merge_range(row1, col1, row2, col2, value, new_format)
     end
 
     def write_with_format(row, col, value, format)
+      new_format = workbook.add_format
+      new_format.copy(format)
       if formats[headers[col]] == 'date'
-        new_format = workbook.add_format
-        new_format.copy(format)
         new_format.set_num_format('yyyy/mm/dd')
-
         worksheet.data_validation(row, col, {
           validate: 'date',
           criteria: '>=',
@@ -138,10 +139,17 @@ module Datum
           input_message: '输入日期格式，如：2025-01-01',
           error_message: '请输入正确的日期格式，如：2025-01-01'
         })
-      else
-        new_format = format
       end
+
+      if editable[headers[col1]] == '0'
+        new_format.set_fg_color('#dddddd')
+      end
+
       worksheet.write(row, col, value, new_format)
+    end
+
+    def write_blank_with_format(row, col, format)
+      worksheet.write_blank_with_format(row + i, index, format)
     end
 
     def set_note

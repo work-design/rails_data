@@ -141,7 +141,7 @@ module Datum
         })
       end
 
-      if editable[headers[col1]] == '0'
+      if editable[headers[col]] == '0'
         new_format.set_fg_color('#dddddd')
       end
 

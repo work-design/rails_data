@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'prawn/table'
 class MultiTablePdf < BasePdf
   include Tables::Content
   include Tables::ContentHalf

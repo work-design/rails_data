@@ -1,5 +1,6 @@
 require 'prawn'
 require 'prawn/measurement_extensions'
+require 'prawn/table'
 
 class BasePdf < Prawn::Document
   FONT = {

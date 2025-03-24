@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'prawn/table'
-
 class TablePdf < BasePdf
   LEFT_TD = {
     align: :left,

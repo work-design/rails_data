@@ -149,7 +149,14 @@ module Datum
     end
 
     def write_blank_with_format(row, col, format)
-      worksheet.write_blank_with_format(row + i, index, format)
+      new_format = workbook.add_format
+      new_format.copy(format)
+
+      if editable[headers[col]]
+        new_format.set_fg_color('#ffffff')
+      end
+
+      worksheet.write_blank(row, col, new_format)
     end
 
     def set_note

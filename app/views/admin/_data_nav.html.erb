@@ -1,13 +1,10 @@
-<div data-controller="menu" class="<%= role_permit?(business: 'datum', namespace: 'admin') ? 'menu ex-accordion is-active' : 'display-none' %>">
-  <div class="menu-label">
+<div class="menu ex-accordion is-active">
+  <%= link_to({ controller: 'datum/admin/home' }, text: true, class: 'menu-label') do %>
     <div>
       <i class="fa-solid fa-fw fa-paper-plane"></i>
       <span><%= t('datum.admin.title') %></span>
     </div>
-    <%= link_to({ controller: 'datum/admin/home' }, aria: { label: '设置' }) do %>
-      <i class="fa-solid fa-cog"></i>
-    <% end %>
-  </div>
+  <% end %>
   <div class="menu-list">
     <%= link_to t('datum.admin.templates.index.title'), { controller: 'datum/admin/templates' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['templates'], active: 'is-active') %>
   </div>

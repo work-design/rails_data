@@ -12,6 +12,7 @@ class MultiTablePdf < BasePdf
   include Tables::ImagePage
   include Tables::LeftHeader
   include Tables::TopHeader
+  include Tables::Media
 
   attr_accessor :multi_data
 

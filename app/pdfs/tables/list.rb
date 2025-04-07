@@ -3,7 +3,7 @@
 module Tables::List
 
   def list_table(data, **options)
-    stroke_color 'eeeeee'
+    stroke_color 'dddddd'
     stroke do
       horizontal_rule
     end

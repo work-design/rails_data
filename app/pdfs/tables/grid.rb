@@ -9,6 +9,7 @@ module Tables::Grid
   }
 
   def grid_table(data, first_row: { borders: [:top], border_color: 'dddddd' }, **options)
+    return if data.blank?
     default_options = {
       position: :center,
       width: bounds.width,

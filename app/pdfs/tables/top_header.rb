@@ -14,6 +14,7 @@ module Tables::TopHeader
   }
 
   def top_header_table(data, **options)
+    return if data.blank?
     default_options = {
       column_widths: {
         #1 => bounds.width / data[0].size,

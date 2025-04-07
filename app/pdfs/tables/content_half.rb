@@ -7,6 +7,7 @@ module Tables::ContentHalf
   }
 
   def content_half_table(data, **options)
+    return if data.blank?
     _data = []
     width = bounds.width / 2 - 20
     data.map do |title, content|

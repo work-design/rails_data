@@ -7,6 +7,7 @@ module Tables::ImageHalf
   }
 
   def image_half_table(data, **options)
+    return if data.blank?
     _data = []
     width = bounds.width / 2
     data.map do |title, images|

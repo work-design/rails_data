@@ -14,6 +14,7 @@ module Tables::TotalRight
   }
 
   def total_right_table(data, **options)
+    return if data[0].blank?
     width = bounds.width / (data[0].size + 4)
 
     default_options = {

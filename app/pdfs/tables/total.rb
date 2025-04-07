@@ -14,6 +14,7 @@ module Tables::Total
   }
 
   def total_table(data, **options)
+    return if data[0].blank?
     width = bounds.width / data[0].size
 
     default_options = {

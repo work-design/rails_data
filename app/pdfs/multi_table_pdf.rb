@@ -21,7 +21,7 @@ class MultiTablePdf < BasePdf
 
     repeat_header header_data if header_data.present?
     multi_data.each do |_, value|
-      move_down 20
+      move_down 35
       once_header value[:title] if value[:title].present?
       _options = {}
       _options.merge! first_row: {} if value[:title].blank?

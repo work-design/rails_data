@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 module Tables::Media
-  HEAD_TD = {
-    borders: [:bottom],
-    border_color: 'eeeeee'
-  }
 
   def media_table(data, **options)
     return if data.blank?

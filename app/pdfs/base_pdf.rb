@@ -25,7 +25,8 @@ class BasePdf < Prawn::Document
 
   def initialize(font: FONT.keys[0], **options)
     default_config = {
-      page_size: 'A4'
+      page_size: 'A4',
+      top_margin: 40
     }
     font_families.merge! FONT
     default_config.merge!(options)
@@ -93,7 +94,7 @@ class BasePdf < Prawn::Document
 
   def repeat_header(data = nil, **options)
     repeat :all do
-      bounding_box [bounds.left, bounds.top + 20], width: bounds.width do
+      bounding_box [bounds.left, bounds.top + 30], width: bounds.width do
         process_header [data], **options
       end
     end

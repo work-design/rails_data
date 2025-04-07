@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Tables::Content
+  NORMAL_TD = {
+    valign: :center
+  }
 
   # 针对文字内容
   def content_table(data, **options)

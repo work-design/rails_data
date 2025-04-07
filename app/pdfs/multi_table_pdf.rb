@@ -22,7 +22,7 @@ class MultiTablePdf < BasePdf
 
     repeat_header header_data if header_data.present?
     multi_data.each do |_, value|
-      logger.debug "\e[35m  当前位置距离顶部：#{bounds.top - cursor}  \e[0m"
+      Rails.logger.debug "\e[35m  当前位置距离顶部：#{bounds.top - cursor}  \e[0m"
       move_down 35
       once_header value[:title] if value[:title].present?
       _options = {}

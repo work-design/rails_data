@@ -9,7 +9,13 @@ module Tables::List
     end
     data.each do |i|
       move_down 25
-      text i, inline_format: true
+      if i.is_a? Array
+        i.each do |sub_i|
+          text sub_i, inline_format: true
+        end
+      else
+        text i, inline_format: true
+      end
     end
   end
 

@@ -221,10 +221,10 @@ GEM
     net-ssh (7.3.0)
     nio4r (2.7.4)
     nkf (0.2.0)
-    nokogiri (1.18.7)
+    nokogiri (1.18.8)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.7-x86_64-linux-gnu)
+    nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
     ostruct (0.6.1)
     pdf-core (0.10.0)
@@ -429,8 +429,8 @@ CHECKSUMS
   net-ssh (7.3.0) sha256=172076c4b30ce56fb25a03961b0c4da14e1246426401b0f89cba1a3b54bf3ef0
   nio4r (2.7.4) sha256=d95dee68e0bb251b8ff90ac3423a511e3b784124e5db7ff5f4813a220ae73ca9
   nkf (0.2.0) sha256=fbc151bda025451f627fafdfcb3f4f13d0b22ae11f58c6d3a2939c76c5f5f126
-  nokogiri (1.18.7) sha256=6b63ff5defe48f30d1d3b3122f65255ca91df2caf5378c6e0482ce73ff46fb31
-  nokogiri (1.18.7-x86_64-linux-gnu) sha256=3a0bf946eb2defde13d760f869b61bc8b0c18875afdd3cffa96543cfa3a18005
+  nokogiri (1.18.8) sha256=8c7464875d9ca7f71080c24c0db7bcaa3940e8be3c6fc4bcebccf8b9a0016365
+  nokogiri (1.18.8-x86_64-linux-gnu) sha256=4a747875db873d18a2985ee2c320a6070c4a414ad629da625fbc58d1a20e5ecc
   ostruct (0.6.1) sha256=09a3fb7ecc1fa4039f25418cc05ae9c82bd520472c5c6a6f515f03e4988cb817
   pdf-core (0.10.0) sha256=0a5d101e2063c01e3f941e1ee47cbb97f1adfc1395b58372f4f65f1300f3ce91
   pg (1.5.9) sha256=761efbdf73b66516f0c26fcbe6515dc7500c3f0aa1a1b853feae245433c64fdc

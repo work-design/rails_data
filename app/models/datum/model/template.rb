@@ -30,8 +30,9 @@ module Datum
     end
 
     def root_headers
-      x = template_items.load.find { |i| i.position == 1 }.fields
-      x.adjoin_repeated
+      return @root_headers if defined? @root_headers
+      x = template_items.find_by(position: 1).fields
+      @root_headers = x.adjoin_repeated
     end
 
     def parse_all!

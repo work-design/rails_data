@@ -30,7 +30,7 @@ module Datum
     end
 
     def root_headers
-      x = template_items.find_by(position: 1).fields
+      x = template_items.load.find { |i| i.position == 1 }.fields
       x.adjoin_repeated
     end
 

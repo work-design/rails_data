@@ -1,9 +1,7 @@
 <div class="menu-list">
   <%= link_to({ controller: 'datum/panel/home' }, text: true, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'menu-item') do %>
-    <div>
-      <i class="fa-solid fa-fw fa-chart-bar"></i>
-      <span><%= t('datum.panel.title') %></span>
-    </div>
+    <i class="fa-solid fa-fw fa-chart-bar"></i>
+    <strong><%= t('datum.panel.title') %></strong>
   <% end %>
   <div class="pl-4">
     <%= link_to t('datum.panel.data_exports.index.title'), { controller: 'datum/panel/data_exports' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'data_exports', item: 'menu-item', active: 'menu-item is-active') %>
